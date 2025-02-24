@@ -1,2 +1,13 @@
 <h1>Utentes#index</h1>
-<p>Find me in app/views/utentes/index.html.erb</p>
+
+<%= link_to "Nuovo utente", new_utente_path  if authenticated?%>
+
+<div id="utentes">
+    <% @utentes.each do |utente| %>
+        <div>
+            <%= link_to utente.nome, utente %>
+        </div>
+    <% end %>
+</div>
+
+<%= link_to "Login", new_session_path unless authenticated?%>

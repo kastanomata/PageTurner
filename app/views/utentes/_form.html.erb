@@ -1,0 +1,13 @@
+<%= form_with(model: @utente) do |form| %>
+    <div>
+        <%= form.label :nome %>
+        <%= form.text_field :nome %>
+
+        <%= form.label :email %>
+        <%= form.text_field :email %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>

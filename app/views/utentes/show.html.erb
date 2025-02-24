@@ -1,0 +1,8 @@
+<h1> Nome utente: <%= @utente.nome %></h1>
+<h2> Email: <%= @utente.email %></h2>
+
+<%= link_to "Back", utentes_path %>
+<% if authenticated? %>
+    <%= link_to "Edit", edit_utente_path(@utente)  %>
+    <%= button_to "Delete", @utente, method: :delete, data:{turbo_confirm: "Are you sure?"} %>
+<% end %>

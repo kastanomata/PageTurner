@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  get "/utentes", to: "utentes#index"
-  post "/utentes", to: "utentes#create"
-
-  get "/utentes/:id", to: "utentes#show"
-
   resources :utentes
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -16,5 +13,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "utentes#index"
 end
