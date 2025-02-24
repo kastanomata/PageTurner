@@ -30,3 +30,49 @@ Migrating to CreateUtentes (20250224141707)
   [1m[36mUtente Create (5.4ms)[0m  [1m[32mINSERT INTO "utentes" ("email", "nome", "created_at", "updated_at") VALUES ('topogigio', 'Lucio Corsi', '2025-02-24 14:27:58.615024', '2025-02-24 14:27:58.615024') RETURNING "id" /*application='PageTurner'*/[0m
   [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PageTurner'*/[0m
   [1m[36mUtente Load (60.9ms)[0m  [1m[34mSELECT "utentes".* FROM "utentes" WHERE "utentes"."nome" = 'Lucio Corsi' /* loading for pp */ LIMIT 11 /*application='PageTurner'*/[0m
+  [1m[36mUtente Load (2.9ms)[0m  [1m[34mSELECT "utentes".* FROM "utentes" /* loading for pp */ ORDER BY "utentes"."nome" ASC LIMIT 11 /*application='PageTurner'*/[0m
+  [1m[36mUtente Load (1.2ms)[0m  [1m[34mSELECT "utentes".* FROM "utentes" WHERE "utentes"."id" = 4 LIMIT 1 /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mUtente Update (3.3ms)[0m  [1m[33mUPDATE "utentes" SET "nome" = 'Amadeo', "updated_at" = '2025-02-24 14:41:12.508358' WHERE "utentes"."id" = 4 /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mUtente Load (1.7ms)[0m  [1m[34mSELECT "utentes".* FROM "utentes" /* loading for pp */ LIMIT 11 /*application='PageTurner'*/[0m
+  [1m[36mUtente Load (0.8ms)[0m  [1m[34mSELECT "utentes".* FROM "utentes" /* loading for pp */ ORDER BY "utentes"."nome" DESC LIMIT 11 /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mUtente Destroy (5.7ms)[0m  [1m[31mDELETE FROM "utentes" WHERE "utentes"."id" = 4 /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mUtente Load (2.3ms)[0m  [1m[34mSELECT "utentes".* FROM "utentes" /* loading for pp */ LIMIT 11 /*application='PageTurner'*/[0m
+  [1m[36mUtente Load (2.4ms)[0m  [1m[34mSELECT "utentes".* FROM "utentes" /* loading for pp */ LIMIT 11 /*application='PageTurner'*/[0m
+  [1m[36mUtente Load (1.9ms)[0m  [1m[34mSELECT "utentes".* FROM "utentes" /* loading for pp */ LIMIT 11 /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mUtente Create (2.8ms)[0m  [1m[32mINSERT INTO "utentes" ("email", "nome", "created_at", "updated_at") VALUES ('sanremone', 'amadeo', '2025-02-24 14:46:09.787407', '2025-02-24 14:46:09.787407') RETURNING "id" /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (18.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mUtente Load (6.7ms)[0m  [1m[34mSELECT "utentes".* FROM "utentes" /* loading for pp */ LIMIT 11 /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mUtente Destroy (3.8ms)[0m  [1m[31mDELETE FROM "utentes" WHERE "utentes"."id" = 5 /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mUtente Load (1.9ms)[0m  [1m[34mSELECT "utentes".* FROM "utentes" /* loading for pp */ LIMIT 11 /*application='PageTurner'*/[0m
+Started GET "/" for 127.0.0.1 at 2025-02-24 15:56:17 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PageTurner'*/[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/alessandro/.rvm/gems/ruby-3.3.0/gems/railties-8.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/alessandro/.rvm/gems/ruby-3.3.0/gems/railties-8.0.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 1311ms (Views: 18.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/utentes" for 127.0.0.1 at 2025-02-24 15:56:25 +0100
+Processing by UtentesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering utentes/index.html.erb within layouts/application
+  Rendered utentes/index.html.erb within layouts/application (Duration: 3.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 90.0ms | GC: 0.0ms)
+Completed 200 OK in 1040ms (Views: 101.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/application-8b441ae0.css" for 127.0.0.1 at 2025-02-24 15:56:26 +0100
+Started GET "/assets/application-bfcdf840.js" for 127.0.0.1 at 2025-02-24 15:56:26 +0100
+Started GET "/assets/turbo.min-fae85750.js" for 127.0.0.1 at 2025-02-24 15:56:26 +0100
+Started GET "/assets/controllers/hello_controller-708796bd.js" for 127.0.0.1 at 2025-02-24 15:56:27 +0100
+Started GET "/assets/controllers/index-ee64e1f1.js" for 127.0.0.1 at 2025-02-24 15:56:27 +0100
+Started GET "/assets/stimulus.min-4b1e420e.js" for 127.0.0.1 at 2025-02-24 15:56:27 +0100
+Started GET "/assets/stimulus-loading-1fc53fe7.js" for 127.0.0.1 at 2025-02-24 15:56:27 +0100
+Started GET "/assets/controllers/application-3affb389.js" for 127.0.0.1 at 2025-02-24 15:56:27 +0100
