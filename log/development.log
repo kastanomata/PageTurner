@@ -8,3 +8,25 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 2971ms (Views: 142.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (2.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='PageTurner'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (13.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-02-24 14:18:11.493339', '2025-02-24 14:18:11.493346') RETURNING "key" /*application='PageTurner'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PageTurner'*/[0m
+Migrating to CreateUtentes (20250224141707)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PageTurner'*/[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "utentes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "nome" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='PageTurner'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224141707') RETURNING "version" /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mUtente Create (16.5ms)[0m  [1m[32mINSERT INTO "utentes" ("email", "nome", "created_at", "updated_at") VALUES ('antonyo.turco@gmail.com', 'Antonio', '2025-02-24 14:26:56.633654', '2025-02-24 14:26:56.633654') RETURNING "id" /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (12.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mUtente Create (6.0ms)[0m  [1m[32mINSERT INTO "utentes" ("email", "nome", "created_at", "updated_at") VALUES ('alfred.segala@gmail.com', 'Alfredo', '2025-02-24 14:27:01.666805', '2025-02-24 14:27:01.666805') RETURNING "id" /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mUtente Create (14.2ms)[0m  [1m[32mINSERT INTO "utentes" ("email", "nome", "created_at", "updated_at") VALUES ('aletemp@gmail.com', 'Alessandro', '2025-02-24 14:27:06.073306', '2025-02-24 14:27:06.073306') RETURNING "id" /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mUtente Create (5.4ms)[0m  [1m[32mINSERT INTO "utentes" ("email", "nome", "created_at", "updated_at") VALUES ('topogigio', 'Lucio Corsi', '2025-02-24 14:27:58.615024', '2025-02-24 14:27:58.615024') RETURNING "id" /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mUtente Load (60.9ms)[0m  [1m[34mSELECT "utentes".* FROM "utentes" WHERE "utentes"."nome" = 'Lucio Corsi' /* loading for pp */ LIMIT 11 /*application='PageTurner'*/[0m
