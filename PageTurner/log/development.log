@@ -1,0 +1,42 @@
+Started GET "/" for 127.0.0.1 at 2025-02-24 12:27:48 +0100
+  [1m[35m (17.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/movies" for 127.0.0.1 at 2025-02-24 12:27:48 +0100
+Processing by MoviesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (1.9ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/views/movies/index.html.erb:23
+  Rendered movies/index.html.erb within layouts/application (Duration: 123.7ms | Allocations: 7133)
+  Rendered layout layouts/application.html.erb (Duration: 842.0ms | Allocations: 19367)
+Completed 200 OK in 997ms (Views: 894.3ms | ActiveRecord: 8.8ms | Allocations: 21675)
+
+
+Started GET "/" for 127.0.0.1 at 2025-02-24 12:42:59 +0100
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/movies" for 127.0.0.1 at 2025-02-24 12:43:00 +0100
+Processing by MoviesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (3.6ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/views/movies/index.html.erb:23
+  Rendered movies/index.html.erb within layouts/application (Duration: 54.1ms | Allocations: 7083)
+  Rendered layout layouts/application.html.erb (Duration: 230.0ms | Allocations: 10019)
+Completed 200 OK in 299ms (Views: 244.2ms | ActiveRecord: 10.8ms | Allocations: 11688)
+
+
+Started GET "/" for 127.0.0.1 at 2025-02-24 13:13:03 +0100
+  [1m[35m (20.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/movies" for 127.0.0.1 at 2025-02-24 13:13:04 +0100
+Processing by MoviesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (3.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/views/movies/index.html.erb:23
+  Rendered movies/index.html.erb within layouts/application (Duration: 63.5ms | Allocations: 7083)
+  Rendered layout layouts/application.html.erb (Duration: 492.7ms | Allocations: 10205)
+Completed 200 OK in 736ms (Views: 576.4ms | ActiveRecord: 10.4ms | Allocations: 11894)
+
+
