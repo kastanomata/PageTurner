@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @bookshelf %>
+
+<div>
+  <%= link_to "Edit this bookshelf", edit_bookshelf_path(@bookshelf) %> |
+  <%= link_to "Back to bookshelves", bookshelves_path %>
+
+  <%= button_to "Destroy this bookshelf", @bookshelf, method: :delete %>
+</div>

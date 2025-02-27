@@ -1,0 +1,41 @@
+.user-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-header {
+  margin-bottom: 20px;
+}
+
+.user-header h1 {
+  margin: 0;
+}
+
+.user-content {
+  margin-bottom: 20px;
+}
+
+.bookshelves, .posts {
+  margin-top: 20px;
+}
+
+.bookshelf, .post {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+}
+
+.bookshelf h3, .post h3 {
+  margin: 0;
+}
+
+.bookshelf p, .post p {
+  margin: 5px 0;
+}

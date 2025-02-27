@@ -1,0 +1,41 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="user-container">
+  <div class="user-header">
+    <h1><%= @user.nickname %></h1>
+    <p><%= @user.description %></p>
+  </div>
+
+  <div class="user-content">
+    <h2>Bookshelves</h2>
+    <div class="bookshelves">
+      <% @user_bookshelves = Bookshelf.where(creator: @user.email) %>
+      <% @user_bookshelves.each do |bookshelf| %>
+        <div class="bookshelf">
+          <h3><%= bookshelf.name %></h3>
+          <p>Created at: <%= bookshelf.created_at.strftime("%B %d, %Y") %></p>
+          <%= link_to "Show this bookshelf", bookshelf %>
+        </div>
+      <% end %>
+    </div>
+
+    <h2>Posts</h2>
+    <div class="posts">
+      <% @user_posts = Post.where(creator: @user.email) %>
+      <% @user_posts.each do |post| %>
+        <div class="post">
+          <h3><%= post.title %></h3>
+          <p><%= post.text %></p>
+          <p>Created at: <%= post.created_at.strftime("%B %d, %Y") %></p>
+          <%= link_to "Show this post", post %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Edit this user", edit_user_path(@user), class: "btn btn-primary" %> |
+    <%= link_to "Back to users", users_path, class: "btn btn-secondary" %>
+    <%= button_to "Destroy this user", @user, method: :delete, class: "btn btn-danger" %>
+  </div>
+</div>

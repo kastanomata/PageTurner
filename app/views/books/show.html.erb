@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+<!-- 
+  This is the show page for a single book
+  It displays the book's title, ISBN, and thumbnail 
+  if those information are available, otherwise it makes a 
+  request to the openlibrary API to get the book's information
+  and saves it in the database
+-->
+<% if @book.present? %>
+  <div class="book-card">
+    <% if @book.thumbnail.present? %>
+      <img src="<%= @book.thumbnail %>" alt="Book cover" class="book-thumbnail">
+    <% else %>
+      <div class="no-cover">No Cover Available</div>
+    <% end %>
+    <h3><%= @book.title %></h3>
+    <p>ISBN: <%= @book.isbn %></p>
+  </div>
+<% else %>
+  <p>Book not found.</p>
+<% end %>
+
+<div>
+  <%= link_to "Edit this book", edit_book_path(@book) %> |
+  <%= link_to "Back to books", books_path %>
+
+  <%= button_to "Destroy this book", @book, method: :delete %>
+</div>
