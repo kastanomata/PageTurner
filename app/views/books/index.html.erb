@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Books" %>
+
+<h1>Books</h1>
+
+<div class="books-container">
+  <% @books.each do |book| %>
+    <div class="book-card">
+      <% if book.thumbnail.present? %>
+        <%= image_tag book.thumbnail, alt: "Cover of #{book.title}", class: "book-thumbnail" %>
+      <% else %>
+        <div class="no-cover">No Cover Available</div>
+      <% end %>
+      <h3><%= book.title %></h3>
+      <p>ISBN: <%= book.isbn %></p>
+      <%= link_to "View Details", book_path(book), class: "btn btn-primary" %>
+
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "New book", new_book_path %>

@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="post-container">
+  <div class="post-header">
+    <h1><%= @post.title %></h1>
+  </div>
+  <div class="post-content">
+    <p><%= @post.text %></p>
+  </div>
+
+  <% if @post.book %>
+    <% book = Book.find_by(isbn: @post.book) %>
+    <% if book %>
+      <div class="book-card">
+        <%= image_tag book.thumbnail, alt: "Book cover", class: "book-thumbnail" %>
+        <h3><%= book.title %></h3>
+        <p>ISBN: <%= book.isbn %></p>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+    <%= link_to "Edit this post", edit_post_path(@post), class: "btn btn-primary" %>
+    <%= link_to "Back to posts", posts_path, class: "btn btn-secondary" %>
+    <%= button_to "Destroy this post", @post, method: :delete, class: "btn btn-danger" %>
+  </div>
+</div>

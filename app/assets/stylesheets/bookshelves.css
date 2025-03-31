@@ -1,0 +1,50 @@
+#bookshelves {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bookshelf {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bookshelf h2 {
+  margin-top: 0;
+}
+
+.books {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.book-card {
+  text-align: center;
+}
+
+.book-thumbnail {
+  width: 100px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.bookshelf-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.bookshelf-footer a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.bookshelf-footer a:hover {
+  text-decoration: underline;
+}
