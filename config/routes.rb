@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :books
   resources :bookshelves
 
+  delete "session/destroy" => "sessions#destroy", as: :logout
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -18,8 +20,7 @@ Rails.application.routes.draw do
 
   get "/auth/:provider/callback" => "sessions/omni_auths#create", as: :omniauth_callback
   get "/auth/failure" => "sessions/omni_auths#failure", as: :omniauth_failure
-  root "homes#index"
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "homes#index"
 end

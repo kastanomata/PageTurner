@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
   include Authentication
-  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
+
+  # Remove or avoid any global authentication enforcement
+  # allow_unauthenticated_access # Comment this out if present
+
+  # Allow modern browsers (this is unrelated to authentication)
   allow_browser versions: :modern
 end

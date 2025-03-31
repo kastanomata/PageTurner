@@ -47,7 +47,9 @@ module Authentication
     end
 
     def terminate_session
-      Current.session.destroy
+      puts "CURRENT ID:", Current.session.id
+      Session.delete(id: Current.session.id)
+      Current.session = nil
       cookies.delete(:session_id)
     end
 end
