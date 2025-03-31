@@ -8,3 +8,350 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 2971ms (Views: 142.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PageTurner'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PageTurner'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PageTurner'*/[0m
+Started GET "/" for 127.0.0.1 at 2025-03-31 11:41:03 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PageTurner'*/[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 3 pending migrations:
+
+db/migrate/20250331083013_create_users.rb
+db/migrate/20250331083030_create_sessions.rb
+db/migrate/20250331084503_create_omni_auth_identities.rb
+
+
+):
+  
+activerecord (8.0.1) lib/active_record/migration.rb:743:in `check_pending_migrations'
+activerecord (8.0.1) lib/active_record/migration.rb:660:in `block (2 levels) in call'
+activesupport (8.0.1) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (8.0.1) lib/active_record/migration.rb:665:in `block in call'
+activerecord (8.0.1) lib/active_record/migration.rb:657:in `synchronize'
+activerecord (8.0.1) lib/active_record/migration.rb:657:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.1) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.1) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.1) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.1) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.10) lib/rack/method_override.rb:28:in `call'
+rack (3.1.10) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.1) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-31 11:41:04 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PageTurner'*/[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 3 pending migrations:
+
+db/migrate/20250331083013_create_users.rb
+db/migrate/20250331083030_create_sessions.rb
+db/migrate/20250331084503_create_omni_auth_identities.rb
+
+
+):
+  
+activerecord (8.0.1) lib/active_record/migration.rb:743:in `check_pending_migrations'
+activerecord (8.0.1) lib/active_record/migration.rb:660:in `block (2 levels) in call'
+activesupport (8.0.1) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (8.0.1) lib/active_record/migration.rb:665:in `block in call'
+activerecord (8.0.1) lib/active_record/migration.rb:657:in `synchronize'
+activerecord (8.0.1) lib/active_record/migration.rb:657:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.1) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.1) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.1) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.1) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.10) lib/rack/method_override.rb:28:in `call'
+rack (3.1.10) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.1) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+  [1m[36mActiveRecord::InternalMetadata Load (1.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='PageTurner'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (5.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-03-31 09:42:16.944382', '2025-03-31 09:42:16.944385') RETURNING "key" /*application='PageTurner'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PageTurner'*/[0m
+Migrating to CreateUsers (20250331083013)
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PageTurner'*/[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email_address" varchar NOT NULL, "password_digest" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='PageTurner'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email_address" ON "users" ("email_address") /*application='PageTurner'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250331083013') RETURNING "version" /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PageTurner'*/[0m
+Migrating to CreateSessions (20250331083030)
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PageTurner'*/[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "ip_address" varchar, "user_agent" varchar, "source" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_758836b4f0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+) /*application='PageTurner'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_sessions_on_user_id" ON "sessions" ("user_id") /*application='PageTurner'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250331083030') RETURNING "version" /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PageTurner'*/[0m
+Migrating to CreateOmniAuthIdentities (20250331084503)
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PageTurner'*/[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "omni_auth_identities" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "uid" varchar, "provider" varchar, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_17235d7b06"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+) /*application='PageTurner'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_omni_auth_identities_on_user_id" ON "omni_auth_identities" ("user_id") /*application='PageTurner'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250331084503') RETURNING "version" /*application='PageTurner'*/[0m
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PageTurner'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PageTurner'*/[0m
+Started GET "/" for 127.0.0.1 at 2025-03-31 11:42:43 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (4.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PageTurner'*/[0m
+  
+NoMethodError (undefined method `et' for an instance of ActionDispatch::Routing::Mapper):
+  
+config/routes.rb:14:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-31 11:42:45 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/" for 127.0.0.1 at 2025-03-31 11:43:19 +0200
+Processing by HomesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homes/index.html.erb within layouts/application
+  Rendered homes/index.html.erb within layouts/application (Duration: 55.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 405.6ms | GC: 0.8ms)
+Completed 200 OK in 3219ms (Views: 541.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 2.8ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2025-03-31 11:43:32 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 297.4ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 304.0ms | GC: 0.4ms)
+Completed 200 OK in 2213ms (Views: 312.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/passwords/new" for 127.0.0.1 at 2025-03-31 11:43:36 +0200
+Processing by PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering passwords/new.html.erb within layouts/application
+  Rendered passwords/new.html.erb within layouts/application (Duration: 23.4ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 30.7ms | GC: 0.4ms)
+Completed 200 OK in 988ms (Views: 42.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started POST "/auth/developer" for 127.0.0.1 at 2025-03-31 11:43:40 +0200
+Started POST "/auth/github" for 127.0.0.1 at 2025-03-31 11:43:45 +0200
+Started GET "/session/new" for 127.0.0.1 at 2025-03-31 11:48:06 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 6.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | GC: 0.0ms)
+Completed 200 OK in 812ms (Views: 12.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/auth/github" for 127.0.0.1 at 2025-03-31 11:48:09 +0200
+Started GET "/session/new" for 127.0.0.1 at 2025-03-31 11:48:39 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 9.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.6ms | GC: 0.0ms)
+Completed 200 OK in 512ms (Views: 16.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/application-8b441ae0.css" for 127.0.0.1 at 2025-03-31 11:48:40 +0200
+Started GET "/assets/stimulus-loading-1fc53fe7.js" for 127.0.0.1 at 2025-03-31 11:48:40 +0200
+Started GET "/assets/application-bfcdf840.js" for 127.0.0.1 at 2025-03-31 11:48:40 +0200
+Started GET "/assets/controllers/hello_controller-708796bd.js" for 127.0.0.1 at 2025-03-31 11:48:40 +0200
+Started GET "/assets/controllers/index-ee64e1f1.js" for 127.0.0.1 at 2025-03-31 11:48:40 +0200
+Started GET "/assets/controllers/application-3affb389.js" for 127.0.0.1 at 2025-03-31 11:48:40 +0200
+Started GET "/assets/turbo.min-fae85750.js" for 127.0.0.1 at 2025-03-31 11:48:40 +0200
+Started GET "/assets/stimulus.min-4b1e420e.js" for 127.0.0.1 at 2025-03-31 11:48:40 +0200
+Started POST "/auth/github" for 127.0.0.1 at 2025-03-31 11:48:42 +0200
+Started POST "/auth/google_oauth2" for 127.0.0.1 at 2025-03-31 11:49:42 +0200
+Started GET "/" for ::1 at 2025-03-31 11:50:38 +0200
+Processing by HomesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homes/index.html.erb within layouts/application
+  Rendered homes/index.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | GC: 0.0ms)
+Completed 200 OK in 1194ms (Views: 9.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/application-8b441ae0.css" for ::1 at 2025-03-31 11:50:40 +0200
+Started GET "/assets/application-bfcdf840.js" for ::1 at 2025-03-31 11:50:40 +0200
+Started GET "/assets/stimulus.min-4b1e420e.js" for ::1 at 2025-03-31 11:50:40 +0200
+Started GET "/assets/controllers/hello_controller-708796bd.js" for ::1 at 2025-03-31 11:50:40 +0200
+Started GET "/assets/controllers/index-ee64e1f1.js" for ::1 at 2025-03-31 11:50:40 +0200
+Started GET "/assets/turbo.min-fae85750.js" for ::1 at 2025-03-31 11:50:40 +0200
+Started GET "/assets/stimulus-loading-1fc53fe7.js" for ::1 at 2025-03-31 11:50:41 +0200
+Started GET "/assets/controllers/application-3affb389.js" for ::1 at 2025-03-31 11:50:41 +0200
+Started GET "/session/new" for ::1 at 2025-03-31 11:50:42 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 7.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.3ms | GC: 0.0ms)
+Completed 200 OK in 1333ms (Views: 15.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/session/new" for ::1 at 2025-03-31 11:50:44 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 6.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.7ms | GC: 0.0ms)
+Completed 200 OK in 1778ms (Views: 13.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/auth/google_oauth2" for ::1 at 2025-03-31 11:50:47 +0200
+Started GET "/auth/google_oauth2/callback?state=3d4d100396fbae2a74583d12c9bbf0006a35c92a044004d2&code=4%2F0AQSTgQFwI_77sxzm1j9RRhDsZQv8-Bf5k8lRxoqcQdWsaZXwgkFtVXNMQDpiixqkHzJ25w&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&hd=studenti.uniroma1.it&prompt=consent" for ::1 at 2025-03-31 11:51:25 +0200
+Processing by Sessions::OmniAuthsController#create as HTML
+  Parameters: {"state"=>"3d4d100396fbae2a74583d12c9bbf0006a35c92a044004d2", "code"=>"4/0AQSTgQFwI_77sxzm1j9RRhDsZQv8-Bf5k8lRxoqcQdWsaZXwgkFtVXNMQDpiixqkHzJ25w", "scope"=>"email profile openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email", "authuser"=>"0", "hd"=>"studenti.uniroma1.it", "prompt"=>"consent", "provider"=>"google_oauth2"}
+  [1m[36mOmniAuthIdentity Load (4.0ms)[0m  [1m[34mSELECT "omni_auth_identities".* FROM "omni_auth_identities" WHERE "omni_auth_identities"."uid" = '103354176659949338130' AND "omni_auth_identities"."provider" = 'google_oauth2' LIMIT 1 /*action='create',application='PageTurner',controller='omni_auths'*/[0m
+  ↳ app/controllers/sessions/omni_auths_controller.rb:10:in `create'
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email_address" = 'segala.1999676@studenti.uniroma1.it' LIMIT 1 /*action='create',application='PageTurner',controller='omni_auths'*/[0m
+  ↳ app/controllers/sessions/omni_auths_controller.rb:33:in `create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='PageTurner',controller='omni_auths'*/[0m
+  ↳ app/models/user.rb:20:in `create_from_oauth'
+  [1m[36mUser Exists? (6.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email_address") = LOWER('segala.1999676@studenti.uniroma1.it') LIMIT 1 /*action='create',application='PageTurner',controller='omni_auths'*/[0m
+  ↳ app/models/user.rb:20:in `create_from_oauth'
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email_address", "password_digest", "created_at", "updated_at") VALUES ('segala.1999676@studenti.uniroma1.it', '$2a$12$pMJJZF6HzWNbvrS4DEE7GOj8Aw8Ejw/u4fKBENbLvF9U5ROf.P8aG', '2025-03-31 09:51:30.401713', '2025-03-31 09:51:30.401713') RETURNING "id" /*action='create',application='PageTurner',controller='omni_auths'*/[0m
+  ↳ app/models/user.rb:20:in `create_from_oauth'
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='PageTurner',controller='omni_auths'*/[0m
+  ↳ app/models/user.rb:20:in `create_from_oauth'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='PageTurner',controller='omni_auths'*/[0m
+  ↳ app/controllers/sessions/omni_auths_controller.rb:34:in `create'
+  [1m[36mOmniAuthIdentity Create (3.0ms)[0m  [1m[32mINSERT INTO "omni_auth_identities" ("uid", "provider", "user_id", "created_at", "updated_at") VALUES ('103354176659949338130', 'google_oauth2', 1, '2025-03-31 09:51:30.544499', '2025-03-31 09:51:30.544499') RETURNING "id" /*action='create',application='PageTurner',controller='omni_auths'*/[0m
+  ↳ app/controllers/sessions/omni_auths_controller.rb:34:in `create'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='PageTurner',controller='omni_auths'*/[0m
+  ↳ app/controllers/sessions/omni_auths_controller.rb:34:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='PageTurner',controller='omni_auths'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:43:in `start_new_session_for'
+  [1m[36mSession Create (26.8ms)[0m  [1m[32mINSERT INTO "sessions" ("user_id", "ip_address", "user_agent", "source", "created_at", "updated_at") VALUES (1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'google_oauth2', '2025-03-31 09:51:30.742537', '2025-03-31 09:51:30.742537') RETURNING "id" /*action='create',application='PageTurner',controller='omni_auths'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:43:in `start_new_session_for'
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='PageTurner',controller='omni_auths'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:43:in `start_new_session_for'
+Redirected to http://localhost:3000/
+Completed 302 Found in 2291ms (ActiveRecord: 148.4ms (6 queries, 0 cached) | GC: 14.5ms)
+
+
+Started GET "/" for ::1 at 2025-03-31 11:51:30 +0200
+Processing by HomesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homes/index.html.erb within layouts/application
+  [1m[36mSession Load (2.2ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 1 LIMIT 1 /*action='index',application='PageTurner',controller='homes'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:29:in `find_session_by_cookie'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='index',application='PageTurner',controller='homes'*/[0m
+  ↳ app/models/current.rb:3:in `user'
+  Rendered homes/index.html.erb within layouts/application (Duration: 29.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 32.4ms | GC: 0.0ms)
+Completed 200 OK in 922ms (Views: 31.1ms | ActiveRecord: 2.9ms (2 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/passwords/new" for 127.0.0.1 at 2025-03-31 11:55:23 +0200
+Processing by PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering passwords/new.html.erb within layouts/application
+  Rendered passwords/new.html.erb within layouts/application (Duration: 10.1ms | GC: 1.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | GC: 1.3ms)
+Completed 200 OK in 770ms (Views: 22.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.3ms)
+
+
+Started POST "/auth/developer" for 127.0.0.1 at 2025-03-31 11:55:35 +0200
+Started POST "/auth/github" for 127.0.0.1 at 2025-03-31 11:56:12 +0200
+Started DELETE "/session" for ::1 at 2025-03-31 11:56:20 +0200
+Processing by SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mSession Load (1.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 1 LIMIT 1 /*action='destroy',application='PageTurner',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:29:in `find_session_by_cookie'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='destroy',application='PageTurner',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:50:in `terminate_session'
+  [1m[36mSession Destroy (3.5ms)[0m  [1m[31mDELETE FROM "sessions" WHERE "sessions"."id" = 1 /*action='destroy',application='PageTurner',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:50:in `terminate_session'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='destroy',application='PageTurner',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:50:in `terminate_session'
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 703ms (ActiveRecord: 6.4ms (2 queries, 0 cached) | GC: 4.4ms)
+
+
+Started GET "/session/new" for ::1 at 2025-03-31 11:56:21 +0200
+Processing by SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 4.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | GC: 0.0ms)
+Completed 200 OK in 749ms (Views: 8.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/passwords/new" for ::1 at 2025-03-31 11:56:22 +0200
+Processing by PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering passwords/new.html.erb within layouts/application
+  Rendered passwords/new.html.erb within layouts/application (Duration: 2.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | GC: 0.0ms)
+Completed 200 OK in 869ms (Views: 6.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/auth/github" for ::1 at 2025-03-31 11:56:23 +0200
+Started GET "/session/new" for ::1 at 2025-03-31 11:56:45 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 30.7ms | GC: 15.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 33.2ms | GC: 15.1ms)
+Completed 200 OK in 804ms (Views: 35.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 15.1ms)
+
+
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT 11 /*application='PageTurner'*/[0m
