@@ -24,7 +24,7 @@ end
 def seed_users
   users = [
     {
-      email_address: "AntonioTurco@example.com",
+      email_address: "antonioturco@example.com",
       password: "password",
       nickname: "kastanomata",
       description: "This is the first user.",
@@ -33,7 +33,7 @@ def seed_users
       updated_at: Time.now
     },
     {
-      email_address: "AlessandroTemperini@example.com",
+      email_address: "alessandrotemperini@example.com",
       password: "password",
       nickname: "AleNino",
       description: "This is the second user.",
@@ -42,7 +42,7 @@ def seed_users
       updated_at: Time.now
     },
     {
-      email_address: "AlfredoSegala@example.com",
+      email_address: "alfredosegala@example.com",
       password: "password",
       nickname: "Fredo",
       description: "This is the third user.",
@@ -60,17 +60,18 @@ end
 # Seed data for posts
 def seed_posts
   posts = [
-    # Posts by the first user (AntonioTurco@example.com)
-    { title: "Thoughts on Game of Thrones", text: "Game of Thrones is an epic tale of power and betrayal. The characters are complex and the plot is unpredictable.", creator: "AntonioTurco@example.com", book: "9780553381689", created_at: Time.now, updated_at: Time.now },
-    { title: "Review of Fifty Shades of Grey", text: "Fifty Shades of Grey is a controversial book with a unique take on romance. It's not for everyone, but it has its moments.", creator: "AntonioTurco@example.com", book: "9789350835616", created_at: Time.now, updated_at: Time.now },
+    # Posts by the first user (antonioturco@example.com)
+    { title: "Thoughts on Game of Thrones", text: "Game of Thrones is an epic tale of power and betrayal. The characters are complex and the plot is unpredictable.", creator: "antonioturco@example.com", book: "9780553381689", created_at: Time.now, updated_at: Time.now },
+    { title: "Review of Fifty Shades of Grey", text: "Fifty Shades of Grey is a controversial book with a unique take on romance. It's not for everyone, but it has its moments.", creator: "antonioturco@example.com", book: "9789350835616", created_at: Time.now, updated_at: Time.now },
 
-    # Posts by the second user (AlessandroTemperini@example.com)
-    { title: "Charlotte's Web: A Review", text: "Charlotte's Web is a timeless classic that teaches valuable lessons about friendship and sacrifice.", creator: "AlessandroTemperini@example.com", book: "9780060006983", created_at: Time.now, updated_at: Time.now },
-    { title: "Game of Thrones: My Take", text: "The character development in Game of Thrones is exceptional. Each character has a unique and compelling story arc.", creator: "AlessandroTemperini@example.com", book: "9780553381689", created_at: Time.now, updated_at: Time.now },
-    { title: "Fifty Shades of Grey: A Review", text: "Fifty Shades of Grey is a provocative book that challenges societal norms. It's a thought-provoking read.", creator: "AlessandroTemperini@example.com", book: "9789350835616", created_at: Time.now, updated_at: Time.now }
+    # Posts by the second user (alessandrotemperini@example.com)
+    { title: "Charlotte's Web: A Review", text: "Charlotte's Web is a timeless classic that teaches valuable lessons about friendship and sacrifice.", creator: "alessandrotemperini@example.com", book: "9780060006983", created_at: Time.now, updated_at: Time.now },
+    { title: "Game of Thrones: My Take", text: "The character development in Game of Thrones is exceptional. Each character has a unique and compelling story arc.", creator: "alessandrotemperini@example.com", book: "9780553381689", created_at: Time.now, updated_at: Time.now },
+    { title: "Fifty Shades of Grey: A Review", text: "Fifty Shades of Grey is a provocative book that challenges societal norms. It's a thought-provoking read.", creator: "alessandrotemperini@example.com", book: "9789350835616", created_at: Time.now, updated_at: Time.now }
   ]
 
   posts.each do |post_attributes|
+    post_attributes[:creator] = post_attributes[:creator].downcase
     Post.create!(post_attributes)
   end
 end
@@ -104,19 +105,19 @@ def seed_bookshelves
   bookshelves = [
     {
       name: "Fantasy Collection",
-      creator: "AntonioTurco@example.com",
+      creator: "antonioturco@example.com",
       created_at: Time.now,
       updated_at: Time.now
     },
     {
       name: "Classic Literature",
-      creator: "AlessandroTemperini@example.com",
+      creator: "alessandrotemperini@example.com",
       created_at: Time.now,
       updated_at: Time.now
     },
     {
       name: "Modern Classics",
-      creator: "AlfredoSegala@example.com",
+      creator: "alfredosegala@example.com",
       created_at: Time.now,
       updated_at: Time.now
     }
@@ -132,42 +133,42 @@ def seed_bookshelf_contains
   bookshelf_contains = [
     {
       name: "Fantasy Collection",
-      creator: "AntonioTurco@example.com",
+      creator: "antonioturco@example.com",
       book: "9780618640157", # The Lord of the Rings
       created_at: Time.now,
       updated_at: Time.now
     },
     {
       name: "Fantasy Collection",
-      creator: "AntonioTurco@example.com",
+      creator: "antonioturco@example.com",
       book: "9780547928227", # The Hobbit by J.R.R. Tolkien
       created_at: Time.now,
       updated_at: Time.now
     },
     {
       name: "Classic Literature",
-      creator: "AlessandroTemperini@example.com",
+      creator: "alessandrotemperini@example.com",
       book: "9780451524935", # 1984 by George Orwell
       created_at: Time.now,
       updated_at: Time.now
     },
     {
       name: "Classic Literature",
-      creator: "AlessandroTemperini@example.com",
+      creator: "alessandrotemperini@example.com",
       book: "9780061120084", # To Kill a Mockingbird by Harper Lee
       created_at: Time.now,
       updated_at: Time.now
     },
     {
       name: "Modern Classics",
-      creator: "AlfredoSegala@example.com",
+      creator: "alfredosegala@example.com",
       book: "9780743273565", # The Great Gatsby by F. Scott Fitzgerald
       created_at: Time.now,
       updated_at: Time.now
     },
     {
       name: "Modern Classics",
-      creator: "AlfredoSegala@example.com",
+      creator: "alfredosegala@example.com",
       book: "9780316769488", # The Catcher in the Rye by J.D. Salinger
       created_at: Time.now,
       updated_at: Time.now

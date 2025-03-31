@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
+    @user.email_address = @user.email_address.strip.downcase
 
     respond_to do |format|
       if @user.save
