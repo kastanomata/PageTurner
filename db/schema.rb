@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_31_084503) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_31_125305) do
+  create_table "books", force: :cascade do |t|
+    t.string "isbn"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.string "thumbnail"
+  end
+
+  create_table "bookshelf_contains", force: :cascade do |t|
+    t.string "name"
+    t.string "creator"
+    t.string "book"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bookshelves", force: :cascade do |t|
+    t.string "name"
+    t.string "creator"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "omni_auth_identities", force: :cascade do |t|
     t.string "uid"
     t.string "provider"
@@ -18,6 +41,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_31_084503) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_omni_auth_identities_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "creator"
+    t.string "book"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -35,6 +67,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_31_084503) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nickname"
+    t.string "description"
+    t.string "birthday"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 

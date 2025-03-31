@@ -24,7 +24,8 @@ end
 def seed_users
   users = [
     {
-      email: "AntonioTurco@example.com",
+      email_address: "AntonioTurco@example.com",
+      password: "password",
       nickname: "kastanomata",
       description: "This is the first user.",
       birthday: "1990-01-01",
@@ -32,7 +33,8 @@ def seed_users
       updated_at: Time.now
     },
     {
-      email: "AlessandroTemperini@example.com",
+      email_address: "AlessandroTemperini@example.com",
+      password: "password",
       nickname: "AleNino",
       description: "This is the second user.",
       birthday: "1995-05-15",
@@ -40,7 +42,8 @@ def seed_users
       updated_at: Time.now
     },
     {
-      email: "AlfredoSegala@example.com",
+      email_address: "AlfredoSegala@example.com",
+      password: "password",
       nickname: "Fredo",
       description: "This is the third user.",
       birthday: "1985-12-25",

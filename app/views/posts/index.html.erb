@@ -16,7 +16,7 @@
       <div class="post-content">
         <h2><%= post.title %></h2>
         <p><%= post.text %></p>
-        <% user = User.find_by(email: post.creator) %>
+        <% user = User.find_by(email_address: post.creator) %>
         <% if user %>
           <p>Posted by: <%= link_to user.nickname, user_path(user) %></p>
         <% else %>

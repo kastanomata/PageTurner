@@ -22,7 +22,7 @@
       </div>
       
       <div class="bookshelf-footer">
-        <% user = User.find_by(email: bookshelf.creator) %>
+        <% user = User.find_by(email_address: bookshelf.creator) %>
         <% if user %>
           <p>Created by: <%= link_to user.nickname, user_path(user) %></p>
         <% else %>
