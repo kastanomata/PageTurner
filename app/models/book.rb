@@ -14,4 +14,8 @@ class Book < ApplicationRecord
       cover_url: api_data[:cover_url]
     )
   end
+
+  def to_param
+    isbn
+  end
 end

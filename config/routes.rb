@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
-  resources :users
+  resources :users, param: :nickname
   resources :posts
-  resources :books
+  resources :books, param: :isbn
   resources :bookshelves
 
   delete "session/destroy" => "sessions#destroy", as: :logout
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

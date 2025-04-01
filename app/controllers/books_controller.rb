@@ -9,9 +9,9 @@ class BooksController < ApplicationController
 
   # GET /books/1 or /books/1.json
   def show
-    @book = Book.find_by(id: params[:id])
+    @book = Book.find_by(isbn: params[:isbn])
     unless @book
-      api_data = BookApiService.fetch_by_isbn(params[:id])
+      api_data = BookApiService.fetch_by_isbn(params[:isbn])
       if api_data[:error]
         flash[:alert] = "Book not found."
         redirect_to books_path
@@ -72,7 +72,7 @@ class BooksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
-      @book = Book.find(params.expect(:id))
+      @book = Book.find_by!(isbn: params[:isbn])
     end
 
     # Only allow a list of trusted parameters through.

@@ -9,8 +9,15 @@ class User < ApplicationRecord
   validates :password, on: [ :registration, :password_change ],
             presence: true,
             length: { minimum: 8, maximum: 72 }
+  validates :nickname, presence: true,
+            uniqueness: { case_sensitive: false },
+            format: { with: /\A[\w-]+\z/ }
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
+
+  def to_param
+    nickname
+  end
 
   def self.create_from_oauth(auth)
     email = auth.info.email
