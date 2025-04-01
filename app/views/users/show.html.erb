@@ -37,7 +37,9 @@
   <div class="actions">
     <%= if @user.email_address == Current.user&.email_address
        link_to "Edit this user", edit_user_path(@user), class: "btn btn-primary" 
+       button_to "Delete this user", @user, method: :delete, class: "btn btn-danger"
     end %>
     <%= link_to "Back to users", users_path, class: "btn btn-secondary" %>
+        
   </div>
 </div>

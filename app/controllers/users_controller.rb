@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  allow_unauthenticated_access only: %i[ new create]
 
   # GET /users or /users.json
   def index
@@ -22,10 +23,18 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
+    puts "My User Params", user_params
+    # Normalize and check email address
+    unless @user.email_address.match?(/\A[^@\s]+@[^@\s]+\.[^@\s]+\z/)
+      flash[:alert] = "Email address is not valid. Please try again."
+      puts "Email address is not valid. Please try again."
+      redirect_to new_user_path and return
+    end
     @user.email_address = @user.email_address.strip.downcase
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to @user, notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
@@ -53,7 +62,7 @@ class UsersController < ApplicationController
     @user.destroy!
 
     respond_to do |format|
-      format.html { redirect_to users_path, status: :see_other, notice: "User was successfully destroyed." }
+      format.html { redirect_to root_path, status: :see_other, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -66,6 +75,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.expect(user: [ :email_address, :nickname, :description, :birthday ])
+      params.expect(user: [ :email_address, :password, :nickname, :description, :birthday ])
     end
 end

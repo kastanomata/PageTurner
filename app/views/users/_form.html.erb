@@ -13,17 +13,22 @@
 
   <div>
     <%= form.label :email_address, style: "display: block" %>
-    <%= form.text_field :email %>
+    <%= form.email_field :email_address, required: true, autofocus: true, placeholder: "Enter your email address", value: params[:email_address] %><br>
+  </div>
+
+  <div>
+    <%= form.label :password, style: "display: block" %>
+    <%= form.password_field :password, required: true, placeholder: "Enter your password", minlength: 8, maxlength: 72 %><br>
   </div>
 
   <div>
     <%= form.label :nickname, style: "display: block" %>
-    <%= form.text_field :nickname %>
+    <%= form.text_field :nickname, required: true %>
   </div>
 
   <div>
     <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.text_field :description%>
   </div>
 
   <div>
