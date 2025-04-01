@@ -24,11 +24,21 @@ end
 def seed_users
   users = [
     {
+      email_address: "superuser@admin.com",
+      password: "superuser",
+      nickname: "GOAT",
+      description: "This is the superuser.",
+      birthday: "6-12-25",
+      created_at: Time.now,
+      updated_at: Time.now,
+      admin: true
+    },
+    {
       email_address: "antonioturco@example.com",
       password: "password",
       nickname: "kastanomata",
       description: "This is the first user.",
-      birthday: "1990-01-01",
+      birthday: "2002-09-11",
       created_at: Time.now,
       updated_at: Time.now
     },
@@ -37,7 +47,7 @@ def seed_users
       password: "password",
       nickname: "AleNino",
       description: "This is the second user.",
-      birthday: "1995-05-15",
+      birthday: "2002-08-26",
       created_at: Time.now,
       updated_at: Time.now
     },
@@ -46,13 +56,14 @@ def seed_users
       password: "password",
       nickname: "Fredo",
       description: "This is the third user.",
-      birthday: "1985-12-25",
+      birthday: "2002-02-16",
       created_at: Time.now,
       updated_at: Time.now
     }
   ]
 
   users.each do |user_attributes|
+    user_attributes[:admin] ||= false
     User.create!(user_attributes)
   end
 end

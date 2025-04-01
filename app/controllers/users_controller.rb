@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_action :check_nickname, only: [ :edit, :update ]
-  before_action :set_user, only: %i[ show edit update destroy ]
   allow_unauthenticated_access only: %i[ new create]
+  before_action :set_user, only: %i[ show edit update destroy ]
+  skip_before_action :check_nickname, only: [ :edit, :update ]
 
   # GET /users or /users.json
   def index
@@ -26,6 +26,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     # Normalize and check email address
     @user.email_address = @user.email_address.strip.downcase
+    if @user.admin.nil?
+      @user.admin = false
+      put @user.nickname, "is not an admin"
+    end
 
     respond_to do |format|
       if @user.save
@@ -62,6 +66,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def admin?
+    authenticated? and self.admin == true
+  end
+
+  def owner?
+    authenticated? and self.id == Current.session&.id
+  end
+
+  def require_admin
+    render json: { message: "admin only, not authorized" }, status: :unauthorized unless current_user.admin?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -70,6 +86,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.expect(user: [ :email_address, :password, :nickname, :description, :birthday ])
+      params.expect(user: [ :email_address, :password, :nickname, :description, :birthday, :admin ])
     end
 end

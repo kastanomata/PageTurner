@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_31_125305) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_01_123742) do
   create_table "books", force: :cascade do |t|
     t.string "isbn"
     t.datetime "created_at", null: false
@@ -70,6 +70,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_31_125305) do
     t.string "nickname"
     t.string "description"
     t.string "birthday"
+    t.boolean "admin"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 

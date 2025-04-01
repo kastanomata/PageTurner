@@ -3,7 +3,12 @@
 <div class="user-container">
   <div class="user-header">
     <h1><%= @user.nickname %></h1>
-    <strong> <%= @user.email_address %> </strong>
+    <div style="display: flex; gap: 10px;">
+      <div><strong><%= @user.email_address %></strong></div> 
+      <% if @user.admin? %>
+      <div><em>This user is an Admin!</em></div> 
+      <% end %>
+    </div>
     <p><%= @user.description %></p>
   </div>
 
@@ -34,12 +39,13 @@
     </div>
   </div>
 
-  <div class="actions">
-    <%= if @user.email_address == Current.user&.email_address
-       link_to "Edit this user", edit_user_path(@user), class: "btn btn-primary" 
-       button_to "Delete this user", @user, method: :delete, class: "btn btn-danger"
-    end %>
-    <%= link_to "Back to users", users_path, class: "btn btn-secondary" %>
-        
-  </div>
+
+  <div class="button_container">
+  <% if Current.user&.admin? or @user.owner? %>
+    <div style="display: flex; gap: 10px;">
+      <%= link_to "Edit this user", edit_user_path(@user), class: "button" %>
+      <%= button_to "Delete this user", @user, method: :delete, class: "button" %>
+    </div>
+  <% end %>
+
 </div>

@@ -1,4 +1,5 @@
 class BookshelvesController < ApplicationController
+  allow_unauthenticated_access only: %i[index show]
   before_action :set_bookshelf, only: %i[ show edit update destroy ]
 
   # GET /bookshelves or /bookshelves.json

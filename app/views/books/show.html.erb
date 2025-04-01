@@ -22,8 +22,14 @@
 <% end %>
 
 <div>
-  <%= link_to "Edit this book", edit_book_path(@book) %> |
   <%= link_to "Back to books", books_path %>
+</div>
 
-  <%= button_to "Destroy this book", @book, method: :delete %>
+<div class="button_container">
+  <% if Current.user&.admin? %>
+    <div style="display: flex; gap: 10px;">
+      <%= link_to "Edit this book", edit_book_path(@book), class: "button" %>
+      <%= button_to "Destroy this book", @book, method: :delete, class: "button" %>
+    </div>
+  <% end %>
 </div>
