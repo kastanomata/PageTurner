@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :check_nickname, only: [ :edit, :update ]
   before_action :set_user, only: %i[ show edit update destroy ]
   allow_unauthenticated_access only: %i[ new create]
 
@@ -23,20 +24,14 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-    puts "My User Params", user_params
     # Normalize and check email address
-    unless @user.email_address.match?(/\A[^@\s]+@[^@\s]+\.[^@\s]+\z/)
-      flash[:alert] = "Email address is not valid. Please try again."
-      puts "Email address is not valid. Please try again."
-      redirect_to new_user_path and return
-    end
     @user.email_address = @user.email_address.strip.downcase
 
     respond_to do |format|
       if @user.save
-        session[:user_id] = @user.id
+        Current.session[:user_id] = @user.id
         format.html { redirect_to @user, notice: "User was successfully created." }
-        format.json { render :show, status: :created, location: @user }
+        format.json { render :update, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
