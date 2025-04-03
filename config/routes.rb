@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :clubs
   resource :session
   resources :passwords, param: :token
   resources :users

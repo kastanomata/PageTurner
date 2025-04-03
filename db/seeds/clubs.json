@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Mellon",
+        "description": "A book club for exploring classic and contemporary literature.",
+        "curator": "antonioturco@example.com",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "name": "Greek Mithology",
+        "description": "Dive into the fascinating world of Greek myths and legends.",
+        "curator": "alessandrotemperini@example.com",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    }
+]

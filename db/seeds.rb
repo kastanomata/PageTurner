@@ -20,48 +20,21 @@ def clear_existing_data
   puts "Cleared existing data."
 end
 
+# helper function to load JSON files
+def load_json_file(file_path)
+  file_content = File.read(file_path)
+  JSON.parse(file_content, symbolize_names: true)
+rescue Errno::ENOENT
+  puts "File not found: #{file_path}"
+  []
+rescue JSON::ParserError => e
+  puts "Failed to parse JSON file: #{file_path}. Error: #{e.message}"
+  []
+end
+
 # Seed data for users
 def seed_users
-  users = [
-    {
-      email_address: "superuser@admin.com",
-      password: "superuser",
-      nickname: "GOAT",
-      description: "This is the superuser.",
-      birthday: "6-12-25",
-      created_at: Time.now,
-      updated_at: Time.now,
-      admin: true
-    },
-    {
-      email_address: "antonioturco@example.com",
-      password: "password",
-      nickname: "kastanomata",
-      description: "This is the first user.",
-      birthday: "2002-09-11",
-      created_at: Time.now,
-      updated_at: Time.now
-    },
-    {
-      email_address: "alessandrotemperini@example.com",
-      password: "password",
-      nickname: "AleNino",
-      description: "This is the second user.",
-      birthday: "2002-08-26",
-      created_at: Time.now,
-      updated_at: Time.now
-    },
-    {
-      email_address: "alfredosegala@example.com",
-      password: "password",
-      nickname: "Fredo",
-      description: "This is the third user.",
-      birthday: "2002-02-16",
-      created_at: Time.now,
-      updated_at: Time.now
-    }
-  ]
-
+  users = load_json_file(Rails.root.join('db', 'seeds', 'users.json'))
   users.each do |user_attributes|
     user_attributes[:admin] ||= false
     User.create!(user_attributes)
@@ -70,17 +43,7 @@ end
 
 # Seed data for posts
 def seed_posts
-  posts = [
-    # Posts by the first user (antonioturco@example.com)
-    { title: "Thoughts on Game of Thrones", text: "Game of Thrones is an epic tale of power and betrayal. The characters are complex and the plot is unpredictable.", creator: "antonioturco@example.com", book: "9780553381689", created_at: Time.now, updated_at: Time.now },
-    { title: "Review of Fifty Shades of Grey", text: "Fifty Shades of Grey is a controversial book with a unique take on romance. It's not for everyone, but it has its moments.", creator: "antonioturco@example.com", book: "9789350835616", created_at: Time.now, updated_at: Time.now },
-
-    # Posts by the second user (alessandrotemperini@example.com)
-    { title: "Charlotte's Web: A Review", text: "Charlotte's Web is a timeless classic that teaches valuable lessons about friendship and sacrifice.", creator: "alessandrotemperini@example.com", book: "9780060006983", created_at: Time.now, updated_at: Time.now },
-    { title: "Game of Thrones: My Take", text: "The character development in Game of Thrones is exceptional. Each character has a unique and compelling story arc.", creator: "alessandrotemperini@example.com", book: "9780553381689", created_at: Time.now, updated_at: Time.now },
-    { title: "Fifty Shades of Grey: A Review", text: "Fifty Shades of Grey is a provocative book that challenges societal norms. It's a thought-provoking read.", creator: "alessandrotemperini@example.com", book: "9789350835616", created_at: Time.now, updated_at: Time.now }
-  ]
-
+  posts = load_json_file(Rails.root.join('db', 'seeds', 'posts.json'))
   posts.each do |post_attributes|
     post_attributes[:creator] = post_attributes[:creator].downcase
     Post.create!(post_attributes)
@@ -89,22 +52,7 @@ end
 
 # Seed data for books
 def seed_books
-  books = [
-    { isbn: "9780553381689" },
-    { isbn: "9789350835616" },
-    { isbn: "9780060006983" },
-    { isbn: "9780451524935" }, # 1984 by George Orwell
-    { isbn: "9780061120084" }, # To Kill a Mockingbird by Harper Lee
-    { isbn: "9780743273565" }, # The Great Gatsby by F. Scott Fitzgerald
-    { isbn: "9780141439518" }, # Pride and Prejudice by Jane Austen
-    { isbn: "9780316769488" }, # The Catcher in the Rye by J.D. Salinger
-    { isbn: "9780618640157" }, # The Lord of the Rings by J.R.R. Tolkien
-    { isbn: "9780590353427" }, # Harry Potter and the Sorcerer's Stone by J.K. Rowling
-    { isbn: "9780553577129" }, # The Diary of a Young Girl by Anne Frank
-    { isbn: "9780547928227" }, # The Hobbit by J.R.R. Tolkien
-    { isbn: "9780062315007" }  # The Alchemist by Paulo Coelho
-  ]
-
+  books = load_json_file(Rails.root.join('db', 'seeds', 'books.json'))
   books.each do |book_attributes|
     book_details = BookApiService.fetch_book_details(book_attributes[:isbn])
     Book.create!(isbn: book_attributes[:isbn], title: book_details[:title], thumbnail: book_details[:thumbnail])
@@ -113,27 +61,7 @@ end
 
 # Seed data for bookshelves
 def seed_bookshelves
-  bookshelves = [
-    {
-      name: "Fantasy Collection",
-      creator: "antonioturco@example.com",
-      created_at: Time.now,
-      updated_at: Time.now
-    },
-    {
-      name: "Classic Literature",
-      creator: "alessandrotemperini@example.com",
-      created_at: Time.now,
-      updated_at: Time.now
-    },
-    {
-      name: "Modern Classics",
-      creator: "alfredosegala@example.com",
-      created_at: Time.now,
-      updated_at: Time.now
-    }
-  ]
-
+  bookshelves = load_json_file(Rails.root.join('db', 'seeds', 'bookshelves.json'))
   bookshelves.each do |bookshelf_attributes|
     Bookshelf.create!(bookshelf_attributes)
   end
@@ -141,53 +69,26 @@ end
 
 # Seed data for bookshelf_contains
 def seed_bookshelf_contains
-  bookshelf_contains = [
-    {
-      name: "Fantasy Collection",
-      creator: "antonioturco@example.com",
-      book: "9780618640157", # The Lord of the Rings
-      created_at: Time.now,
-      updated_at: Time.now
-    },
-    {
-      name: "Fantasy Collection",
-      creator: "antonioturco@example.com",
-      book: "9780547928227", # The Hobbit by J.R.R. Tolkien
-      created_at: Time.now,
-      updated_at: Time.now
-    },
-    {
-      name: "Classic Literature",
-      creator: "alessandrotemperini@example.com",
-      book: "9780451524935", # 1984 by George Orwell
-      created_at: Time.now,
-      updated_at: Time.now
-    },
-    {
-      name: "Classic Literature",
-      creator: "alessandrotemperini@example.com",
-      book: "9780061120084", # To Kill a Mockingbird by Harper Lee
-      created_at: Time.now,
-      updated_at: Time.now
-    },
-    {
-      name: "Modern Classics",
-      creator: "alfredosegala@example.com",
-      book: "9780743273565", # The Great Gatsby by F. Scott Fitzgerald
-      created_at: Time.now,
-      updated_at: Time.now
-    },
-    {
-      name: "Modern Classics",
-      creator: "alfredosegala@example.com",
-      book: "9780316769488", # The Catcher in the Rye by J.D. Salinger
-      created_at: Time.now,
-      updated_at: Time.now
-    }
-  ]
-
-  bookshelf_contains.each do |bookshelf_contains_attributes|
+  bookshelf_contains = load_json_file(Rails.root.join('db', 'seeds', 'bookshelf_contains.json'))
+  expanded_bookshelf_contains = bookshelf_contains[:bookshelf_contains].flat_map do |entry|
+    entry[:books].map do |book|
+      {
+        name: entry[:name],
+        creator: entry[:creator],
+        book: book[:isbn]
+      }
+    end
+  end
+  expanded_bookshelf_contains.each do |bookshelf_contains_attributes|
     BookshelfContain.create!(bookshelf_contains_attributes)
+  end
+end
+
+# Seed data for bookclubs
+def seed_bookclubs
+  bookclubs = load_json_file(Rails.root.join('db', 'seeds', 'clubs.json'))
+  bookclubs.each do |bookclub_attributes|
+    Club.create!(bookclub_attributes)
   end
 end
 
@@ -195,11 +96,18 @@ end
 def seed_database
   clear_existing_data
   seed_users
+  puts "Seeded #{User.count} users."
   seed_posts
+  puts "Seeded #{Post.count} posts."
   seed_books
+  puts "Seeded #{Book.count} books."
   seed_bookshelves
-  seed_bookshelf_contains
-  puts "Seeded #{User.count} users, #{Post.count} posts, and #{Book.count} books."
+  puts "Seeded #{Bookshelf.count} bookshelves."
+  seed_bookshelf_contains 
+  puts "Seeded #{BookshelfContain.count} books in bookshelves."
+  seed_bookclubs
+  puts "Seeded #{Club.count} bookclubs."
+  puts "Seeding completed."
 end
 
 # Run the seeding function

@@ -1,0 +1,46 @@
+{
+    "bookshelf_contains": [
+        {
+            "name": "Fantasy Collection",
+            "creator": "antonioturco@example.com",
+            "books": [
+                {
+                    "isbn": "9780618640157",
+                    "title": "The Lord of the Rings"
+                },
+                {
+                    "isbn": "9780547928227",
+                    "title": "The Hobbit"
+                }
+            ]
+        },
+        {
+            "name": "Classic Literature",
+            "creator": "alessandrotemperini@example.com",
+            "books": [
+                {
+                    "isbn": "9780451524935",
+                    "title": "1984"
+                },
+                {
+                    "isbn": "9780061120084",
+                    "title": "To Kill a Mockingbird"
+                }
+            ]
+        },
+        {
+            "name": "Modern Classics",
+            "creator": "alfredosegala@example.com",
+            "books": [
+                {
+                    "isbn": "9780743273565",
+                    "title": "The Great Gatsby"
+                },
+                {
+                    "isbn": "9780316769488",
+                    "title": "The Catcher in the Rye"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+[
+    {
+        "title": "Thoughts on Game of Thrones",
+        "text": "Game of Thrones is an epic tale of power and betrayal. The characters are complex and the plot is unpredictable.",
+        "creator": "antonioturco@example.com",
+        "book": "9780553381689",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "title": "Review of Fifty Shades of Grey",
+        "text": "Fifty Shades of Grey is a controversial book with a unique take on romance. It's not for everyone, but it has its moments.",
+        "creator": "antonioturco@example.com",
+        "book": "9789350835616",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "title": "Charlotte's Web: A Review",
+        "text": "Charlotte's Web is a timeless classic that teaches valuable lessons about friendship and sacrifice.",
+        "creator": "alessandrotemperini@example.com",
+        "book": "9780060006983",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "title": "Game of Thrones: My Take",
+        "text": "The character development in Game of Thrones is exceptional. Each character has a unique and compelling story arc.",
+        "creator": "alessandrotemperini@example.com",
+        "book": "9780553381689",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "title": "Fifty Shades of Grey: A Review",
+        "text": "Fifty Shades of Grey is a provocative book that challenges societal norms. It's a thought-provoking read.",
+        "creator": "alessandrotemperini@example.com",
+        "book": "9789350835616",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    }
+]

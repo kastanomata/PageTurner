@@ -1,0 +1,6 @@
+<div id="<%= dom_id club %>" class="club-card">
+    <h3><%= club.name %></h3>
+    <p><%= club.description %></p>
+    <% user = User.find_by(email_address: club.curator) %>
+    <p>Created by: <%= link_to user.nickname, user_path(user) if user %></p>
+</div>

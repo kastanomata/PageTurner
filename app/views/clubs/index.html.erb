@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Clubs" %>
+
+<h1>Clubs</h1>
+
+<div id="clubs">
+  <% @clubs.each do |club| %>
+    <%= render club%>
+    <p>
+      <%= link_to "Show this club", club %>
+    </p>
+  <% end %>
+</div>
+
