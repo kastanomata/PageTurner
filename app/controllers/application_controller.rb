@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Authentication
+  include LoggingUtilities
 
   # Remove or avoid any global authentication enforcement
   # allow_unauthenticated_access # Comment this out if present
@@ -12,6 +13,7 @@ class ApplicationController < ActionController::Base
 
   def check_nickname
     if authenticated? && Current.user&.nickname.nil?
+      LoggingUtilities.log_star("User #{Current.user.id} has no nickname set.")
       redirect_to "/users/#{Current.user&.id}/edit"
     end
   end

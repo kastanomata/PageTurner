@@ -41,7 +41,7 @@
 
 
   <div class="button_container">
-  <% if Current.user&.admin? or @user.owner? %>
+  <% if Current.user&.admin? or @user.id == Current.user&.id %>
     <div style="display: flex; gap: 10px;">
       <%= link_to "Edit this user", edit_user_path(@user), class: "button" %>
       <%= button_to "Delete this user", @user, method: :delete, class: "button" %>
