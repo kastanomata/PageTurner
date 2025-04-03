@@ -28,12 +28,12 @@ class UsersController < ApplicationController
     @user.email_address = @user.email_address.strip.downcase
     if @user.admin.nil?
       @user.admin = false
-      put @user.nickname, "is not an admin"
+      puts @user.nickname, "is not an admin"
     end
 
     respond_to do |format|
       if @user.save
-        Current.session[:user_id] = @user.id
+        start_new_session_for @user
         format.html { redirect_to @user, notice: "User was successfully created." }
         format.json { render :update, status: :created, location: @user }
       else
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1 or /users/1.json
+  # PATCH/puts /users/1 or /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
