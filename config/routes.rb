@@ -21,6 +21,14 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions/omni_auths#create", as: :omniauth_callback
   get "/auth/failure" => "sessions/omni_auths#failure", as: :omniauth_failure
 
+  # URLs like users/1/folowing or users/1/followers, member metod allows to use links containing the id
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships,       only: [:create, :destroy]
+
   # Defines the root path route ("/")
   root "homes#index"
 end
