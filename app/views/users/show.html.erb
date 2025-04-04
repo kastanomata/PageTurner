@@ -14,12 +14,12 @@
 
   <section class="stats">
     <%= render 'shared/stats' %>
+    <%= render 'follow_form' if logged_in? %>
   </section>
 
   <div class="user-content">
     <h2>Bookshelves</h2>
     <div class="bookshelves">
-      <%= render 'follow_form' if logged_in? %>
       <% @user_bookshelves = Bookshelf.where(creator: @user.email_address) %>
       <% @user_bookshelves.each do |bookshelf| %>
         <div class="bookshelf">
@@ -32,7 +32,6 @@
 
     <h2>Posts</h2>
     <div class="posts">
-      <%= render 'follow_form' if logged_in? %>
       <% @user_posts = Post.where(creator: @user.email_address) %>
       <% @user_posts.each do |post| %>
         <div class="post">
