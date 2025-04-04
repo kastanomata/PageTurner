@@ -22,8 +22,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <%= render "layouts/navbar" %>
+  
   <body>
+  <%= render "layouts/navbar" %>
+  <div class="container-fluid">
     <%= yield %>
+  </div>
+  <%= render "layouts/footer" %>
   </body>
 </html>

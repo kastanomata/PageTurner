@@ -1,0 +1,16 @@
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-action">
+            <% if authenticated? %>
+                <%= link_to new_post_path, class: "footer-button" do %>
+                    <span class="footer-button-container plus-icon">+</span>
+                <% end %>
+            <% else %>
+                <p class="footer-message">Want to join the club? <%= link_to "Register your account now!", new_user_path, class: "footer-register-link" %></p>
+            <% end %>
+        </div>
+        <div class="footer-brand">
+            <%= link_to "PageTurner", root_path, class: "footer-logo" %>
+        </div>
+    </div>
+</footer>

@@ -7,6 +7,8 @@
   padding: 10px 20px;
 }
 
+
+
 .navbar a {
   color: white;
   text-decoration: none;
@@ -25,6 +27,10 @@
 .navbar-links, .navbar-user {
   display: flex;
   gap: 15px;
+}
+
+.active {
+  font-size: calc(1em + 5px);
 }
 
 .fake_link {

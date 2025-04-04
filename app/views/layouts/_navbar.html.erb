@@ -3,10 +3,10 @@
     <%= link_to "PageTurner", root_path, class: "navbar-logo" %>
   </div>
   <div class="navbar-links">
-    <%= link_to "Posts", posts_path, class: "navbar-link" %>
-    <%= link_to "Bookclubs", clubs_path, class: "navbar-link" %>
-    <%= link_to "Bookshelves", bookshelves_path, class: "navbar-link" %>
-    <%= link_to "Books", books_path, class: "navbar-link" %>
+    <%= link_to "Posts", posts_path, class: "navbar-link #{'active' if current_page?(posts_path)}" %>
+    <%= link_to "Bookclubs", clubs_path, class: "navbar-link #{'active' if current_page?(clubs_path)}" %>
+    <%= link_to "Bookshelves", bookshelves_path, class: "navbar-link #{'active' if current_page?(bookshelves_path)}" %>
+    <%= link_to "Books", books_path, class: "navbar-link #{'active' if current_page?(books_path)}" %>
   </div>
   <div class="navbar-user">
     <% if authenticated? %>
