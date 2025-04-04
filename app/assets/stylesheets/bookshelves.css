@@ -12,6 +12,13 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.bookshelf.special-bookshelf {
+  background-color: #f0f8ff;
+  border: 2px solid rgb(2, 2, 47);
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
 .bookshelf h2 {
   margin-top: 0;
 }

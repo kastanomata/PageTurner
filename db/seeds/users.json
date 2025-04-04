@@ -13,7 +13,7 @@
         "email_address": "antonioturco@example.com",
         "password": "password",
         "nickname": "kastanomata",
-        "description": "This is the first user.",
+        "description": "Hi, I'm Antonio. I enjoy reading historical fiction and exploring stories that bring the past to life.",
         "birthday": "2002-09-11",
         "created_at": "Time.now",
         "updated_at": "Time.now"
@@ -22,7 +22,7 @@
         "email_address": "alessandrotemperini@example.com",
         "password": "password",
         "nickname": "AleNino",
-        "description": "This is the second user.",
+        "description": "Hello, I'm Alessandro. I love reading tech blogs and books about programming and innovation.",
         "birthday": "2002-08-26",
         "created_at": "Time.now",
         "updated_at": "Time.now"
@@ -31,8 +31,62 @@
         "email_address": "alfredosegala@example.com",
         "password": "password",
         "nickname": "Fredo",
-        "description": "This is the third user.",
+        "description": "Hey, I'm Alfredo. I enjoy reading cookbooks and memoirs by famous chefs to inspire my culinary creations.",
         "birthday": "2002-02-16",
+        "created_at": "Time.now",
+        "updated_at": "Time.now"
+    },
+    {
+        "email_address": "mariarosa@example.com",
+        "password": "password",
+        "nickname": "Rosy",
+        "description": "Hi, I'm Maria. I love reading poetry and classic literature that stirs the soul.",
+        "birthday": "2001-05-14",
+        "created_at": "Time.now",
+        "updated_at": "Time.now"
+    },
+    {
+        "email_address": "giovanniblu@example.com",
+        "password": "password",
+        "nickname": "Gio",
+        "description": "Hi, I'm Giovanni. I enjoy reading adventure novels and books about personal development.",
+        "birthday": "1999-11-22",
+        "created_at": "Time.now",
+        "updated_at": "Time.now"
+    },
+    {
+        "email_address": "elisabettaverdi@example.com",
+        "password": "password",
+        "nickname": "Eli",
+        "description": "Hello, I'm Elisabetta. I love reading art books and novels that explore the creative process.",
+        "birthday": "2003-03-30",
+        "created_at": "Time.now",
+        "updated_at": "Time.now"
+    },
+    {
+        "email_address": "lucabianchi@example.com",
+        "password": "password",
+        "nickname": "LucaB",
+        "description": "Hi, I'm Luca. I enjoy reading biographies of famous musicians and books about music theory.",
+        "birthday": "1998-07-15",
+        "created_at": "Time.now",
+        "updated_at": "Time.now"
+    },
+    {
+        "email_address": "giulialilla@example.com",
+        "password": "password",
+        "nickname": "GiuliaC",
+        "description": "Hello, I'm Giulia. I love reading travel guides and memoirs about exploring the world.",
+        "birthday": "2000-10-05",
+        "created_at": "Time.now",
+        "updated_at": "Time.now"
+    },
+    {
+        "email_address": "marcogialli@example.com",
+        "password": "password",
+        "nickname": "MarcoG",
+        "description": "Hey, I'm Marco. I enjoy reading science fiction and books about cutting-edge technology.",
+        "birthday": "1997-04-20",
         "created_at": "Time.now",
         "updated_at": "Time.now"
     }

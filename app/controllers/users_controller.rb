@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  allow_unauthenticated_access only: %i[ new create]
+  include InitializeUtility
+  allow_unauthenticated_access only: %i[ new create show ]
   before_action :set_user, only: %i[ show edit update destroy ]
   skip_before_action :check_nickname, only: [ :edit, :update ]
 
@@ -34,6 +35,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         start_new_session_for @user
+        # Create default bookshelves for the user
+        initialize_default_bookshelves(@user)
         format.html { redirect_to @user, notice: "User was successfully created." }
         format.json { render :update, status: :created, location: @user }
       else
