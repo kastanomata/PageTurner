@@ -1,7 +1,13 @@
 module InitializeUtility
-    def initialize_default_bookshelves(user)
-        Bookshelf.create!(name: "#{user.nickname}'s Read Books", creator: user.email_address)
-        Bookshelf.create!(name: "#{user.nickname}'s Liked Books", creator: user.email_address)
+    def initialize_user(user)
+
+        Bookshelf.create!(name: "#{user.nickname}'s Read Books", creator: user.email_address, special: true)
+        Bookshelf.create!(name: "#{user.nickname}'s Liked Books", creator: user.email_address, special: true)
+    end
+
+    def initialize_bookclub(bookclub)
+        Bookshelf.create!(name: "#{bookclub.name}'s Read Books", creator: bookclub.curator, bookclub: bookclub.name, special: true)
+        Bookshelf.create!(name: "#{bookclub.name}'s Liked Books", creator: bookclub.curator, bookclub: bookclub.name, special: true)
     end
 
     def clear_existing_data
@@ -32,7 +38,7 @@ module InitializeUtility
       users.each do |user_attributes|
         user_attributes[:admin] ||= false
         user = User.create!(user_attributes)
-        initialize_default_bookshelves(user)
+        initialize_user(user)
       end
     end
     
@@ -83,7 +89,8 @@ module InitializeUtility
     def seed_bookclubs
       bookclubs = load_json_file(Rails.root.join('db', 'seeds', 'clubs.json'))
       bookclubs.each do |bookclub_attributes|
-        Club.create!(bookclub_attributes)
+        bookclub = Club.create!(bookclub_attributes)
+        initialize_bookclub(bookclub)
       end
     end
 end

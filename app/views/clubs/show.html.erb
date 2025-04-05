@@ -8,3 +8,10 @@
 
   <%= button_to "Destroy this club", @club, method: :delete %>
 </div>
+
+<h2>Bookshelves</h2>
+<div class="club-bookshelves">
+  <% Bookshelf.where(creator:@club.curator, bookclub:@club.name).each do |bookshelf| %>
+    <%= render bookshelf %>
+  <% end %>
+</div>
