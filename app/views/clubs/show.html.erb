@@ -1,6 +1,23 @@
 <p style="color: green"><%= notice %></p>
+<h1>Book Club</h1>
+  <div class="club-header">
+    <%= render @club %>
+  </div>
 
-<%= render @club %>
+<div class="club-content">
+  <div class="club-bookshelves">
+    <% Bookshelf.where(creator:@club.curator, bookclub:@club.name).each do |bookshelf| %>
+      <%= render bookshelf %>
+    <% end %>
+  </div>
+
+  <div class="club-posts">
+    <% Post.where(club:@club.name, curator:@club.curator).each do |post| %>
+      <%= render partial: "posts/postcard", locals: { post: post } %>
+    <% end %>
+  </div>
+
+</div>
 
 <div>
   <%= link_to "Edit this club", edit_club_path(@club) %> |
@@ -9,9 +26,3 @@
   <%= button_to "Destroy this club", @club, method: :delete %>
 </div>
 
-<h2>Bookshelves</h2>
-<div class="club-bookshelves">
-  <% Bookshelf.where(creator:@club.curator, bookclub:@club.name).each do |bookshelf| %>
-    <%= render bookshelf %>
-  <% end %>
-</div>

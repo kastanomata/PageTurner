@@ -1,12 +1,31 @@
 <div id="<%= dom_id post %>">
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
+<div class="post-container">
+  <div class="post-header">
+    <h1><%= @post.title %></h1>
+  </div>
+  <div class="post-meta">
+    <% user = User.find_by(email_address: @post.creator) %>
+    <% if user %>
+      <p>Posted by: <%= link_to user.nickname, user_path(user) %></p>
+    <% else %>
+      <p>Posted by: <%= @post.creator %></p>
+    <% end %>
+  </div>
+  <div class="post-body" style="display: flex; gap: 20px;">
+    <% if @post.book %>
+      <% book = Book.find_by(isbn: @post.book) %>
+      <% if book %>
+        <div class="book-card" style="flex: 1;">
+          <%= image_tag book.thumbnail, alt: "Book cover", class: "book-thumbnail" %>
+          <h3><%= book.title %></h3>
+          <p>ISBN: <%= book.isbn %></p>
+        </div>
+      <% end %>
+    <% end %>
 
-  <p>
-    <strong>Text:</strong>
-    <%= post.text %>
-  </p>
+    <div class="post-content" style="flex: 2;">
+      <p><%= @post.text %></p>
+    </div>
+  </div>
 
 </div>

@@ -2,8 +2,40 @@
     {
         "title": "Thoughts on Game of Thrones",
         "text": "Game of Thrones is an epic tale of power and betrayal. The characters are complex and the plot is unpredictable.",
-        "creator": "antonioturco@example.com",
+        "creator": "alfredosegala@example.com",
+        "club": "Mellon",
+        "curator": "antonioturco@example.com",
         "book": "9780553381689",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "title": "Reflections on The Hobbit",
+        "text": "The Hobbit is a charming adventure that introduces readers to the rich world of Middle-earth. It's a delightful tale of courage and friendship.",
+        "creator": "antonioturco@example.com",
+        "club": "Mellon",
+        "curator": "antonioturco@example.com",
+        "book": "9780547928227",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "title": "The Lord of the Rings: A Journey",
+        "text": "The Lord of the Rings is an epic saga that explores themes of friendship, sacrifice, and the struggle between good and evil. It's a timeless masterpiece.",
+        "creator": "alessandrotemperini@example.com",
+        "club": "Mellon",
+        "curator": "antonioturco@example.com",
+        "book": "9780618640157",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "title": "Exploring The Silmarillion",
+        "text": "The Silmarillion is a masterpiece that delves into the deep lore of Middle-earth. It's a must-read for fans of Tolkien's world.",
+        "creator": "antonioturco@example.com",
+        "club": "Mellon",
+        "curator": "antonioturco@example.com",
+        "book": "9780618391110",
         "created_at": "2023-10-01T00:00:00Z",
         "updated_at": "2023-10-01T00:00:00Z"
     },

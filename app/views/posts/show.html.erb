@@ -1,33 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
-<div class="post-container">
-  <div class="post-header">
-    <h1><%= @post.title %></h1>
-  </div>
+<%= render @post %>
 
-  <div class="post-body" style="display: flex; gap: 20px;">
-    <% if @post.book %>
-      <% book = Book.find_by(isbn: @post.book) %>
-      <% if book %>
-        <div class="book-card" style="flex: 1;">
-          <%= image_tag book.thumbnail, alt: "Book cover", class: "book-thumbnail" %>
-          <h3><%= book.title %></h3>
-          <p>ISBN: <%= book.isbn %></p>
-        </div>
-      <% end %>
-    <% end %>
-
-    <div class="post-content" style="flex: 2;">
-      <p><%= @post.text %></p>
+<div class="button_container">
+  <% if Current.user&.admin? || @post.creator == Current.session&.id %>
+    <div style="display: flex; gap: 10px;">
+      <%= link_to "Edit this post", edit_post_path(@post), class: "button" %>
+      <%= button_to "Destroy this post", @post, method: :delete, class: "button" %>
     </div>
-  </div>
-
-  <div class="button_container">
-    <% if Current.user&.admin? || @post.creator == Current.session&.id %>
-      <div style="display: flex; gap: 10px;">
-        <%= link_to "Edit this post", edit_post_path(@post), class: "button" %>
-        <%= button_to "Destroy this post", @post, method: :delete, class: "button" %>
-      </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>
+
