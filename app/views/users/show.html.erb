@@ -12,6 +12,11 @@
     <p><%= @user.description %></p>
   </div>
 
+  <section class="stats">
+    <%= render 'shared/stats' %>
+    <%= render 'follow_form' if logged_in? %>
+  </section>
+
   <div class="user-content">
     <h2>Bookshelves</h2>
     <div class="bookshelves">

@@ -3,6 +3,12 @@ class User < ApplicationRecord
   has_many :sessions, dependent: :destroy
   has_many :omni_auth_identities, dependent: :destroy
 
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :follower
+
   validates :email_address, presence: true,
             format: { with: URI::MailTo::EMAIL_REGEXP },
             uniqueness: { case_sensitive: false }
@@ -25,5 +31,20 @@ class User < ApplicationRecord
     # TODO: same as above, you could save additional information about the user
     # User.assign_names_from_auth(auth, self)
     # save if first_name_changed? || last_name_changed?
+  end
+
+  # Follows a user.
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+  # Unfollows a user.
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # Returns true if the current user is following the other user.
+  def following?(other_user)
+    following.include?(other_user)
   end
 end

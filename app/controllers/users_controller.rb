@@ -1,8 +1,11 @@
+include SessionsHelper
+
 class UsersController < ApplicationController
   include InitializeUtility
   allow_unauthenticated_access only: %i[ new create show ]
   before_action :set_user, only: %i[ show edit update destroy ]
   skip_before_action :check_nickname, only: [ :edit, :update ]
+  before_action :logged_in_user, only: [ :index, :edit, :update, :destroy, :following, :followers ]
 
   # GET /users or /users.json
   def index
@@ -79,6 +82,20 @@ class UsersController < ApplicationController
 
   def require_admin
     render json: { message: "admin only, not authorized" }, status: :unauthorized unless current_user.admin?
+  end
+
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render "show_follow"
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render "show_follow"
   end
 
   private
