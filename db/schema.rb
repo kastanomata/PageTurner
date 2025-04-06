@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_05_131032) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_06_134419) do
   create_table "books", force: :cascade do |t|
     t.string "isbn"
     t.datetime "created_at", null: false
@@ -42,6 +42,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_05_131032) do
     t.string "curator", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "club_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_memberships_on_club_id"
+    t.index ["follower_id", "club_id"], name: "index_memberships_on_follower_id_and_club_id", unique: true
+    t.index ["follower_id"], name: "index_memberships_on_follower_id"
   end
 
   create_table "omni_auth_identities", force: :cascade do |t|

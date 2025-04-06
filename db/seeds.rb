@@ -28,4 +28,11 @@ seed_bookclubs
 puts "Seeded #{Club.count} bookclubs."
 seed_relationships
 puts "Seeded #{Relationship.count} relationships."
+
+user_id = User.find_by!(email_address: "alfredosegala@example.com").id
+club_id = Club.find_by!(name: "Mellon").id
+
+Membership.find_or_create_by!(follower_id: user_id, club_id: club_id)
+
+puts "Seeded #{Membership.count} memberships."
 puts "Seeding completed."

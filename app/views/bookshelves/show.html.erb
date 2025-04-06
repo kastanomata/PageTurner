@@ -2,9 +2,11 @@
 
 <%= render @bookshelf %>
 
-<div>
-  <%= link_to "Edit this bookshelf", edit_bookshelf_path(@bookshelf) %> |
-  <%= link_to "Back to bookshelves", bookshelves_path %>
+<% if authenticated? and Current.user&.email_address == @bookshelf.creator %>
+  <div>
+    <%= link_to "Edit this bookshelf", edit_bookshelf_path(@bookshelf) %> |
+    <%= button_to "Destroy this bookshelf", @bookshelf, method: :delete %>
+  </div>
+<% end %>
 
-  <%= button_to "Destroy this bookshelf", @bookshelf, method: :delete %>
-</div>
+<%= link_to "Back to bookshelves", bookshelves_path %>

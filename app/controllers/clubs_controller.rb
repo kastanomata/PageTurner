@@ -1,5 +1,5 @@
 class ClubsController < ApplicationController
-  allow_unauthenticated_access only: %i[ index show ]
+  allow_unauthenticated_access only: %i[ index show members ]
   before_action :set_club, only: %i[ show edit update destroy ]
 
   # GET /clubs or /clubs.json
@@ -46,6 +46,13 @@ class ClubsController < ApplicationController
         format.json { render json: @club.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def members
+    @title = "Members"
+    @club  = Club.find(params[:id])
+    @members = @club.members.paginate(page: params[:page])
+    render "show_members"
   end
 
   # DELETE /clubs/1 or /clubs/1.json

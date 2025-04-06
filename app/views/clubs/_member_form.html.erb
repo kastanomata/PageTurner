@@ -1,0 +1,9 @@
+<% if authenticated? and not Current.user&.email_address == @club.curator %>
+  <div id="follow_form">
+  <% if not Current.user&.is_member?(@club) %>
+    <%= render 'subscribe' %>
+  <% else %>
+    <%= render 'unsubscribe' %>
+  <% end %>
+  </div>
+<% end %>

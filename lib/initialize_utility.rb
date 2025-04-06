@@ -18,6 +18,7 @@ module InitializeUtility
         BookshelfContain.destroy_all
         Club.destroy_all
         Relationship.destroy_all
+        Membership.destroy_all
         puts "Cleared existing data..."
     end
 
