@@ -1,5 +1,5 @@
+include LoggingUtility
 module InitializeUtility
-  
     def initialize_user(user)
         Bookshelf.create!(name: "#{user.nickname}'s Read Books", creator: user.email_address, special: true)
         Bookshelf.create!(name: "#{user.nickname}'s Liked Books", creator: user.email_address, special: true)
@@ -17,9 +17,10 @@ module InitializeUtility
         Bookshelf.destroy_all
         BookshelfContain.destroy_all
         Club.destroy_all
+        Relationship.destroy_all
         puts "Cleared existing data..."
     end
-    
+
     # helper function to load JSON files
     def load_json_file(file_path)
       file_content = File.read(file_path)
@@ -31,46 +32,46 @@ module InitializeUtility
       puts "Failed to parse JSON file: #{file_path}. Error: #{e.message}"
       []
     end
-    
+
     # Seed data for users
     def seed_users
-      users = load_json_file(Rails.root.join('db', 'seeds', 'users.json'))
+      users = load_json_file(Rails.root.join("db", "seeds", "users.json"))
       users.each do |user_attributes|
         user_attributes[:admin] ||= false
         user = User.create!(user_attributes)
         initialize_user(user)
       end
     end
-    
+
     # Seed data for posts
     def seed_posts
-      posts = load_json_file(Rails.root.join('db', 'seeds', 'posts.json'))
+      posts = load_json_file(Rails.root.join("db", "seeds", "posts.json"))
       posts.each do |post_attributes|
         post_attributes[:creator] = post_attributes[:creator].downcase
         Post.create!(post_attributes)
       end
     end
-    
+
     # Seed data for books
     def seed_books
-      books = load_json_file(Rails.root.join('db', 'seeds', 'books.json'))
+      books = load_json_file(Rails.root.join("db", "seeds", "books.json"))
       books.each do |book_attributes|
         book_details = BookApiService.fetch_book_details(book_attributes[:isbn])
         Book.create!(isbn: book_attributes[:isbn], title: book_details[:title], thumbnail: book_details[:thumbnail])
       end
     end
-    
+
     # Seed data for bookshelves
     def seed_bookshelves
-      bookshelves = load_json_file(Rails.root.join('db', 'seeds', 'bookshelves.json'))
+      bookshelves = load_json_file(Rails.root.join("db", "seeds", "bookshelves.json"))
       bookshelves.each do |bookshelf_attributes|
         Bookshelf.create!(bookshelf_attributes)
       end
     end
-    
+
     # Seed data for bookshelf_contains
     def seed_bookshelf_contains
-      bookshelf_contains = load_json_file(Rails.root.join('db', 'seeds', 'bookshelf_contains.json'))
+      bookshelf_contains = load_json_file(Rails.root.join("db", "seeds", "bookshelf_contains.json"))
       expanded_bookshelf_contains = bookshelf_contains[:bookshelf_contains].flat_map do |entry|
         entry[:books].map do |book|
           {
@@ -84,13 +85,29 @@ module InitializeUtility
         BookshelfContain.create!(bookshelf_contains_attributes)
       end
     end
-    
+
     # Seed data for bookclubs
     def seed_bookclubs
-      bookclubs = load_json_file(Rails.root.join('db', 'seeds', 'clubs.json'))
+      bookclubs = load_json_file(Rails.root.join("db", "seeds", "clubs.json"))
       bookclubs.each do |bookclub_attributes|
         bookclub = Club.create!(bookclub_attributes)
         initialize_bookclub(bookclub)
+      end
+    end
+
+    def seed_relationships
+      relationships = load_json_file(Rails.root.join("db", "seeds", "relationships.json"))
+      relationships.each do |relationship_attributes|
+        follower_email = relationship_attributes[:follower].downcase
+        followed_email = relationship_attributes[:followed].downcase
+
+        follower_id = User.find_by(email_address: follower_email).id
+        followed_id = User.find_by(email_address: followed_email).id
+        existing_relationship = Relationship.find_by(follower_id: follower_id, followed_id: followed_id)
+        # If it doesn't exist, create a new one
+        unless existing_relationship or follower_id.nil? or followed_id.nil?
+          Relationship.create!(follower_id: follower_id, followed_id: followed_id)
+        end
       end
     end
 end

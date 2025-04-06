@@ -22,10 +22,10 @@ seed_books
 puts "Seeded #{Book.count} books."
 seed_bookshelves
 puts "Seeded #{Bookshelf.count} bookshelves."
-seed_bookshelf_contains 
+seed_bookshelf_contains
 puts "Seeded #{BookshelfContain.count} books in bookshelves."
 seed_bookclubs
 puts "Seeded #{Club.count} bookclubs."
+seed_relationships
+puts "Seeded #{Relationship.count} relationships."
 puts "Seeding completed."
-
-

@@ -1,0 +1,98 @@
+[
+    {
+        "follower": "giovanniblu@example.com",
+        "followed": "antonioturco@example.com",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "follower": "alessandrotemperini@example.com",
+        "followed": "alfredosegala@example.com",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "follower": "mariarosa@example.com",
+        "followed": "giovanniblu@example.com",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "follower": "elisabettaverdi@example.com",
+        "followed": "lucabianchi@example.com",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "follower": "giulialilla@example.com",
+        "followed": "marcogialli@example.com",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "follower": "antonioturco@example.com",
+        "followed": "superuser@admin.com",
+        "created_at": "2023-10-02T00:00:00Z",
+        "updated_at": "2023-10-02T00:00:00Z"
+    },
+    {
+        "follower": "alfredosegala@example.com",
+        "followed": "alessandrotemperini@example.com",
+        "created_at": "2023-10-02T00:00:00Z",
+        "updated_at": "2023-10-02T00:00:00Z"
+    },
+    {
+        "follower": "giovanniblu@example.com",
+        "followed": "mariarosa@example.com",
+        "created_at": "2023-10-02T00:00:00Z",
+        "updated_at": "2023-10-02T00:00:00Z"
+    },
+    {
+        "follower": "lucabianchi@example.com",
+        "followed": "elisabettaverdi@example.com",
+        "created_at": "2023-10-02T00:00:00Z",
+        "updated_at": "2023-10-02T00:00:00Z"
+    },
+    {
+        "follower": "marcogialli@example.com",
+        "followed": "giulialilla@example.com",
+        "created_at": "2023-10-02T00:00:00Z",
+        "updated_at": "2023-10-02T00:00:00Z"
+    },
+    {
+        "follower": "lucabianchi@example.com",
+        "followed": "giovanniblu@example.com",
+        "created_at": "2023-10-03T00:00:00Z",
+        "updated_at": "2023-10-03T00:00:00Z"
+    },
+    {
+        "follower": "elisabettaverdi@example.com",
+        "followed": "mariarosa@example.com",
+        "created_at": "2023-10-03T00:00:00Z",
+        "updated_at": "2023-10-03T00:00:00Z"
+    },
+    {
+        "follower": "lucabianchi@example.com",
+        "followed": "antonioturco@example.com",
+        "created_at": "2023-10-03T00:00:00Z",
+        "updated_at": "2023-10-03T00:00:00Z"
+    },
+    {
+        "follower": "giulialilla@example.com",
+        "followed": "elisabettaverdi@example.com",
+        "created_at": "2023-10-03T00:00:00Z",
+        "updated_at": "2023-10-03T00:00:00Z"
+    },
+    {
+        "follower": "marcogialli@example.com",
+        "followed": "giovanniblu@example.com",
+        "created_at": "2023-10-03T00:00:00Z",
+        "updated_at": "2023-10-03T00:00:00Z"
+    },
+    {
+        "follower": "elisabettaverdi@example.com",
+        "followed": "mariarosa@example.com",
+        "created_at": "2023-10-03T00:00:00Z",
+        "updated_at": "2023-10-03T00:00:00Z"
+    }
+]
