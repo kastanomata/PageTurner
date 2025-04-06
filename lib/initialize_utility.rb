@@ -1,6 +1,6 @@
 module InitializeUtility
+  
     def initialize_user(user)
-
         Bookshelf.create!(name: "#{user.nickname}'s Read Books", creator: user.email_address, special: true)
         Bookshelf.create!(name: "#{user.nickname}'s Liked Books", creator: user.email_address, special: true)
     end

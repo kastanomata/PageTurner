@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       if @user.save
         start_new_session_for @user
         # Create default bookshelves for the user
-        initialize_default_bookshelves(@user)
+        initialize_user(@user)
         format.html { redirect_to @user, notice: "User was successfully created." }
         format.json { render :update, status: :created, location: @user }
       else
@@ -53,6 +53,20 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        # Update special bookshelves to match the new nickname
+        special_bookshelves = Bookshelf.where(
+          creator: @user.email_address,
+          bookclub: nil,
+          special: true
+        )
+        special_bookshelves.each do |bookshelf|
+          log_star("Updating bookshelf name for user #{@user.nickname}")
+          if bookshelf.name.include?("Read Books")
+            bookshelf.update(name: "#{@user.nickname}'s Read Books")
+          elsif bookshelf.name.include?("Liked Books")
+            bookshelf.update(name: "#{@user.nickname}'s Liked Books")
+          end
+        end
         format.html { redirect_to @user, notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
