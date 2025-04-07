@@ -1,8 +1,9 @@
 include SessionsHelper
+include InitializeUtility
 
 class UsersController < ApplicationController
-  include InitializeUtility
   allow_unauthenticated_access only: %i[ new create show ]
+  before_action -> { require_authentication("admin") }, only: %i[ index ]
   before_action :set_user, only: %i[ show edit update destroy ]
   skip_before_action :check_nickname, only: [ :edit, :update ]
   before_action :logged_in_user, only: [ :index, :edit, :update, :destroy, :following, :followers ]
