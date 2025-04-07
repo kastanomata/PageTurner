@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include InitializeUtility
+  has_one_attached :avatar
   has_secure_password
   has_many :sessions, dependent: :destroy
   has_many :omni_auth_identities, dependent: :destroy

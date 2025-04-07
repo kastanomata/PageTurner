@@ -21,6 +21,11 @@
     <%= form.password_field :password, required: true, placeholder: "Enter your password", minlength: 8, maxlength: 72 %><br>
   </div>
 
+  <div class="field">
+    <%= form.label :avatar, "Foto Profilo" %>
+    <%= form.file_field :avatar %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>

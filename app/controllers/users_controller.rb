@@ -127,6 +127,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def remove_avatar
+    @user = User.find(params[:id])
+    @user.avatar.purge # Rimuove il file associato
+    redirect_to edit_user_path(@user), notice: "Foto profilo rimossa con successo."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -135,6 +141,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.expect(user: [ :email_address, :password, :nickname, :description, :birthday, :admin ])
+      params.expect(user: [ :email_address, :password, :nickname, :description, :birthday, :avatar, :admin ])
     end
 end
