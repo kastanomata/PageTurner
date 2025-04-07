@@ -3,6 +3,12 @@
 <div class="user-container">
   <div class="user-header">
     <h1><%= @user.nickname %></h1>
+    <% if @user.avatar.attached? %>
+      <div>
+        <%= image_tag url_for(@user.avatar), alt: "Foto Profilo" %>
+        <%= button_to "Rimuovi Foto", remove_avatar_user_path(@user), method: :delete, data: { confirm: "Sei sicuro di voler rimuovere la foto?" } %>
+      </div>
+    <% end %>
     <div style="display: flex; gap: 10px;">
       <div><strong><%= @user.email_address %></strong></div> 
       <% if @user.admin? %>

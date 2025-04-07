@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       get :followers
       get :show_memberships
       patch :make_admin
+      delete :remove_avatar
     end
   end
   resources :relationships,       only: [ :create, :destroy ]
