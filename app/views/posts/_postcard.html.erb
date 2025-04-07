@@ -10,6 +10,8 @@
         <% bookclub = Club.find_by(name: post.club) %>
         <% if user && bookclub %>
             <p>Posted by <%= link_to user.nickname, user_path(user) %> in the <%= link_to bookclub.name, club_path(bookclub) %> bookclub. </p>
+        <% else %>
+            <p>Posted by <%= user ? link_to(user.nickname, user_path(user)) : "Unknown User" %> </p>
         <% end %>
         <p>
             <%= link_to "Show this post", post_path(post) %>
