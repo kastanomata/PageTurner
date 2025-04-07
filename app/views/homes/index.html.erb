@@ -1,14 +1,20 @@
 <% if authenticated? %>
-  <%= form_tag search_path, method: :get do %>
-    <%= text_field_tag :query, params[:query], placeholder: "Cerca..." %>
-    <%= submit_tag "Cerca" %>
+  <div class="page-layout">
+    <div class="left-section">
+      <%= render partial: 'bookshelves/user_index', locals: { user: Current.user } %>
+    </div>
+    <div class="center-section">
+      <%= render partial: 'posts/home_index' %>
+    </div>
+    <div class="right-section">
+      <div class="search-container">
+      <%= form_tag search_path, method: :get do %>
+        <%= text_field_tag :query, params[:query], placeholder: "Cerca..." %>
+        <%= submit_tag "Cerca" %>
+      <% end %>
+      </div>
+    </div>
+    </div>
+  <% else %>
+    <%= link_to "Sign in", new_session_path %>
   <% end %>
-  <%= render partial: 'bookshelves/user_index', locals: { user: Current.user } %>
-  <%= button_to "Sign out", session_path, method: :delete %>
-<% else %>
-  <%= link_to "Sign in", new_session_path %>
-<% end %>
-
-<div>
-  Current.user&.email_address = <%= Current.user&.email_address %>
-</div>
