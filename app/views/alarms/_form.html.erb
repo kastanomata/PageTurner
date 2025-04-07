@@ -1,0 +1,32 @@
+<%= form_with(model: alarm) do |form| %>
+  <% if alarm.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(alarm.errors.count, "error") %> prohibited this alarm from being saved:</h2>
+
+      <ul>
+        <% alarm.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :alarm_id, style: "display: block" %>
+    <%= form.text_field :alarm_id %>
+  </div>
+
+  <div>
+    <%= form.label :alarm_type, style: "display: block" %>
+    <%= form.text_field :alarm_type %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

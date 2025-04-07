@@ -1,8 +1,9 @@
 include SessionsHelper
+include InitializeUtility
 
 class UsersController < ApplicationController
-  include InitializeUtility
   allow_unauthenticated_access only: %i[ new create show ]
+  before_action -> { require_authentication("admin") }, only: %i[ index ]
   before_action :set_user, only: %i[ show edit update destroy ]
   skip_before_action :check_nickname, only: [ :edit, :update ]
   before_action :logged_in_user, only: [ :index, :edit, :update, :destroy, :following, :followers ]
@@ -74,6 +75,12 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def make_admin
+    @user = User.find(params[:id])
+    @user.update(admin: :true)  # Ensure your User model has a :role attribute
+    redirect_to users_path, notice: "User promoted to admin"
   end
 
   # DELETE /users/1 or /users/1.json

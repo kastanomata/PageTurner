@@ -24,7 +24,9 @@
 
   
   <body>
-  <%= render "layouts/navbar" %>
+  <% unless controller.controller_name == 'errors' %>
+    <%= render "layouts/navbar" %>
+  <% end %>
   <div class="container-fluid" style="margin-bottom: 50px">
     <%= yield %>
   </div>

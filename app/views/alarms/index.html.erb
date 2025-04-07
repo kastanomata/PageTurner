@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Alarms" %>
+
+<h1>Alarms</h1>
+
+<div id="alarms">
+  <% @alarms.each do |alarm| %>
+    <%= render alarm %>
+    <p>
+      <%= link_to "Show this alarm", alarm %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New alarm", new_alarm_path %>

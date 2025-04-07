@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   resources :posts
   resources :books
   resources :bookshelves
+  resources :reports, only: [ :create, :index, :destroy ]
 
   delete "session/destroy" => "sessions#destroy", as: :logout
+  get "session/new" => "sessions#new", as: :login
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -25,7 +27,8 @@ Rails.application.routes.draw do
   # URLs like users/1/following or users/1/followers, member method allows to use links containing the id
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :show_memberships
+      patch :make_admin
     end
   end
   resources :relationships,       only: [ :create, :destroy ]
@@ -33,7 +36,7 @@ Rails.application.routes.draw do
   # URLs like clubs/1/members, member method allows to use links containing the id
   resources :clubs do
     member do
-      get :members, :show_memberships
+      get :members
     end
   end
   resources :memberships, only: [ :create, :destroy ]
@@ -41,4 +44,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "homes#index"
+
+  # Defines error paths
+  get "/unauthorized", to: "errors#unauthorized", as: :unauthorized
 end

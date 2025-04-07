@@ -1,0 +1,32 @@
+<%= form_with(model: report) do |form| %>
+  <% if report.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+      <ul>
+        <% report.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :reporter_id, style: "display: block" %>
+    <%= form.text_field :reporter_id %>
+  </div>
+
+  <div>
+    <%= form.label :reported_id, style: "display: block" %>
+    <%= form.text_field :reported_id %>
+  </div>
+
+  <div>
+    <%= form.label :reported_type, style: "display: block" %>
+    <%= form.text_field :reported_type %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
