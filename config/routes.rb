@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers, :show_memberships
+      patch :make_admin
     end
   end
   resources :relationships,       only: [ :create, :destroy ]

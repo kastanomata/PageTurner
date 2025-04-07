@@ -77,6 +77,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def make_admin
+    @user = User.find(params[:id])
+    @user.update(admin: :true)  # Ensure your User model has a :role attribute
+    redirect_to users_path, notice: "User promoted to admin"
+  end
+
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy!

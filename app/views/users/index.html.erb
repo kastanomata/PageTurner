@@ -6,11 +6,6 @@
 
 <div id="users">
   <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
+    <%= render partial: "usercard", locals: { user: user } %>
   <% end %>
 </div>
-
-<%= link_to "New user", new_user_path %>
