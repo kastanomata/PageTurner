@@ -19,19 +19,7 @@
 
   <div class="user-content">
     <h2>Bookshelves</h2>
-    <div class="bookshelves">
-      <% @user_bookshelves = Bookshelf.where(creator: @user.email_address) %>
-      <div>
-        <% @user_bookshelves.each do |bookshelf| %>
-        <% class_name = bookshelf.name == "#{@user.nickname}'s Read Books" || bookshelf.name == "#{@user.nickname}'s Liked Books" ? "special-bookshelf bookshelf" : "bookshelf" %>
-        <div class="<%=class_name%>">
-          <h3><%= bookshelf.name %></h3>
-          <p>Created at: <%= bookshelf.created_at.strftime("%B %d, %Y") %></p>
-          <%= link_to "Show this bookshelf", bookshelf %>
-        </div>
-        <% end %>
-      </div>
-    </div>
+    <%= render partial: 'bookshelves/user_index', locals: { user: @user } %>
 
     <h2>Posts</h2>
     <div class="posts">

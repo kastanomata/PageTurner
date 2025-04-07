@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "search", to: "search#index", as: "search"
+
   resources :clubs
   resource :session
   resources :passwords, param: :token
@@ -37,7 +39,6 @@ Rails.application.routes.draw do
     end
   end
   resources :memberships, only: [ :create, :destroy ]
-
 
   # Defines the root path route ("/")
   root "homes#index"

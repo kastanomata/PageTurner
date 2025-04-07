@@ -112,6 +112,14 @@ class UsersController < ApplicationController
     render "show_follow"
   end
 
+  def search
+    if params[:query].present?
+      @users = User.where("nickname LIKE ?", "%#{params[:query]}%")
+    else
+      @users = User.all
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
