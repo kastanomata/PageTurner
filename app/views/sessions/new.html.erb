@@ -1,3 +1,42 @@
+<%= tag.div(flash[:alert], class: "flash-message alert") if flash[:alert] %>
+<%= tag.div(flash[:notice], class: "flash-message notice") if flash[:notice] %>
+
+<div class="form-container">
+  <%= form_with url: session_path, class: "sign-in-form" do |form| %>
+    <div class="form-group">
+      <%= form.email_field :email_address, class: "form-control", required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %>
+    </div>
+
+    <div class="form-group">
+      <%= form.password_field :password, class: "form-control", required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Sign in", class: "btn-submit" %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= link_to "Forgot password?", new_password_path, class: "btn-link" %>
+  </div>
+
+  <% if Rails.env.development? %>
+    <%= form_tag "/auth/developer", method: :post, data: { turbo: false } do %>
+      <button type="submit" class="btn-alt-login">
+        Login with Developer
+      </button>
+    <% end %>
+  <% end %>
+
+  <%= form_tag "/auth/google_oauth2", method: :post, data: { turbo: false } do %>
+    <button type="submit" class="btn-alt-login">
+      Login with Google
+    </button>
+  <% end %>
+</div>
+
+
+<!--
 <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
 <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
@@ -23,7 +62,7 @@
     Login with Google
   </button>
 <% end %>
-
+-->
 <!-- 
 <%= form_tag "/auth/github", method: :post, data: { turbo: false } do %>
   <button type="submit">

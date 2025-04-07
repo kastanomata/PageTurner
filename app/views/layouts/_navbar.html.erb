@@ -10,8 +10,14 @@
   </div>
   <div class="navbar-user">
     <% if authenticated? %>
-      <%= link_to Current.user&.nickname, user_path(Current.user&.id), class: "fake_link" %>
-      <%= button_to 'Logout', logout_path, method: :delete, class: "fake_link"%>
+      <div class="navbar-dropdown">
+        <button class="navbar-dropdown-toggle"><%= Current.user&.nickname %></button>
+          <div class="navbar-dropdown-menu">
+            <%= link_to "Profilo", user_path(Current.user&.id), class: "navbar-dropdown-item" %>
+            <%= link_to "Edit user", edit_user_path(Current.user&.id), class: "navbar-dropdown-item" %>
+            <%= button_to "Logout", logout_path, method: :delete, class: "navbar-dropdown-item"%>
+        </div>
+      </div>
     <% else %>
       <%= link_to "Login", new_session_path, class: "navbar-link" %>
       <%= link_to "Register", new_user_path, class: "navbar-link" %>

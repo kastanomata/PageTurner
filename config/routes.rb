@@ -27,7 +27,9 @@ Rails.application.routes.draw do
   # URLs like users/1/following or users/1/followers, member method allows to use links containing the id
   resources :users do
     member do
-      get :following, :followers, :show_memberships
+      get :following
+      get :followers
+      get :show_memberships
       patch :make_admin
     end
   end

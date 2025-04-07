@@ -1,0 +1,121 @@
+/* app/assets/stylesheets/sign_in.css */
+
+/* Stile per i messaggi di alert e notice */
+.flash-message {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  
+  .flash-message.alert {
+    background-color: #f8d7da;
+    color: red;
+  }
+  
+  .flash-message.notice {
+    background-color: #d4edda;
+    color: green;
+  }
+  
+  /* Stile per il contenitore del form */
+  .form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Stile per i gruppi di campo (input, label) */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  /* Stile per i campi di input */
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Stile per il pulsante di submit */
+  .btn-submit {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .btn-submit:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Stile per i link, ad esempio per il recupero della password */
+  .btn-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1.1em;
+    margin-top: 10px;
+  }
+  
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Stile per i pulsanti di login alternativi (es. Developer Login, Google Login) */
+  .btn-alt-login {
+    background-color: #f1f1f1;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .btn-alt-login:hover {
+    background-color: #e2e2e2;
+  }
+  
+  /* Aggiungi uno sfondo chiaro al corpo per migliorare l'aspetto */
+/*
+  body {
+    background-color: #f4f4f9;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+*/  
+  /* Formazione del contenitore principale per centratura */
+  .form-container {
+    text-align: left;
+  }
+  
