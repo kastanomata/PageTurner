@@ -1,0 +1,12 @@
+<% content_for :title, "Editing alarm" %>
+
+<h1>Editing alarm</h1>
+
+<%= render "form", alarm: @alarm %>
+
+<br>
+
+<div>
+  <%= link_to "Show this alarm", @alarm %> |
+  <%= link_to "Back to alarms", alarms_path %>
+</div>

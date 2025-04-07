@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :books
   resources :bookshelves
+  resources :reports, only: [ :create, :index, :destroy ]
 
   delete "session/destroy" => "sessions#destroy", as: :logout
   get "session/new" => "sessions#new", as: :login
