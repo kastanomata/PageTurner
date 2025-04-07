@@ -1,0 +1,30 @@
+<h2>Risultati della ricerca</h2>
+
+<% case %>
+<% when @users.any? %>
+    <h3>Utenti</h3>
+    <ul>
+        <% @users.each do |user| %>
+            <li><%= link_to user.nickname, user_path(user) %></li>
+        <% end %>
+    </ul>
+
+<% when @books.any? %>
+    <h3>Libri</h3>
+    <ul>
+        <% @books.each do |book| %>
+            <li><%= link_to book.title, book_path(book) %></li>
+        <% end %>
+    </ul>
+
+<% when @clubs.any? %>
+    <h3>Club</h3>
+    <ul>
+        <% @clubs.each do |club| %>
+            <li><%= link_to club.name, club_path(club) %></li>
+        <% end %>
+    </ul>
+
+<% else %>
+    <p>Nessun risultato trovato.</p>
+<% end %>

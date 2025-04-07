@@ -25,34 +25,10 @@
 
   <div class="user-content">
     <h2>Bookshelves</h2>
-    <div class="bookshelves">
-      <% @user_bookshelves = Bookshelf.where(creator: @user.email_address) %>
-      <div>
-        <% @user_bookshelves.each do |bookshelf| %>
-        <% class_name = bookshelf.name == "#{@user.nickname}'s Read Books" || bookshelf.name == "#{@user.nickname}'s Liked Books" ? "special-bookshelf bookshelf" : "bookshelf" %>
-        <div class="<%=class_name%>">
-          <h3><%= bookshelf.name %></h3>
-          <p>Created at: <%= bookshelf.created_at.strftime("%B %d, %Y") %></p>
-          <%= link_to "Show this bookshelf", bookshelf %>
-        </div>
-        <% end %>
-      </div>
-    </div>
+    <%= render partial: 'bookshelves/user_index', locals: { user: @user } %>
 
     <h2>Posts</h2>
-    <div class="posts">
-      <% @user_posts = Post.where(creator: @user.email_address) %>
-      <% @user_posts.each do |post| %>
-        <div class="post">
-          <h3><%= post.title %></h3>
-          <p><%= post.text %></p>
-          <p>Created at: <%= post.created_at.strftime("%B %d, %Y") %></p>
-          <%= link_to "Show this post", post %>z
-        </div>
-      <% end %>
-    </div>
-  </div>
-
+    <%= render partial: 'posts/user_index', locals: { user: @user } %>
 
   <div class="button_container">
   <% if Current.user&.admin? or @user.id == Current.user&.id %>

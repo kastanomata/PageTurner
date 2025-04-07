@@ -1,0 +1,22 @@
+<h2>Post Recenti</h2>
+<% if @posts.any? %>
+    <ul>
+        <% @posts.each do |post| %>
+            <% book = Book.find_by!(isbn: post.book)%>
+            <div class="post-item" style="display: flex; align-items: flex-start;">
+                <% if book&.thumbnail.present? %>
+                    <div class="thumbnail" style="margin-right: 15px;">
+                        <%= image_tag book.thumbnail, alt: "#{post.title} Thumbnail", class: 'book-thumbnail', size: "150x150" %>
+                    </div>
+                <% end %>
+                <div class="post-description">
+                    <h3><%= post.title %></h3>
+                    <p><%= truncate(post.text, length: 100) %></p>
+                    <%= link_to 'Leggi di più', post_path(post) %>
+                </div>
+            </div>
+        <% end %>
+    </ul>
+<% else %>
+    <p>Nessun post disponibile.</p>
+<% end %>

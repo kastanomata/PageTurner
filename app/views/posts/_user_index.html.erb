@@ -1,0 +1,12 @@
+<div class="posts">
+    <% @user_posts = Post.where(creator: user.email_address) %>
+    <% @user_posts.each do |post| %>
+      <div class="post">
+        <h3><%= post.title %></h3>
+        <p><%= post.text %></p>
+        <p>Created at: <%= post.created_at.strftime("%B %d, %Y") %></p>
+        <%= link_to "Show this post", post %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,12 +1,40 @@
-<h1>Homes#index</h1>
-<p>Find me in app/views/homes/index.html.erb</p>
-
 <% if authenticated? %>
-  <%= button_to "Sign out", session_path, method: :delete %>
+  <div class="page-layout">
+    <div class="left-section">
+      <%= render partial: 'bookshelves/user_index', locals: { user: Current.user } %>
+    </div>
+    <div class="center-section">
+      <%= render partial: 'posts/home_index' %>
+    </div>
+
+    <div class="right-section">
+      <div class="search-container">
+        <%= form_tag search_path, method: :get do %>
+          <%= text_field_tag :query, params[:query], placeholder: "Cerca..." %>
+          <%= submit_tag "Cerca" %>
+        <% end %>
+      </div>
+
+      <h3>Curators</h3>
+      <% club = Club.find_by(curator: Current.user.email_address) %>
+      <div class="curator-list">
+        <ul>
+          <% if not club.nil?%>
+            <li> <%= link_to "You (#{Current.user.nickname.strip})", user_path(Current.user.id) %> - <%= link_to club.name.strip, club_path(club) %> </li>
+          <% end %>
+
+          <% @memberships = Membership.where(follower_id: Current.user.id) %>
+          
+          <% @memberships.each do |membership| %>
+            <% club = Club.find(membership.club_id) %>
+            <% curator = User.find_by(email_address: club.curator)%>
+            <li> <%= link_to curator.nickname, user_path(curator) %> - <%= link_to club.name, club_path(club) %> </li>
+          <% end %>
+        </ul> 
+      </div>
+    </div>
+  </div>
+
 <% else %>
   <%= link_to "Sign in", new_session_path %>
 <% end %>
-
-<div>
-  Current.user&.email_address = <%= Current.user&.email_address %>
-</div>

@@ -1,0 +1,24 @@
+.page-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+}
+
+.left-section {
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+
+.center-section {
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+.right-section {
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+
+.search-container {
+    margin-top: 10px;
+}
