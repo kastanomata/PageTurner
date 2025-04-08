@@ -13,11 +13,67 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ---
 
 ## Table of Contents
+- [Work in Progress](#work-in-progress)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Running the App](#running-the-app)
 - [License](#license)
+
+---
+
+## Work in Progress
+
+- [ ] Fix navbar "logout" button not displaying correctly
+- [ ] Style report buttons
+- [ ] Add "Report Club" functionality
+- [ ] Add tab icon in browser
+
+### Homepage 
+- [ ] Add "New post" button/form
+- [ ] Add Guest User homepage 
+
+### Users
+- [ ] Fix user description on user profile
+- [ ] Fix curator's club bookshelves showing up on profile
+- [ ] Add a way to request becoming a curator
+- [ ] Add favorite book
+
+### Books
+- [ ] Fix books input from user
+- [ ] Fix books show (only admin can edit Books)
+
+### Bookshelves
+- [ ] Add "Add book to Bookshelf" functionality
+- [ ] Display Posts made about the books in the bookshelf
+
+### Posts
+- [ ] Add interaction (comments, likes) support
+
+### Bookclubs
+- [ ] Add "New post" button/form
+- [ ] Add support for "Community posts" from curator
+- [ ] Add events
+- [ ] Add support for group reading
+- [ ] Add calendar (?)
+
+### Admin
+- [ ] Add "Make User into Curator" support
+- [ ] Add "Make User into Author" support
+
+### Routing
+- [ ] Add "Credits" redirect on footer
+
+### Errors
+- [ ] Render correct errors based on context
+
+
+
+
+
+
+
+#
 
 ---
 
