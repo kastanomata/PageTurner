@@ -1,15 +1,36 @@
 [
     {
         "name": "Mellon",
-        "description": "A book club for exploring the works of J.R.R. Tolkien.",
+        "description": "A book club for exploring the works of J.R.R. Tolkien. Say friends, and enter!",
         "curator": "antonioturco@example.com",
         "created_at": "2023-10-01T00:00:00Z",
         "updated_at": "2023-10-01T00:00:00Z"
     },
     {
         "name": "Banned Books Brigade",
-        "description": "A club dedicated to reading and discussing books that have been banned or challenged.",
+        "description": "A club dedicated to reading and discussing books that have been banned or challenged. Fight against censorship!",
         "curator": "alessandrotemperini@example.com",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "name": "Evergreen Book Club",
+        "description": "A club for readers who love timeless classics and modern masterpieces.",
+        "curator": "mariarosa@example.com",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "name": "A Song of Ice and Fire",
+        "description": "A club for fans of George R.R. Martin's epic series. Join us in waiting the next book :(",
+        "curator": "giovanniblu@example.com",
+        "created_at": "2023-10-01T00:00:00Z",
+        "updated_at": "2023-10-01T00:00:00Z"
+    },
+    {
+        "name": "YA Fantasy Lovers",
+        "description": "A club for young adult fantasy enthusiasts. Explore magical worlds and epic adventures together!",
+        "curator": "lucabianchi@example.com",
         "created_at": "2023-10-01T00:00:00Z",
         "updated_at": "2023-10-01T00:00:00Z"
     }

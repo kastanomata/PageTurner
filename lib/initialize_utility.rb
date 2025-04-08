@@ -1,27 +1,5 @@
 include LoggingUtility
 module InitializeUtility
-    def initialize_user(user)
-        Bookshelf.create!(name: "#{user.nickname}'s Read Books", creator: user.email_address, special: true)
-        Bookshelf.create!(name: "#{user.nickname}'s Liked Books", creator: user.email_address, special: true)
-    end
-
-    def initialize_bookclub(bookclub)
-        Bookshelf.create!(name: "#{bookclub.name}'s Read Books", creator: bookclub.curator, bookclub: bookclub.name, special: true)
-        Bookshelf.create!(name: "#{bookclub.name}'s Liked Books", creator: bookclub.curator, bookclub: bookclub.name, special: true)
-    end
-
-    def clear_existing_data
-        User.destroy_all
-        Post.destroy_all
-        Book.destroy_all
-        Bookshelf.destroy_all
-        BookshelfContain.destroy_all
-        Club.destroy_all
-        Relationship.destroy_all
-        Membership.destroy_all
-        puts "Cleared existing data..."
-    end
-
     # helper function to load JSON files
     def load_json_file(file_path)
       file_content = File.read(file_path)
@@ -39,9 +17,20 @@ module InitializeUtility
       users = load_json_file(Rails.root.join("db", "seeds", "users.json"))
       users.each do |user_attributes|
         user_attributes[:admin] ||= false
-        user = User.create!(user_attributes)
-        initialize_user(user)
+        User.create!(user_attributes)
       end
+    end
+
+    def clear_existing_data
+      User.destroy_all
+      Book.destroy_all
+      Post.destroy_all
+      Bookshelf.destroy_all
+      BookshelfContain.destroy_all
+      Club.destroy_all
+      Relationship.destroy_all
+      Membership.destroy_all
+      puts "Cleared existing data..."
     end
 
     # Seed data for posts
@@ -58,6 +47,10 @@ module InitializeUtility
       books = load_json_file(Rails.root.join("db", "seeds", "books.json"))
       books.each do |book_attributes|
         book_details = BookApiService.fetch_book_details(book_attributes[:isbn])
+        unless book_details
+          log_star("Book not found: #{book_attributes[:_codename]}")
+          next
+        end
         Book.create!(isbn: book_attributes[:isbn], title: book_details[:title], thumbnail: book_details[:thumbnail])
       end
     end
@@ -91,23 +84,39 @@ module InitializeUtility
     def seed_bookclubs
       bookclubs = load_json_file(Rails.root.join("db", "seeds", "clubs.json"))
       bookclubs.each do |bookclub_attributes|
-        bookclub = Club.create!(bookclub_attributes)
-        initialize_bookclub(bookclub)
+        Club.create!(bookclub_attributes)
       end
     end
 
-    def seed_relationships
-      relationships = load_json_file(Rails.root.join("db", "seeds", "relationships.json"))
-      relationships.each do |relationship_attributes|
-        follower_email = relationship_attributes[:follower].downcase
-        followed_email = relationship_attributes[:followed].downcase
+    def initialize_tables
+      # User initialization
+      User.all.each do |user|
+        # Create special bookshelves for each user
+        Bookshelf.create!(name: "#{user.nickname}'s Read Books", creator: user.email_address, special: true)
+        Bookshelf.create!(name: "#{user.nickname}'s Liked Books", creator: user.email_address, special: true)
+        # Populate the special bookshelves with books from the user's posts
+        Post.where(creator: user.email_address).each do |post|
+          BookshelfContain.create!(name: "#{user.nickname}'s Read Books", creator: user.email_address, book: post.book)
+          BookshelfContain.create!(name: "#{user.nickname}'s Liked Books", creator: user.email_address, book: post.book) if rand < 1.0 / 3
+        end
+        # Create relationships and memberships
+        random_follows = User.ids.sample(3)
+        random_follows.each do |id|
+          Relationship.create!(follower_id: user.id, followed_id: id)
+        end
+        randow_memberships = Club.ids.sample(1)
+        randow_memberships.each do |id|
+          Membership.create!(follower_id: user.id, club_id: id)
+        end
+      end
 
-        follower_id = User.find_by(email_address: follower_email).id
-        followed_id = User.find_by(email_address: followed_email).id
-        existing_relationship = Relationship.find_by(follower_id: follower_id, followed_id: followed_id)
-        # If it doesn't exist, create a new one
-        unless existing_relationship or follower_id.nil? or followed_id.nil?
-          Relationship.create!(follower_id: follower_id, followed_id: followed_id)
+      # Club initialization
+      Club.all.each do |bookclub|
+        # Create special bookshelves for each bookclub
+        Bookshelf.create!(name: "#{bookclub.name}'s Read Books", creator: bookclub.curator, special: true)
+        # Populate the special bookshelves with books from the bookclub's posts
+        Post.where(creator: bookclub.curator).each do |post|
+          BookshelfContain.create!(name: "#{bookclub.name}'s Read Books", creator: bookclub.curator, book: post.book)
         end
       end
     end

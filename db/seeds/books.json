@@ -23,8 +23,6 @@
     { "isbn": "9780451526342", "_codename": "Animal Farm" },
     { "isbn": "9780553577129", "_codename": "The Diary of a Young Girl" },
     { "isbn": "9780141182537", "_codename": "Lolita" },
-    { "isbn": "9780061120084", "_codename": "Beloved" },
-    { "isbn": "9780743273565", "_codename": "The Great Gatsby" },
     { "isbn": "9780142437179", "_codename": "The Adventures of Huckleberry Finn" },
     { "isbn": "9780156028356", "_codename": "The Color Purple" },
     { "isbn": "9780060850524", "_codename": "Brave New World" },
@@ -51,7 +49,6 @@
     { "isbn": "9780140449105", "_codename": "Les Misérables" },
     { "isbn": "9780140449198", "_codename": "The Count of Monte Cristo" },
     
-
     { "isbn": "9780316015844", "_codename": "Twilight" },
     { "isbn": "9788876250286", "_codename": "New Moon" },
     { "isbn": "9780316160209", "_codename": "Eclipse" },

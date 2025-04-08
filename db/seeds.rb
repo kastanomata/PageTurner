@@ -16,23 +16,17 @@ include InitializeUtility
 clear_existing_data
 seed_users
 puts "Seeded #{User.count} users."
-seed_posts
-puts "Seeded #{Post.count} posts."
 seed_books
 puts "Seeded #{Book.count} books."
+seed_posts
+puts "Seeded #{Post.count} posts."
+seed_bookclubs
+puts "Seeded #{Club.count} bookclubs."
 seed_bookshelves
 puts "Seeded #{Bookshelf.count} bookshelves."
 seed_bookshelf_contains
 puts "Seeded #{BookshelfContain.count} books in bookshelves."
-seed_bookclubs
-puts "Seeded #{Club.count} bookclubs."
-seed_relationships
-puts "Seeded #{Relationship.count} relationships."
+initialize_tables
+puts "Initialized Special Bookshelves, Relationships and Memberships."
 
-user_id = User.find_by!(email_address: "alfredosegala@example.com").id
-club_id = Club.find_by!(name: "Mellon").id
-
-Membership.find_or_create_by!(follower_id: user_id, club_id: club_id)
-
-puts "Seeded #{Membership.count} memberships."
 puts "Seeding completed."
