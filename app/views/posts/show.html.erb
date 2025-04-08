@@ -9,4 +9,25 @@
       <%= button_to "Destroy this post", @post, method: :delete, class: "button" %>
     </div>
   <% end %>
+
+  <h3>Comments</h3>
+  <% if authenticated? %>
+    <%= render "comments/form", comment: @comment %>
+  <% else %>
+    <%= link_to "Log in to comment!", login_path %>
+  <% end %>
+    <br> 
+  <% unless @post.comments.present? %>
+    <p>No comments yet.</p> 
+  <% else %>
+    <br>
+    <%- @post.comments.each do |comment|%>
+      <% log_star comment.inspect %>
+      <% if comment[:author_id].present? %>
+        <%= User.find(comment[:author_id]).nickname %>
+        <%= comment.text %>
+      <% end %>
+    <% end %>
+    <br>
+  <% end %>
 </div>

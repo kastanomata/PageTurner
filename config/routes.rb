@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   get "search", to: "search#index", as: "search"
 
   resources :clubs
