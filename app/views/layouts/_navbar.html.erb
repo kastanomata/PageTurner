@@ -11,7 +11,7 @@
   <div class="navbar-user">
     <% if authenticated? %>
       <div class="navbar-dropdown">
-        <button class="navbar-dropdown-toggle"><%= Current.user&.nickname %></button>
+        <button class="navbar-dropdown-toggle"><%= link_to Current.user&.nickname, user_path(Current.user&.id), class: "navbar-dropdown-item" %></button>
           <div class="navbar-dropdown-menu">
             <%= link_to "Profilo", user_path(Current.user&.id), class: "navbar-dropdown-item" %>
             <%= link_to "Edit user", edit_user_path(Current.user&.id), class: "navbar-dropdown-item" %>

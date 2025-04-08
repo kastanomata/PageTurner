@@ -2,16 +2,21 @@
   <div class="bookshelf">
     <h2><%= bookshelf.name %></h2>
     
-    <div class="books">
-      <% bookshelf_books = BookshelfContain.where(name: bookshelf.name, creator: bookshelf.creator) %>
-      <% bookshelf_books.each do |bookshelf_book| %>
-        <% book = Book.find_by(isbn: bookshelf_book.book) %>
-        <% if book %>
-          <div class="book-card">
-            <%= image_tag book.thumbnail, alt: "Cover of #{book.title}", class: "book-thumbnail" %>
-          </div>
-        <% end %>
-      <% end %>
+    <div class="books" style="display: flex; flex-direction: column;">
+      <%
+        bookshelf_books = BookshelfContain.where(name: bookshelf.name, creator: bookshelf.creator)
+        bookshelf_books.each do |bookshelf_book| 
+          book = Book.find_by(isbn: bookshelf_book.book)
+          unless book.nil?
+      %>
+        <div>
+            <%= render partial: "books/bookcard", locals: { book: book, bookshelf: bookshelf} %>
+        </div>
+      <%
+          end
+        end
+      %>
+
     </div>
     
     <div class="bookshelf-footer">

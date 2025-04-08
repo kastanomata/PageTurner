@@ -1,20 +1,24 @@
-<div class="post-card" >
-    <div class="post-thumbnail" style="margin-right: 20px;">
-        <% book = Book.find_by(isbn: post.book) %>
-        <%= image_tag book.thumbnail, alt: "Cover of #{book.title}" %>
-    </div>
-    <div class="post-content">
+<div class="post-card">
+    <% book = Book.find_by(isbn: post.book) %>
+    <div class="post-header">
         <h2><%= post.title %></h2>
-        <p><%= post.text %></p>
-        <% user = User.find_by(email_address: post.creator) %>
-        <% bookclub = Club.find_by(name: post.club) %>
-        <% if user && bookclub %>
-            <p>Posted by <%= link_to user.nickname, user_path(user) %> in the <%= link_to bookclub.name, club_path(bookclub) %> bookclub. </p>
-        <% else %>
-            <p>Posted by <%= user ? link_to(user.nickname, user_path(user)) : "Unknown User" %> </p>
-        <% end %>
-        <p>
-            <%= link_to "Show this post", post_path(post) %>
-        </p>
+    </div>
+    <div class="post-content" style="display: flex; gap: 1rem;">
+        <div class="thumbnail">
+            <%= render partial: "books/thumbnail", locals: { book: book } %>
+        </div>
+        <div class="post-details">
+            <p><%= post.text %></p>
+            <% user = User.find_by(email_address: post.creator) %>
+            <% bookclub = Club.find_by(name: post.club) %>
+            <% if user && bookclub %>
+                <p>Posted by <%= link_to user.nickname, user_path(user) %> in the <%= link_to bookclub.name, club_path(bookclub) %> bookclub.</p>
+            <% else %>
+                <p>Posted by <%= user ? link_to(user.nickname, user_path(user)) : "Unknown User" %></p>
+            <% end %>
+            <p>
+                <%= link_to "Show this post", post_path(post) %>
+            </p>
+        </div>
     </div>
 </div>

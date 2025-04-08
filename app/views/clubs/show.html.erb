@@ -14,7 +14,7 @@
   </div>
 
   <div class="club-posts">
-    <% Post.where(club:@club.name, curator:@club.curator).each do |post| %>
+    <% Post.where(club:@club.name).each do |post| %>
       <%= render partial: "posts/postcard", locals: { post: post } %>
     <% end %>
   </div>

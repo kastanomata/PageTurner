@@ -1,0 +1,17 @@
+<div class="book-card" style="display: flex; align-items: center; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px; width: 95%;">    
+    <div>
+        <%= render partial: 'books/thumbnail', locals: { book: book } %>
+    </div>
+    <div class="book-title" style="font-weight: bold; font-size: 2em;">
+        <%= book.title %>
+    </div>
+    <div class="bookshelf-actions" style="display: flex; gap: 10px;">
+        <% 
+            if Current.user&.email_address == bookshelf.creator 
+                @bookshelf_contains = BookshelfContain.find_by(name: bookshelf.name, creator: bookshelf.creator, book: book.isbn)
+                log_star @bookshelf_contains.inspect
+        %>
+            <%= button_to 'Remove', bookshelf_contain_path(name: bookshelf.name, creator: bookshelf.creator, book: book.isbn), method: :delete, class: 'btn btn-danger', style: 'padding: 5px 10px;' %>
+        <% end %>
+    </div>
+</div>

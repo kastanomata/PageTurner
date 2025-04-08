@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :bookshelves
   resources :reports, only: [ :create, :index, :destroy ]
 
+  resources :bookshelf_contains, only: [ :create, :destroy ]
+
   delete "session/destroy" => "sessions#destroy", as: :logout
   get "session/new" => "sessions#new", as: :login
 

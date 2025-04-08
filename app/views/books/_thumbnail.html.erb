@@ -1,0 +1,9 @@
+<div class="post-thumbnail" style="text-align: center;">
+    <%= link_to book_path(book), class: "book-link" do %>
+        <% if book.thumbnail.present? %>
+            <%= image_tag book.thumbnail, alt: "Cover of #{book.title}", style: "display: block; margin: 0 auto; width: auto; height: 150px;" %>
+        <% else %>
+            <%= image_tag "thumbnail_not_found.png", alt: "Thumbnail not found", style: "display: block; margin: 0 auto; width: auto; height: 150;" %>
+        <% end %>
+    <% end %>
+</div>

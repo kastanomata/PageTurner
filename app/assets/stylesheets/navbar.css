@@ -148,9 +148,11 @@
   padding: 0.5rem 1rem;
   color: #d1d5db;
   text-decoration: none;
+  font-family: Garamond, serif;
   background: none;
   border: none;
   text-align: left;
+  box-sizing: content-box;
   transition: background 0.2s, color 0.2s;
 }
 

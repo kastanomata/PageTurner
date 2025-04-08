@@ -7,6 +7,8 @@
     <div class="user-actions" style="display: flex; gap: 10px;">
         <%= render partial: 'shared/roles', locals: { user: user } %>
         <%= link_to 'Show', user_path(user), class: 'btn btn-primary', style: 'padding: 5px 10px;' %>
-        <%= link_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'padding: 5px 10px;' %>
+        <% if admin? %>
+            <%= link_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'padding: 5px 10px;' %>
+        <% end %>
     </div>
 </div>
