@@ -36,23 +36,7 @@
 .footer-action {
     float: left;
 }
-.footer-button {
-    display: inline-block;
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: bold;
-}
-.footer-button:hover {
-    background-color: #0056b3;
-}
-.plus-icon {
-    font-size: 1.2rem;
-    vertical-align: middle;
-}
+
 .footer-message {
     font-size: 0.9rem;
     color: #ffffff;

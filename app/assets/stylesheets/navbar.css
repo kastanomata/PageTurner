@@ -9,63 +9,76 @@
 }
 
 .navbar-brand .navbar-logo {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  color: #ffffff;
+  color: #ebebeb;
   text-decoration: none;
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .navbar-brand .navbar-logo:hover {
-  color: #60a5fa; /* soft blue */
+  color: #6184D8; /* soft blue */
 }
 
 .navbar-links {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .navbar-link {
   display: inline-block;
-  color: #d1d5db; /* light gray */
+  color: #ebebeb;
   text-decoration: none;
   font-weight: 500;
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem;
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .navbar-link:hover {
   transform: scale(1.2);
-  color: #ffffff;
+  color: #6184D8; /* soft blue */
 }
 
 .navbar-link.active {
-  border-bottom: 2px solid #60a5fa;
-  color: #ffffff;
+  border-bottom: 2px solid #6184D8;
+  color: #ebebeb;
+  color: #6184D8; /* soft blue */
 }
 
 .navbar-user {
   display: flex;
   gap: 1rem;
-  align-items: center;
+  font-size: 2rem;
+  align-items: right;
 }
 
-.fake_link {
-  background: none;
-  border: none;
-  padding: 0;
-  color: #d1d5db;
-  font: inherit;
-  cursor: pointer;
-  text-decoration: underline;
-  transition: transform 0.2s ease, color 0.2s ease;
+.navbar-user .navbar-username {
+  font-size: 1.4rem;
+  color: #ebebeb;
 }
-
-.fake_link:hover {
-  transform: scale(1.2);
+.navbar-user .navbar-username:hover {
+  color: #6184D8; /* soft blue */
+}
+.navbar-user .navbar-logout {
+  background-color: #e3342f; /* red */
   color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
-
+.navbar-user .navbar-logout:hover {
+  background-color: #c53030; /* darker red */
+  transform: scale(1.05);
+}
+.navbar-user .navbar-logout:focus {
+  outline: none;
+  box-shadow: 0 0 5px #1f2937; /* dark gray */
+}
 /* Responsive: Mobile view */
 @media (max-width: 768px) {
   .navbar {
@@ -130,6 +143,7 @@
 
 .navbar-dropdown-item {
   display: block;
+  font-size: 1.4rem;
   width: 70%;
   padding: 0.5rem 1rem;
   color: #d1d5db;

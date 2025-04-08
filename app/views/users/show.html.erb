@@ -1,31 +1,37 @@
 <p style="color: green"><%= notice %></p>
 
-<div class="user-container">
+<div class="show-container">
   <div class="user-header">
-    <h1><%= @user.nickname %></h1>
-    <div style="display: flex; gap: 10px;">
-      <div><strong><%= @user.email_address %></strong></div> 
-      <% if @user.admin? %>
-      <div><em>This user is an Admin!</em></div> 
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <h1><%= @user.nickname %></h1>
+      <% if Current.user&.admin? or @user.id == Current.user&.id %>
+        <%= link_to "Edit this user", edit_user_path(@user), class: "button" %>
       <% end %>
-    </div>
+      <section class="stats">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <%= render 'shared/user_stats' %>
+            <%= render 'follow_form' if logged_in? %>
+          </div>
+        </div>
+      </section>
+      <div class="btn-link">
+        <%= render 'reports/report_form', reported_id: @user, reporter_id: Current.user, type: "User" %>
+      </div>
+   
+  
+    
     <p><%= @user.description %></p>
   </div>
 
-  <section class="stats">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-      <div>
-        <%= render 'shared/user_stats' %>
-        <%= render 'follow_form' if logged_in? %>
-      </div>
-      <div>
-        <%= render 'reports/report_form', reported_id: @user, reporter_id: Current.user, type: "User" %>
-      </div>
-  </section>
 
-  <div class="user-content">
-    <h2>Bookshelves</h2>
-    <div class="bookshelves">
+  <div class="user-content" style="display: flex; gap: 20px;">
+    <div class="bookshelves" style="flex: 1;">
+      <h2>Bookshelves
+      <%= link_to new_bookshelf_path, class: "new-post-btn" do %>
+       <span class="footer-button-container plus-icon">+</span>
+      <% end %>
+      </h2>
       <% @user_bookshelves = Bookshelf.where(creator: @user.email_address) %>
       <div>
         <% @user_bookshelves.each do |bookshelf| %>
@@ -39,27 +45,21 @@
       </div>
     </div>
 
-    <h2>Posts</h2>
-    <div class="posts">
+    <div class="posts" style="flex: 1;">
+      <h2>Posts
+      <%= link_to new_post_path, class: "new-post-btn" do %>
+       <span class="footer-button-container plus-icon">+</span>
+      <% end %>
+      </h2>
       <% @user_posts = Post.where(creator: @user.email_address) %>
       <% @user_posts.each do |post| %>
         <div class="post">
           <h3><%= post.title %></h3>
           <p><%= post.text %></p>
           <p>Created at: <%= post.created_at.strftime("%B %d, %Y") %></p>
-          <%= link_to "Show this post", post %>z
+          <%= link_to "Show this post", post %>
         </div>
       <% end %>
     </div>
   </div>
-
-
-  <div class="button_container">
-  <% if Current.user&.admin? or @user.id == Current.user&.id %>
-    <div style="display: flex; gap: 10px;">
-      <%= link_to "Edit this user", edit_user_path(@user), class: "button" %>
-      <%= button_to "Delete this user", @user, method: :delete, class: "button" %>
-    </div>
-  <% end %>
-
 </div>
