@@ -4,7 +4,13 @@
     align-items: center;
     justify-content: center;
     text-align: center; /* Allinea il testo al centro */
+    max-width: 200px;
+    margin:  50px auto; /* Margine superiore e inferiore di 50px */
     padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .title {
@@ -13,27 +19,15 @@
     color: #333; /* Colore del testo */
   }
   
-  .links {
-    margin-top: 20px;
-    font-size: 1.2em;
-  }
-  
-  .links a {
+  .btn-link {
     text-decoration: none;
     color: #1f2937;
   }
   
-  .links a:hover {
+  .btn-link :hover {
     text-decoration: underline;
     color: #1f2937;
   }
-  
-  /* Aggiungi uno sfondo chiaro al corpo per migliorare l'aspetto */
-  body {
-    background-color: #f4f4f9;
-    font-family: Arial, sans-serif;
-  }
-  
   /* app/assets/stylesheets/users_edit.css */
 
 /* Stile per i messaggi di errore */
@@ -88,21 +82,9 @@
     box-shadow: 0 0 5px #1f2937;
   }
   
-  /* Stile per il link "Change Password" */
-  .btn-link {
-    color: #1f2937;
-    text-decoration: none;
-    font-size: 1.1em;
-    margin-top: 10px;
-  }
-  
-  .btn-link:hover {
-    text-decoration: underline;
-  }
-  
-  /* Stile per il pulsante di submit */
+/*
   .btn-submit {
-    background-color: #1f2937;
+    background-color: #6184D8;
     color: white;
     padding: 10px 20px;
     font-size: 1rem;
@@ -113,12 +95,6 @@
   }
   
   .btn-submit:hover {
-    background-color: #1f2937;
+    background-color: #6184D8;
   }
-  
-  /* Aggiungi uno sfondo chiaro al corpo per migliorare l'aspetto */
-  body {
-    background-color: #f4f4f9;
-    font-family: Arial, sans-serif;
-  }
-  
+  */

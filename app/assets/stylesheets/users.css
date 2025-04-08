@@ -1,5 +1,5 @@
-.user-container {
-  max-width: 800px;
+/*.show-container {
+  max-width: 1400px;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
@@ -7,7 +7,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
+*/
 
 .user-header {
   margin-bottom: 20px;
@@ -23,6 +23,11 @@
 
 .bookshelves, .posts {
   margin-top: 20px;
+  padding: 10px;
+  border: #ddd 1px solid;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
 }
 
 .bookshelf, .post {

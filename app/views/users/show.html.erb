@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<div class="user-container">
+<div class="show-container">
   <div class="user-header">
     <h1><%= @user.nickname %></h1>
     <% if @user.avatar.attached? %>
@@ -14,20 +14,23 @@
       <% if @user.admin? %>
       <div><em>This user is an Admin!</em></div> 
       <% end %>
-    </div>
+      <section class="stats">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <%= render 'shared/user_stats' %>
+            <%= render 'follow_form' if logged_in? %>
+          </div>
+        </div>
+      </section>
+      <div class="btn-link">
+        <%= render 'reports/report_form', reported_id: @user, reporter_id: Current.user, type: "User" %>
+      </div>
+   
+  
+    
     <p><%= @user.description %></p>
   </div>
 
-  <section class="stats">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-      <div>
-        <%= render 'shared/user_stats' %>
-        <%= render 'follow_form' if logged_in? %>
-      </div>
-      <div>
-        <%= render 'reports/report_form', reported_id: @user, reporter_id: Current.user, type: "User" %>
-      </div>
-  </section>
 
   <div class="user-content">
     <h2>Bookshelves</h2>
