@@ -65,6 +65,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Add "Credits" redirect on footer
 
 ### Errors
+- [ ] Fix error navbar not showing correctly
 - [ ] Render correct errors based on context
 
 

@@ -6,5 +6,4 @@ module LoggingUtility
       puts "* \e[33m#{message}\e[0m *" # yellow text
       puts border
     end
-  
-  end
+end
