@@ -5,12 +5,16 @@ module Authentication
   included do
     before_action :require_authentication
     helper_method :authenticated?
-    helper_method
+    helper_method :admin?
   end
 
   class_methods do
     def allow_unauthenticated_access(**options)
       skip_before_action :require_authentication, **options
+    end
+
+    def require_admin_access(**options)
+      before_action -> { require_authentication("admin") }, **options
     end
   end
 

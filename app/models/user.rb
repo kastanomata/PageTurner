@@ -1,5 +1,5 @@
+include InitializeUtility
 class User < ApplicationRecord
-  include InitializeUtility
   has_one_attached :avatar
   has_secure_password
   has_many :sessions, dependent: :destroy
@@ -29,8 +29,8 @@ class User < ApplicationRecord
     user = self.new email_address: email, password: SecureRandom.base64(64).truncate_bytes(64)
     # TODO: you could save additional information about the user from the OAuth sign in
     # assign_names_from_auth(auth, user)
-    user.initialize_user(user)
     user.save
+    InitializeUtility.initialize_user(user)
     user
   end
 
