@@ -2,32 +2,44 @@
 
 <%= render @post %>
 
-<div class="button_container">
+<div>
   <% if Current.user&.admin? || @post.creator == Current.session&.id %>
     <div style="display: flex; gap: 10px;">
-      <%= link_to "Edit this post", edit_post_path(@post), class: "button" %>
-      <%= button_to "Destroy this post", @post, method: :delete, class: "button" %>
+      <%= link_to "Edit this post", edit_post_path(@post) %>
+      <%= button_to "Destroy this post", @post, method: :delete %>
     </div>
   <% end %>
 
-  <h3>Comments</h3>
-  <% if authenticated? %>
-    <%= render "comments/form", comment: @comment %>
-  <% else %>
-    <%= link_to "Log in to comment!", login_path %>
-  <% end %>
-    <br> 
-  <% unless @post.comments.present? %>
-    <p>No comments yet.</p> 
-  <% else %>
-    <br>
-    <%- @post.comments.each do |comment|%>
-      <% log_star comment.inspect %>
-      <% if comment[:author_id].present? %>
-        <%= User.find(comment[:author_id]).nickname %>
-        <%= comment.text %>
-      <% end %>
+  <div>
+    <h3>Comments</h3>
+    <% if authenticated? %>
+      <div>
+        <%= render "comments/form", comment: @comment %>
+      </div>
+    <% else %>
+      <div>
+        <%= link_to "Log in to comment!", login_path %>
+      </div>
     <% end %>
     <br>
-  <% end %>
+    <% unless @post.comments.present? %>
+      <div>
+        <p>No comments yet.</p>
+      </div>
+    <% else %>
+      <div>
+        <br>
+        <% @post.comments.each do |comment| %>
+          <% log_star comment.inspect %>
+          <% if comment[:author_id].present? %>
+            <div>
+              <span><%= User.find(comment[:author_id]).nickname %></span>
+              <span><%= comment.text %></span>
+            </div>
+          <% end %>
+        <% end %>
+        <br>
+      </div>
+    <% end %>
+  </div>
 </div>
