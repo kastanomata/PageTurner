@@ -5,7 +5,9 @@
 <div>
   <% if Current.user&.admin? || @post.creator == Current.session&.id %>
     <div style="display: flex; gap: 10px;">
-      <%= link_to "Edit this post", edit_post_path(@post) %>
+      <% if @post.creator == Current.session&.id %>
+        <%= link_to "Edit this post", edit_post_path(@post) %>
+      <% end %>
       <%= button_to "Destroy this post", @post, method: :delete %>
     </div>
   <% end %>

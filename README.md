@@ -63,7 +63,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ### Admin
 - [ ] Add "Make User into Curator" support
 - [ ] Add "Make User into Author" support
-- [ ]
+- [ ] Should not be able edit post
 
 ### Routing
 - [ ] Add "Credits" redirect on footer
