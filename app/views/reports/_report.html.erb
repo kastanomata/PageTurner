@@ -20,6 +20,6 @@
     <span><strong>Created At:</strong> <%= report.created_at.strftime("%B %d, %Y %H:%M") %></span>
   </div>
   <div class="report-actions" style="display: flex; gap: 10px;">
-    <%= link_to 'Delete', report_path(report), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'padding: 5px 10px;' %>
+    <%= button_to 'Delete', report_path(report), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'padding: 5px 10px;' %>
   </div>
 </div>

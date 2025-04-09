@@ -50,7 +50,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 
 ### Books
 - [ ] Fix books input from user
-- [ ] Fix books show (only admin can edit Books)
+- [x] Fix books show (only admin can edit Books)
 
 ### Bookshelves
 - [ ] Add "Add book to Bookshelf" functionality

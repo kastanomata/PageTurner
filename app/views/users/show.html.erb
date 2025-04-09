@@ -15,9 +15,11 @@
           </div>
         </div>
       </section>
-      <div class="btn-link">
-        <%= render 'reports/report_form', reported_id: @user, reporter_id: Current.user, type: "User" %>
-      </div>
+      <% unless @user.id == Current.user&.id %>
+        <div class="btn-link">
+          <%= render 'reports/report_form', reported_id: @user, reporter_id: Current.user, type: "User" %>
+        </div>
+      <% end %>
    
   
     
