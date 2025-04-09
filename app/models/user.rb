@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :active_memberships, class_name:  "Membership", foreign_key: "follower_id", dependent: :destroy
   has_many :partecipates, through: :active_memberships, source: :club
 
+  has_many :likes, dependent: :destroy
 
   validates :email_address, presence: true,
             format: { with: URI::MailTo::EMAIL_REGEXP },

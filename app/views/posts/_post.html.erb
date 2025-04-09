@@ -25,6 +25,15 @@
     <div class="post-content" style="flex: 2;">
       <p><%= @post.text %></p>
     </div>
+    <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+    <% if authenticated? %>
+      <% pre_like = @post.likes.find { |like| like.user_id == Current.user&.id} %>
+      <% if pre_like %>
+        <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+      <% else %>
+        <%= button_to 'Like', post_likes_path(@post), method: :post %>
+      <% end %>
+    <% end %>
   </div>
 
 </div>

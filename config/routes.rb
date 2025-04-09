@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
   resources :users
-  resources :posts
+  resources :posts do
+    resources :likes
+  end
   resources :books
   resources :bookshelves
   resources :reports, only: [ :create, :index, :destroy ]
