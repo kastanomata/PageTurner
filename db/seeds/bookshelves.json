@@ -1,20 +1,27 @@
 [
     {
         "name": "Fantasy Collection",
-        "creator": "antonioturco@example.com",
-        "created_at": "2023-01-01T00:00:00Z",
-        "updated_at": "2023-01-01T00:00:00Z"
+        "creator_nickname": "kastanomata",
+        "books_list": [
+            { "isbn": "9780618391110", "_codename": "The Silmarillion" },
+            { "isbn": "9780547928227", "_codename": "The Hobbit" },
+            { "isbn": "9780007309368", "_codename": "Unfinished Tales" }
+        ]
     },
     {
         "name": "Classic Literature",
-        "creator": "alessandrotemperini@example.com",
-        "created_at": "2023-01-01T00:00:00Z",
-        "updated_at": "2023-01-01T00:00:00Z"
+        "creator_nickname": "AleNino",
+        "books_list": [
+            { "isbn": "9780451524935", "_codename": "1984" },
+            { "isbn": "9780061120084", "_codename": "To Kill a Mockingbird" }
+        ]
     },
     {
         "name": "Modern Classics",
-        "creator": "alfredosegala@example.com",
-        "created_at": "2023-01-01T00:00:00Z",
-        "updated_at": "2023-01-01T00:00:00Z"
+        "creator_nickname": "Fredo",
+        "books_list": [
+            { "isbn": "9780743273565", "_codename": "The Great Gatsby" },
+            { "isbn": "9780316769488", "_codename": "The Catcher in the Rye" }
+        ]
     }
 ]

@@ -5,8 +5,7 @@
     <div class="books" style="display: flex; flex-direction: column;">
       <%
         bookshelf_books = BookshelfContain.where(name: bookshelf.name, creator: bookshelf.creator)
-        bookshelf_books.each do |bookshelf_book| 
-          book = Book.find_by(isbn: bookshelf_book.book)
+        bookshelf.books.each do |book| 
           unless book.nil?
       %>
         <div>
@@ -20,12 +19,7 @@
     </div>
     
     <div class="bookshelf-footer">
-      <% user = User.find_by(email_address: bookshelf.creator) %>
-      <% if user %>
-        <p>Created by: <%= link_to user.nickname, user_path(user) %></p>
-      <% else %>
-        <p>Created by: <%= bookshelf.creator %></p>
-      <% end %>
+        <p>Created by: <%= link_to bookshelf.creator.nickname, user_path(bookshelf.creator) %></p>
       <p>
         <%= link_to "Show this bookshelf", bookshelf %>
       </p>

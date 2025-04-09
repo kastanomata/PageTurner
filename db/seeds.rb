@@ -37,8 +37,6 @@ seed_bookclubs
 puts "Seeded #{Club.count} bookclubs."
 seed_bookshelves
 puts "Seeded #{Bookshelf.count} bookshelves."
-seed_bookshelf_contains
-puts "Seeded #{BookshelfContain.count} books in bookshelves."
 initialize_tables
 puts "Initialized Special Bookshelves, Relationships and Memberships."
 

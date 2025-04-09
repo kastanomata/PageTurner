@@ -1,6 +1,6 @@
 class BookshelvesController < ApplicationController
-  allow_unauthenticated_access only: %i[index show]
   before_action :set_bookshelf, only: %i[ show edit update destroy ]
+  allow_unauthenticated_access only: %i[index show]
 
   # GET /bookshelves or /bookshelves.json
   def index
@@ -56,10 +56,6 @@ class BookshelvesController < ApplicationController
       format.html { redirect_to bookshelves_path, status: :see_other, notice: "Bookshelf was successfully destroyed." }
       format.json { head :no_content }
     end
-  end
-
-  def is_special?
-    
   end
 
   private

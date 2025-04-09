@@ -24,7 +24,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 
 ## Work in Progress
 
-- [ ] Fix navbar "logout" button not displaying correctly
+- [x] Fix navbar "logout" button not displaying correctly
 - [ ] Style report buttons
 - [ ] Add "Report Club" functionality
 - [ ] Add tab icon in browser
@@ -44,6 +44,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Fix books show (only admin can edit Books)
 
 ### Bookshelves
+- [ ] Bookshelf creation
 - [ ] Add "Add book to Bookshelf" functionality
 - [ ] Display Posts made about the books in the bookshelf
 
@@ -61,20 +62,19 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ### Admin
 - [ ] Add "Make User into Curator" support
 - [ ] Add "Make User into Author" support
+- [ ]
 
 ### Routing
 - [ ] Add "Credits" redirect on footer
 
 ### Database refactor
-- [ ] Bookshelf_contains -> book (isbn) to book_id and (name, creator) to bookshelf_id 
-- [ ] Bookshelf -> creator (email) to creator_id (references user)
+- [ ] Users -> club (string (name)) to club_id 
+- [x] Bookshelf_contains -> book (isbn) to book_id and (name, creator) to bookshelf_id 
+- [x] Bookshelf -> creator (email) to creator_id (references user)
 - [ ] Clubs -> curator (email) to curator_id (references user)
 - [ ] Posts -> creator (email) to poster_id (references user), [club, curator] to club_id, book (isbn) to book_id 
-- [ ] Users -> club (string (name)) to club_id 
 
 ### Testing
-- [ ]
-- [ ]
 
 ### Errors
 - [ ] Fix error navbar not showing correctly

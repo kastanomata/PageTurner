@@ -34,37 +34,33 @@ module SeedingUtility
     def seed_books
       books = load_json_file(Rails.root.join("db", "seeds", "books.json"))
       books.each do |book_attributes|
-        book_details = BookApiService.fetch_book_details(book_attributes[:isbn])
+        book_details = nil # BookApiService.fetch_book_details(book_attributes[:isbn])
         unless book_details
-          log_star("Book not found: #{book_attributes[:_codename]}")
-          next
+          # log_star("Book not found: #{book_attributes[:_codename]}")
         end
-        Book.create!(isbn: book_attributes[:isbn], title: book_details[:title], thumbnail: book_details[:thumbnail])
+        Book.create!(isbn: book_attributes[:isbn], title: book_details&.title, thumbnail: book_details&.thumbnail)
       end
     end
 
-    # Seed data for bookshelves
+    # Seed data for bookshelves and bookshelf_contains
     def seed_bookshelves
       bookshelves = load_json_file(Rails.root.join("db", "seeds", "bookshelves.json"))
       bookshelves.each do |bookshelf_attributes|
-        Bookshelf.create!(bookshelf_attributes)
-      end
-    end
-
-    # Seed data for bookshelf_contains
-    def seed_bookshelf_contains
-      bookshelf_contains = load_json_file(Rails.root.join("db", "seeds", "bookshelf_contains.json"))
-      expanded_bookshelf_contains = bookshelf_contains[:bookshelf_contains].flat_map do |entry|
-        entry[:books].map do |book|
-          {
-            name: entry[:name],
-            creator: entry[:creator],
-            book: book[:isbn]
-          }
+        bookshelf_attributes[:created_at] = Time.now
+        bookshelf_attributes[:updated_at] = Time.now
+        bookshelf_attributes[:creator_id] = User.find_by(nickname: bookshelf_attributes[:creator_nickname]).id
+        # log_star "Bookshelf creator: #{bookshelf_attributes[:creator_nickname]}, ID: #{bookshelf_attributes[:creator_id]}"
+        bookshelf = Bookshelf.create!(bookshelf_attributes.except(:books_list, :creator_nickname))
+        # log_star "Bookshelf created: #{bookshelf.inspect}"
+        bookshelf_attributes[:books_list].each do |book|
+          book = Book.find_by(isbn: book[:isbn])
+          # log_star "Book found: #{book.inspect}"
+          if book
+            bookshelf.add_book(book)
+          else
+            log_star("Book not found for Bookshelf: #{book[:isbn]}")
+          end
         end
-      end
-      expanded_bookshelf_contains.each do |bookshelf_contains_attributes|
-        BookshelfContain.create!(bookshelf_contains_attributes)
       end
     end
 

@@ -2,6 +2,9 @@ include InitializeUtility
 class User < ApplicationRecord
   has_one_attached :avatar
   has_secure_password
+
+  validates :nickname, uniqueness: { case_sensitive: false }
+
   has_many :sessions, dependent: :destroy
   has_many :omni_auth_identities, dependent: :destroy
 
@@ -14,7 +17,13 @@ class User < ApplicationRecord
   has_many :active_memberships, class_name:  "Membership", foreign_key: "follower_id", dependent: :destroy
   has_many :partecipates, through: :active_memberships, source: :club
 
+  # has_many :posts, dependent: :change ???
   has_many :likes, dependent: :destroy
+
+  has_many :bookshelves, dependent: :destroy, foreign_key: "creator_id"
+  has_many :bookshelf_contains, through: :bookshelves, dependent: :destroy
+
+  # has_many :reports, dependent: :change ???
 
   validates :email_address, presence: true,
             format: { with: URI::MailTo::EMAIL_REGEXP },
@@ -69,5 +78,12 @@ class User < ApplicationRecord
   # Returns true if the current user is a member of the club.
   def is_member?(club)
     partecipates.include?(club)
+  end
+
+  # Creates a bookshelf for the user
+  def create_bookshelf(name:, special: false)
+    bookshelf = Bookshelf.new(name: name, creator: self, special: special)
+    bookshelf.save
+    bookshelf
   end
 end

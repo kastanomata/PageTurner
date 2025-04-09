@@ -18,7 +18,7 @@ RSpec.describe "Password", type: :request do
 
   describe "POST /passwords" do
     it "creating a password reset sends an email and show instructions" do
-      # TODO: need to decide whether to enqueue or perform jobs
+      # need to decide whether to enqueue or perform jobs
       # for the moment, request spec will perform jobs, while model spec will enqueue jobs
       perform_enqueued_jobs do
         post passwords_path, params: { email_address: user.email_address }
