@@ -55,12 +55,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         # Update special bookshelves to match the new nickname
-        special_bookshelves = Bookshelf.where(
-          creator: @user.email_address,
-          bookclub: nil,
-          special: true
-        )
-        special_bookshelves.each do |bookshelf|
+        @user.get_special_bookshelves.each do |bookshelf|
           log_star("Updating bookshelf name for user #{@user.nickname}")
           if bookshelf.name.include?("Read Books")
             bookshelf.update(name: "#{@user.nickname}'s Read Books")

@@ -86,4 +86,8 @@ class User < ApplicationRecord
     bookshelf.save
     bookshelf
   end
+
+  def get_special_bookshelves
+    bookshelves.where(bookclub: nil, special: true)
+  end
 end

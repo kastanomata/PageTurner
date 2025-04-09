@@ -44,6 +44,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Fix books show (only admin can edit Books)
 
 ### Bookshelves
+- [ ] Special Bookshelves should not be modifiable
 - [ ] Bookshelf creation
 - [ ] Add "Add book to Bookshelf" functionality
 - [ ] Display Posts made about the books in the bookshelf
