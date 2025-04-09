@@ -29,6 +29,15 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Add "Report Club" functionality
 - [ ] Add tab icon in browser
 
+### Database refactor
+- [ ] Bookshelf_contains -> isbn to book_id and (name, creator) to bookshelf_id 
+- [ ] Bookshelf -> creator (email) to creator_id (references user)
+- [ ] Clubs -> curator (email) to curator_id (references user)
+- [ ] Posts -> creator (email) to poster_id (references user), [club, curator] to club_id, book (isbn) to book_id 
+- [ ] Users -> club (string (name)) to club_id 
+- [ ]
+- [ ]
+
 ### Homepage 
 - [ ] Add "New post" button/form
 - [ ] Add Guest User homepage 
@@ -48,7 +57,8 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Display Posts made about the books in the bookshelf
 
 ### Posts
-- [ ] Add interaction (comments, likes) support
+- [x] Add interaction (comments, likes) support
+- [ ] Style comments and likes
 
 ### Bookclubs
 - [ ] Add "New post" button/form
@@ -65,6 +75,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Add "Credits" redirect on footer
 
 ### Errors
+- [ ] Fix error navbar not showing correctly
 - [ ] Render correct errors based on context
 
 

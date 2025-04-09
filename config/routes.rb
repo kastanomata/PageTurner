@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
+  resources :comments
   get "search", to: "search#index", as: "search"
 
   resources :clubs
   resource :session
   resources :passwords, param: :token
   resources :users
-  resources :posts
+  resources :posts do
+    resources :likes
+  end
   resources :books
   resources :bookshelves
   resources :reports, only: [ :create, :index, :destroy ]
