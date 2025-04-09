@@ -32,3 +32,17 @@ body {
     padding: 20px;
 }
 
+.unfollow-btn{
+    display: inline-block;
+    background-color: #1F2937;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin: auto;
+    transition: background-color 0.3s ease;
+}

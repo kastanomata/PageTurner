@@ -1,14 +1,14 @@
-      <% if authenticated? %>
-        <div style="margin-left: 20px;">
-          <%= button_to "Generate Report", 
-            reports_path(
-              report: {
-                reported_id: reported_id,
-                reporter_id: reporter_id,
-                reported_type: type
-              }
-            ), 
-            method: :post, 
-            class: "btn-link" %>
-        </div>
-      <% end %>
+<% if authenticated? %>
+  <div>
+    <%= button_to "Generate Report", 
+      reports_path(
+        report: {
+          reported_id: reported_id,
+          reporter_id: reporter_id,
+          reported_type: type
+        }
+      ), 
+      method: :post, 
+      class: "btn-link-red" %>
+  </div>
+<% end %>

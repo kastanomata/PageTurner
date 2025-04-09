@@ -1,27 +1,31 @@
 <p style="color: green"><%= notice %></p>
 
-<div class="show-container">
-  <div class="user-header">
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <h1><%= @user.nickname %></h1>
-      <% if Current.user&.admin? or @user.id == Current.user&.id %>
-        <%= link_to "Edit this user", edit_user_path(@user), class: "button" %>
-      <% end %>
-      <section class="stats">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
+<div>
+  <div class="split-container">
+    <div class="left-col">
+      <div class="user-info">
+        <h1><%= @user.nickname %></h1>
+        <% if Current.user&.admin? or @user.id == Current.user&.id %>
+          <%= link_to "Edit this user", edit_user_path(@user), class: "btn-link" %>
+        <% end %>
+        
+        <section class="stats">
           <div>
-            <%= render 'shared/user_stats' %>
-            <%= render 'follow_form' if logged_in? %>
+            <div>
+              <%= render 'shared/user_stats'%>
+              <%= render 'follow_form' if logged_in?%>
+            </div>
           </div>
-        </div>
-      </section>
-      <div class="btn-link">
-        <%= render 'reports/report_form', reported_id: @user, reporter_id: Current.user, type: "User" %>
+        </section>
+      </div> 
+          
+      <div class="reporting">
+        <%= render 'reports/report_form', reported_id: @user, reporter_id: Current.user, type: "User"%>
       </div>
-   
-  
-    
-    <p><%= @user.description %></p>
+    </div>   
+    <div class="righ-col">
+      <div class="user-description"><%= @user.description %></div>
+    </div>
   </div>
 
 

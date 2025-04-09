@@ -1,0 +1,15 @@
+.stats {
+  display: flex;
+  gap: 12px; /* Spazio minimo tra i link */
+  margin-top: 0;
+  padding: 0;
+}
+
+.stats a {
+  color: gray;
+  text-decoration: none;
+}
+
+.stats a:hover {
+  color: blue;
+}
