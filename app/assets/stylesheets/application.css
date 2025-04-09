@@ -16,6 +16,8 @@ body {
     text-decoration: none;
     cursor: pointer;
     font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s ease;
 }
 
 .button:hover {
@@ -30,9 +32,3 @@ body {
     padding: 20px;
 }
 
-
-.container-fluid {
-    max-width: 100%;
-    padding: 0 15px;
-    margin: 0 auto;
-}

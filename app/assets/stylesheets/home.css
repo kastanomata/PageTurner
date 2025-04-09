@@ -1,24 +1,98 @@
 .page-layout {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    /*grid-template-columns: 1fr 2fr 1fr;*/
     gap: 20px;
 }
 
 .left-section {
-    background-color: #f9f9f9;
+    background-color: #6184D8;
     padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .center-section {
-    background-color: #ffffff;
+    background-color: #6184D8;
+    margin-top: 20px;
     padding: 10px;
 }
 
 .right-section {
-    background-color: #f9f9f9;
+    background-color: #6184D8;
     padding: 10px;
 }
 
 .search-container {
     margin-top: 10px;
 }
+
+/* CSS accesso non autenticato */
+/* Container principale per il contenuto */
+.container-big {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f7fafc; /* Colore di sfondo chiaro */
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Titolo della home page */
+  .container-big h1 {
+    font-size: 3rem;
+    color: #2d3748; /* Colore scuro per il titolo */
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  
+  /* Paragrafo che descrive la pagina */
+  .container-big p {
+    font-size: 1.2rem;
+    color: #4a5568; /* Colore più chiaro rispetto al titolo */
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+  
+  /* Colore per i link del bottone */
+  .btn-link-persiano {
+    color: #fff;
+    background-color: #38a169; /* Verde persiano caldo per un contrasto elegante */
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+  }
+  
+  /* Effetto hover per il bottone */
+  .btn-link-persiano {
+    background-color: #2f855a; /* Colore più scuro al passaggio del mouse */
+    text-decoration: none;
+  }
+  
+  /* Responsività per dispositivi mobili */
+  @media (max-width: 768px) {
+    .container-big {
+      padding: 20px;
+    }
+  
+    .container-big h1 {
+      font-size: 2.5rem;
+    }
+  
+    .container-big p {
+      font-size: 1rem;
+    }
+  }
+  

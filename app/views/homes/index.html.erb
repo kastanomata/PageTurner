@@ -36,5 +36,10 @@
   </div>
 
 <% else %>
-  <%= link_to "Sign in", new_session_path %>
+
+  <div class="container-big">
+    <h1 >Welcome to the Home Page</h1>
+    <p>Please sign in to access your account.</p>
+    <%= link_to "Sign in", new_session_path, class: "btn-link-persiano" %>
+  </div>    
 <% end %>
