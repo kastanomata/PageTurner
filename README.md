@@ -31,7 +31,9 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 
 ### Homepage 
 - [ ] Add "New post" button/form
-- [ ] Add Guest User homepage 
+- [x] Add Guest User homepage 
+- [ ] Divide special bookshelves from user-created
+- [ ] Add club infocard to the right
 
 ### Users
 - [ ] Fix user description on user profile
@@ -69,10 +71,10 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Add "Credits" redirect on footer
 
 ### Database refactor
-- [ ] Users -> club (string (name)) to club_id 
+- [x] Users -> club (string (name)) to is_curator
 - [x] Bookshelf_contains -> book (isbn) to book_id and (name, creator) to bookshelf_id 
 - [x] Bookshelf -> creator (email) to creator_id (references user)
-- [ ] Clubs -> curator (email) to curator_id (references user)
+- [x] Clubs -> curator (email) to curator_id (references user)
 - [ ] Posts -> creator (email) to poster_id (references user), [club, curator] to club_id, book (isbn) to book_id 
 
 ### Testing

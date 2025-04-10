@@ -32,7 +32,7 @@
       <div>
         <br>
         <% @post.comments.each do |comment| %>
-          <% log_star comment.inspect %>
+          <% # log_star comment.inspect %>
           <% if comment[:author_id].present? %>
             <div>
               <span><%= User.find(comment[:author_id]).nickname %></span>

@@ -7,21 +7,23 @@
   </div>
 
 <div class="club-content">
+
   <div class="club-bookshelves">
-    <% Bookshelf.where(creator:@club.curator, bookclub:@club.name).each do |bookshelf| %>
+    <% @club.bookshelves.each do |bookshelf| %>
       <%= render bookshelf %>
     <% end %>
   </div>
 
-  <div class="club-posts">
-    <% Post.where(club:@club.name).each do |post| %>
-      <%= render partial: "posts/postcard", locals: { post: post } %>
-    <% end %>
-  </div>
+<!--FIXME club post display-->
+<!--  <div class="club-posts">-->
+    <%# Post.where(club:@club.name).each do |post| %>
+      <%#= render partial: "posts/postcard", locals: { post: post } %>
+    <%# end %>
+<!--  </div>-->
 
 </div>
 
-<% if authenticated? and Current.user&.email_address == @club.curator %>
+<% if authenticated? and Current.user == @club.curator %>
   <div>
     <%= link_to "Edit this club", edit_club_path(@club) %> |
     <%= button_to "Destroy this club", @club, method: :delete %>

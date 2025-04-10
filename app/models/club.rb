@@ -1,4 +1,7 @@
 class Club < ApplicationRecord
+  belongs_to :curator, class_name: "User"
+  has_many :bookshelves, foreign_key: "bookclub", dependent: :destroy
+
   has_many :passive_memberships, class_name: "Membership", foreign_key: "club_id", dependent: :destroy
   has_many :members, through: :passive_memberships, source: :follower
 

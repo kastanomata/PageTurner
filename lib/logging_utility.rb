@@ -1,5 +1,4 @@
 module LoggingUtility
-  
     def log_star(message)
       border = "*" * (message.length + 4)
       puts border

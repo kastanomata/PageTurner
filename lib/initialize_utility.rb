@@ -22,11 +22,11 @@ module InitializeUtility
   end
 
   def initialize_bookclub(bookclub)
-    # FIXME initialize_bookclub does not work after database refactoring
     # Create special bookshelves for each bookclub
-    # Bookshelf.create!(name: "#{bookclub.name}'s Read Books", creator: bookclub.curator, special: true)
-    # Populate the special bookshelves with books from the bookclub's posts
+    read_bookshelf  = bookclub.curator.create_bookshelf(name: "#{bookclub.name}'s Read Books", club: bookclub.id, special: :true)
+    # FIXME Populate the special bookshelves with books from the bookclub's posts
     # Post.where(creator: bookclub.curator).each do |post|
+    #   read_bookshelf.add_book(post.book)
     #     BookshelfContain.create!(name: "#{bookclub.name}'s Read Books", creator: bookclub.curator, book: post.book)
     # end
   end

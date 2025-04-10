@@ -26,14 +26,14 @@ def clear_existing_data
   puts "Cleared existing data..."
 end
 
-clear_existing_data
+# clear_existing_data
 seed_users
 puts "Seeded #{User.count} users."
 seed_books
 puts "Seeded #{Book.count} books."
 seed_posts
 puts "Seeded #{Post.count} posts."
-seed_bookclubs
+seed_clubs
 puts "Seeded #{Club.count} bookclubs."
 seed_bookshelves
 puts "Seeded #{Bookshelf.count} bookshelves."

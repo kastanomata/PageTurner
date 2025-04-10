@@ -1,8 +1,7 @@
 <div id="<%= dom_id club %>" class="club-card">
     <h3><%= link_to club.name, club_path(club), class: "club-link" %></h3>
     <p><%= club.description %></p>
-    <% user = User.find_by(email_address: club.curator) %>
     <div style="display: flex; justify-content: space-between;">
-      <p>Created by: <%= link_to user.nickname, user_path(user) if user %></p>
+      <p>Created by: <%= link_to club.curator.nickname, user_path(club.curator) %></p>
     </div>
 </div>

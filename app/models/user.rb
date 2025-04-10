@@ -22,6 +22,7 @@ class User < ApplicationRecord
 
   has_many :bookshelves, dependent: :destroy, foreign_key: "creator_id"
   has_many :bookshelf_contains, through: :bookshelves, dependent: :destroy
+  has_one :club, foreign_key: "curator_id", dependent: :destroy
 
   # has_many :reports, dependent: :change ???
 
@@ -37,7 +38,7 @@ class User < ApplicationRecord
   def self.create_from_oauth(auth)
     email = auth.info.email
     user = self.new email_address: email, password: SecureRandom.base64(64).truncate_bytes(64)
-    # TODO: you could save additional information about the user from the OAuth sign in
+    # you could save additional information about the user from the OAuth sign in
     # assign_names_from_auth(auth, user)
     user.save
     InitializeUtility.initialize_user(user)
@@ -45,7 +46,7 @@ class User < ApplicationRecord
   end
 
   def signed_in_with_oauth(auth)
-    # TODO: same as above, you could save additional information about the user
+    # same as above, you could save additional information about the user
     # User.assign_names_from_auth(auth, self)
     # save if first_name_changed? || last_name_changed?
   end
@@ -81,13 +82,17 @@ class User < ApplicationRecord
   end
 
   # Creates a bookshelf for the user
-  def create_bookshelf(name:, special: false)
-    bookshelf = Bookshelf.new(name: name, creator: self, special: special)
+  def create_bookshelf(name:, club: nil, special: false)
+    bookshelf = Bookshelf.new(name: name, creator: self, bookclub: club, special: special)
     bookshelf.save
     bookshelf
   end
 
   def get_special_bookshelves
     bookshelves.where(bookclub: nil, special: true)
+  end
+
+  def curator_club
+    Club.find_by(curator_id: id)
   end
 end

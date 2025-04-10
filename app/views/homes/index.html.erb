@@ -16,19 +16,18 @@
       </div>
 
       <h3>Curators</h3>
-      <% club = Club.find_by(curator: Current.user.email_address) %>
       <div class="curator-list">
         <ul>
-          <% if not club.nil?%>
-            <li> <%= link_to "You (#{Current.user.nickname.strip})", user_path(Current.user.id) %> - <%= link_to club.name.strip, club_path(club) %> </li>
+          <!--TODO export this into a partial-->
+          <% 
+            your_club = Current.user.curator_club 
+            unless your_club.nil? 
+          %>
+            <li> <%= link_to "You (#{Current.user.nickname})", user_path(Current.user) %> - <%= link_to your_club.name, club_path(your_club) %> </li>
           <% end %>
-
-          <% @memberships = Membership.where(follower_id: Current.user.id) %>
           
-          <% @memberships.each do |membership| %>
-            <% club = Club.find(membership.club_id) %>
-            <% curator = User.find_by(email_address: club.curator)%>
-            <li> <%= link_to curator.nickname, user_path(curator) %> - <%= link_to club.name, club_path(club) %> </li>
+          <% Current.user.active_memberships.each do |membership| %>
+            <li> <%= link_to membership.club.curator.nickname, user_path(membership.club.curator) %> - <%= link_to membership.club.name, club_path(membership.club) %> </li>
           <% end %>
         </ul> 
       </div>
