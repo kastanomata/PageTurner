@@ -17,14 +17,14 @@ class User < ApplicationRecord
   has_many :active_memberships, class_name:  "Membership", foreign_key: "follower_id", dependent: :destroy
   has_many :partecipates, through: :active_memberships, source: :club
 
-  # has_many :posts, dependent: :change ???
+  has_many :posts, foreign_key: "author_id", dependent: :destroy # TODO add changing the post author on user deletion
   has_many :likes, dependent: :destroy
 
   has_many :bookshelves, dependent: :destroy, foreign_key: "creator_id"
   has_many :bookshelf_contains, through: :bookshelves, dependent: :destroy
   has_one :club, foreign_key: "curator_id", dependent: :destroy
 
-  # has_many :reports, dependent: :change ???
+  has_many :reports, as: :reported, dependent: :destroy # TODO add memory of reports on user deletion
 
   validates :email_address, presence: true,
             format: { with: URI::MailTo::EMAIL_REGEXP },
@@ -94,5 +94,9 @@ class User < ApplicationRecord
 
   def curator_club
     Club.find_by(curator_id: id)
+  end
+
+  def get_homepage_posts
+    Post.where(author_id: following_ids).order(created_at: :desc)
   end
 end

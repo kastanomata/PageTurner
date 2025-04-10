@@ -2,36 +2,26 @@
     {
         "name": "Mellon",
         "description": "A book club for exploring the works of J.R.R. Tolkien. Say friends, and enter!",
-        "curator_email": "antonioturco@example.com",
-        "created_at": "2023-10-01T00:00:00Z",
-        "updated_at": "2023-10-01T00:00:00Z"
+        "curator_email": "antonioturco@example.com"
     },
     {
         "name": "Banned Books Brigade",
         "description": "A club dedicated to reading and discussing books that have been banned or challenged. Fight against censorship!",
-        "curator_email": "alessandrotemperini@example.com",
-        "created_at": "2023-10-01T00:00:00Z",
-        "updated_at": "2023-10-01T00:00:00Z"
+        "curator_email": "alessandrotemperini@example.com"
     },
     {
         "name": "Evergreen Book Club",
         "description": "A club for readers who love timeless classics and modern masterpieces.",
-        "curator_email": "mariarosa@example.com",
-        "created_at": "2023-10-01T00:00:00Z",
-        "updated_at": "2023-10-01T00:00:00Z"
+        "curator_email": "mariarosa@example.com"
     },
     {
         "name": "A Song of Ice and Fire",
         "description": "A club for fans of George R.R. Martin's epic series. Join us in waiting the next book :(",
-        "curator_email": "giovanniblu@example.com",
-        "created_at": "2023-10-01T00:00:00Z",
-        "updated_at": "2023-10-01T00:00:00Z"
+        "curator_email": "giovanniblu@example.com"
     },
     {
         "name": "YA Fantasy Lovers",
         "description": "A club for young adult fantasy enthusiasts. Explore magical worlds and epic adventures together!",
-        "curator_email": "lucabianchi@example.com",
-        "created_at": "2023-10-01T00:00:00Z",
-        "updated_at": "2023-10-01T00:00:00Z"
+        "curator_email": "lucabianchi@example.com"
     }
 ]

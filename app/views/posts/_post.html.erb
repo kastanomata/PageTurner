@@ -4,22 +4,19 @@
     <h1><%= @post.title %></h1>
   </div>
   <div class="post-meta" style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-    <% user = User.find_by(email_address: @post.creator) %>
-    <% if user %>
-      <p>Posted by: <%= link_to user.nickname, user_path(user) %></p>
-    <% else %>
-      <p>Posted by: <em>[User not found]</em></p>
-    <% end %>
+    <!--# TODO add support for absent post author-->
+    <p>Posted by: <%= link_to @post.author.nickname, user_path(@post.author) %></p>
+    <%# if @post.author %> 
+    <%# else %>
+<!--      <p>Posted by: <em>[User not found]</em></p>-->
+    <%# end %>
   </div>
   <div style="margin-top: 10px;">
     <%= render 'reports/report_form', reported_id: @post, reporter_id: Current.user, type: "Post" %>
   </div>
   <div class="post-body" style="display: flex; gap: 20px;">
     <% if @post.book %>
-      <% book = Book.find_by(isbn: @post.book) %>
-      <% if book %>
-        <%= render partial: "books/thumbnail", locals: { book: book } %>
-      <% end %>
+      <%= render partial: "books/thumbnail", locals: { book: @post.book } %>
     <% end %>
 
     <div class="post-content" style="flex: 2;">

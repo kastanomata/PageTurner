@@ -25,8 +25,13 @@ module SeedingUtility
     def seed_posts
       posts = load_json_file(Rails.root.join("db", "seeds", "posts.json"))
       posts.each do |post_attributes|
-        post_attributes[:creator] = post_attributes[:creator].downcase
-        Post.create!(post_attributes)
+        post_attributes[:author_id] = User.find_by(email_address: post_attributes[:author_email]).id
+        post_attributes[:book_id] = Book.find_by(isbn: post_attributes[:book_isbn]).id
+        post_attributes[:club_id] = Club.find_by(name: post_attributes[:club_name]).id if post_attributes[:club_name]
+        post_attributes[:club_id] ||= nil
+        post_attributes[:created_at] = Time.now
+        post_attributes[:updated_at] = Time.now
+        Post.create!(post_attributes.except(:author_email, :book_isbn, :club_name))
       end
     end
 

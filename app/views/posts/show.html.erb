@@ -3,9 +3,9 @@
 <%= render @post %>
 
 <div>
-  <% if Current.user&.admin? || @post.creator == Current.session&.id %>
+  <% if Current.user&.admin? || @post.author == Current.user %>
     <div style="display: flex; gap: 10px;">
-      <% if @post.creator == Current.session&.id %>
+      <% if @post.author == Current.session&.id %>
         <%= link_to "Edit this post", edit_post_path(@post) %>
       <% end %>
       <%= button_to "Destroy this post", @post, method: :delete %>

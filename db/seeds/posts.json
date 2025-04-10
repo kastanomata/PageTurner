@@ -2,403 +2,305 @@
     {
         "title": "The Epic World of Middle-earth",
         "text": "The Silmarillion offers a profound dive into Tolkien's legendarium. The mythology and lore are unmatched in fantasy literature.",
-        "creator": "marcogialli@example.com",
-        "book": "9780618391110",
-        "club": "Mellon",
-        "created_at": "2023-10-02T09:00:00Z",
-        "updated_at": "2023-10-02T09:00:00Z"
+        "author_email": "marcogialli@example.com",
+        "book_isbn": "9780618391110",
+        "club_name": "Mellon"
     },
     {
         "title": "A Classic Adventure: The Hobbit",
         "text": "The Hobbit is a timeless journey filled with courage and discovery. Bilbo's growth from a timid hobbit to a hero is inspiring.",
-        "creator": "giovanniblu@example.com",
-        "book": "9780547928227",
-        "club": "Mellon",
-        "created_at": "2023-10-03T14:30:00Z",
-        "updated_at": "2023-10-03T14:30:00Z"
+        "author_email": "giovanniblu@example.com",
+        "book_isbn": "9780547928227",
+        "club_name": "Mellon"
     },
     {
         "title": "Dystopia and Technology in 1984",
         "text": "Orwell's 1984 is a chilling reminder of the dangers of surveillance and authoritarianism. Its relevance to modern tech is unsettling.",
-        "creator": "alessandrotemperini@example.com",
-        "book": "9780451524935",
-        "created_at": "2023-10-04T11:20:00Z",
-        "updated_at": "2023-10-04T11:20:00Z"
+        "author_email": "alessandrotemperini@example.com",
+        "book_isbn": "9780451524935"
     },
     {
         "title": "The Heart of Classic Literature",
         "text": "Pride and Prejudice remains a masterpiece of wit and social commentary. Elizabeth Bennet's character is brilliantly crafted.",
-        "creator": "mariarosa@example.com",
-        "book": "9780141439518",
-        "created_at": "2023-10-05T16:45:00Z",
-        "updated_at": "2023-10-05T16:45:00Z"
+        "author_email": "mariarosa@example.com",
+        "book_isbn": "9780141439518"
     },
     {
         "title": "Power Struggles in Westeros",
         "text": "A Game of Thrones grips you with its intricate politics and moral ambiguity. The Stark family’s resilience is unforgettable.",
-        "creator": "giovanniblu@example.com",
-        "book": "9780553103540",
-        "created_at": "2023-10-06T10:10:00Z",
-        "updated_at": "2023-10-06T10:10:00Z"
+        "author_email": "giovanniblu@example.com",
+        "book_isbn": "9780553103540"
     },
     {
         "title": "A Memoir of Courage",
         "text": "The Diary of a Young Girl is a poignant reminder of hope during darkness. Anne Frank’s voice transcends time.",
-        "creator": "alfredosegala@example.com",
-        "book": "9780553577129",
-        "created_at": "2023-10-07T13:15:00Z",
-        "updated_at": "2023-10-07T13:15:00Z"
+        "author_email": "alfredosegala@example.com",
+        "book_isbn": "9780553577129"
     },
     {
         "title": "Magic and Growing Up",
         "text": "Harry Potter and the Sorcerer's Stone is a magical start to an iconic series. Hogwarts feels like home.",
-        "creator": "elisabettaverdi@example.com",
-        "book": "9780590353427",
-        "created_at": "2023-10-08T17:30:00Z",
-        "updated_at": "2023-10-08T17:30:00Z"
+        "author_email": "elisabettaverdi@example.com",
+        "book_isbn": "9780590353427"
     },
     {
         "title": "A Journey of Self-Discovery",
         "text": "The Alchemist beautifully illustrates the importance of following one’s dreams. Santiago’s journey is deeply motivating.",
-        "creator": "giovanniblu@example.com",
-        "book": "9780062315007",
-        "created_at": "2023-10-09T08:45:00Z",
-        "updated_at": "2023-10-09T08:45:00Z"
+        "author_email": "giovanniblu@example.com",
+        "book_isbn": "9780062315007"
     },
     {
         "title": "Love and Loss in Twilight",
         "text": "Twilight’s blend of romance and supernatural elements makes it a compelling read. Bella’s choices spark endless debates.",
-        "creator": "giulialilla@example.com",
-        "book": "9780316015844",
-        "created_at": "2023-10-10T12:00:00Z",
-        "updated_at": "2023-10-10T12:00:00Z"
+        "author_email": "giulialilla@example.com",
+        "book_isbn": "9780316015844"
     },
     {
         "title": "A Dystopian Masterpiece",
         "text": "Brave New World’s exploration of societal control and happiness is eerily prophetic. A must-read for tech enthusiasts.",
-        "creator": "alessandrotemperini@example.com",
-        "book": "9780060850524",
-        "created_at": "2023-10-11T15:20:00Z",
-        "updated_at": "2023-10-11T15:20:00Z"
+        "author_email": "alessandrotemperini@example.com",
+        "book_isbn": "9780060850524"
     },
 
     {
         "title": "The Depth of Tolkien's Mythology",
         "text": "The Silmarillion is a masterpiece of world-building. Tolkien's ability to craft an entire mythology is unparalleled.",
-        "creator": "marcogialli@example.com",
-        "book": "9780618391110",
-        "created_at": "2023-10-02T09:00:00Z",
-        "updated_at": "2023-10-02T09:00:00Z"
+        "author_email": "marcogialli@example.com",
+        "book_isbn": "9780618391110"
     },
     {
         "title": "The Fellowship Begins",
         "text": "The Fellowship of the Ring sets the stage for an epic journey. The camaraderie and looming danger keep you hooked.",
-        "creator": "giovanniblu@example.com",
-        "book": "9780618346257",
-        "created_at": "2023-10-03T10:15:00Z",
-        "updated_at": "2023-10-03T10:15:00Z"
+        "author_email": "giovanniblu@example.com",
+        "book_isbn": "9780618346257"
     },
     {
         "title": "Middle-earth's Darkest Hour",
         "text": "The Two Towers showcases resilience in the face of despair. Aragorn’s leadership shines here.",
-        "creator": "antonioturco@example.com",
-        "book": "9780618346264",
-        "created_at": "2023-10-04T12:30:00Z",
-        "updated_at": "2023-10-04T12:30:00Z"
+        "author_email": "antonioturco@example.com",
+        "book_isbn": "9780618346264"
     },
     {
         "title": "A Crownless King",
         "text": "The Return of the King delivers a satisfying conclusion. Frodo’s sacrifice is heart-wrenching.",
-        "creator": "lucabianchi@example.com",
-        "book": "9780618346271",
-        "created_at": "2023-10-05T14:45:00Z",
-        "updated_at": "2023-10-05T14:45:00Z"
+        "author_email": "lucabianchi@example.com",
+        "book_isbn": "9780618346271"
     },
     {
         "title": "Bilbo’s Unexpected Journey",
         "text": "The Hobbit is a charming adventure. Smaug’s introduction is unforgettable!",
-        "creator": "giovanniblu@example.com",
-        "book": "9780547928227",
-        "club": "Mellon",
-        "created_at": "2023-10-06T16:00:00Z",
-        "updated_at": "2023-10-06T16:00:00Z"
+        "author_email": "giovanniblu@example.com",
+        "book_isbn": "9780547928227",
+        "club_name": "Mellon"
     },
     {
         "title": "Tragedy in Middle-earth",
         "text": "The Children of Húrin is a dark, poetic tale. Tolkien’s prose feels ancient and timeless.",
-        "creator": "mariarosa@example.com",
-        "book": "9780261103665",
-        "club": "Mellon",
-        "created_at": "2023-10-07T18:15:00Z",
-        "updated_at": "2023-10-07T18:15:00Z"
+        "author_email": "mariarosa@example.com",
+        "book_isbn": "9780261103665",
+        "club_name": "Mellon"
     },
     {
         "title": "A Love Beyond Death",
         "text": "Beren and Lúthien’s story is hauntingly beautiful. It’s Tolkien at his most romantic.",
-        "creator": "elisabettaverdi@example.com",
-        "book": "9780007557271",
-        "club": "Mellon",
-        "created_at": "2023-10-08T20:30:00Z",
-        "updated_at": "2023-10-08T20:30:00Z"
+        "author_email": "elisabettaverdi@example.com",
+        "book_isbn": "9780007557271",
+        "club_name": "Mellon"
     },
     {
         "title": "The Fall of a Hidden City",
         "text": "The Fall of Gondolin reads like an epic tragedy. The battle scenes are vividly detailed.",
-        "creator": "antonioturco@example.com",
-        "book": "9780008302757",
-        "club": "Mellon",
-        "created_at": "2023-10-09T22:45:00Z",
-        "updated_at": "2023-10-09T22:45:00Z"
+        "author_email": "antonioturco@example.com",
+        "book_isbn": "9780008302757",
+        "club_name": "Mellon"
     },
     {
         "title": "Númenor’s Hubris",
         "text": "The Fall of Númenor explores pride and downfall. A cautionary tale for any age.",
-        "creator": "marcogialli@example.com",
-        "book": "9780008433949",
-        "club": "Mellon",
-        "created_at": "2023-10-11T08:00:00Z",
-        "updated_at": "2023-10-11T08:00:00Z"
+        "author_email": "marcogialli@example.com",
+        "book_isbn": "9780008433949",
+        "club_name": "Mellon"
     },
     {
         "title": "Middle-earth’s Natural Philosophy",
         "text": "The Nature of Middle-earth deepens Tolkien’s world. Perfect for lore enthusiasts!",
-        "creator": "alessandrotemperini@example.com",
-        "book": "9780008387969",
-        "club": "Mellon",
-        "created_at": "2023-10-12T10:15:00Z",
-        "updated_at": "2023-10-12T10:15:00Z"
+        "author_email": "alessandrotemperini@example.com",
+        "book_isbn": "9780008387969",
+        "club_name": "Mellon"
     },
     {
         "title": "Unfinished but Unforgettable",
         "text": "Unfinished Tales offers tantalizing glimpses into Middle-earth’s untold stories.",
-        "creator": "giulialilla@example.com",
-        "book": "9780007309368",
-        "club": "Mellon",
-        "created_at": "2023-10-13T12:30:00Z",
-        "updated_at": "2023-10-13T12:30:00Z"
+        "author_email": "giulialilla@example.com",
+        "book_isbn": "9780007309368",
+        "club_name": "Mellon"
     },
     {
         "title": "A Throne of Swords and Schemes",
         "text": "A Game of Thrones is brutal yet brilliant. The political machinations are addictive.",
-        "creator": "alfredosegala@example.com",
-        "book": "9780553103540",
-        "created_at": "2023-10-14T14:45:00Z",
-        "updated_at": "2023-10-14T14:45:00Z"
+        "author_email": "alfredosegala@example.com",
+        "book_isbn": "9780553103540"
     },
     {
         "title": "War for the Iron Throne",
         "text": "A Clash of Kings escalates the stakes. Tyrion’s wit steals every scene.",
-        "creator": "giovanniblu@example.com",
-        "book": "9780553108033",
-        "created_at": "2023-10-15T16:00:00Z",
-        "updated_at": "2023-10-15T16:00:00Z"
+        "author_email": "giovanniblu@example.com",
+        "book_isbn": "9780553108033"
     },
     {
         "title": "Red Weddings and Regrets",
         "text": "A Storm of Swords is a rollercoaster. Martin’s willingness to shock is unmatched.",
-        "creator": "antonioturco@example.com",
-        "book": "9780553106633",
-        "created_at": "2023-10-16T18:15:00Z",
-        "updated_at": "2023-10-16T18:15:00Z"
+        "author_email": "antonioturco@example.com",
+        "book_isbn": "9780553106633"
     },
     {
         "title": "Aftermath of Chaos",
         "text": "A Feast for Crows slows the pace but deepens character arcs. Cersei’s chapters are riveting.",
-        "creator": "mariarosa@example.com",
-        "book": "9780553801507",
-        "created_at": "2023-10-17T20:30:00Z",
-        "updated_at": "2023-10-17T20:30:00Z"
+        "author_email": "mariarosa@example.com",
+        "book_isbn": "9780553801507"
     },
     {
         "title": "Dragons and Destiny",
         "text": "A Dance with Dragons expands the world exponentially. Daenerys’s struggles feel deeply human.",
-        "creator": "giulialilla@example.com",
-        "book": "9780553801477",
-        "created_at": "2023-10-18T22:45:00Z",
-        "updated_at": "2023-10-18T22:45:00Z"
+        "author_email": "giulialilla@example.com",
+        "book_isbn": "9780553801477"
     },
     {
         "title": "A Spider’s Wisdom",
         "text": "Charlotte’s Web teaches compassion in the simplest terms. A gem for all ages.",
-        "creator": "elisabettaverdi@example.com",
-        "book": "9780060006983",
-        "created_at": "2023-10-19T08:00:00Z",
-        "updated_at": "2023-10-19T08:00:00Z"
+        "author_email": "elisabettaverdi@example.com",
+        "book_isbn": "9780060006983"
     },
     {
         "title": "Big Brother is Watching",
         "text": "1984’s dystopia feels closer than ever. A must-read for tech-minded readers.",
-        "creator": "alessandrotemperini@example.com",
-        "book": "9780451524935",
-        "created_at": "2023-10-20T10:15:00Z",
-        "updated_at": "2023-10-20T10:15:00Z"
+        "author_email": "alessandrotemperini@example.com",
+        "book_isbn": "9780451524935"
     },
     {
         "title": "Justice in Maycomb",
         "text": "To Kill a Mockingbird is a powerful exploration of morality. Atticus Finch remains iconic.",
-        "creator": "lucabianchi@example.com",
-        "book": "9780061120084",
-        "created_at": "2023-10-21T12:30:00Z",
-        "updated_at": "2023-10-21T12:30:00Z"
+        "author_email": "lucabianchi@example.com",
+        "book_isbn": "9780061120084"
     },
     {
         "title": "A Farm’s Rebellion",
         "text": "Animal Farm’s allegory is sharp and timeless. Orwell’s critique of power resonates.",
-        "creator": "antonioturco@example.com",
-        "book": "9780451526342",
-        "created_at": "2023-10-22T14:45:00Z",
-        "updated_at": "2023-10-22T14:45:00Z"
+        "author_email": "antonioturco@example.com",
+        "book_isbn": "9780451526342"
     },
     {
         "title": "Anne’s Light in Darkness",
         "text": "The Diary of a Young Girl is heartbreaking yet hopeful. A vital historical document.",
-        "creator": "mariarosa@example.com",
-        "book": "9780553577129",
-        "created_at": "2023-10-23T16:00:00Z",
-        "updated_at": "2023-10-23T16:00:00Z"
+        "author_email": "mariarosa@example.com",
+        "book_isbn": "9780553577129"
     },
     {
         "title": "Controversy and Craft",
         "text": "Lolita’s prose is dazzling, but its subject matter challenges the reader. A literary paradox.",
-        "creator": "elisabettaverdi@example.com",
-        "book": "9780141182537",
-        "created_at": "2023-10-24T18:15:00Z",
-        "updated_at": "2023-10-24T18:15:00Z"
+        "author_email": "elisabettaverdi@example.com",
+        "book_isbn": "9780141182537"
     },
     {
         "title": "A River of Freedom",
         "text": "The Adventures of Huckleberry Finn confronts racism with nuance. Twain’s voice is unforgettable.",
-        "creator": "lucabianchi@example.com",
-        "book": "9780142437179",
-        "created_at": "2023-10-25T20:30:00Z",
-        "updated_at": "2023-10-25T20:30:00Z"
+        "author_email": "lucabianchi@example.com",
+        "book_isbn": "9780142437179"
     },
     {
         "title": "Voices of Resilience",
         "text": "The Color Purple is raw and empowering. Celie’s journey is a testament to strength.",
-        "creator": "mariarosa@example.com",
-        "book": "9780156028356",
-        "created_at": "2023-10-26T22:45:00Z",
-        "updated_at": "2023-10-26T22:45:00Z"
+        "author_email": "mariarosa@example.com",
+        "book_isbn": "9780156028356"
     },
     {
         "title": "A Society of Soma",
         "text": "Brave New World’s vision of engineered happiness is terrifying. Huxley’s foresight is uncanny.",
-        "creator": "alessandrotemperini@example.com",
-        "book": "9780060850524",
-        "created_at": "2023-10-27T08:00:00Z",
-        "updated_at": "2023-10-27T08:00:00Z"
+        "author_email": "alessandrotemperini@example.com",
+        "book_isbn": "9780060850524"
     },
     {
         "title": "Burning Books, Igniting Minds",
         "text": "Fahrenheit 451 is a love letter to literature. Bradbury’s warnings about censorship still sting.",
-        "creator": "antonioturco@example.com",
-        "book": "9781451673319",
-        "created_at": "2023-10-28T10:15:00Z",
-        "updated_at": "2023-10-28T10:15:00Z"
+        "author_email": "antonioturco@example.com",
+        "book_isbn": "9781451673319"
     },
     {
         "title": "The Portrait’s Secret",
         "text": "The Picture of Dorian Gray explores vanity and corruption. Wilde’s wit cuts deep.",
-        "creator": "elisabettaverdi@example.com",
-        "book": "9780141439570",
-        "created_at": "2023-10-29T12:30:00Z",
-        "updated_at": "2023-10-29T12:30:00Z"
+        "author_email": "elisabettaverdi@example.com",
+        "book_isbn": "9780141439570"
     },
     {
         "title": "A Handmaid’s Silence",
         "text": "The Handmaid’s Tale is chilling in its plausibility. Atwood’s dystopia feels uncomfortably close.",
-        "creator": "giulialilla@example.com",
-        "book": "9780385490818",
-        "created_at": "2023-10-30T14:45:00Z",
-        "updated_at": "2023-10-30T14:45:00Z"
+        "author_email": "giulialilla@example.com",
+        "book_isbn": "9780385490818"
     },
     {
         "title": "Holden’s Alienation",
         "text": "The Catcher in the Rye captures teenage angst perfectly. Salinger’s voice is timeless.",
-        "creator": "lucabianchi@example.com",
-        "book": "9780316769488",
-        "created_at": "2023-10-31T16:00:00Z",
-        "updated_at": "2023-10-31T16:00:00Z"
+        "author_email": "lucabianchi@example.com",
+        "book_isbn": "9780316769488"
     },
     {
         "title": "Gatsby’s Green Light",
         "text": "The Great Gatsby’s critique of the American Dream is poetic. Fitzgerald’s prose is luminous.",
-        "creator": "mariarosa@example.com",
-        "book": "9780743273565",
-        "created_at": "2023-11-01T18:15:00Z",
-        "updated_at": "2023-11-01T18:15:00Z"
+        "author_email": "mariarosa@example.com",
+        "book_isbn": "9780743273565"
     },
     {
         "title": "Ahab’s Obsession",
         "text": "Moby-Dick is a dense but rewarding epic. Melville’s digressions are a journey themselves.",
-        "creator": "antonioturco@example.com",
-        "book": "9780142437247",
-        "created_at": "2023-11-02T20:30:00Z",
-        "updated_at": "2023-11-02T20:30:00Z"
+        "author_email": "antonioturco@example.com",
+        "book_isbn": "9780142437247"
     },
     {
         "title": "A Day in Dublin",
         "text": "Ulysses is a labyrinth of language. Joyce’s experimentation redefines what a novel can be.",
-        "creator": "elisabettaverdi@example.com",
-        "book": "9780141182803",
-        "created_at": "2023-11-03T22:45:00Z",
-        "updated_at": "2023-11-03T22:45:00Z"
+        "author_email": "elisabettaverdi@example.com",
+        "book_isbn": "9780141182803"
     },
     {
         "title": "Dust Bowl Desperation",
         "text": "The Grapes of Wrath humanizes struggle. Steinbeck’s empathy for the Joads is profound.",
-        "creator": "giovanniblu@example.com",
-        "book": "9780141185064",
-        "created_at": "2023-11-04T08:00:00Z",
-        "updated_at": "2023-11-04T08:00:00Z"
+        "author_email": "giovanniblu@example.com",
+        "book_isbn": "9780141185064"
     },
     {
         "title": "Savagery vs. Civilization",
         "text": "Lord of the Flies exposes the fragility of order. Golding’s allegory is brutally effective.",
-        "creator": "lucabianchi@example.com",
-        "book": "9780140283334",
-        "created_at": "2023-11-05T10:15:00Z",
-        "updated_at": "2023-11-05T10:15:00Z"
+        "author_email": "lucabianchi@example.com",
+        "book_isbn": "9780140283334"
     },
     {
         "title": "Heathcliff’s Torment",
         "text": "Wuthering Heights is a storm of passion and revenge. Brontë’s Gothic atmosphere is unmatched.",
-        "creator": "mariarosa@example.com",
-        "book": "9780141439556",
-        "created_at": "2023-11-06T12:30:00Z",
-        "updated_at": "2023-11-06T12:30:00Z"
+        "author_email": "mariarosa@example.com",
+        "book_isbn": "9780141439556"
     },
     {
         "title": "Darcy and Prejudice",
         "text": "Pride and Prejudice’s social satire is timeless. Elizabeth and Darcy’s banter is pure delight.",
-        "creator": "mariarosa@example.com",
-        "book": "9780141439518",
-        "created_at": "2023-11-07T14:45:00Z",
-        "updated_at": "2023-11-07T14:45:00Z"
+        "author_email": "mariarosa@example.com",
+        "book_isbn": "9780141439518"
     },
     {
         "title": "Guilt and Redemption",
         "text": "Crime and Punishment delves into the psyche of guilt. Dostoevsky’s psychological depth is staggering.",
-        "creator": "antonioturco@example.com",
-        "book": "9780140449136",
-        "created_at": "2023-11-08T16:00:00Z",
-        "updated_at": "2023-11-08T16:00:00Z"
+        "author_email": "antonioturco@example.com",
+        "book_isbn": "9780140449136"
     },
     {
         "title": "A Family’s Turmoil",
         "text": "The Brothers Karamazov wrestles with faith and doubt. Ivan’s chapters are philosophical gold.",
-        "creator": "lucabianchi@example.com",
-        "book": "9780140449242",
-        "created_at": "2023-11-09T18:15:00Z",
-        "updated_at": "2023-11-09T18:15:00Z"
+        "author_email": "lucabianchi@example.com",
+        "book_isbn": "9780140449242"
     },
     {
         "title": "Love and Society",
         "text": "Anna Karenina is a sweeping exploration of passion and duty. Tolstoy’s characters feel achingly real.",
-        "creator": "mariarosa@example.com",
-        "book": "9780140447231",
-        "created_at": "2023-11-10T20:30:00Z",
-        "updated_at": "2023-11-10T20:30:00Z"
+        "author_email": "mariarosa@example.com",
+        "book_isbn": "9780140447231"
     }
 ]

@@ -36,6 +36,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Add club infocard to the right
 
 ### Users
+- [ ] Add block user functionality
 - [ ] Fix user description on user profile
 - [ ] Fix curator's club bookshelves showing up on profile
 - [ ] Add a way to request becoming a curator
@@ -57,6 +58,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 
 ### Bookclubs
 - [ ] Add "New post" button/form
+- [ ] Add report bookclub button
 - [ ] Add support for "Community posts" from curator
 - [ ] Add events
 - [ ] Add support for group reading
@@ -75,7 +77,8 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Bookshelf_contains -> book (isbn) to book_id and (name, creator) to bookshelf_id 
 - [x] Bookshelf -> creator (email) to creator_id (references user)
 - [x] Clubs -> curator (email) to curator_id (references user)
-- [ ] Posts -> creator (email) to poster_id (references user), [club, curator] to club_id, book (isbn) to book_id 
+- [x] Posts -> creator (email) to poster_id (references user), [club, curator] to club_id, book (isbn) to book_id 
+- [ ] Reports -> add polymorphic associations support
 
 ### Testing
 

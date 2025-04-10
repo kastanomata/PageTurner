@@ -2,24 +2,40 @@
   <div class="report-info" style="display: flex; flex-direction: column;">
     <% reporter = User.find(report.reporter_id) %>
     <span><strong>Reporter:</strong> <%= link_to reporter.nickname, user_path(reporter) %> (<%= reporter.email_address %>)</span>
-    <% case report.reported_type %>
-    <% when "Post" %>
-      <% reported_post = Post.find(report.reported_id) %>
-      <% reported_post_author = User.find_by(email_address: reported_post.creator) %>
-      <span><strong>Reported Post:</strong> <%= link_to reported_post.title.truncate(100), post_path(reported_post) %></span>
-      <span><strong>Author:</strong> <%= link_to reported_post_author.nickname, user_path(reported_post_author) %></span>
-    <% when "User" %>
-      <% reported_user = User.find(report.reported_id) %>
-      <span><strong>Reported User:</strong> <%= link_to reported_user.nickname, user_path(reported_user) %></span>
+    
+    <% if report.reported %>
+      <% case report.reported.class.name %>
+      <% when "Post" %>
+        <span><strong>Reported Post:</strong> 
+          <%= link_to report.reported.title.truncate(100), post_path(report.reported) %></span>
+        <span><strong>Author:</strong> 
+          <%= link_to report.reported.user.nickname, user_path(report.reported.user) %></span>
+      <% when "User" %>
+        <span><strong>Reported User:</strong> 
+          <%= link_to report.reported.nickname, user_path(report.reported) %></span>
+      <% when "Club" %>
+        <span><strong>Reported Club:</strong> 
+          <%= link_to report.reported.name, user_path(report.reported) %></span>
+      <% when "Comment" %>
+        <span><strong>Reported Comment:</strong> 
+          <%= link_to report.reported.text.truncate(100), user_path(report.reported) %></span>
+      <% else %>
+        <span><strong>Reported <%= report.reported.class.name %>:</strong> 
+          <%= link_to "View #{report.reported.class.name.downcase}", report.reported %></span>
+      <% end %>
     <% else %>
-      <span><strong>Reported:</strong> <%= report.reported_id %></span>
-      <span><strong>Reported Content:</strong> Unknown</span>
+      <span class="text-muted">Reported content has been deleted</span>
     <% end %>
   </div>
+  
   <div class="report-created-at" style="margin-left: auto; text-align: right;">
     <span><strong>Created At:</strong> <%= report.created_at.strftime("%B %d, %Y %H:%M") %></span>
   </div>
+  
   <div class="report-actions" style="display: flex; gap: 10px;">
-    <%= link_to 'Delete', report_path(report), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'padding: 5px 10px;' %>
+    <%= link_to 'Delete', report_path(report), method: :delete, 
+              data: { confirm: 'Are you sure?' }, 
+              class: 'btn btn-danger', 
+              style: 'padding: 5px 10px;' %>
   </div>
 </div>

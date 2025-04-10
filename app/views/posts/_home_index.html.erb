@@ -1,12 +1,11 @@
 <h2>Post Recenti</h2>
 <% if @posts.any? %>
     <%
-        followed_ids = Relationship.where(follower_id: Current.user&.id).pluck(:followed_id)
-        user_emails = User.where(id: followed_ids).pluck(:email_address)
-        @posts = Post.where(creator: user_emails).order(created_at: :desc)
+        # FIXME
+        posts = Current.user.get_homepage_posts
     %>
     <ul>
-        <%= render partial: 'posts/postcard', collection: @posts, as: :post %>
+        <%= render partial: 'posts/postcard', collection: posts, as: :post %>
     </ul>
 <% else %>
     <p>Nessun post disponibile.</p>

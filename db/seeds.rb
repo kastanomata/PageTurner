@@ -31,12 +31,12 @@ seed_users
 puts "Seeded #{User.count} users."
 seed_books
 puts "Seeded #{Book.count} books."
-seed_posts
-puts "Seeded #{Post.count} posts."
 seed_clubs
 puts "Seeded #{Club.count} bookclubs."
 seed_bookshelves
 puts "Seeded #{Bookshelf.count} bookshelves."
+seed_posts
+puts "Seeded #{Post.count} posts."
 initialize_tables
 puts "Initialized Special Bookshelves, Relationships and Memberships."
 
