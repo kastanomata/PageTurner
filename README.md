@@ -67,7 +67,8 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Add calendar (?)
 
 ### Reports
-- [ ] Generate reports (report_id nil e reported_type nil)
+- [ ] Add button to access root/reports#index
+- [x] Generate reports (report_id nil e reported_type nil)
 
 ### Admin
 - [ ] Add "Make User into Curator" support

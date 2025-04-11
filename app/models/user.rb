@@ -24,7 +24,9 @@ class User < ApplicationRecord
   has_many :bookshelf_contains, through: :bookshelves, dependent: :destroy
   has_one :club, foreign_key: "curator_id", dependent: :destroy
 
-  has_many :reports, as: :reported, dependent: :destroy # TODO add memory of reports on user deletion
+  # TODO add memory of reports on user deletion
+  has_many :reports, as: :reported, dependent: :destroy
+  has_many :reports, foreign_key: :reporter_id, dependent: :destroy
 
   validates :email_address, presence: true,
             format: { with: URI::MailTo::EMAIL_REGEXP },

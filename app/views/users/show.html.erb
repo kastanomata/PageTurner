@@ -16,7 +16,7 @@
         </div>
       </section>
       <div class="btn-link">
-        <%= render 'reports/report_form', reported_id: @user, reporter_id: Current.user, type: "User" %>
+        <%= render 'reports/report_button', reported: @user if Current.user.present? %>
       </div>
    
   

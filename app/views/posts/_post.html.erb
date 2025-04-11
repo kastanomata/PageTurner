@@ -12,7 +12,10 @@
     <%# end %>
   </div>
   <div style="margin-top: 10px;">
-    <%= render 'reports/report_form', reported_id: @post, reporter_id: Current.user, type: "Post" %>
+    <% if authenticated? %>
+      <% LoggingUtility.log @post%>
+      <%= render 'reports/report_button', reported: @post%>
+    <% end %>
   </div>
   <div class="post-body" style="display: flex; gap: 20px;">
     <% if @post.book %>

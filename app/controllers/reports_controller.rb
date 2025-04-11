@@ -25,11 +25,18 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     respond_to do |format|
       if @report.save
-        format.html
-        format.json { render :show, status: :created, location: @report }
+        # Turbo Stream response to update the button
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(
+            "report-button-#{@report.reported_id}",
+            partial: "reports/reported_button",
+            locals: { reported: @report.reported }
+          )
+        end
+        format.html { head :no_content } # Fallback
       else
-        format.html
-        format.json { render json: @report.errors, status: :unprocessable_entity }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("report-button-#{@report.reported_id}", partial: "reports/report_button", locals: { reported: @report.reported }) }
+        format.html { head :unprocessable_entity }
       end
     end
   end
@@ -65,6 +72,6 @@ class ReportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def report_params
-      params.expect(report: [ :reporter_id, :reported_id, :reported_type ])
+      params.require(:report).permit(:reporter_id, :reported_id, :reported_type)
     end
 end

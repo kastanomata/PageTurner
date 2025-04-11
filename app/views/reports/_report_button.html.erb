@@ -1,0 +1,12 @@
+<%= button_to "Report #{reported.class.name}", reports_path,
+  params: { 
+    report: { 
+      reporter_id: Current.user.id,
+      reported_id: reported.id,
+      reported_type: reported.class.name 
+    }
+  },
+  data: { turbo: true },
+  class: "report-button",
+  id: "report-button-#{dom_id(reported)}"  # Safer DOM ID generation
+%>

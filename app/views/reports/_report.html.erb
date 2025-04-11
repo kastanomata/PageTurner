@@ -4,12 +4,16 @@
     <span><strong>Reporter:</strong> <%= link_to reporter.nickname, user_path(reporter) %> (<%= reporter.email_address %>)</span>
     
     <% if report.reported %>
-      <% case report.reported.class.name %>
+      <% case report.reported_type %>
       <% when "Post" %>
-        <span><strong>Reported Post:</strong> 
-          <%= link_to report.reported.title.truncate(100), post_path(report.reported) %></span>
-        <span><strong>Author:</strong> 
-          <%= link_to report.reported.user.nickname, user_path(report.reported.user) %></span>
+        <span>
+          <strong>Reported Post:</strong> 
+          <%= link_to report.reported.title.truncate(100), post_path(report.reported) %>
+        </span>
+        <span> 
+          <strong>Author:</strong> 
+            <%= link_to report.reported.author.nickname, user_path(report.reported.author) %>          
+        </span>
       <% when "User" %>
         <span><strong>Reported User:</strong> 
           <%= link_to report.reported.nickname, user_path(report.reported) %></span>
