@@ -1,9 +1,6 @@
 <h2>Post Recenti</h2>
-<% if @posts.any? %>
-    <%
-        # FIXME
-        posts = Current.user.get_homepage_posts
-    %>
+<% posts = Current.user.get_homepage_posts %>
+<% if posts.any? %>
     <ul>
         <%= render partial: 'posts/postcard', collection: posts, as: :post %>
     </ul>

@@ -46,7 +46,7 @@ module SeedingUtility
         if book_details
           Book.create!(isbn: book_attributes[:isbn], title: book_details[:title], thumbnail: book_details[:thumbnail])
         else
-          # log_star("Book not found: #{book_attributes[:_codename]}")
+          warning "Book not found: #{book_attributes[:_codename]}"
         end
       end
     end

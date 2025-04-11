@@ -2,7 +2,6 @@
   <% if post.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,6 +9,11 @@
       </ul>
     </div>
   <% end %>
+
+  <div>
+    <%= form.label :isbn, "Book ISBN", style: "display: block" %>
+    <%= form.text_field :isbn %>
+  </div>
 
   <div>
     <%= form.label :title, style: "display: block" %>

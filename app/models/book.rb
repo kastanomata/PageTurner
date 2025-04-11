@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   validates :isbn, presence: true, uniqueness: true
-
-  def self.find_or_create_by_isbn!(isbn)
+  
+  def self.find_or_create_by_isbn!(isbn) 
     book = find_by(isbn: isbn)
     return book if book
 

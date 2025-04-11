@@ -9,7 +9,6 @@
         <% 
             if Current.user&.email_address == bookshelf.creator 
                 @bookshelf_contains = BookshelfContain.find_by(name: bookshelf.name, creator: bookshelf.creator, book: book.isbn)
-                # log_star @bookshelf_contains.inspect
         %>
             <%= button_to 'Remove', bookshelf_contain_path(name: bookshelf.name, creator: bookshelf.creator, book: book.isbn), method: :delete, class: 'btn btn-danger', style: 'padding: 5px 10px;' %>
         <% end %>

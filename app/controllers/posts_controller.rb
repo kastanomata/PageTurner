@@ -23,10 +23,10 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Current.user.posts.new(post_params)
+    @post = Current.user.posts.new(post_params.except(:isbn))
 
     begin
-      @book = Book.find_or_create_by_isbn!(params[:isbn])
+      @book = Book.find_or_create_by_isbn!(params[:post][:isbn])
       @post.book = @book
 
       if @post.save
@@ -72,10 +72,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.expect(post: [ :title, :text ])
-    end
-
-    def post_params
-      params.require(:post).permit(:content, :isbn)
+      params.require(:post).permit(:title, :text, :isbn)
     end
 end

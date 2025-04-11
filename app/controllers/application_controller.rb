@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def check_nickname
     if authenticated? && Current.user&.nickname.nil?
-      # log_star("User #{Current.user.id} has no nickname set.")
+      ("User #{Current.user.id} has no nickname set.")
       redirect_to "/users/#{Current.user&.id}/edit"
     end
   end

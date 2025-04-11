@@ -1,7 +1,6 @@
 <div class="bookshelves">
     <% 
       user.bookshelves.each do |bookshelf| 
-        # log_star "bookshelf: #{bookshelf.inspect}"
         class_name = bookshelf.is_user_bound?(user) ? "special-bookshelf bookshelf" : "bookshelf"
     %>
     <div class="<%=class_name%>">

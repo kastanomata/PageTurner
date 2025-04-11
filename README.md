@@ -83,7 +83,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Bookshelf -> creator (email) to creator_id (references user)
 - [x] Clubs -> curator (email) to curator_id (references user)
 - [x] Posts -> creator (email) to poster_id (references user), [club, curator] to club_id, book (isbn) to book_id 
-- [ ] Reports -> add polymorphic associations support
+- [x] Reports -> add polymorphic associations support
 
 ### Testing
 

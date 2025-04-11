@@ -24,7 +24,7 @@ module InitializeUtility
   def initialize_bookclub(bookclub)
     # Create special bookshelves for each bookclub
     read_bookshelf  = bookclub.curator.create_bookshelf(name: "#{bookclub.name}'s Read Books", club: bookclub.id, special: :true)
-    # FIXME Populate the special bookshelves with books from the bookclub's posts
+    # Populate the special bookshelves with books from the bookclub's posts
     bookclub.posts.each do |post|
       read_bookshelf.add_book(post.book)
     end

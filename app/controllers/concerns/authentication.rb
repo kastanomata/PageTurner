@@ -28,7 +28,6 @@ module Authentication
     end
 
     def require_authentication(level = nil)
-      # # log_star("level " + level.to_s)
       resume_session(level) || request_authentication(level)
     end
 
@@ -49,7 +48,6 @@ module Authentication
         session[:return_to_after_authenticating] = request.url
         redirect_to new_session_path
       elsif level == "admin"
-        # # log_star("not " + level.to_s)
         render template: "errors/unauthorized", status: :unauthorized
       end
     end
