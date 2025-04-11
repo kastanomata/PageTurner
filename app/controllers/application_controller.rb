@@ -1,7 +1,5 @@
 class ApplicationController < ActionController::Base
   include Authentication
-  include LoggingUtility
-
   # Remove or avoid any global authentication enforcement
   # allow_unauthenticated_access # Comment this out if present
 
