@@ -23,7 +23,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = current_user.posts.new(post_params)
+    @post = Current.user.posts.new(post_params)
 
     begin
       @book = Book.find_or_create_by_isbn!(params[:isbn])

@@ -55,14 +55,19 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ### Posts
 - [x] Add interaction (comments, likes) support
 - [ ] Style comments and likes
+- [ ] Create Posts (params[:isbn] è nil)
 
 ### Bookclubs
+- [ ] Create Club (problema con il campo creator del form)
 - [ ] Add "New post" button/form
 - [ ] Add report bookclub button
 - [ ] Add support for "Community posts" from curator
 - [ ] Add events
 - [ ] Add support for group reading
 - [ ] Add calendar (?)
+
+### Reports
+- [ ] Generate reports (report_id nil e reported_type nil)
 
 ### Admin
 - [ ] Add "Make User into Curator" support
