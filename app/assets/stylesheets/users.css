@@ -1,25 +1,36 @@
-/*.show-container {
-  max-width: 1400px;
+.split-container {
+  display: flex;
+  gap: 20px;
+  max-width: 95vw;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  border-color: #ddd;
+}
+
+.left-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.right-column {
+  flex: 2;
+  height: 100%;
+}
+
+.user-info,
+.reporting,
+.user-description {
+  border: 1px solid #dddddd; /* bordino grigio chiaro */
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-*/
-
-.user-header {
-  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
 }
 
-.user-header h1 {
-  margin: 0;
-}
-
-.user-content {
-  margin-bottom: 20px;
-}
 
 .bookshelves, .posts {
   margin-top: 20px;

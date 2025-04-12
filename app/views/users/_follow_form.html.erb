@@ -1,5 +1,5 @@
 <% unless @user.id == Current.user&.id %>
-  <div id="follow_form">
+  <div style="align-items: center">
   <% if Current.user&.following?(@user) %>
     <%= render 'unfollow' %>
   <% else %>

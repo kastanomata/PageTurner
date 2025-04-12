@@ -1,10 +1,10 @@
-.container {
+.container-edit {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center; /* Allinea il testo al centro */
-    max-width: 200px;
+    max-width: 250px;
     margin:  50px auto; /* Margine superiore e inferiore di 50px */
     padding: 20px;
     background-color: #fff;

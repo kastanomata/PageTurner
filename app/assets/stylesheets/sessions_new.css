@@ -73,14 +73,6 @@
     background-color: #0056b3;
   }
   
-  /* Stile per i link, ad esempio per il recupero della password */
-  .btn-link {
-    color: #007bff;
-    text-decoration: none;
-    font-size: 1.1em;
-    margin-top: 10px;
-  }
-  
   .btn-link:hover {
     text-decoration: underline;
   }
@@ -103,17 +95,7 @@
   }
   
   /* Aggiungi uno sfondo chiaro al corpo per migliorare l'aspetto */
-/*
-  body {
-    background-color: #f4f4f9;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-*/  
+ 
   /* Formazione del contenitore principale per centratura */
   .form-container {
     text-align: left;
