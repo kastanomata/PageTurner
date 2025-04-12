@@ -2,6 +2,7 @@ class Bookshelf < ApplicationRecord
   belongs_to :creator, class_name: "User"
   has_many :bookshelf_contains, dependent: :destroy
   has_many :books, through: :bookshelf_contains
+  accepts_nested_attributes_for :books # , through: :bookshelf_contains
 
   validates :name, presence: true, uniqueness: { scope: [ :creator ] }
   # validates :description, length: { maximum: 255 }

@@ -1,8 +1,8 @@
+<%# _form.html.erb %>
 <%= form_with(model: bookshelf) do |form| %>
   <% if bookshelf.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(bookshelf.errors.count, "error") %> prohibited this bookshelf from being saved:</h2>
-
       <ul>
         <% bookshelf.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -16,12 +16,134 @@
     <%= form.text_field :name %>
   </div>
 
-  <div>
-    <%= form.label :creator, style: "display: block" %>
-    <%= form.text_field :creator %>
+  <!-- ISBN Fields Container -->
+  <div class="isbn-fields-container">
+    <div class="isbn-field-group">
+      <div class="input-group">
+        <div class="isbn-input">
+          <%= text_field_tag "bookshelf[book_isbns][]", nil, 
+                class: "book-isbn", 
+                autocomplete: "off",
+                placeholder: "Enter ISBN" %>
+          <div class="search-results"></div>
+        </div>
+        <div class="book-title-display"></div>
+      </div>
+    </div>
   </div>
 
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const container = document.querySelector('.isbn-fields-container');
+  
+  container.addEventListener('input', function(e) {
+    if (e.target.classList.contains('book-isbn')) {
+      handleISBNInput(e.target);
+    }
+  });
+
+  container.addEventListener('click', function(e) {
+    const resultItem = e.target.closest('.search-result-item');
+    if (resultItem) {
+      handleResultClick(resultItem);
+    }
+  });
+
+  function handleISBNInput(input) {
+    const isbn = input.value.trim();
+    const resultsDiv = input.parentElement.querySelector('.search-results');
+    
+    if (isbn.length >= 7) {
+      fetch(`/books.json?isbn=${encodeURIComponent(isbn)}`)
+        .then(response => response.json())
+        .then(books => {
+          if (books.length > 0) {
+            resultsDiv.innerHTML = `
+              <div class="search-results-list">
+                ${books.map(book => `
+                  <div class="search-result-item" 
+                       data-isbn="${book.isbn}"
+                       data-title="${book.title}">
+                    ${book.isbn} - ${book.title}
+                  </div>
+                `).join('')}
+              </div>`;
+          } else {
+            resultsDiv.innerHTML = '<div class="no-results">No books found</div>';
+          }
+        });
+    } else {
+      resultsDiv.innerHTML = '';
+    }
+  }
+
+  function handleResultClick(result) {
+    const group = result.closest('.isbn-field-group');
+    const isbnInput = group.querySelector('.book-isbn');
+    const titleDisplay = group.querySelector('.book-title-display');
+    
+    isbnInput.value = result.dataset.isbn;
+    titleDisplay.textContent = result.dataset.title;
+    group.querySelector('.search-results').innerHTML = '';
+
+    if (isLastInput(isbnInput)) {
+      addNewISBNField();
+    }
+  }
+
+  function addNewISBNField() {
+    const newGroup = document.createElement('div');
+    newGroup.className = 'isbn-field-group';
+    newGroup.innerHTML = `
+      <div class="input-group">
+        <div class="isbn-input">
+          <input type="text" 
+                 class="book-isbn" 
+                 name="bookshelf[book_isbns][]" 
+                 autocomplete="off"
+                 placeholder="Enter ISBN">
+          <div class="search-results"></div>
+        </div>
+        <div class="book-title-display"></div>
+      </div>
+    `;
+    container.appendChild(newGroup);
+  }
+
+  function isLastInput(input) {
+    const inputs = container.querySelectorAll('.book-isbn');
+    return input === inputs[inputs.length - 1];
+  }
+
+  addNewISBNField();
+});
+</script>
+
+<style>
+.input-group {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.isbn-input {
+  flex: 1;
+  position: relative;
+}
+
+.book-title-display {
+  flex: 1;
+  padding: 6px;
+  min-width: 300px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+}
+
+/* Keep previous search results styles */
+</style>

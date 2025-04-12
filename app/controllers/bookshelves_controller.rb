@@ -22,14 +22,17 @@ class BookshelvesController < ApplicationController
 
   # POST /bookshelves or /bookshelves.json
   def create
-    @bookshelf = Bookshelf.new(bookshelf_params)
+    @bookshelf = Current.user.bookshelves.build(bookshelf_params.except(:book_isbns))
 
     respond_to do |format|
       if @bookshelf.save
+        # Process ISBNs after save
+        process_isbns(@bookshelf)
+
         format.html { redirect_to @bookshelf, notice: "Bookshelf was successfully created." }
         format.json { render :show, status: :created, location: @bookshelf }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new }
         format.json { render json: @bookshelf.errors, status: :unprocessable_entity }
       end
     end
@@ -64,8 +67,21 @@ class BookshelvesController < ApplicationController
       @bookshelf = Bookshelf.find(params.expect(:id))
     end
 
-    # Only allow a list of trusted parameters through.
+    def process_isbns(bookshelf)
+      return unless params[:bookshelf][:book_isbns]
+
+      params[:bookshelf][:book_isbns].reject(&:blank?).each do |isbn|
+        book = Book.find_by(isbn: isbn)
+        next unless book
+
+        BookshelfContain.find_or_create_by(
+          bookshelf_id: bookshelf.id,
+          book_id: book.id
+        )
+      end
+    end
+
     def bookshelf_params
-      params.expect(bookshelf: [ :name, :creator ])
+      params.require(:bookshelf).permit(:name, book_isbns: [])
     end
 end

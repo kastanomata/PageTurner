@@ -4,7 +4,16 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.all
+    @books = if params[:isbn].present?
+              Book.where("isbn LIKE ?", "#{params[:isbn]}%")
+    else
+              Book.all
+    end
+
+    respond_to do |format|
+      format.html  # Regular HTML response
+      format.json { render json: @books.to_json(only: [ :id, :isbn, :title, :author ]) }
+    end
   end
 
   # GET /books/1 or /books/1.json

@@ -41,21 +41,23 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Fix curator's club bookshelves showing up on profile
 - [ ] Add a way to request becoming a curator
 - [ ] Add favorite book
+- [ ] Remove "Create new bookshelf" and "Create new post" buttons from other user pages
 
 ### Books
 - [ ] Fix books input from user
 - [ ] Fix books show (only admin can edit Books)
 
 ### Bookshelves
+- [ ] Bookshelf creation #styling
+- [ ] Bookshelf deletion and update
 - [ ] Special Bookshelves should not be modifiable
-- [ ] Bookshelf creation
 - [ ] Add "Add book to Bookshelf" functionality
 - [ ] Display Posts made about the books in the bookshelf
 
 ### Posts
 - [x] Add interaction (comments, likes) support
 - [ ] Style comments and likes
-- [ ] Create Posts (params[:isbn] è nil)
+- [x] Create Posts (params[:isbn] è nil)
 
 ### Bookclubs
 - [ ] Create Club (problema con il campo creator del form)
