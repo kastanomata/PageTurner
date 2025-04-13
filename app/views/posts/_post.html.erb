@@ -12,14 +12,11 @@
     <%# end %>
   </div>
   <div style="margin-top: 10px;">
-    <% if authenticated? %>
-      <% LoggingUtility.log @post%>
-      <%= render 'reports/report_button', reported: @post%>
-    <% end %>
+      <%= render 'reports/report_button', reported: @post if authenticated? and Current.user != @post.creator %>
   </div>
   <div class="post-body" style="display: flex; gap: 20px;">
     <% if @post.book %>
-      <%= render partial: "books/thumbnail", locals: { book: @post.book } %>
+      <%= render partial: "books/cover", locals: { book: @post.book } %>
     <% end %>
 
     <div class="post-content" style="flex: 2;">

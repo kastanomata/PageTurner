@@ -46,6 +46,8 @@ class BooksController < ApplicationController
       book_details = BookApiService.fetch_book_details(@book.isbn)
       @book.title = book_details[:title] if book_details[:title].present?
       @book.thumbnail = book_details[:thumbnail] if book_details[:thumbnail].present?
+      @book.cover = book_details[:cover] if book_details[:cover].present?
+      @book.poster = book_details[:poster] if book_details[:poster].present?
     end
 
     if @book.save
@@ -86,6 +88,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :isbn, :thumbnail)
+      params.require(:book).permit(:title, :isbn)
     end
 end

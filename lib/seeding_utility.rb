@@ -43,8 +43,9 @@ module SeedingUtility
         # log_star("Book details: #{book_details.inspect}")
         book_attributes[:created_at] = Time.now
         book_attributes[:updated_at] = Time.now
+        book_attributes.update(book_details)
         if book_details
-          Book.create!(isbn: book_attributes[:isbn], title: book_details[:title], thumbnail: book_details[:thumbnail])
+          Book.create!(book_attributes.except(:_codename))
         else
           warning "Book not found: #{book_attributes[:_codename]}"
         end

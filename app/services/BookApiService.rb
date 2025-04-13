@@ -11,7 +11,9 @@ class BookApiService
     if book_data
       {
         title: book_data["title"],
-        thumbnail: book_data.dig("cover", "medium")
+        thumbnail: book_data.dig("cover", "small"),
+        cover: book_data.dig("cover", "medium"),
+        poster: book_data.dig("cover", "large")
       }
     else
       {}

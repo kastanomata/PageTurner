@@ -20,6 +20,12 @@
   border-radius: 4px;
 }
 
+.book-cover {  
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
 .no-cover {
   width: 100%;
   height: 200px;

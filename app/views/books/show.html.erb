@@ -2,15 +2,15 @@
 
 <!-- 
   This is the show page for a single book
-  It displays the book's title, ISBN, and thumbnail 
+  It displays the book's title, ISBN, and cover image 
   if those information are available, otherwise it makes a 
   request to the openlibrary API to get the book's information
   and saves it in the database
 -->
 <% if @book.present? %>
   <div class="book-card">
-    <% if @book.thumbnail.present? %>
-      <img src="<%= @book.thumbnail %>" alt="Book cover" class="book-thumbnail">
+    <% if @book.poster.present? %>
+      <img src="<%= @book.poster %>" alt="Book cover" class="book-poster">
     <% else %>
       <div class="no-cover">No Cover Available</div>
     <% end %>

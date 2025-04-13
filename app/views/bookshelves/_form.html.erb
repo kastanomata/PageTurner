@@ -13,10 +13,10 @@
 
   <div>
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, autocomplete: "off" %>
   </div>
 
-  <!-- ISBN Fields Container -->
+  <!-- TODO put this into a partial? ISBN Fields Container -->
   <div class="isbn-fields-container">
     <div class="isbn-field-group">
       <div class="input-group">

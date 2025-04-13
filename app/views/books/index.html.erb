@@ -8,7 +8,7 @@
   <% @books.each do |book| %>
     <div class="book-card">
       <% if book.thumbnail.present? %>
-        <%= image_tag book.thumbnail, alt: "Cover of #{book.title}", class: "book-thumbnail" %>
+        <%= image_tag book.thumbnail, alt: "thumbnail of #{book.title}", class: "book-thumbnail" %>
       <% else %>
         <div class="no-cover">No Cover Available</div>
       <% end %>

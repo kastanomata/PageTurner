@@ -3,8 +3,8 @@
         <h2><%= post.title %></h2>
     </div>
     <div class="post-content" style="display: flex; gap: 1rem;">
-        <div class="thumbnail">
-            <%= render partial: "books/thumbnail", locals: { book: post.book } %>
+        <div class="cover">
+            <%= render partial: "books/cover", locals: { book: post.book } %>
         </div>
         <div class="post-details">
             <p><%= post.text %></p>

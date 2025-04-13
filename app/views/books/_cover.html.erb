@@ -1,0 +1,9 @@
+<div class="post-cover" style="text-align: center;">
+    <%= link_to book_path(book), class: "book-link" do %>
+        <% if book.cover.present? %>
+            <%= image_tag book.cover, alt: "Cover of #{book.title}", style: "display: block; margin: 0 auto; width: auto; height: 150px;" %>
+        <% else %>
+            <%= image_tag "bookart_not_found.png", alt: "cover not found", style: "display: block; margin: 0 auto; width: auto; height: 150px;" %>
+        <% end %>
+    <% end %>
+</div>
