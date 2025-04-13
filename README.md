@@ -26,7 +26,6 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 
 - [x] Fix navbar "logout" button not displaying correctly
 - [x] Style report buttons
-- [x] Add "Report Club" functionality
 - [ ] Add tab icon in browser
 
 ### Homepage 
@@ -45,14 +44,14 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 
 ### Books
 - [ ] Fix books input from user
-- [ ] Fix books show (only admin can edit Books)
+- [ ] Fix books show (only admin should be able to edit Books)
 
 ### Bookshelves
 - [ ] Bookshelf creation #styling
 - [ ] Bookshelf deletion and update
 - [ ] Special Bookshelves should not be modifiable
 - [ ] Add "Add book to Bookshelf" functionality
-- [ ] Display Posts made about the books in the bookshelf
+- [ ] Display Posts made about the books in the bookshelf show view
 
 ### Posts
 - [x] Add interaction (comments, likes) support
@@ -62,7 +61,8 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ### Bookclubs
 - [ ] Create Club (problema con il campo creator del form)
 - [ ] Add "New post" button/form
-- [ ] Add report bookclub button
+- [x] Add "Report Club" functionality support
+- [x] Add "Report Club" Button
 - [ ] Add support for "Community posts" from curator
 - [ ] Add events
 - [ ] Add support for group reading
