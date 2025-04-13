@@ -25,8 +25,8 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ## Work in Progress
 
 - [x] Fix navbar "logout" button not displaying correctly
-- [ ] Style report buttons
-- [ ] Add "Report Club" functionality
+- [x] Style report buttons
+- [ ] Add "Report Club" Button
 - [ ] Add tab icon in browser
 
 ### Homepage 

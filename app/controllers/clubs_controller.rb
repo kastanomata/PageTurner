@@ -22,7 +22,7 @@ class ClubsController < ApplicationController
 
   # POST /clubs or /clubs.json
   def create
-    @club = Club.new(club_params)
+    @club = Current.user.clubs.new(club_params)
 
     respond_to do |format|
       if @club.save
@@ -73,6 +73,6 @@ class ClubsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def club_params
-      params.fetch(:club, {})
+      params.require(:club).permit(:name)
     end
 end
