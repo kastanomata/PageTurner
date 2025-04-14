@@ -31,8 +31,10 @@
   <div class="user-content" style="display: flex; gap: 20px;">
     <div class="bookshelves" style="flex: 1;">
       <h2>Bookshelves
-      <%= link_to new_bookshelf_path, class: "new-post-btn" do %>
-       <span class="footer-button-container plus-icon">+</span>
+      <% if Current.user&.id == @user.id%>
+        <%= link_to new_bookshelf_path, class: "new-post-btn" do %>
+         <span class="footer-button-container plus-icon">+</span>
+        <% end %>
       <% end %>
       </h2>
         <%= render partial: 'bookshelves/user_index', locals: { user: @user } %>
@@ -41,8 +43,10 @@
 
     <div class="posts" style="flex: 1;">
       <h2>Posts
-      <%= link_to new_post_path, class: "new-post-btn" do %>
-       <span class="footer-button-container plus-icon">+</span>
+      <% if Current.user&.id == @user.id%>
+        <%= link_to new_post_path, class: "new-post-btn" do %>
+         <span class="footer-button-container plus-icon">+</span>
+        <% end %>
       <% end %>
       </h2>
         <% @user.posts.each do |post| %>
