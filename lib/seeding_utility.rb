@@ -35,17 +35,40 @@ module SeedingUtility
       end
     end
 
+
+    def seed_author(author_details)
+      return nil unless author_details[:openlibrary_id].present?
+
+      begin
+        Author.find_or_create_by!(openlibrary_id: author_details[:openlibrary_id]) do |author|
+          puts "Creating new author #{author_details[:name]}"
+          author.name = author_details[:name] || "Unknown Author"
+          author.bio = author_details[:bio] if author_details.key?(:bio)
+          author.born_on = author_details[:birth_date] if author_details.key?(:birth_date)
+          author.died_on = author_details[:death_date] if author_details.key?(:death_date)
+          author.remote_avatar_url = author_details[:portrait] if author_details[:portrait].present?
+        end
+      rescue ActiveRecord::RecordInvalid => e
+        Rails.logger.error "Author seeding failed: #{e.record.errors.full_messages.join(', ')}"
+        nil
+      rescue StandardError => e
+        Rails.logger.error "Unexpected error seeding author: #{e.message}"
+        nil
+      end
+    end
+
     # Seed data for books
     def seed_books
       books = load_json_file(Rails.root.join("db", "seeds", "books.json"))
       books.each do |book_attributes|
         book_details = BookApiService.fetch_book_details(book_attributes[:isbn])
-        # log_star("Book details: #{book_details.inspect}")
-        book_attributes[:created_at] = Time.now
-        book_attributes[:updated_at] = Time.now
         book_attributes.update(book_details)
+        author_details = BookApiService.fetch_author_details(book_attributes[:author_openlibrary_id])
         if book_details
-          Book.create!(book_attributes.except(:_codename))
+          seed_author(author_details)
+          book_attributes[:created_at] = Time.now
+          book_attributes[:updated_at] = Time.now
+          Book.create!(book_attributes.except(:_codename, :author_openlibrary_id))
         else
           warning "Book not found: #{book_attributes[:_codename]}"
         end
