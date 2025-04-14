@@ -27,7 +27,8 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Fix navbar "logout" button not displaying correctly
 - [x] Style report buttons
 - [ ] Add tab icon in browser
-
+- [ ] Add "404 - Not Found"
+ 
 ### Homepage 
 - [ ] Add "New post" button/form
 - [x] Add Guest User homepage 
@@ -45,6 +46,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ### Books
 - [ ] Fix books input from user
 - [ ] Fix books show (only admin should be able to edit Books)
+- [ ] Add buttons on book show page to quickly add the book to read or liked bookshelf
 
 ### Bookshelves
 - [ ] Bookshelf creation #styling
@@ -93,14 +95,6 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ### Errors
 - [ ] Fix error navbar not showing correctly
 - [ ] Render correct errors based on context
-
-
-
-
-
-
-
-#
 
 ---
 
