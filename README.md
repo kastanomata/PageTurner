@@ -48,6 +48,9 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Fix books show (only admin should be able to edit Books)
 - [ ] Add buttons on book show page to quickly add the book to read or liked bookshelf
 
+### Authors
+- [ ] Add styling for author's info on book page
+
 ### Bookshelves
 - [ ] Bookshelf creation #styling
 - [ ] Bookshelf deletion and update
@@ -57,7 +60,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 
 ### Posts
 - [x] Add interaction (comments, likes) support
-- [ ] Style comments and likes
+- [ ] Style comments and likes #styling
 - [x] Create Posts (params[:isbn] è nil)
 
 ### Bookclubs
