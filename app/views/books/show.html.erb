@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <!-- 
   This is the show page for a single book
   It displays the book's title, ISBN, and cover image 
@@ -16,6 +14,7 @@
     <% end %>
     <h3><%= @book.title %></h3>
     <p>ISBN: <%= @book.isbn %></p>
+    <%= add_book_to_bookshelf_buttons @book %>
   </div>
 <% else %>
   <p>Book not found.</p>

@@ -92,8 +92,13 @@ class User < ApplicationRecord
 
   # Gets the special bookshelves for the user (not the club specific ones)
   def get_special_bookshelves
-    bookshelves.where(bookclub: nil, special: true)
+    special_bookshelves = bookshelves.where(bookclub: nil, special: true)
+    [
+      special_bookshelves.where("title ILIKE ?", "%read%"),
+      special_bookshelves.where("title ILIKE ?", "%liked%")
+    ]
   end
+
 
   def curator_club
     Club.find_by(curator_id: id)

@@ -11,7 +11,10 @@ Rails.application.routes.draw do
     resources :likes
   end
   resources :books
-  resources :bookshelves
+  resources :bookshelves do
+    post "add_book", on: :member
+    delete "remove_book", on: :member
+  end
   resources :reports, only: [ :create, :index, :destroy ]
 
   resources :bookshelf_contains, only: [ :create, :destroy ]

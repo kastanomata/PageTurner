@@ -31,8 +31,8 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
  
 ### Homepage 
 - [x] Add Guest User homepage 
-- [ ] Add "New post" button/form
 - [x] Order bookshelves
+- [ ] Add "New post" button/form
 - [ ] Divide special bookshelves from user-created
 - [ ] Add club infocard to the right
 
