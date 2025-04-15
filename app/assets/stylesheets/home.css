@@ -13,16 +13,16 @@
 }
 
 .center-section {
-    background-color: #549F93;
+    background-color: ebebeb;
     margin-top: 20px;
     padding: 10px;
 }
 
 .right-section {
     background-color: #549F93;
+    padding: 10px;
     margin-top: 20px;
     margin-right: 10px;
-    padding: 10px;
 }
 
 .search-container {
@@ -120,3 +120,24 @@
     }
   }
   
+
+  .back-link {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .back-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e0e0e0;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-link:hover {
+    background-color: #cfcfcf;
+    text-decoration: underline;
+  }
