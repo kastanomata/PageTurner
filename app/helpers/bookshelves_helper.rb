@@ -1,22 +1,44 @@
 module BookshelvesHelper
   def render_user_bookshelves(user)
-    content_tag :div, class: "bookshelves-container" do
-      bookshelves = user.bookshelves
-      user_bookshelves = bookshelves.select { |b| b.special? && b.bookclub == nil }
-      club_bookshelves = bookshelves.select { |b| b.special? && !(b.bookclub == nil) }
-      other_bookshelves = bookshelves - user_bookshelves - club_bookshelves
+    bookshelves = user.bookshelves
+    user_bookshelves = bookshelves.select { |b| b.special? && b.bookclub.nil? }
+    club_bookshelves = bookshelves.select { |b| b.special? && b.bookclub.present? }
+    other_bookshelves = bookshelves - user_bookshelves - club_bookshelves
 
-      ordered_bookshelves = user_bookshelves + club_bookshelves + other_bookshelves
-      safe_join(
-        ordered_bookshelves.map do |bookshelf|
-          render partial: "bookshelves/bookshelf_card",
-                 locals: {
-                   bookshelf: bookshelf,
-                   class_name: bookshelf.is_user_bound?(user) ? "special-bookshelf bookshelf" : "bookshelf",
-                   show_bookclub_info: bookshelf.bookclub.present?
-                 }
-        end
-      )
+    content_parts = [ content_tag(:h2, "Your Bookshelves") ]
+
+    # User's special bookshelves
+    content_parts += user_bookshelves.map do |bookshelf|
+      render_bookshelf_card(bookshelf, user)
     end
+
+    # Other bookshelves
+    content_parts += other_bookshelves.map do |bookshelf|
+      render_bookshelf_card(bookshelf, user)
+    end
+
+    # Club bookshelves section
+    if club_bookshelves.any?
+      club_content = [
+        content_tag(:h2, "Club Bookshelves"),
+        *club_bookshelves.map { |bookshelf| render_bookshelf_card(bookshelf, user) }
+      ]
+      content_parts += club_content
+    end
+
+    content_tag :div, class: "bookshelves-container" do
+      safe_join(content_parts)
+    end
+  end
+
+  private
+
+  def render_bookshelf_card(bookshelf, user)
+    render partial: "bookshelves/bookshelf_card",
+           locals: {
+             bookshelf: bookshelf,
+             class_name: bookshelf.is_user_bound?(user) ? "special-bookshelf bookshelf" : "bookshelf",
+             show_bookclub_info: bookshelf.bookclub.present?
+           }
   end
 end

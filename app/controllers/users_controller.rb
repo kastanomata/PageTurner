@@ -40,7 +40,9 @@ class UsersController < ApplicationController
       if @user.save
         start_new_session_for @user
         # Create default bookshelves for the user
-        initialize_user(@user)
+        @user.create_bookshelf(name: "#{@user.nickname}'s Read Books", special: :true)
+        @user.create_bookshelf(name: "#{ @user.nickname}'s Liked Books", special: :true)
+
         format.html { redirect_to @user, notice: "User was successfully created." }
         format.json { render :update, status: :created, location: @user }
       else

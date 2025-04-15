@@ -38,8 +38,8 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 
 ### Users
 - [x] Remove "Create new bookshelf" and "Create new post" buttons from other user pages
-- [ ] Fix user autofollow on user create
-- [ ] Fix user description on user profile
+- [x] Fix user autofollow on user create
+- [x] Fix user description on user profile
 - [ ] Fix curator's club bookshelves showing up on profile
 - [ ] Add a way to request becoming a curator/author
 - [ ] Add favorite book
