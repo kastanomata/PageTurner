@@ -22,17 +22,32 @@
     text-decoration: none;
     float: right;
 }
+
 .footer-links {
     margin: 10px 0;
 }
+
 .footer-link {
-    margin: 0 10px;
-    color: #ffffff;
+    display: inline-block;
+    color: #ebebeb;
     text-decoration: none;
-}
+    font-weight: 500;
+    font-size: 1.4rem;
+    padding: 0.5rem 1rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  
 .footer-link:hover {
-    text-decoration: underline;
+    transform: scale(1.2);
+    color: #6184D8; /* soft blue */
 }
+  
+.footer-link.active {
+    border-bottom: 2px solid #6184D8;
+    color: #ebebeb;
+    color: #6184D8; /* soft blue */
+}
+  
 .footer-action {
     float: left;
 }

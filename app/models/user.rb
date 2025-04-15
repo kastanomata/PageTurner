@@ -90,15 +90,12 @@ class User < ApplicationRecord
     bookshelf
   end
 
+  # Gets the special bookshelves for the user (not the club specific ones)
   def get_special_bookshelves
     bookshelves.where(bookclub: nil, special: true)
   end
 
   def curator_club
     Club.find_by(curator_id: id)
-  end
-
-  def get_homepage_posts
-    Post.where(author_id: following_ids).order(created_at: :desc)
   end
 end

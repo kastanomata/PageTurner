@@ -12,7 +12,7 @@
     <%# end %>
   </div>
   <div style="margin-top: 10px;">
-      <%= render 'reports/report_button', reported: @post if authenticated? and Current.user != @post.author %>
+      <%= render_report_button @post %>
   </div>
   <div class="post-body" style="display: flex; gap: 20px;">
     <% if @post.book %>

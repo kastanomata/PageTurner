@@ -32,27 +32,3 @@
 }
 
 
-.bookshelves, .posts {
-  margin-top: 20px;
-  padding: 10px;
-  border: #ddd 1px solid;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  margin-bottom: 10px;
-}
-
-.bookshelf, .post {
-  border: 1px solid #ddd;
-  padding: 10px;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  margin-bottom: 10px;
-}
-
-.bookshelf h3, .post h3 {
-  margin: 0;
-}
-
-.bookshelf p, .post p {
-  margin: 5px 0;
-}

@@ -30,18 +30,20 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Add "404 - Not Found"
  
 ### Homepage 
-- [ ] Add "New post" button/form
 - [x] Add Guest User homepage 
+- [ ] Add "New post" button/form
+- [x] Order bookshelves
 - [ ] Divide special bookshelves from user-created
 - [ ] Add club infocard to the right
 
 ### Users
-- [ ] Add block user functionality
+- [x] Remove "Create new bookshelf" and "Create new post" buttons from other user pages
+- [ ] Fix user autofollow on user create
 - [ ] Fix user description on user profile
 - [ ] Fix curator's club bookshelves showing up on profile
-- [ ] Add a way to request becoming a curator
+- [ ] Add a way to request becoming a curator/author
 - [ ] Add favorite book
-- [ ] Remove "Create new bookshelf" and "Create new post" buttons from other user pages
+- [ ] Add block user functionality
 
 ### Books
 - [ ] Fix books input from user
@@ -52,7 +54,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Add styling for author's info on book page
 
 ### Bookshelves
-- [ ] Bookshelf creation #styling
+- [x] Bookshelf creation #styling
 - [ ] Bookshelf deletion and update
 - [ ] Special Bookshelves should not be modifiable
 - [ ] Add "Add book to Bookshelf" functionality
@@ -60,27 +62,27 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 
 ### Posts
 - [x] Add interaction (comments, likes) support
-- [ ] Style comments and likes #styling
 - [x] Create Posts (params[:isbn] è nil)
+- [ ] Style comments, likes and action buttons #styling
 
 ### Bookclubs
-- [ ] Create Club (problema con il campo creator del form)
-- [ ] Add "New post" button/form
 - [x] Add "Report Club" functionality support
 - [x] Add "Report Club" Button
+- [ ] Create Club (problema con il campo creator del form)
+- [ ] Add "New post" button/form
 - [ ] Add support for "Community posts" from curator
 - [ ] Add events
 - [ ] Add support for group reading
 - [ ] Add calendar (?)
 
 ### Reports
-- [ ] Add button to access root/reports#index
 - [x] Generate reports (report_id nil e reported_type nil)
+- [x] Add button to access root/reports#index
 
 ### Admin
+- [x] Should not be able edit post
 - [ ] Add "Make User into Curator" support
 - [ ] Add "Make User into Author" support
-- [ ] Should not be able edit post
 
 ### Routing
 - [ ] Add "Credits" redirect on footer
