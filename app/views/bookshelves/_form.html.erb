@@ -16,38 +16,31 @@
     <%= form.text_field :name, autocomplete: "off" %>
   </div>
 
-  <!-- TODO put this into a partial? ISBN Fields Container -->
-  <div class="isbn-fields-container">
-    <div class="isbn-field-group">
-      <div class="input-group">
-        <div class="isbn-input">
-          <%= text_field_tag "bookshelf[book_isbns][]", nil, 
-                class: "book-isbn", 
-                autocomplete: "off",
-                placeholder: "Enter ISBN" %>
-          <div class="search-results"></div>
-        </div>
-        <div class="book-title-display"></div>
-      </div>
+  <div class="form-container">
+    <div id="isbn-fields-wrapper">
+      <!-- I campi ISBN dinamici verranno inseriti qui -->
     </div>
-  </div>
 
-  <div>
-    <%= form.submit %>
+    <div class="form-group">
+      <%= form.submit "Submit", class: "btn-submit" %>
+    </div>
   </div>
 <% end %>
 
+
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const container = document.querySelector('.isbn-fields-container');
-  
-  container.addEventListener('input', function(e) {
+function initISBNForm() {
+  const wrapper = document.getElementById('isbn-fields-wrapper');
+
+  if (!wrapper) return;
+
+  wrapper.addEventListener('input', function (e) {
     if (e.target.classList.contains('book-isbn')) {
       handleISBNInput(e.target);
     }
   });
 
-  container.addEventListener('click', function(e) {
+  wrapper.addEventListener('click', function (e) {
     const resultItem = e.target.closest('.search-result-item');
     if (resultItem) {
       handleResultClick(resultItem);
@@ -57,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function handleISBNInput(input) {
     const isbn = input.value.trim();
     const resultsDiv = input.parentElement.querySelector('.search-results');
-    
+
     if (isbn.length >= 7) {
       fetch(`/books.json?isbn=${encodeURIComponent(isbn)}`)
         .then(response => response.json())
@@ -83,67 +76,50 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function handleResultClick(result) {
-    const group = result.closest('.isbn-field-group');
+    const group = result.closest('.form-group');
     const isbnInput = group.querySelector('.book-isbn');
     const titleDisplay = group.querySelector('.book-title-display');
-    
+
     isbnInput.value = result.dataset.isbn;
     titleDisplay.textContent = result.dataset.title;
     group.querySelector('.search-results').innerHTML = '';
 
     if (isLastInput(isbnInput)) {
-      addNewISBNField();
+      createISBNField();
     }
   }
 
-  function addNewISBNField() {
+  function createISBNField() {
     const newGroup = document.createElement('div');
-    newGroup.className = 'isbn-field-group';
+    newGroup.className = 'form-group';
     newGroup.innerHTML = `
-      <div class="input-group">
-        <div class="isbn-input">
-          <input type="text" 
-                 class="book-isbn" 
-                 name="bookshelf[book_isbns][]" 
-                 autocomplete="off"
-                 placeholder="Enter ISBN">
-          <div class="search-results"></div>
-        </div>
-        <div class="book-title-display"></div>
-      </div>
+      <label class="form-label">ISBN</label>
+      <input type="text" 
+             class="form-control book-isbn" 
+             name="bookshelf[book_isbns][]" 
+             autocomplete="off" 
+             placeholder="Enter ISBN">
+      <div class="search-results"></div>
+      <div class="book-title-display"></div>
     `;
-    container.appendChild(newGroup);
+    wrapper.appendChild(newGroup);
   }
 
   function isLastInput(input) {
-    const inputs = container.querySelectorAll('.book-isbn');
+    const inputs = wrapper.querySelectorAll('.book-isbn');
     return input === inputs[inputs.length - 1];
   }
 
-  addNewISBNField();
-});
+  // Assicurati che almeno un campo ci sia
+  if (wrapper.children.length === 0) {
+    createISBNField();
+  }
+}
+
+// Avvia lo script al momento giusto
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initISBNForm);
+} else {
+  initISBNForm(); // Esegui subito se il DOM è già pronto
+}
 </script>
-
-<style>
-.input-group {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 15px;
-}
-
-.isbn-input {
-  flex: 1;
-  position: relative;
-}
-
-.book-title-display {
-  flex: 1;
-  padding: 6px;
-  min-width: 300px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  background-color: #f8f9fa;
-}
-
-/* Keep previous search results styles */
-</style>

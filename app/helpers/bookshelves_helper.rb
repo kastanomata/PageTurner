@@ -1,6 +1,6 @@
 module BookshelvesHelper
   def render_user_bookshelves(user)
-    content_tag :div, class: "bookshelves" do
+    content_tag :div, class: "bookshelves-container" do
       safe_join(
         user.bookshelves.map do |bookshelf|
           class_name = bookshelf.is_user_bound?(user) ? "special-bookshelf bookshelf" : "bookshelf"
@@ -9,7 +9,7 @@ module BookshelvesHelper
             safe_join([
               content_tag(:h3, bookshelf.name),
               content_tag(:p, "Created at: #{bookshelf.created_at.strftime("%B %d, %Y")}"),
-              link_to("Show this bookshelf", bookshelf)
+              link_to("Show this bookshelf", bookshelf, class: "btn-link")
             ])
           end
         end
