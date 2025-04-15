@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_14_143944) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_15_151625) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -56,6 +56,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_14_143944) do
     t.string "cover"
     t.string "poster"
     t.string "openlibrary_id"
+    t.integer "author_id"
+    t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["isbn"], name: "index_books_on_isbn", unique: true
   end
 
@@ -174,6 +176,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_14_143944) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "books", "authors"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "omni_auth_identities", "users"

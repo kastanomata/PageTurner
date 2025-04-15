@@ -32,24 +32,30 @@ class BookApiService
     end
   end
 
-  def self.fetch_author_details(openlibrary_id)
+  def self.fetch_author_details(openlibrary_id, deep = 0)
     begin
       url = URI("https://openlibrary.org/authors/#{openlibrary_id}.json")
       response = Net::HTTP.get(url)
       return {} if response.empty?
 
       author_data = JSON.parse(response)
-
-      {
+      if deep == 0
+        {
         openlibrary_id: openlibrary_id,
         name: author_data["name"]
-        # bio: author_data.dig("bio", "value") || "No biography available",
-        # birth_date: author_data["birth_date"],
-        # death_date: author_data["death_date"],
-        # photos: author_data["photos"] || [],
-        # thumbnail: author_photo_url(author_data["photos"], :small),
-        # portrait: author_photo_url(author_data["photos"], :medium)
-      }
+        }
+      elsif deep == 1
+        {
+        openlibrary_id: openlibrary_id,
+        name: author_data["name"],
+        bio: author_data["bio"] || "No biography available",
+        birth_date: author_data["birth_date"],
+        death_date: author_data["death_date"],
+        photos: author_data["photos"] || [],
+        thumbnail: author_photo_url(author_data["photos"], :small),
+        portrait: author_photo_url(author_data["photos"], :medium)
+        }
+      end
     rescue JSON::ParserError, URI::InvalidURIError, Net::HTTPError => e
       Rails.logger.error "Author fetch error: #{e.message}"
       {}

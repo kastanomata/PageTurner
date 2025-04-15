@@ -5,7 +5,7 @@ module BooksHelper
     return unless read_button || liked_button
 
     content_tag :div, class: "bookshelf-buttons d-flex gap-2" do
-      safe_join([read_button, liked_button].compact)
+      safe_join([ read_button, liked_button ].compact)
     end
   end
 

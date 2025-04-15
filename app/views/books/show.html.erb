@@ -20,6 +20,8 @@
   <p>Book not found.</p>
 <% end %>
 
+<%= render 'authors/author_card', author: @book.author %>
+
 <div>
   <%= link_to "Back to books", books_path %>
 </div>

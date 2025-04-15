@@ -40,7 +40,7 @@ module SeedingUtility
       return nil unless author_details[:openlibrary_id].present?
 
       begin
-        Author.find_or_create_by!(openlibrary_id: author_details[:openlibrary_id]) do |author|
+        new_author = Author.find_or_create_by!(openlibrary_id: author_details[:openlibrary_id]) do |author|
           puts "Creating new author #{author_details[:name]}"
           author.name = author_details[:name] || "Unknown Author"
           author.bio = author_details[:bio] if author_details.key?(:bio)
@@ -55,17 +55,20 @@ module SeedingUtility
         Rails.logger.error "Unexpected error seeding author: #{e.message}"
         nil
       end
+      new_author
     end
 
     # Seed data for books
     def seed_books
       books = load_json_file(Rails.root.join("db", "seeds", "books.json"))
       books.each do |book_attributes|
+        puts "Creating book #{book_attributes[:_codename]}"
         book_details = BookApiService.fetch_book_details(book_attributes[:isbn])
         book_attributes.update(book_details)
         author_details = BookApiService.fetch_author_details(book_attributes[:author_openlibrary_id])
         if book_details
-          seed_author(author_details)
+          author = seed_author(author_details)
+          book_attributes[:author] = author
           book_attributes[:created_at] = Time.now
           book_attributes[:updated_at] = Time.now
           Book.create!(book_attributes.except(:_codename, :author_openlibrary_id))
