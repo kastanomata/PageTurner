@@ -3,6 +3,7 @@ require "test_helper"
 class BooksControllerTest < ActionDispatch::IntegrationTest
   setup do
     @book = books(:one)
+    @other_book = books(:two)
   end
 
   test "should get index" do

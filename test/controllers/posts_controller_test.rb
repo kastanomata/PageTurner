@@ -3,6 +3,7 @@ require "test_helper"
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @post = posts(:one)
+    @other_post = posts(:two)
   end
 
   test "should get index" do

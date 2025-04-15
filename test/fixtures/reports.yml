@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  reporter_id: MyString
-  reported_id: MyString
-  reported_type: MyString
+  reporter_id: 1
+  reported_id: 2
+  reported_type: Post
 
 two:
-  reporter_id: MyString
-  reported_id: MyString
-  reported_type: MyString
+  reporter_id: 2
+  reported_id: 1
+  reported_type: Club

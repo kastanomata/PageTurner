@@ -3,6 +3,7 @@ require "test_helper"
 class CommentsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @comment = comments(:one)
+    @other_comment = comments(:two)
   end
 
   test "should get index" do
