@@ -5,7 +5,7 @@ module PostsHelper
     # Posts list
     if user.posts.any?
       content << safe_join(
-        user.posts.map { |post| render("posts/postcard", post: post) }
+        user.posts.map { |post| render("posts/post_card", post: post) }
       )
     end
 

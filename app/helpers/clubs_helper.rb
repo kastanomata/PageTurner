@@ -4,32 +4,37 @@ module ClubsHelper
 
     content = [ content_tag(:h3, "Curators") ]
 
-    list_items = []
+    clubs_data = []
 
     # Add user's curator club if present
     if (your_club = user.curator_club).present?
-      list_items << content_tag(:li) do
-        safe_join([
-          link_to("You (#{user.nickname})", user_path(user)),
-          " - ",
-          link_to(your_club.name, club_path(your_club))
-        ])
-      end
+      clubs_data << {
+        club: your_club,
+        curator: user,
+        is_current_user: true
+      }
     end
 
     # Add active memberships
     user.active_memberships.each do |membership|
-      list_items << content_tag(:li) do
-        safe_join([
-          link_to(membership.club.curator.nickname, user_path(membership.club.curator)),
-          " - ",
-          link_to(membership.club.name, club_path(membership.club))
-        ])
-      end
+      clubs_data << {
+        club: membership.club,
+        curator: membership.club.curator,
+        is_current_user: false
+      }
     end
 
-    content << content_tag(:div, class: "curator-list") do
-      content_tag(:ul, safe_join(list_items))
+    content << content_tag(:div, class: "club-list") do
+      safe_join(
+        clubs_data.map do |data|
+          render partial: "clubs/club_card",
+                 locals: {
+                   club: data[:club],
+                   curator: data[:curator],
+                   is_current_user: data[:is_current_user]
+                 }
+        end
+      )
     end
 
     safe_join(content)

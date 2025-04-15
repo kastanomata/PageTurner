@@ -5,7 +5,7 @@ module HomesHelper
     content = [ content_tag(:h2, "Post Recenti") ]
 
     if posts.any?
-      list_content = render(partial: "posts/postcard", collection: posts, as: :post)
+      list_content = render(partial: "posts/post_card", collection: posts, as: :post)
       content << content_tag(:ul, list_content)
     else
       content << content_tag(:p, "Nessun post disponibile.")

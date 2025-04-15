@@ -1,17 +1,20 @@
 module BookshelvesHelper
   def render_user_bookshelves(user)
     content_tag :div, class: "bookshelves-container" do
-      safe_join(
-        user.bookshelves.map do |bookshelf|
-          class_name = bookshelf.is_user_bound?(user) ? "special-bookshelf bookshelf" : "bookshelf"
+      bookshelves = user.bookshelves
+      user_bookshelves = bookshelves.select { |b| b.special? && b.bookclub == nil }
+      club_bookshelves = bookshelves.select { |b| b.special? && !(b.bookclub == nil) }
+      other_bookshelves = bookshelves - user_bookshelves - club_bookshelves
 
-          content_tag :div, class: class_name do
-            safe_join([
-              content_tag(:h3, bookshelf.name),
-              content_tag(:p, "Created at: #{bookshelf.created_at.strftime("%B %d, %Y")}"),
-              link_to("Show this bookshelf", bookshelf, class: "btn-link")
-            ])
-          end
+      ordered_bookshelves = user_bookshelves + club_bookshelves + other_bookshelves
+      safe_join(
+        ordered_bookshelves.map do |bookshelf|
+          render partial: "bookshelves/bookshelf_card",
+                 locals: {
+                   bookshelf: bookshelf,
+                   class_name: bookshelf.is_user_bound?(user) ? "special-bookshelf bookshelf" : "bookshelf",
+                   show_bookclub_info: bookshelf.bookclub.present?
+                 }
         end
       )
     end
