@@ -1,9 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  text: MyString
+  title: "Che Post!"
+  text: "Che Mina!"
+  author_id: 1
+  book_id: 1
+  club_id: 1
+  curator: 2
+  id: 1
 
 two:
-  title: MyString
-  text: MyString
+  title: "Che Post!"
+  text: "Che Mina!"
+  author_id: 2
+  book_id: 2
+  id: 2

@@ -1,7 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  isbn: MyString
+  isbn: "9780618391110"
+  title: "The Silmarillion"
+  id: 1
 
 two:
-  isbn: MyString
+  isbn: "9780618346257"
+  title: "The Fellowship of the Ring"
+  id: 2

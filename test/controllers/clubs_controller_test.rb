@@ -3,6 +3,7 @@ require "test_helper"
 class ClubsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @club = clubs(:one)
+    @other_club = clubs(:two)
   end
 
   test "should get index" do
@@ -17,7 +18,7 @@ class ClubsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create club" do
     assert_difference("Club.count") do
-      post clubs_url, params: { club: {} }
+      post clubs_url, params: { club: { name: @club.name, description: @club.description, curator_id: @club.curator } }
     end
 
     assert_redirected_to club_url(Club.last)
@@ -34,7 +35,7 @@ class ClubsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update club" do
-    patch club_url(@club), params: { club: {} }
+    patch club_url(@club), params: { club: { name: @club.name, description: @club.description, curator_id: @club.curator } }
     assert_redirected_to club_url(@club)
   end
 

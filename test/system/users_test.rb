@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
   setup do
-    @user = users(:one)
+    @user = users(:three)
   end
 
   test "visiting the index" do
@@ -12,16 +12,17 @@ class UsersTest < ApplicationSystemTestCase
 
   test "should create user" do
     visit users_url
-    click_on "New user"
+    click_on "Register"
 
-    fill_in "Birthday", with: @user.birthday
-    fill_in "Description", with: @user.description
-    fill_in "Email", with: @user.email
-    fill_in "Nickname", with: @user.nickname
+    fill_in "Email address", with: @user.email_address
+    fill_in "Password", with: @user.password_digest
     click_on "Create User"
+    fill_in "Nickname", with: @user.nickname
+    fill_in "Description", with: @user.description
+    fill_in "Birthday", with: @user.birthday
+    click_on "Save Changes"
 
     assert_text "User was successfully created"
-    click_on "Back"
   end
 
   test "should update User" do

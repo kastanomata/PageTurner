@@ -3,6 +3,7 @@ require "test_helper"
 class ReportsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @report = reports(:one)
+    @other_report = reports(:two)
   end
 
   test "should get index" do

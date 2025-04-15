@@ -3,6 +3,7 @@ require "test_helper"
 class BookshelvesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @bookshelf = bookshelves(:one)
+    @other_bookshelf = bookshelves(:two)
   end
 
   test "should get index" do
