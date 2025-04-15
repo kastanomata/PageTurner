@@ -87,18 +87,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def admin?
-    authenticated? and self.admin == true
-  end
-
-  def owner?
-    authenticated? and self.id == Current.session&.id
-  end
-
-  def require_admin
-    render json: { message: "admin only, not authorized" }, status: :unauthorized unless current_user.admin?
-  end
-
   def following
     @title = "Following"
     @user  = User.find(params[:id])

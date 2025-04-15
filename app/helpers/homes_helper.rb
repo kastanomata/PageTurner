@@ -1,4 +1,5 @@
 module HomesHelper
+  # this renders the homepage posts specific to the logged-in user
   def render_homepage_posts(user)
     posts = Post.where(author_id: user.following_ids).order(created_at: :desc)
     content = [ content_tag(:h2, "Post Recenti") ]
@@ -13,8 +14,9 @@ module HomesHelper
     safe_join(content)
   end
 
+  # this renders the search form
   def render_search_form
-    content_tag :div, class: "search-container" do
+    content_tag :div do
       form_tag(search_path, method: :get) do
         safe_join([
           text_field_tag(:query, params[:query], placeholder: "Cerca..."),
