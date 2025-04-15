@@ -98,7 +98,4 @@ class User < ApplicationRecord
     Club.find_by(curator_id: id)
   end
 
-  def get_homepage_posts
-    Post.where(author_id: following_ids).order(created_at: :desc)
-  end
 end

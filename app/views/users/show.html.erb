@@ -5,21 +5,14 @@
     <div class="left-col">
       <div class="user-info">
         <h1><%= @user.nickname %></h1>
-        <% if Current.user&.admin? or @user.id == Current.user&.id %>
-          <%= link_to "Edit this user", edit_user_path(@user), class: "btn-link" %>
-        <% end %>
+        <%= link_to "Edit this user", edit_user_path(@user), class: "btn-link" if Current.user&.admin? or current_user_owns?(@user)%>
         
         <section class="stats">
-          <div>
-            <div>
-              <%= render 'shared/user_stats'%>
-              <%= render 'follow_form' if logged_in?%>
-            </div>
-          </div>
-        </div>
-      </section>
+              <%= render_user_relationships_widget @user%>
+        </section>
+      </div>
       <div class="btn-link">
-        <%= render 'reports/report_button', reported: @user if authenticated? and Current.user != @user %>
+        <%= render_report_button @user %>
       </div>
     </div>   
     <div class="righ-col">
@@ -37,7 +30,7 @@
         <% end %>
       <% end %>
       </h2>
-        <%= render partial: 'bookshelves/user_index', locals: { user: @user } %>
+        <%= render_user_bookshelves @user %>
       </div>
     </div>
 
@@ -49,9 +42,7 @@
         <% end %>
       <% end %>
       </h2>
-        <% @user.posts.each do |post| %>
-          <%= render partial: 'posts/postcard', locals: { post: post } %>
-        <% end %>
+        <%= render_user_posts @user %>
     </div>
   </div>
 </div>
