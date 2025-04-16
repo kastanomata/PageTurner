@@ -25,13 +25,16 @@ module SeedingUtility
     def seed_posts
       posts = load_json_file(Rails.root.join("db", "seeds", "posts.json"))
       posts.each do |post_attributes|
-        post_attributes[:author_id] = User.find_by(email_address: post_attributes[:author_email]).id
-        post_attributes[:book_id] = Book.find_by(isbn: post_attributes[:book_isbn]).id
-        post_attributes[:club_id] = Club.find_by(name: post_attributes[:club_name]).id if post_attributes[:club_name]
-        post_attributes[:club_id] ||= nil
-        post_attributes[:created_at] = Time.now
-        post_attributes[:updated_at] = Time.now
-        Post.create!(post_attributes.except(:author_email, :book_isbn, :club_name))
+        post_details = {}
+        post_details[:title] = post_attributes[:title]
+        post_details[:text] = post_attributes[:text]
+        post_details[:author_id] = User.find_by(email_address: post_attributes[:author_email]).id
+        post_details[:book_id] = Book.find_by(isbn: post_attributes[:book_isbn]).id
+        post_details[:club_id] = Club.find_by(name: post_attributes[:club_name]).id if post_attributes[:club_name]
+        post_details[:club_id] ||= nil
+        post_details[:created_at] = Time.now
+        post_details[:updated_at] = Time.now
+        Post.create!(post_details)
       end
     end
 
@@ -62,7 +65,7 @@ module SeedingUtility
     def seed_books
       books = load_json_file(Rails.root.join("db", "seeds", "books.json"))
       books.each do |book_attributes|
-        puts "Creating book #{book_attributes[:_codename]}"
+        # puts "Creating book #{book_attributes[:_codename]}"
         book_details = BookApiService.fetch_book_details(book_attributes[:isbn])
         book_attributes.update(book_details)
         author_details = BookApiService.fetch_author_details(book_attributes[:author_openlibrary_id])
@@ -109,5 +112,11 @@ module SeedingUtility
         bookclub_attributes[:updated_at] = Time.now
         Club.create!(bookclub_attributes.except(:curator_email))
       end
+    end
+
+    private
+
+    def random_time_between(start_time = 1.year.ago, end_time = Time.now)
+      Time.at(rand(start_time.to_f..end_time.to_f))
     end
 end
