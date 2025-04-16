@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
   resources :authors
-  resources :comments
   get "search", to: "search#index", as: "search"
 
   resources :clubs
   resource :session
+  get "session/new" => "sessions#new", as: :login
   resources :passwords, param: :token
   resources :users
   resources :posts do
     resources :likes
+    resources :comments
   end
   resources :books
   resources :bookshelves do
@@ -20,7 +21,6 @@ Rails.application.routes.draw do
   resources :bookshelf_contains, only: [ :create, :destroy ]
 
   delete "session/destroy" => "sessions#destroy", as: :logout
-  get "session/new" => "sessions#new", as: :login
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

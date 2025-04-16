@@ -28,12 +28,13 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Style report buttons
 - [ ] Add tab icon in browser
 - [ ] Add "404 - Not Found"
+- [ ] Seed more reviews for YA fantasy club
  
 ### Homepage 
 - [x] Add Guest User homepage 
 - [x] Order bookshelves
-- [ ] Add "New post" button/form
 - [x] Divide special bookshelves from user-created
+- [ ] Add "New post" button/form
 - [ ] Add club infocard to the right
 
 ### Users
