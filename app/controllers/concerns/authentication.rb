@@ -1,9 +1,11 @@
-include LoggingUtility
 module Authentication
+  include LoggingUtility
+  include OwnershipUtility
   extend ActiveSupport::Concern
 
   included do
     before_action :require_authentication
+    before_action :require_ownership, if: :ownership_required?
     helper_method :authenticated?
     helper_method :admin?
   end
@@ -33,6 +35,37 @@ module Authentication
 
     def require_authentication(level = nil)
       resume_session(level) || request_authentication(level)
+    end
+
+    def ownership_required?
+      %w[edit update destroy].include?(action_name)
+    end
+
+    def find_resource_by_params
+      model = controller_name.classify.safe_constantize
+      return unless model && params[:id]
+
+      begin
+        model.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        nil
+      end
+    end
+
+    def require_ownership
+      # param-based lookup
+      resource ||= find_resource_by_params
+
+      # Handle missing resource
+      unless resource
+        redirect_to root_path, alert: "Resource not found."
+        return
+      end
+
+      # Check ownership
+      unless current_user_owns?(resource)
+        redirect_to unauthorized_path
+      end
     end
 
     def resume_session(level = nil)

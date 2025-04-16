@@ -9,18 +9,6 @@
     <%= link_to "Books", books_path, class: "navbar-link #{'active' if current_page?(books_path)}" %>
   </div>
   <div class="navbar-user">
-    <% if authenticated? %>
-      <div class="navbar-dropdown">
-        <button class="navbar-dropdown-toggle"><%= link_to Current.user&.nickname, user_path(Current.user&.id), class: "navbar-dropdown-item" %></button>
-          <div class="navbar-dropdown-menu">
-            <%= link_to "Profilo", user_path(Current.user&.id), class: "navbar-dropdown-item" %>
-            <%= link_to "Edit user", edit_user_path(Current.user&.id), class: "navbar-dropdown-item" %>
-            <%= button_to "Logout", logout_path, method: :delete, class: "navbar-dropdown-item"%>
-        </div>
-      </div>
-    <% else %>
-      <%= link_to "Login", new_session_path, class: "navbar-link" %>
-      <%= link_to "Register", new_user_path, class: "navbar-link" %>
-    <% end %>
+    <%= user_navbar_content %>
   </div>
 </nav>

@@ -55,9 +55,10 @@ Rails.application.routes.draw do
   end
   resources :memberships, only: [ :create, :destroy ]
 
-  # Defines the root path route ("/")
-  root "homes#index"
-
   # Defines error paths
   get "/unauthorized", to: "errors#unauthorized", as: :unauthorized
+  get "/not_found", to: "errors#not_found", as: :not_found
+
+  # Defines the root path route ("/")
+  root "homes#index"
 end
