@@ -53,6 +53,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* inutili?  
 .post-header {
   margin-bottom: 20px;
 }
@@ -68,4 +69,4 @@
 .actions {
   display: flex;
   gap: 10px;
-}
+} */
