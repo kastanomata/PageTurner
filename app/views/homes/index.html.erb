@@ -5,7 +5,32 @@
     </div>
 
     <div class="center-section">
+    <div style="padding: 10px; border: #ddd 1px solid; border-radius: 8px; background-color: #549F93;">
+     <div class="postcard-container">
+        <div class="postcard">
+          <!-- Lato sinistro -->
+          <div class="postcard-left">
+            <div class="book-image-container">
+              <img src="book.jpg" alt="Book Cover" class="book-image">
+            </div>
+          </div>
+
+          <!-- Lato destro -->
+          <div class="postcard-right">
+            <div class="post-header">
+              New Post
+            </div>
+            <div class="postcard-form-container">
+              <form>
+                 <%= render "posts/form", post: @post %>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <%= render_homepage_posts Current.user %>
+      </div>
     </div>
 
     <div class="right-section">

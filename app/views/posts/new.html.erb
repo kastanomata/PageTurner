@@ -1,11 +1,29 @@
 <% content_for :title, "New post" %>
 
-<h1>New post</h1>
+<div class="postcard-container">
+  <div class="postcard">
+    <!-- Lato sinistro -->
+    <div class="postcard-left">
+      <div class="book-image-container">
+        <img src="book.jpg" alt="Book Cover" class="book-image">
+      </div>
+    </div>
 
-<%= render "form", post: @post %>
+    <!-- Lato destro -->
+    <div class="postcard-right">
+      <div class="post-header">
+        New Post
+      </div>
+      <div class="postcard-form-container">
+        <form>
+           <%= render "form", post: @post %>
+        </form>
+      </div>
+    </div>
+  </div>
 
-<br>
+    <div class="back-link">
+      <%= link_to "Back to posts", posts_path, class: "btn-link" %>
+    </div>
 
-<div>
-  <%= link_to "Back to posts", posts_path %>
 </div>
