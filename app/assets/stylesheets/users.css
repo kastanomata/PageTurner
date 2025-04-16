@@ -32,3 +32,21 @@
 }
 
 
+.user-content {
+  display: flex;
+  gap: 24px;
+  padding: 20px;
+  align-items: flex-start;
+}
+
+.bookshelves--user {
+  max-width: 20%;
+  flex: 1;
+  border-right: 1px solid #ddd;
+  padding-right: 16px;
+}
+
+.posts--user {
+  flex: 2;
+  padding-left: 16px;
+}

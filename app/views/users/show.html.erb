@@ -21,8 +21,8 @@
   </div>
 
 
-  <div class="user-content" style="display: flex; gap: 20px;">
-    <div class="bookshelves" style="flex: 1;">
+  <div class="user-content">
+    <div class="bookshelves bookshelves--user">
       <h2>Bookshelves
       <% if Current.user&.id == @user.id%>
         <%= link_to new_bookshelf_path, class: "new-post-btn" do %>
@@ -30,19 +30,20 @@
         <% end %>
       <% end %>
       </h2>
-        <%= render_user_bookshelves @user %>
-      </div>
+      <%= render_user_bookshelves @user %>
     </div>
 
-    <div class="posts" style="flex: 1;">
+    <div class="posts posts--user">
       <h2>Posts
-      <% if Current.user&.id == @user.id%>
-        <%= link_to new_post_path, class: "new-post-btn" do %>
-         <span class="footer-button-container plus-icon">+</span>
+        <% if Current.user&.id == @user.id%>
+          <%= link_to new_post_path, class: "new-post-btn" do %>
+           <span class="footer-button-container plus-icon">+</span>
+          <% end %>
         <% end %>
-      <% end %>
       </h2>
-        <%= render_user_posts @user %>
+      <%= render_user_posts @user %>
     </div>
+
   </div>
+
 </div>
