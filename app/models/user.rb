@@ -90,6 +90,7 @@ class User < ApplicationRecord
     bookshelf
   end
 
+  # Gets the special bookshelves for the user (not the club specific ones)
   def get_special_bookshelves
     bookshelves.where(bookclub: nil, special: true)
   end
@@ -97,5 +98,4 @@ class User < ApplicationRecord
   def curator_club
     Club.find_by(curator_id: id)
   end
-
 end

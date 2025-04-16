@@ -24,6 +24,8 @@
 
   
   <body>
+  <%= tag.div(flash[:alert], class: "flash-message alert") if flash[:alert] %>
+  <%= tag.div(flash[:notice], class: "flash-message notice") if flash[:notice] %>
   <% unless controller.controller_name == 'errors' %>
     <%= render "layouts/navbar" %>
   <% end %>
