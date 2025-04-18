@@ -11,7 +11,9 @@
           <!-- Lato sinistro -->
           <div class="postcard-left">
             <div class="book-image-container">
-              <img src="book.jpg" alt="Book Cover" class="book-image">
+               <% if @post.book %>
+                <%= render partial: "books/poster", locals: { book: @post.book }, class: "book-image" %>
+              <% end %>
             </div>
           </div>
 
@@ -34,9 +36,6 @@
     </div>
 
     <div class="right-section">
-      <div class="search-container">
-        <%= render_search_form %>
-      </div>
       <div class="clubs-container">
         <%= render_user_clubs Current.user %>
       </div>

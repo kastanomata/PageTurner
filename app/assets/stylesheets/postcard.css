@@ -7,6 +7,7 @@
     min-height: 50vh;
     background-color: #f8f8f8;
     border-radius: 16px;
+    margin-top: 10px;
   }
   
   /* Cartolina */
@@ -19,17 +20,24 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: height 0.3s ease;
+    align-items: stretch;
   }
   
   /* Lato sinistro */
   .postcard-left {
     flex: 1;
     display: flex;
+    justify-content: center;
     align-items: center;
-    overflow: hidden;
     border-right: 1px solid #ddd;
+  }
+
+  .postcard-image-container {
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .book-image-container {

@@ -1,9 +1,15 @@
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 60px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0 20px;
   background-color: #1f2937; /* dark gray */
   color: #ffffff;
 }
@@ -24,7 +30,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 15px;
 }
 
 .navbar-link {
@@ -52,7 +58,9 @@
   display: flex;
   gap: 1rem;
   font-size: 2rem;
-  align-items: right;
+  align-items: center;
+  justify-items: center;
+  margin-right: 20px;
 }
 
 .navbar-user .navbar-username {
@@ -159,4 +167,10 @@
 .navbar-dropdown-item:hover {
   background-color: #60a5fa;
   color: #ffffff;
+}
+
+.search-container {
+  margin-top: 10px;
+  padding: 5px;
+  margin: 0 auto;
 }

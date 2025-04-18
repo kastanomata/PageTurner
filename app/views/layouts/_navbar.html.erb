@@ -8,6 +8,12 @@
     <%= link_to "Bookshelves", bookshelves_path, class: "navbar-link #{'active' if current_page?(bookshelves_path)}" %>
     <%= link_to "Books", books_path, class: "navbar-link #{'active' if current_page?(books_path)}" %>
   </div>
+
+  <div class="search-container">
+    <%= render_search_form %>
+  </div>
+
+
   <div class="navbar-user">
     <% if authenticated? %>
       <div class="navbar-dropdown">
