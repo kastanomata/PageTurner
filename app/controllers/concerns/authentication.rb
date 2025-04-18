@@ -16,6 +16,10 @@ module Authentication
     def require_admin_access(**options)
       before_action -> { require_authentication("admin") }, **options
     end
+
+    def current_user
+      Current.user
+    end
   end
 
   private

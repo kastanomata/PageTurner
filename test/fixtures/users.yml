@@ -1,7 +1,7 @@
 
 one:
   email_address: one@example.com
-  password_digest: <%= password_digest = BCrypt::Password.create("password") %>
+  password_digest: <%= BCrypt::Password.create("password") %>
   nickname: "Spada"
   description: "So na Spada"
   birthday: "10/02/2005"
@@ -11,7 +11,7 @@ one:
 
 two:
   email_address: two@example.com
-  password_digest: <%= password_digest = BCrypt::Password.create("password") %>
+  password_digest: <%= BCrypt::Password.create("password") %>
   nickname: "Scudo"
   description: "So no Scudo"
   birthday: "10/02/2005"
@@ -21,7 +21,7 @@ two:
 
 three:
   email_address: three@example.com
-  password_digest: <%= password_digest = BCrypt::Password.create("password") %>
+  password_digest: <%= BCrypt::Password.create("password") %>
   nickname: "Cavallo"
   description: "So un Cavallo"
   birthday: "10/02/2005"

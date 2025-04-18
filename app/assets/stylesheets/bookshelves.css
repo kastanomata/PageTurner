@@ -1,22 +1,29 @@
-#bookshelves {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
 .bookshelf {
   border: 1px solid #ddd;
-  padding: 20px;
+  padding: 10px;
   border-radius: 8px;
-  background-color: #fff;
+  margin-top:  10px;
+  margin-bottom:  15px;
+  margin-right: 10px;
+  margin-left: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: whitesmoke;
+}
+
+.bookshelves-container {
+  padding: 10px;
+  border: #ddd 1px solid;
+  border-radius: 8px;
+  background-color: #ebebeb;
 }
 
 .bookshelf.special-bookshelf {
-  background-color: #f0f8ff;
+  background-color: whitesmoke;
   border: 2px solid rgb(2, 2, 47);
   padding: 10px;
   margin-bottom: 15px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .bookshelf h2 {
@@ -55,3 +62,5 @@
 .bookshelf-footer a:hover {
   text-decoration: underline;
 }
+
+ 

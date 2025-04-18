@@ -4,15 +4,15 @@
     <h1><%= @post.title %></h1>
   </div>
   <div class="post-meta" style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-    <!--# TODO add support for absent post author-->
     <p>Posted by: <%= link_to @post.author.nickname, user_path(@post.author) %></p>
+    <!--# TODO add support for absent post author-->
     <%# if @post.author %> 
     <%# else %>
 <!--      <p>Posted by: <em>[User not found]</em></p>-->
     <%# end %>
   </div>
   <div style="margin-top: 10px;">
-      <%= render 'reports/report_button', reported: @post if authenticated? and Current.user != @post.author %>
+      <%= render_report_button @post %>
   </div>
   <div class="post-body" style="display: flex; gap: 20px;">
     <% if @post.book %>
@@ -22,15 +22,10 @@
     <div class="post-content" style="flex: 2;">
       <p><%= @post.text %></p>
     </div>
-    <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-    <% if authenticated? %>
-      <% pre_like = @post.likes.find { |like| like.user_id == Current.user&.id} %>
-      <% if pre_like %>
-        <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
-      <% else %>
-        <%= button_to 'Like', post_likes_path(@post), method: :post %>
-      <% end %>
-    <% end %>
+    <div class="post-actions" style="flex: 2;">
+      <%= display_likes_count @post %>
+      <%= like_button @post %>
+    </div>
   </div>
 
 </div>

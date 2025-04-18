@@ -52,7 +52,7 @@ class ClubsController < ApplicationController
     @title = "Members"
     @club  = Club.find(params[:id])
     @members = @club.members.paginate(page: params[:page])
-    render "show_members"
+    render "memberships/show_members"
   end
 
   # DELETE /clubs/1 or /clubs/1.json

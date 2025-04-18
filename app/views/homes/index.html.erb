@@ -1,41 +1,49 @@
 <% if authenticated? %>
   <div class="page-layout">
     <div class="left-section">
-      <%= render partial: 'bookshelves/user_index', locals: { user: Current.user } %>
+        <%= render_user_bookshelves Current.user %>
     </div>
+
     <div class="center-section">
-      <%= render partial: 'posts/home_index' %>
+    <div style="padding: 10px; border: #ddd 1px solid; border-radius: 8px; background-color: #549F93;">
+     <div class="postcard-container">
+        <div class="postcard">
+          <!-- Lato sinistro -->
+          <div class="postcard-left">
+            <div class="book-image-container">
+              <img src="book.jpg" alt="Book Cover" class="book-image">
+            </div>
+          </div>
+
+          <!-- Lato destro -->
+          <div class="postcard-right">
+            <div class="post-header">
+              New Post
+            </div>
+            <div class="postcard-form-container">
+              <form>
+                 <%= render "posts/form", post: @post %>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= render_homepage_posts Current.user %>
+      </div>
     </div>
 
     <div class="right-section">
       <div class="search-container">
-        <%= form_tag search_path, method: :get do %>
-          <%= text_field_tag :query, params[:query], placeholder: "Cerca..." %>
-          <%= submit_tag "Cerca" %>
-        <% end %>
+        <%= render_search_form %>
       </div>
-
-      <h3>Curators</h3>
-      <div class="curator-list">
-        <ul>
-          <!--TODO export this into a partial-->
-          <% 
-            your_club = Current.user.curator_club 
-            unless your_club.nil? 
-          %>
-            <li> <%= link_to "You (#{Current.user.nickname})", user_path(Current.user) %> - <%= link_to your_club.name, club_path(your_club) %> </li>
-          <% end %>
-          
-          <% Current.user.active_memberships.each do |membership| %>
-            <li> <%= link_to membership.club.curator.nickname, user_path(membership.club.curator) %> - <%= link_to membership.club.name, club_path(membership.club) %> </li>
-          <% end %>
-        </ul> 
+      <div class="clubs-container">
+        <%= render_user_clubs Current.user %>
       </div>
     </div>
   </div>
 
 <% else %>
-
   <div class="container-big">
     <h1 >Welcome to the Home Page</h1>
     <p>Please sign in to access your account.</p>

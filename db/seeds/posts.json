@@ -1,5 +1,6 @@
 [
     {
+        "_number": 1,
         "title": "The Epic World of Middle-earth",
         "text": "The Silmarillion offers a profound dive into Tolkien's legendarium. The mythology and lore are unmatched in fantasy literature.",
         "author_email": "marcogialli@example.com",
@@ -7,6 +8,7 @@
         "club_name": "Mellon"
     },
     {
+        "_number": 2,
         "title": "A Classic Adventure: The Hobbit",
         "text": "The Hobbit is a timeless journey filled with courage and discovery. Bilbo's growth from a timid hobbit to a hero is inspiring.",
         "author_email": "giovanniblu@example.com",
@@ -14,100 +16,127 @@
         "club_name": "Mellon"
     },
     {
+        "_number": 3,
         "title": "Dystopia and Technology in 1984",
         "text": "Orwell's 1984 is a chilling reminder of the dangers of surveillance and authoritarianism. Its relevance to modern tech is unsettling.",
         "author_email": "alessandrotemperini@example.com",
-        "book_isbn": "9780451524935"
+        "book_isbn": "9780451524935",
+        "club_name": "Banned Books Brigade"
     },
     {
+        "_number": 4,
         "title": "The Heart of Classic Literature",
         "text": "Pride and Prejudice remains a masterpiece of wit and social commentary. Elizabeth Bennet's character is brilliantly crafted.",
         "author_email": "mariarosa@example.com",
-        "book_isbn": "9780141439518"
+        "book_isbn": "9780141439518",
+        "club_name": "Evergreen Book Club"
     },
     {
+        "_number": 5,
         "title": "Power Struggles in Westeros",
-        "text": "A Game of Thrones grips you with its intricate politics and moral ambiguity. The Stark family’s resilience is unforgettable.",
+        "text": "A Game of Thrones grips you with its intricate politics and moral ambiguity. The Stark family's resilience is unforgettable.",
         "author_email": "giovanniblu@example.com",
-        "book_isbn": "9780553103540"
+        "book_isbn": "9780553103540",
+        "club_name": "A Song of Ice and Fire"
     },
     {
+        "_number": 6,
         "title": "A Memoir of Courage",
-        "text": "The Diary of a Young Girl is a poignant reminder of hope during darkness. Anne Frank’s voice transcends time.",
+        "text": "The Diary of a Young Girl is a poignant reminder of hope during darkness. Anne Frank's voice transcends time.",
         "author_email": "alfredosegala@example.com",
-        "book_isbn": "9780553577129"
+        "book_isbn": "9780090549405",
+        "club_name": "Banned Books Brigade"
     },
     {
+        "_number": 7,
         "title": "Magic and Growing Up",
         "text": "Harry Potter and the Sorcerer's Stone is a magical start to an iconic series. Hogwarts feels like home.",
         "author_email": "elisabettaverdi@example.com",
-        "book_isbn": "9780590353427"
+        "book_isbn": "9780590353427",
+        "club_name": "YA Fantasy Lovers"
     },
     {
+        "_number": 8,
         "title": "A Journey of Self-Discovery",
-        "text": "The Alchemist beautifully illustrates the importance of following one’s dreams. Santiago’s journey is deeply motivating.",
+        "text": "The Alchemist beautifully illustrates the importance of following one's dreams. Santiago's journey is deeply motivating.",
         "author_email": "giovanniblu@example.com",
-        "book_isbn": "9780062315007"
+        "book_isbn": "9780062315007",
+        "club_name": "Evergreen Book Club"
     },
     {
+        "_number": 9,
         "title": "Love and Loss in Twilight",
-        "text": "Twilight’s blend of romance and supernatural elements makes it a compelling read. Bella’s choices spark endless debates.",
+        "text": "Twilight's blend of romance and supernatural elements makes it a compelling read. Bella's choices spark endless debates.",
         "author_email": "giulialilla@example.com",
-        "book_isbn": "9780316015844"
+        "book_isbn": "9780316015844",
+        "club_name": "YA Fantasy Lovers"
     },
     {
+        "_number": 10,
         "title": "A Dystopian Masterpiece",
-        "text": "Brave New World’s exploration of societal control and happiness is eerily prophetic. A must-read for tech enthusiasts.",
+        "text": "Brave New World's exploration of societal control and happiness is eerily prophetic. A must-read for tech enthusiasts.",
         "author_email": "alessandrotemperini@example.com",
-        "book_isbn": "9780060850524"
+        "book_isbn": "9780060850524",
+        "club_name": "Banned Books Brigade"
     },
-
     {
+        "_number": 11,
         "title": "The Depth of Tolkien's Mythology",
         "text": "The Silmarillion is a masterpiece of world-building. Tolkien's ability to craft an entire mythology is unparalleled.",
         "author_email": "marcogialli@example.com",
-        "book_isbn": "9780618391110"
+        "book_isbn": "9780618391110",
+        "club_name": "Mellon"
     },
     {
+        "_number": 12,
         "title": "The Fellowship Begins",
         "text": "The Fellowship of the Ring sets the stage for an epic journey. The camaraderie and looming danger keep you hooked.",
         "author_email": "giovanniblu@example.com",
-        "book_isbn": "9780618346257"
+        "book_isbn": "9780618346257",
+        "club_name": "Mellon"
     },
     {
+        "_number": 13,
         "title": "Middle-earth's Darkest Hour",
-        "text": "The Two Towers showcases resilience in the face of despair. Aragorn’s leadership shines here.",
+        "text": "The Two Towers showcases resilience in the face of despair. Aragorn's leadership shines here.",
         "author_email": "antonioturco@example.com",
-        "book_isbn": "9780618346264"
+        "book_isbn": "9780618346264",
+        "club_name": "Mellon"
     },
     {
+        "_number": 14,
         "title": "A Crownless King",
-        "text": "The Return of the King delivers a satisfying conclusion. Frodo’s sacrifice is heart-wrenching.",
+        "text": "The Return of the King delivers a satisfying conclusion. Frodo's sacrifice is heart-wrenching.",
         "author_email": "lucabianchi@example.com",
-        "book_isbn": "9780618346271"
+        "book_isbn": "9780618346271",
+        "club_name": "Mellon"
     },
     {
-        "title": "Bilbo’s Unexpected Journey",
-        "text": "The Hobbit is a charming adventure. Smaug’s introduction is unforgettable!",
+        "_number": 15,
+        "title": "Bilbo's Unexpected Journey",
+        "text": "The Hobbit is a charming adventure. Smaug's introduction is unforgettable!",
         "author_email": "giovanniblu@example.com",
         "book_isbn": "9780547928227",
         "club_name": "Mellon"
     },
     {
+        "_number": 16,
         "title": "Tragedy in Middle-earth",
-        "text": "The Children of Húrin is a dark, poetic tale. Tolkien’s prose feels ancient and timeless.",
+        "text": "The Children of Húrin is a dark, poetic tale. Tolkien's prose feels ancient and timeless.",
         "author_email": "mariarosa@example.com",
         "book_isbn": "9780261103665",
         "club_name": "Mellon"
     },
     {
+        "_number": 17,
         "title": "A Love Beyond Death",
-        "text": "Beren and Lúthien’s story is hauntingly beautiful. It’s Tolkien at his most romantic.",
+        "text": "Beren and Lúthien's story is hauntingly beautiful. It's Tolkien at his most romantic.",
         "author_email": "elisabettaverdi@example.com",
         "book_isbn": "9780007557271",
         "club_name": "Mellon"
     },
     {
+        "_number": 18,
         "title": "The Fall of a Hidden City",
         "text": "The Fall of Gondolin reads like an epic tragedy. The battle scenes are vividly detailed.",
         "author_email": "antonioturco@example.com",
@@ -115,191 +144,243 @@
         "club_name": "Mellon"
     },
     {
-        "title": "Númenor’s Hubris",
+        "_number": 19,
+        "title": "Númenor's Hubris",
         "text": "The Fall of Númenor explores pride and downfall. A cautionary tale for any age.",
         "author_email": "marcogialli@example.com",
         "book_isbn": "9780008433949",
         "club_name": "Mellon"
     },
     {
-        "title": "Middle-earth’s Natural Philosophy",
-        "text": "The Nature of Middle-earth deepens Tolkien’s world. Perfect for lore enthusiasts!",
+        "_number": 20,
+        "title": "Middle-earth's Natural Philosophy",
+        "text": "The Nature of Middle-earth deepens Tolkien's world. Perfect for lore enthusiasts!",
         "author_email": "alessandrotemperini@example.com",
         "book_isbn": "9780008387969",
         "club_name": "Mellon"
     },
     {
+        "_number": 21,
         "title": "Unfinished but Unforgettable",
-        "text": "Unfinished Tales offers tantalizing glimpses into Middle-earth’s untold stories.",
+        "text": "Unfinished Tales offers tantalizing glimpses into Middle-earth's untold stories.",
         "author_email": "giulialilla@example.com",
         "book_isbn": "9780007309368",
         "club_name": "Mellon"
     },
     {
+        "_number": 22,
         "title": "A Throne of Swords and Schemes",
         "text": "A Game of Thrones is brutal yet brilliant. The political machinations are addictive.",
         "author_email": "alfredosegala@example.com",
-        "book_isbn": "9780553103540"
+        "book_isbn": "9780553103540",
+        "club_name": "A Song of Ice and Fire"
     },
     {
+        "_number": 23,
         "title": "War for the Iron Throne",
-        "text": "A Clash of Kings escalates the stakes. Tyrion’s wit steals every scene.",
+        "text": "A Clash of Kings escalates the stakes. Tyrion's wit steals every scene.",
         "author_email": "giovanniblu@example.com",
-        "book_isbn": "9780553108033"
+        "book_isbn": "9780553108033",
+        "club_name": "A Song of Ice and Fire"
     },
     {
+        "_number": 24,
         "title": "Red Weddings and Regrets",
-        "text": "A Storm of Swords is a rollercoaster. Martin’s willingness to shock is unmatched.",
+        "text": "A Storm of Swords is a rollercoaster. Martin's willingness to shock is unmatched.",
         "author_email": "antonioturco@example.com",
-        "book_isbn": "9780553106633"
+        "book_isbn": "9780553106633",
+        "club_name": "A Song of Ice and Fire"
     },
     {
+        "_number": 25,
         "title": "Aftermath of Chaos",
-        "text": "A Feast for Crows slows the pace but deepens character arcs. Cersei’s chapters are riveting.",
+        "text": "A Feast for Crows slows the pace but deepens character arcs. Cersei's chapters are riveting.",
         "author_email": "mariarosa@example.com",
-        "book_isbn": "9780553801507"
+        "book_isbn": "9780553801507",
+        "club_name": "A Song of Ice and Fire"
     },
     {
+        "_number": 26,
         "title": "Dragons and Destiny",
-        "text": "A Dance with Dragons expands the world exponentially. Daenerys’s struggles feel deeply human.",
+        "text": "A Dance with Dragons expands the world exponentially. Daenerys's struggles feel deeply human.",
         "author_email": "giulialilla@example.com",
-        "book_isbn": "9780553801477"
+        "book_isbn": "9780553801477",
+        "club_name": "A Song of Ice and Fire"
     },
     {
-        "title": "A Spider’s Wisdom",
-        "text": "Charlotte’s Web teaches compassion in the simplest terms. A gem for all ages.",
+        "_number": 27,
+        "title": "A Spider's Wisdom",
+        "text": "Charlotte's Web teaches compassion in the simplest terms. A gem for all ages.",
         "author_email": "elisabettaverdi@example.com",
-        "book_isbn": "9780060006983"
+        "book_isbn": "9780060006983",
+        "club_name": "Evergreen Book Club"
     },
     {
+        "_number": 28,
         "title": "Big Brother is Watching",
-        "text": "1984’s dystopia feels closer than ever. A must-read for tech-minded readers.",
+        "text": "1984's dystopia feels closer than ever. A must-read for tech-minded readers.",
         "author_email": "alessandrotemperini@example.com",
-        "book_isbn": "9780451524935"
+        "book_isbn": "9780451524935",
+        "club_name": "Banned Books Brigade"
     },
     {
+        "_number": 29,
         "title": "Justice in Maycomb",
         "text": "To Kill a Mockingbird is a powerful exploration of morality. Atticus Finch remains iconic.",
         "author_email": "lucabianchi@example.com",
-        "book_isbn": "9780061120084"
+        "book_isbn": "9780061120084",
+        "club_name": "Banned Books Brigade"
     },
     {
-        "title": "A Farm’s Rebellion",
-        "text": "Animal Farm’s allegory is sharp and timeless. Orwell’s critique of power resonates.",
+        "_number": 30,
+        "title": "A Farm's Rebellion",
+        "text": "Animal Farm's allegory is sharp and timeless. Orwell's critique of power resonates.",
         "author_email": "antonioturco@example.com",
-        "book_isbn": "9780451526342"
+        "book_isbn": "9780451526342",
+        "club_name": "Banned Books Brigade"
     },
     {
-        "title": "Anne’s Light in Darkness",
+        "_number": 31,
+        "title": "Anne's Light in Darkness",
         "text": "The Diary of a Young Girl is heartbreaking yet hopeful. A vital historical document.",
         "author_email": "mariarosa@example.com",
-        "book_isbn": "9780553577129"
+        "book_isbn": "9780090549405",
+        "club_name": "Banned Books Brigade"
     },
     {
+        "_number": 32,
         "title": "Controversy and Craft",
-        "text": "Lolita’s prose is dazzling, but its subject matter challenges the reader. A literary paradox.",
+        "text": "Lolita's prose is dazzling, but its subject matter challenges the reader. A literary paradox.",
         "author_email": "elisabettaverdi@example.com",
-        "book_isbn": "9780141182537"
+        "book_isbn": "9780141182537",
+        "club_name": "Banned Books Brigade"
     },
     {
+        "_number": 33,
         "title": "A River of Freedom",
-        "text": "The Adventures of Huckleberry Finn confronts racism with nuance. Twain’s voice is unforgettable.",
+        "text": "The Adventures of Huckleberry Finn confronts racism with nuance. Twain's voice is unforgettable.",
         "author_email": "lucabianchi@example.com",
-        "book_isbn": "9780142437179"
+        "book_isbn": "9780142437179",
+        "club_name": "Banned Books Brigade"
     },
     {
+        "_number": 34,
         "title": "Voices of Resilience",
-        "text": "The Color Purple is raw and empowering. Celie’s journey is a testament to strength.",
+        "text": "The Color Purple is raw and empowering. Celie's journey is a testament to strength.",
         "author_email": "mariarosa@example.com",
-        "book_isbn": "9780156028356"
+        "book_isbn": "9780156028356",
+        "club_name": "Banned Books Brigade"
     },
     {
+        "_number": 35,
         "title": "A Society of Soma",
-        "text": "Brave New World’s vision of engineered happiness is terrifying. Huxley’s foresight is uncanny.",
+        "text": "Brave New World's vision of engineered happiness is terrifying. Huxley's foresight is uncanny.",
         "author_email": "alessandrotemperini@example.com",
-        "book_isbn": "9780060850524"
+        "book_isbn": "9780060850524",
+        "club_name": "Banned Books Brigade"
     },
     {
+        "_number": 36,
         "title": "Burning Books, Igniting Minds",
-        "text": "Fahrenheit 451 is a love letter to literature. Bradbury’s warnings about censorship still sting.",
+        "text": "Fahrenheit 451 is a love letter to literature. Bradbury's warnings about censorship still sting.",
         "author_email": "antonioturco@example.com",
-        "book_isbn": "9781451673319"
+        "book_isbn": "9781451673319",
+        "club_name": "Banned Books Brigade"
     },
     {
-        "title": "The Portrait’s Secret",
-        "text": "The Picture of Dorian Gray explores vanity and corruption. Wilde’s wit cuts deep.",
+        "_number": 37,
+        "title": "The Portrait's Secret",
+        "text": "The Picture of Dorian Gray explores vanity and corruption. Wilde's wit cuts deep.",
         "author_email": "elisabettaverdi@example.com",
-        "book_isbn": "9780141439570"
+        "book_isbn": "9780141439570",
+        "club_name": "Evergreen Book Club"
     },
     {
-        "title": "A Handmaid’s Silence",
-        "text": "The Handmaid’s Tale is chilling in its plausibility. Atwood’s dystopia feels uncomfortably close.",
+        "_number": 38,
+        "title": "A Handmaid's Silence",
+        "text": "The Handmaid's Tale is chilling in its plausibility. Atwood's dystopia feels uncomfortably close.",
         "author_email": "giulialilla@example.com",
-        "book_isbn": "9780385490818"
+        "book_isbn": "9780385490818",
+        "club_name": "Banned Books Brigade"
     },
     {
-        "title": "Holden’s Alienation",
-        "text": "The Catcher in the Rye captures teenage angst perfectly. Salinger’s voice is timeless.",
+        "_number": 39,
+        "title": "Holden's Alienation",
+        "text": "The Catcher in the Rye captures teenage angst perfectly. Salinger's voice is timeless.",
         "author_email": "lucabianchi@example.com",
-        "book_isbn": "9780316769488"
+        "book_isbn": "9780316769488",
+        "club_name": "Banned Books Brigade"
     },
     {
-        "title": "Gatsby’s Green Light",
-        "text": "The Great Gatsby’s critique of the American Dream is poetic. Fitzgerald’s prose is luminous.",
+        "_number": 40,
+        "title": "Gatsby's Green Light",
+        "text": "The Great Gatsby's critique of the American Dream is poetic. Fitzgerald's prose is luminous.",
         "author_email": "mariarosa@example.com",
         "book_isbn": "9780743273565"
     },
     {
-        "title": "Ahab’s Obsession",
-        "text": "Moby-Dick is a dense but rewarding epic. Melville’s digressions are a journey themselves.",
+        "_number": 41,
+        "title": "Ahab's Obsession",
+        "text": "Moby-Dick is a dense but rewarding epic. Melville's digressions are a journey themselves.",
         "author_email": "antonioturco@example.com",
         "book_isbn": "9780142437247"
     },
     {
+        "_number": 42,
         "title": "A Day in Dublin",
-        "text": "Ulysses is a labyrinth of language. Joyce’s experimentation redefines what a novel can be.",
+        "text": "Ulysses is a labyrinth of language. Joyce's experimentation redefines what a novel can be.",
         "author_email": "elisabettaverdi@example.com",
         "book_isbn": "9780141182803"
     },
     {
+        "_number": 43,
         "title": "Dust Bowl Desperation",
-        "text": "The Grapes of Wrath humanizes struggle. Steinbeck’s empathy for the Joads is profound.",
+        "text": "The Grapes of Wrath humanizes struggle. Steinbeck's empathy for the Joads is profound.",
         "author_email": "giovanniblu@example.com",
         "book_isbn": "9780141185064"
     },
     {
+        "_number": 44,
         "title": "Savagery vs. Civilization",
-        "text": "Lord of the Flies exposes the fragility of order. Golding’s allegory is brutally effective.",
+        "text": "Lord of the Flies exposes the fragility of order. Golding's allegory is brutally effective.",
         "author_email": "lucabianchi@example.com",
-        "book_isbn": "9780140283334"
+        "book_isbn": "9780140283334",
+        "club_name": "Banned Books Brigade"
     },
     {
-        "title": "Heathcliff’s Torment",
-        "text": "Wuthering Heights is a storm of passion and revenge. Brontë’s Gothic atmosphere is unmatched.",
+        "_number": 45,
+        "title": "Heathcliff's Torment",
+        "text": "Wuthering Heights is a storm of passion and revenge. Brontë's Gothic atmosphere is unmatched.",
         "author_email": "mariarosa@example.com",
-        "book_isbn": "9780141439556"
+        "book_isbn": "9780141439556",
+        "club_name": "Evergreen Book Club"
     },
     {
+        "_number": 46,
         "title": "Darcy and Prejudice",
-        "text": "Pride and Prejudice’s social satire is timeless. Elizabeth and Darcy’s banter is pure delight.",
+        "text": "Pride and Prejudice's social satire is timeless. Elizabeth and Darcy's banter is pure delight.",
         "author_email": "mariarosa@example.com",
-        "book_isbn": "9780141439518"
+        "book_isbn": "9780141439518",
+        "club_name": "Evergreen Book Club"
     },
     {
+        "_number": 47,
         "title": "Guilt and Redemption",
-        "text": "Crime and Punishment delves into the psyche of guilt. Dostoevsky’s psychological depth is staggering.",
+        "text": "Crime and Punishment delves into the psyche of guilt. Dostoevsky's psychological depth is staggering.",
         "author_email": "antonioturco@example.com",
         "book_isbn": "9780140449136"
     },
     {
-        "title": "A Family’s Turmoil",
-        "text": "The Brothers Karamazov wrestles with faith and doubt. Ivan’s chapters are philosophical gold.",
+        "_number": 48,
+        "title": "A Family's Turmoil",
+        "text": "The Brothers Karamazov wrestles with faith and doubt. Ivan's chapters are philosophical gold.",
         "author_email": "lucabianchi@example.com",
         "book_isbn": "9780140449242"
     },
     {
+        "_number": 49,
         "title": "Love and Society",
-        "text": "Anna Karenina is a sweeping exploration of passion and duty. Tolstoy’s characters feel achingly real.",
+        "text": "Anna Karenina is a sweeping exploration of passion and duty. Tolstoy's characters feel achingly real.",
         "author_email": "mariarosa@example.com",
         "book_isbn": "9780140447231"
     }

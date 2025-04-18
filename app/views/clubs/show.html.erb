@@ -2,12 +2,12 @@
 <h1>Book Club</h1>
 <div class="club-header">
   <%= render partial: "shared/club_stats", locals: { club: @club } %>
-  <%= render partial: "member_form", locals: { club: @club } %>
+  <%= render partial: "memberships/member_form", locals: { club: @club } %>
   <%= render @club %>
 </div>
 
 <div class="btn-link">
-  <%= render 'reports/report_button', reported: @club if authenticated? and Current.user != @club.curator %>
+  <%= render_report_button @club %>
 </div>
 
 <div class="club-content">
@@ -20,7 +20,7 @@
 
   <div class="club-posts">
     <% @club.posts.each do |post| %>
-      <%= render partial: "posts/postcard", locals: { post: post } %>
+      <%= render partial: "posts/post_card", locals: { post: post } %>
     <% end %>
   </div>
 

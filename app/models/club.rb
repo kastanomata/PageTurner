@@ -22,4 +22,8 @@ class Club < ApplicationRecord
   def is_member?(user)
     members.include?(user)
   end
+
+  def members_count
+    passive_memberships.count
+  end
 end

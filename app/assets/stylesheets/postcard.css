@@ -1,0 +1,72 @@
+/* Centra la cartolina */
+.postcard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+    min-height: 50vh;
+    background-color: #f8f8f8;
+  }
+  
+  /* Cartolina */
+  .postcard {
+    display: flex;
+    width: 800px;
+    min-height: 300px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: height 0.3s ease;
+  }
+  
+  /* Lato sinistro */
+  .postcard-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+  }
+  
+  .book-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .book-image {
+    max-width: 120px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+  
+  /* Lato destro */
+  .postcard-right {
+    flex: 2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .post-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .postcard-form-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content-textarea {
+    resize: vertical;
+    min-height: 80px;
+    max-height: 300px;
+  }
+  

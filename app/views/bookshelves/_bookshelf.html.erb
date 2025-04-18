@@ -9,7 +9,7 @@
           unless book.nil?
       %>
         <div>
-            <%= render partial: "books/bookcard", locals: { book: book, bookshelf: bookshelf} %>
+            <%= render partial: "books/book_card", locals: { book: book, bookshelf: bookshelf} %>
         </div>
       <%
           end

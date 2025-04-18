@@ -51,6 +51,20 @@ class BookshelvesController < ApplicationController
     end
   end
 
+  def add_book
+    @bookshelf = Bookshelf.find(params[:id])
+    @book = Book.find(params[:book_id])
+    @bookshelf.books << @book
+    redirect_back fallback_location: root_path
+  end
+
+  def remove_book
+    @bookshelf = Bookshelf.find(params[:id])
+    @book = Book.find(params[:book_id])
+    @bookshelf.books.delete(@book)
+    redirect_back fallback_location: root_path
+  end
+
   # DELETE /bookshelves/1 or /bookshelves/1.json
   def destroy
     @bookshelf.destroy!
@@ -82,6 +96,6 @@ class BookshelvesController < ApplicationController
     end
 
     def bookshelf_params
-      params.require(:bookshelf).permit(:name, book_isbns: [])
+      params.require(:bookshelf).permit(:name, :book_id, book_isbns: [])
     end
 end

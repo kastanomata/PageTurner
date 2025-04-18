@@ -40,7 +40,9 @@ class UsersController < ApplicationController
       if @user.save
         start_new_session_for @user
         # Create default bookshelves for the user
-        initialize_user(@user)
+        @user.create_bookshelf(name: "#{@user.nickname}'s Read Books", special: :true)
+        @user.create_bookshelf(name: "#{ @user.nickname}'s Liked Books", special: :true)
+
         format.html { redirect_to @user, notice: "User was successfully created." }
         format.json { render :update, status: :created, location: @user }
       else
@@ -87,30 +89,18 @@ class UsersController < ApplicationController
     end
   end
 
-  def admin?
-    authenticated? and self.admin == true
-  end
-
-  def owner?
-    authenticated? and self.id == Current.session&.id
-  end
-
-  def require_admin
-    render json: { message: "admin only, not authorized" }, status: :unauthorized unless current_user.admin?
-  end
-
   def following
     @title = "Following"
     @user  = User.find(params[:id])
     @users = @user.following.paginate(page: params[:page])
-    render "show_follow"
+    render "relationships/show_follow"
   end
 
   def followers
     @title = "Followers"
     @user  = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
-    render "show_follow"
+    render "relationships/show_follow"
   end
 
   def search

@@ -1,11 +1,13 @@
 <% content_for :title, "New bookshelf" %>
 
-<h1>New bookshelf</h1>
+<div class="form-container">
+  <h1>New bookshelf</h1>
 
-<%= render "form", bookshelf: @bookshelf %>
+  <%= render "form", bookshelf: @bookshelf %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Back to bookshelves", bookshelves_path %>
+  <div class="back-link", style="text-align: center; align-items: center;">
+    <%= link_to "Back to user", user_path(Current.user), class: "btn-link"%>
+  </div>
 </div>

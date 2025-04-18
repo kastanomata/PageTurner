@@ -1,0 +1,11 @@
+<div class="<%= local_assigns[:class_name] || 'bookshelf' %>">
+  <h3><%= link_to bookshelf.name, bookshelf, class: "btn-link" %></h3>
+  <p>Created at: <%= bookshelf.created_at.strftime("%B %d, %Y") %></p>
+  
+  <% if local_assigns[:show_bookclub_info] && bookshelf.bookclub %>
+    <p class="bookclub-info">
+      <% club = Club.find(bookshelf.bookclub)%>
+      Club: <%= link_to club.name, club_path(club) %>
+    </p>
+  <% end %>
+</div>
