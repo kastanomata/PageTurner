@@ -62,6 +62,8 @@ group :test do
   gem "selenium-webdriver"
 end
 
+gem "rails-controller-testing"
+
 # AUTHENTICATION
 gem "omniauth", "~> 2.1", ">= 2.1.2"
 gem "omniauth-rails_csrf_protection", "~> 1.0", ">= 1.0.2"
