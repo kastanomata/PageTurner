@@ -113,3 +113,18 @@
   font-size: 1.2rem;
   vertical-align: middle;
 }
+
+.post-show-container{
+  flex: 1;
+  max-width: 75;
+  background-color: #dfefff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.comment-container{
+  flex: 2;
+  background-color: #ffe0e0;
+  padding: 20px;
+  border-radius: 8px;
+}

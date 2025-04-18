@@ -36,11 +36,11 @@
   display: flex;
   gap: 24px;
   padding: 20px;
-  align-items: flex-start;
+  align-items: left;
 }
 
 .bookshelves--user {
-  max-width: 20%;
+  max-width: 25%;
   flex: 1;
   border-right: 1px solid #ddd;
   padding-right: 16px;
