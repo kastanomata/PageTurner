@@ -3,9 +3,11 @@
 one:
   reporter_id: 1
   reported_id: 2
-  reported_type: Post
+  reported_type: "Post"
+  id: 1
 
 two:
   reporter_id: 2
   reported_id: 1
   reported_type: Club
+  id: 2

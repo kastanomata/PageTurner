@@ -4,7 +4,7 @@ one:
   password_digest: <%= BCrypt::Password.create("password") %>
   nickname: "Spada"
   description: "So na Spada"
-  birthday: "10/02/2005"
+  birthday: "10-02-2005"
   admin: false
   is_curator: true
   id: 1
@@ -14,7 +14,7 @@ two:
   password_digest: <%= BCrypt::Password.create("password") %>
   nickname: "Scudo"
   description: "So no Scudo"
-  birthday: "10/02/2005"
+  birthday: "10-02-2005"
   admin: true
   is_curator: true
   id: 2
@@ -24,7 +24,7 @@ three:
   password_digest: <%= BCrypt::Password.create("password") %>
   nickname: "Cavallo"
   description: "So un Cavallo"
-  birthday: "10/02/2005"
+  birthday: "10-02-2005"
   admin: true
   is_curator: true
   id: 3

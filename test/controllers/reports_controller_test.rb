@@ -51,6 +51,7 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
   test "should destroy report" do
     post session_path, params: { email_address: @admin.email_address, password: "password" }
     assert_equal @admin.id, session[:user_id]
+    puts @report.inspect
     assert_difference("Report.count", -1) do
       delete report_path(@report)
     end

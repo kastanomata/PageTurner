@@ -27,7 +27,6 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
 
     assert_difference("Book.count") do
       post books_path, params: { book: { title: "The Hobbit", isbn: "9780547928227" } }
-      puts @response.body
     end
 
     assert_redirected_to book_path(Book.last)
