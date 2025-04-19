@@ -115,16 +115,11 @@
 }
 
 .post-show-container{
-  flex: 1;
-  max-width: 75;
-  background-color: #dfefff;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.comment-container{
-  flex: 2;
-  background-color: #ffe0e0;
-  padding: 20px;
-  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 65% 25%;
+  width: 100%;
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
 }

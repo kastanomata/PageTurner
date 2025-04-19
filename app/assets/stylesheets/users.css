@@ -36,7 +36,6 @@
   display: flex;
   gap: 24px;
   padding: 20px;
-  align-items: left;
 }
 
 .bookshelves--user {

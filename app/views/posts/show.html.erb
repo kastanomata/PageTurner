@@ -1,47 +1,43 @@
 <p style="color: green"><%= notice %></p>
-<div class="user-content" >
-  <div class="post-show-container">
-    <%= render @post %>
-  </div>
-  <div class="comment-container">
-    <% if Current.user&.admin? || @post.author == Current.user %>
-      <div style="display: flex; gap: 10px;">
-        <% if @post.author == Current.session&.id %>
-          <%= link_to "Edit this post", edit_post_path(@post) %>
-        <% end %>
-        <%= button_to "Destroy this post", @post, method: :delete %>
-      </div>
-    <% end %>
-  
-    <div>
-      <h3>Comments</h3>
-      <% if authenticated? %>
-        <div>
-          <%= render "comments/form", comment: @comment %>
-        </div>
-      <% else %>
-        <div>
-          <%= link_to "Log in to comment!", login_path %>
-        </div>
+
+<div class="user content">
+  <%= render @post %>
+
+  <% if Current.user&.admin? || @post.author == Current.user %>
+    <div class="admin-action">
+      <% if @post.author == Current.session&.id %>
+        <%= link_to "Edit this post", edit_post_path(@post) %>
       <% end %>
-      <br>
-      <% unless @post.comments.present? %>
-        <div>
+      <%= button_to "Destroy this post", @post, method: :delete %>
+    </div>
+  <% end %>
+
+  <div class="comment-container">
+      <h3>Comments</h3>
+
+      <div class="comments-scrollable">
+        <% unless @post.comments.present? %>
           <p>No comments yet.</p>
-        </div>
-      <% else %>
-        <div>
-          <br>
+        <% else %>
           <% @post.comments.each do |comment| %>
             <% # log_star comment.inspect %>
             <% if comment[:author_id].present? %>
-              <div>
-                <span><%= User.find(comment[:author_id]).nickname %></span>
+              <div class="comment">
+                <span><strong><%= User.find(comment[:author_id]).nickname %>:</strong></span>
                 <span><%= comment.text %></span>
               </div>
             <% end %>
           <% end %>
-          <br>
+        <% end %>
+      </div>
+      
+      <% if authenticated? %>
+        <div class="comment-form">
+          <%= render "comments/form", comment: @comment %>
+        </div>
+      <% else %>
+        <div class="comment-form">
+          <%= link_to "Log in to comment!", login_path %>
         </div>
       <% end %>
     </div>
