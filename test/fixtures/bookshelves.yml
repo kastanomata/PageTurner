@@ -5,9 +5,11 @@ one:
   creator_id: 1
   bookclub: 1
   special: false
+  id: 1
 
 two:
   name: "Alessandro De Rosa"
   creator_id: 2
   bookclub: nil
   special: true
+  id: 2

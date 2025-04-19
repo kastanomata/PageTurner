@@ -8,11 +8,7 @@ module ActiveSupport
     parallelize(workers: :number_of_processors)
 
     # Setup all fixtures in test/fixtures/*.yml for all tests.
-<<<<<<< HEAD
-    fixtures :users, :books, :clubs, :bookshelves, :bookshelf_contains, :relationships, :memberships, :posts, :likes, :comments, :reports
-=======
     fixtures :users, :authors, :books, :clubs, :bookshelves, :bookshelf_contains, :relationships, :memberships, :posts, :likes, :comments, :reports
->>>>>>> 62a5833
 
     # Add more helper methods to be used by all tests here...
   end

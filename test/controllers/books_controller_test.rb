@@ -4,10 +4,8 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
   setup do
     @book = books(:one)
     @other_book = books(:two)
-<<<<<<< HEAD
-=======
     @user = users(:one)
->>>>>>> 62a5833
+    @admin = users(:two)
   end
 
   test "should get index" do
@@ -16,20 +14,20 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    post session_path, params: { email_address: @user.email_address, password: "password" }
-    assert_equal @user.id, session[:user_id]
+    post session_path, params: { email_address: @admin.email_address, password: "password" }
+    assert_equal @admin.id, session[:user_id]
 
     get new_book_path
     assert_response :success
   end
 
   test "should create book" do
-    post session_path, params: { email_address: @user.email_address, password: "password" }
-    assert_equal @user.id, session[:user_id]
+    post session_path, params: { email_address: @admin.email_address, password: "password" }
+    assert_equal @admin.id, session[:user_id]
 
     assert_difference("Book.count") do
-      get books_path
-      patch new_book_path, params: { book: { title: "The Hobbit", isbn: "9780547928227" } }
+      post books_path, params: { book: { title: "The Hobbit", isbn: "9780547928227" } }
+      puts @response.body
     end
 
     assert_redirected_to book_path(Book.last)
