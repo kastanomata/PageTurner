@@ -4,6 +4,7 @@ module Authentication
   extend ActiveSupport::Concern
 
   included do
+    before_action :check_ban
     before_action :require_authentication
     before_action :require_ownership, if: :ownership_required?
     helper_method :authenticated?
@@ -66,6 +67,13 @@ module Authentication
       unless current_user_owns?(resource)
         redirect_to unauthorized_path
       end
+    end
+
+    def check_ban
+      return unless Current.user&.active_ban
+
+      ban =  Current.user.active_ban
+      redirect_to banned_user_path, alert: "Banned: #{ban.reason}. #{ban.expires_at ? "Expires: #{ban.expires_at}" : 'Permanent'}"
     end
 
     def resume_session(level = nil)

@@ -28,6 +28,9 @@ class User < ApplicationRecord
   has_many :reports, as: :reported, dependent: :destroy
   has_many :reports, foreign_key: :reporter_id, dependent: :destroy
 
+  has_many :bans, dependent: :destroy
+  has_many :moderated_bans, class_name: "Ban", foreign_key: "moderator_id"
+
   validates :email_address, presence: true,
             format: { with: URI::MailTo::EMAIL_REGEXP },
             uniqueness: { case_sensitive: false }
@@ -37,6 +40,8 @@ class User < ApplicationRecord
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
+
+  ## OAUTH ##
   def self.create_from_oauth(auth)
     email = auth.info.email
     user = self.new email_address: email, password: SecureRandom.base64(64).truncate_bytes(64)
@@ -53,6 +58,7 @@ class User < ApplicationRecord
     # save if first_name_changed? || last_name_changed?
   end
 
+  ## FOLLOW AND CLUB MEMBERSHIP SYSTEM ##
   # Follows a user.
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)
@@ -83,6 +89,11 @@ class User < ApplicationRecord
     partecipates.include?(club)
   end
 
+  def curator_club
+    Club.find_by(curator_id: id)
+  end
+
+  ## USER'S SPECIAL BOOKSHELVES ##
   # Creates a bookshelf for the user
   def create_bookshelf(name:, club: nil, special: false)
     bookshelf = Bookshelf.new(name: name, creator: self, bookclub: club, special: special)
@@ -99,8 +110,19 @@ class User < ApplicationRecord
     ]
   end
 
+  ## MODERATION TOOLS ##
+  # Displays the user active ban
+  def active_ban
+    bans.where("expires_at > ? OR expires_at IS NULL", Time.current).order(created_at: :desc).first
+  end
 
-  def curator_club
-    Club.find_by(curator_id: id)
+  # Checks if the user is currently banned
+  def temporarily_banned?
+    active_ban&.expires_at.present?
+  end
+
+  # Checks if the user is permanently banned
+  def permanently_banned?
+    active_ban&.expires_at.nil?
   end
 end

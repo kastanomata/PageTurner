@@ -1,14 +1,23 @@
-<div class="user-card" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px;">
-    <div class="user-info" style="display: flex;">
-        <span> <%= user.nickname %></span>
-        <span> &nbsp;&nbsp;|&nbsp;&nbsp; </span>
-        <span><strong> <%= user.email_address %> </strong> </span>
-    </div>
-    <div class="user-actions" style="display: flex; gap: 10px;">
-        <%= render partial: 'shared/roles', locals: { user: user } %>
-        <%= link_to 'Show', user_path(user), class: 'btn btn-primary', style: 'padding: 5px 10px;' %>
-        <% if admin? %>
-            <%= link_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'padding: 5px 10px;' %>
-        <% end %>
-    </div>
+<div class="user-card">
+  <div class="user-info">
+    <%= user.nickname %> | <strong><%= user.email_address %></strong>
+  </div>
+  
+  <div class="user-role">
+    <%= render 'shared/roles', user: user %>
+  </div>
+  <div class="moderation-state">
+    <%= user_ban_status(user) %>
+  </div>
+
+  <div class="user-actions">
+
+    <%= link_to "SHOW", user_path(user), class: "btn btn-primary btn-sm" %>
+    <%= ban_unban_button(user) %>
+    
+    <%= link_to "DELETE", user_path(user), 
+                method: :delete,
+                data: { confirm: "Permanently delete #{user.nickname}?" },
+                class: "btn btn-danger btn-sm" %>
+  </div>
 </div>

@@ -1,0 +1,10 @@
+<div class="alert alert-danger">
+  <h2>Your account has been banned</h2>
+  <p>Reason: <%= @ban.reason %></p>
+  <% if @ban.expires_at %>
+    <p>This ban will expire on: <%= @ban.expires_at.to_formatted_s(:long) %></p>
+  <% else %>
+    <p>This is a permanent ban.</p>
+  <% end %>
+  <p>Contact support if you believe this is an error.</p>
+</div>

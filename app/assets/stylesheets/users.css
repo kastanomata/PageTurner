@@ -22,13 +22,23 @@
   height: 100%;
 }
 
-.user-info,
-.reporting,
-.user-description {
-  border: 1px solid #dddddd; /* bordino grigio chiaro */
-  border-radius: 8px;
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Adds space between cards */
+}
+
+.user-card {
+  border: 1px solid #dddddd;
+  border-radius: 20px;
   padding: 15px;
   background-color: #fff;
+  
+  /* Makes card content display horizontally */
+  display: flex;
+  align-items: center; /* Vertically centers content */
+  gap: 15px; /* Adds spacing between elements inside the card */
 }
+
 
 

@@ -1,0 +1,45 @@
+/* Ban status indicators */
+.ban-status {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+  
+  .ban-status.active {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .ban-status.banned {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  /* User card layout */
+  /* .user-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+  }
+  
+  .user-card:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .user-actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .btn-sm {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+*/

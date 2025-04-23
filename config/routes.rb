@@ -4,9 +4,13 @@ Rails.application.routes.draw do
 
   resources :clubs
   resource :session
+
   get "session/new" => "sessions#new", as: :login
+  get "/banned", to: "users#banned", as: :banned_user
   resources :passwords, param: :token
-  resources :users
+  resources :users do
+    resources :bans, only: [ :create, :new, :destroy ]
+  end
   resources :posts do
     resources :likes
     resources :comments

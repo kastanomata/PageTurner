@@ -1,0 +1,13 @@
+<%= form_with model: [@user, @ban] do |f| %>
+  <%= f.label :reason %>
+  <%= f.text_area :reason %>
+
+  <%= f.label :expires_at, "Ban Duration" %>
+  <%= f.select :expires_at, options_for_select([
+    ['Permanent', nil],
+    ['1 Day', 1.day.from_now],
+    ['1 Week', 1.week.from_now]
+  ]) %>
+
+  <%= f.submit "Issue Ban" %>
+<% end %>
