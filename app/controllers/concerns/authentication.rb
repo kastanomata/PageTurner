@@ -70,9 +70,10 @@ module Authentication
     end
 
     def check_ban
-      return unless Current.user&.active_ban
+      Current.session ||= find_session_by_cookie
+      ban = User.find_by(id: Current.session[:user_id])&.active_ban unless Current.session.nil? 
+      return unless ban
 
-      ban =  Current.user.active_ban
       redirect_to banned_user_path, alert: "Banned: #{ban.reason}. #{ban.expires_at ? "Expires: #{ban.expires_at}" : 'Permanent'}"
     end
 

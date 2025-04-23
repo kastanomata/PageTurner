@@ -28,7 +28,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Style report buttons
 - [ ] Add tab icon in browser
 - [ ] Add "404 - Not Found"
-- [ ] Seed more reviews for YA fantasy club
+- [ ] Seed more reviews for YA Fantasy club
  
 ### Homepage 
 - [x] Add Guest User homepage 
@@ -60,6 +60,9 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Special Bookshelves should not be modifiable
 - [ ] Add "Add book to Bookshelf" functionality
 - [ ] Display Posts made about the books in the bookshelf show view
+
+### Bookclubs 
+- [ ] Style bookclub creation form
 
 ### Posts
 - [x] Add interaction (comments, likes) support

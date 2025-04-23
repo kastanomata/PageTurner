@@ -113,7 +113,9 @@ class User < ApplicationRecord
   ## MODERATION TOOLS ##
   # Displays the user active ban
   def active_ban
-    bans.where("expires_at > ? OR expires_at IS NULL", Time.current).order(created_at: :desc).first
+    bans.where("expires_at > :now OR expires_at IS NULL", now: Time.current)
+        .order(created_at: :desc)
+        .first
   end
 
   # Checks if the user is currently banned

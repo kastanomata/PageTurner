@@ -22,8 +22,12 @@ class ClubsController < ApplicationController
 
   # POST /clubs or /clubs.json
   def create
-    @club = Current.user.clubs.new(club_params)
-
+    if Current.user.club.present?
+      redirect_to club_path Current.user.club, notice: "You already are a Curator!"
+      return
+    end
+    @club = Club.new(club_params)
+    @club.curator = Current.user
     respond_to do |format|
       if @club.save
         format.html { redirect_to @club, notice: "Club was successfully created." }
@@ -73,6 +77,6 @@ class ClubsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def club_params
-      params.require(:club).permit(:name)
+      params.require(:club).permit(:name, :description)
     end
 end

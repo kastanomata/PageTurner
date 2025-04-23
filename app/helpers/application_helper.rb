@@ -9,6 +9,11 @@ module ApplicationHelper
         )
         concat(
           content_tag(:div, class: "navbar-dropdown-menu") do
+            if Current.user.club.nil?
+              concat(link_to "Become a Curator", new_club_path, class: "navbar-dropdown-item")
+            else
+              concat(link_to Current.user.club.name, club_path(Current.user.club), class: "navbar-dropdown-item")
+            end
             concat(link_to "Edit user", edit_user_path(Current.user.id), class: "navbar-dropdown-item")
             concat(button_to "Logout", logout_path, method: :delete, class: "navbar-dropdown-item")
           end

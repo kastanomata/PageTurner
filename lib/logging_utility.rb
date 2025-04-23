@@ -32,11 +32,11 @@ module LoggingUtility
 
     timestamp_str = timestamp ? "[#{Time.now.strftime("%H:%M:%S")}] " : ""
     color_code = config[:bg] ? "\e[48;5;#{config[:color][:bg]}m" : COLORS[config[:color]]
-    symbol = "#{color_code}#{config[:symbol]}#{COLORS[:reset]}"
+    # symbol = "#{color_code}#{config[:symbol]}#{COLORS[:reset]}"
 
     colored_message = "#{color_code}#{message}#{COLORS[:reset]}"
 
-    puts "#{timestamp_str}#{symbol} #{colored_message}"
+    puts "#{timestamp_str} #{level}: #{colored_message}"
   end
 
   # Specific log methods with pre-configured levels

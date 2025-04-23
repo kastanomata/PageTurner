@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   skip_before_action :check_nickname, only: [ :edit, :update ]
   before_action :logged_in_user, only: [ :index, :edit, :update, :destroy, :following, :followers ]
+  skip_before_action :check_ban, only: [ :banned ]
 
   # GET /users or /users.json
   def index
@@ -74,8 +75,8 @@ class UsersController < ApplicationController
   end
 
   def banned
-    @ban = current_user.active_ban
-    render "banned", status: :forbidden  # Returns HTTP 403 status
+    @ban = Current.user.active_ban
+    render "bans/banned", status: :forbidden  # Returns HTTP 403 status
   end
 
   def make_admin

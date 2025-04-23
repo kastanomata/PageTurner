@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   allow_unauthenticated_access only: %i[ new create ]
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
+  skip_before_action :check_ban, only: %i[ destroy ]
   skip_before_action :check_nickname, only: %i[ destroy ]
   skip_before_action :require_ownership
 
@@ -21,7 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    puts "CURRENT ID:", Current.session.id
+    # puts "CURRENT ID:", Current.session.id
     terminate_session
     redirect_to root_path, notice: "You have been logged out."
   end
