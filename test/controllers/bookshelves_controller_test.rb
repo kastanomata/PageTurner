@@ -22,9 +22,8 @@ class BookshelvesControllerTest < ActionDispatch::IntegrationTest
   test "should create bookshelf" do
     post session_path, params: { email_address: @user.email_address, password: "password" }
     assert_equal @user.id, session[:user_id]
-    puts @bookshelf.inspect
     assert_difference("Bookshelf.count") do
-      patch bookshelves_path, params: { bookshelf: { creator: @bookshelf.creator_id, name: @bookshelf.name, bookclub: @bookshelf.bookclub } }
+      post bookshelves_path, params: { bookshelf: { name: "Lets go", isbn: "9780618346257" } }
     end
 
     assert_redirected_to bookshelf_path(Bookshelf.last)

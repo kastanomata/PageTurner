@@ -4,8 +4,10 @@ one:
   bookshelf_id: 1
   creator_id: 1
   book_id: 1
+  id: 1
 
 two:
   bookshelf_id: 2
   creator_id: 2
   book_id: 2
+  id: 2

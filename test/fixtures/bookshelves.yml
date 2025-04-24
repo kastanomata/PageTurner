@@ -10,6 +10,6 @@ one:
 two:
   name: "Alessandro De Rosa"
   creator_id: 2
-  bookclub: nil
+  bookclub: 2
   special: true
   id: 2

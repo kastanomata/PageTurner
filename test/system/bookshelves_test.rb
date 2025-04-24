@@ -1,4 +1,4 @@
-require "application_system_test_case"
+requirerequire "application_system_test_case"
 
 class BookshelvesTest < ApplicationSystemTestCase
   setup do
@@ -6,12 +6,12 @@ class BookshelvesTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit bookshelves_url
+    visit bookshelves_path
     assert_selector "h1", text: "Bookshelves"
   end
 
   test "should create bookshelf" do
-    visit bookshelves_url
+    visit bookshelves_path
     click_on "New bookshelf"
 
     fill_in "Creator", with: @bookshelf.creator
@@ -23,7 +23,7 @@ class BookshelvesTest < ApplicationSystemTestCase
   end
 
   test "should update Bookshelf" do
-    visit bookshelf_url(@bookshelf)
+    visit bookshelf_path(@bookshelf)
     click_on "Edit this bookshelf", match: :first
 
     fill_in "Creator", with: @bookshelf.creator
@@ -35,7 +35,7 @@ class BookshelvesTest < ApplicationSystemTestCase
   end
 
   test "should destroy Bookshelf" do
-    visit bookshelf_url(@bookshelf)
+    visit bookshelf_path(@bookshelf)
     click_on "Destroy this bookshelf", match: :first
 
     assert_text "Bookshelf was successfully destroyed"

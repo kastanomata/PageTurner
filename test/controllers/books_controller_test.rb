@@ -39,7 +39,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
 
   test "should get edit" do
     get edit_book_path(@book)
-    assert_response :unauthorized
+    assert_redirected_to unauthorized_path
   end
 
   # test "should update book" do

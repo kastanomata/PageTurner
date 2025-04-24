@@ -23,7 +23,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     post session_path, params: { email_address: @user.email_address, password: "password" }
     assert_equal @user.id, session[:user_id]
     assert_difference("Post.count") do
-      post posts_path, params: { post: { text: @post.text, title: @post.title } }
+      post posts_path, params: { post: { isbn: "9780618346257", text: "Che mina", title: "Daje Roma" } }
     end
 
     assert_redirected_to post_path(Post.last)
