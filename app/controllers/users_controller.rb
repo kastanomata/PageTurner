@@ -85,6 +85,19 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: "User promoted to admin"
   end
 
+  def update_reading
+    book = Book.find_by(id: params[:book_id])
+    transaction = Current.user.update(reading_id: book&.id)
+    debug transaction.inspect
+    if book && transaction
+      flash[:notice] = "Now reading #{book.title}"
+    else
+      flash[:alert] = book ? "Failed to update reading status" : "Book not found"
+    end
+
+    redirect_back(fallback_location: root_path)
+  end
+
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy!
@@ -131,6 +144,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.expect(user: [ :email_address, :password, :nickname, :description, :birthday, :avatar, :admin ])
+      params.expect(user: [ :email_address, :password, :nickname, :description, :birthday, :avatar, :admin ]).permit(:book_id)
     end
 end

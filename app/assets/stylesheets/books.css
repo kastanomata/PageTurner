@@ -69,3 +69,39 @@
   display: flex;
   gap: 10px;
 }
+
+.reading-button {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.reading-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.currently-reading {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin: 1rem 0;
+  display: flex;
+  gap: 1rem;
+  align-items: start;
+}
+
+.book-cover img {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.book-info {
+  flex: 1;
+}
+
+.book-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}

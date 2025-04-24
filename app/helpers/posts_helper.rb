@@ -29,4 +29,34 @@ module PostsHelper
       button_to "Like", post_likes_path(post), method: :post
     end
   end
+
+  def post_management_buttons(post)
+    return unless Current.user && (Current.user.admin? || post_owner?(post))
+
+    content_tag(:div, style: "display: flex; gap: 10px;") do
+      safe_join([
+        edit_post_button(post),
+        destroy_post_button(post)
+      ])
+    end
+  end
+
+  private
+
+  def post_owner?(post)
+    post.author == Current.user
+  end
+
+  def edit_post_button(post)
+    return unless post_owner?(post)
+
+    link_to "Edit this post", edit_post_path(post), class: "btn-edit"
+  end
+
+  def destroy_post_button(post)
+    button_to "Destroy this post", post,
+              method: :delete,
+              class: "btn-link-red btn-destroy",
+              form: { data: { turbo_confirm: "Are you sure?" } }
+  end
 end

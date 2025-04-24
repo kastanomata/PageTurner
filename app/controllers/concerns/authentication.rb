@@ -39,7 +39,9 @@ module Authentication
     end
 
     def ownership_required?
-      %w[edit update destroy].include?(action_name)
+      (%w[edit update destroy].include?(action_name) &&
+      OwnershipUtility::OWNER_ASSOCIATIONS.key?(self.class)) ||
+     !Current.user.admin?
     end
 
     def find_resource_by_params
@@ -71,7 +73,7 @@ module Authentication
 
     def check_ban
       Current.session ||= find_session_by_cookie
-      ban = User.find_by(id: Current.session[:user_id])&.active_ban unless Current.session.nil? 
+      ban = User.find_by(id: Current.session[:user_id])&.active_ban unless Current.session.nil?
       return unless ban
 
       redirect_to banned_user_path, alert: "Banned: #{ban.reason}. #{ban.expires_at ? "Expires: #{ban.expires_at}" : 'Permanent'}"

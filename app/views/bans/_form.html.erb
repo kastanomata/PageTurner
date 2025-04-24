@@ -5,9 +5,9 @@
   <%= f.label :expires_at, "Ban Duration" %>
   <%= f.select :expires_at, options_for_select([
     ['Permanent', nil],
-    ['1 Minute'], 1.minute.from_now,
-    ['10 Minutes'], 10.minutes.from_now,
-    ['1 Hour'], 1.hour.from_now,
+    ['1 Minute', 1.minute.from_now],
+    ['10 Minutes', 10.minute.from_now],
+    ['1 Hour', 1.hour.from_now],
     ['1 Day', 1.day.from_now],
     ['1 Week', 1.week.from_now]
   ]) %>

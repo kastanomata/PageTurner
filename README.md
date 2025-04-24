@@ -82,6 +82,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ### Reports
 - [x] Generate reports (report_id nil e reported_type nil)
 - [x] Add button to access root/reports#index
+- [ ] Delete report
 
 ### Admin
 - [x] Should not be able edit post

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_23_091252) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_24_123933) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -182,7 +182,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_091252) do
     t.string "birthday"
     t.boolean "admin"
     t.boolean "is_curator"
+    t.integer "reading_id"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
+    t.index ["reading_id"], name: "index_users_on_reading_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -194,4 +196,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_091252) do
   add_foreign_key "likes", "users"
   add_foreign_key "omni_auth_identities", "users"
   add_foreign_key "sessions", "users"
+  add_foreign_key "users", "books", column: "reading_id"
 end

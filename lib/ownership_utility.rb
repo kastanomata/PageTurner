@@ -4,15 +4,23 @@ module OwnershipUtility
     Bookshelf => :creator,
     Club => :curator,
     Comment => :user,
-    User => :itself
+    User => :itself,
+    Membership => :follower,
+    Relationship => :follower
   }.freeze
 
   def current_user_owns?(content)
     return false unless Current.user && content
 
-    owner_method = OWNER_ASSOCIATIONS[content.class] || :user
-    return false unless content.respond_to?(owner_method)
+    # Find the owner association method or default to nil
+    owner_method = OWNER_ASSOCIATIONS[content.class]
+    return false unless owner_method && content.respond_to?(owner_method)
 
-    content.public_send(owner_method) == Current.user
+    # Special case for User resource
+    if content.is_a?(User)
+      content == Current.user
+    else
+      content.public_send(owner_method) == Current.user
+    end
   end
 end

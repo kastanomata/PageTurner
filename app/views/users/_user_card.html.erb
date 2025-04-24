@@ -15,7 +15,7 @@
     <%= link_to "SHOW", user_path(user), class: "btn btn-primary btn-sm" %>
     <%= ban_unban_button(user) %>
     
-    <%= link_to "DELETE", user_path(user), 
+    <%= button_to "DELETE", user_path(user), 
                 method: :delete,
                 data: { confirm: "Permanently delete #{user.nickname}?" },
                 class: "btn btn-danger btn-sm" %>

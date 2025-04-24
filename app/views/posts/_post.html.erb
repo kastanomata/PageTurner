@@ -5,15 +5,8 @@
   </div>
   <div class="post-meta" style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
     <p>Posted by: <%= link_to @post.author.nickname, user_path(@post.author) %></p>
-    <!--# TODO add support for absent post author-->
-    <%# if @post.author %> 
-    <%# else %>
-<!--      <p>Posted by: <em>[User not found]</em></p>-->
-    <%# end %>
   </div>
-  <div style="margin-top: 10px;">
-      <%= render_report_button @post %>
-  </div>
+
   <div class="post-body" style="display: flex; gap: 20px;">
     <% if @post.book %>
       <%= render partial: "books/cover", locals: { book: @post.book } %>

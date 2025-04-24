@@ -15,6 +15,7 @@
     <h3><%= @book.title %></h3>
     <p>ISBN: <%= @book.isbn %></p>
     <%= add_book_to_bookshelf_buttons @book %>
+    <%= set_book_as_reading @book %>
   </div>
 <% else %>
   <p>Book not found.</p>

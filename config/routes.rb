@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   get "session/new" => "sessions#new", as: :login
   get "/banned", to: "users#banned", as: :banned_user
+
   resources :passwords, param: :token
+  patch "/update_reading", to: "users#update_reading", as: :update_reading
   resources :users do
     resources :bans, only: [ :create, :new, :destroy ]
   end

@@ -40,6 +40,10 @@ class User < ApplicationRecord
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
+  belongs_to :reading,
+  class_name: "Book",
+  foreign_key: "book_id",
+  optional: true
 
   ## OAUTH ##
   def self.create_from_oauth(auth)

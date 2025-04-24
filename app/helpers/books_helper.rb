@@ -9,6 +9,24 @@ module BooksHelper
     end
   end
 
+  def set_book_as_reading(book)
+    return unless Current.user
+
+    if Current.user.reading.nil?
+      button_text = "Start reading #{book.title}"
+    else
+      button_text = Current.user.reading == book ?
+                   "Currently reading #{book.title}" :
+                   "Switch to reading #{book.title}"
+    end
+
+    button_to button_text,
+              update_reading_path(book_id: book.id),
+              method: :patch,
+              class: "reading-button",
+              disabled: Current.user.reading == book
+  end
+
   private
 
   def read_bookshelf_button(book)
