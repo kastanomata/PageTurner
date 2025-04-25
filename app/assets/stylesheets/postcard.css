@@ -11,7 +11,7 @@
   /* Cartolina */
   .postcard {
     display: flex;
-    width: 800px;
+    width: 100%;
     min-height: 300px;
     background-color: white;
     border-radius: 16px;

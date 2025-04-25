@@ -1,0 +1,16 @@
+<div class="postcard-container">
+  <div class="postcard">
+    <!-- Lato sinistro -->
+    <div class="postcard-left">
+      <div class="book-image-container">
+        <!--TODO Add support for cover when writing book review -->
+        <img src="book.jpg" alt="Book Cover" class="book-image">
+      </div>
+    </div>
+    <!-- Lato destro -->
+    <div class="postcard-right">
+      <div class="post-header"> New Post </div>
+      <%= render "posts/form", post: @post %>
+    </div>
+  </div>
+</div>

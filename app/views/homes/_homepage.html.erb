@@ -1,0 +1,19 @@
+ <div class="page-layout">
+    <div class="section left-section">
+      <%= render_user_bookshelves Current.user %>
+    </div>
+
+    <div class="section center-section">
+      <%= render "postcard" %>
+      <%= render_homepage_posts Current.user %>
+    </div>
+
+    <div class="section right-section">
+      <div class="search-container">
+        <%= render_search_form %>
+      </div>
+      <div class="clubs-container">
+        <%= render_user_clubs Current.user %>
+      </div>
+    </div>
+  </div>

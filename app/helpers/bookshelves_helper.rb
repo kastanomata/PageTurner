@@ -1,4 +1,18 @@
 module BookshelvesHelper
+  def display_bookshelf_thumbnails(bookshelf)
+    thumbnails = bookshelf.books
+
+    content_tag(:div, class: "bookshelf-thumbnails-container") do
+      content_tag(:div, class: "bookshelf-thumbnails-scroller") do
+        safe_join(thumbnails.map do |book|
+          if book.thumbnail
+            link_to(image_tag(book.thumbnail, alt: book.title), book)
+          end
+        end)
+      end
+    end
+  end
+
   def render_user_bookshelves(user)
     bookshelves = user.bookshelves
     user_bookshelves = bookshelves.select { |b| b.special? && b.bookclub.nil? }

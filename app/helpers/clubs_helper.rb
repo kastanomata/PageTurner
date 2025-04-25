@@ -20,7 +20,7 @@ module ClubsHelper
     # Memberships section
     memberships = user.active_memberships.includes(club: :curator)
     if memberships.any?
-      content << content_tag(:h3, "Clubs You're a Member Of", class: "section-heading")
+      content << content_tag(:h3, "Your Memberships", class: "section-heading")
       content << content_tag(:div, class: "club-list") do
         safe_join(
           memberships.map do |membership|

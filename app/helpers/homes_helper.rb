@@ -1,4 +1,11 @@
 module HomesHelper
+  def render_homepage_based_on_authentication
+    if authenticated?
+      render "homepage"
+    else
+      render "guestpage"
+    end
+  end
   # this renders the homepage posts specific to the logged-in user
   def render_homepage_posts(user)
     posts = Post.where(author_id: user.following_ids).order(created_at: :desc)

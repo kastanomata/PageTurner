@@ -1,35 +1,34 @@
 .page-layout {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 20px;
+    grid-template-columns: 22% 50% 25%;
+    gap: 1%;
     background-color: #ebebeb;
 }
 
-.left-section {
+.section {
     background-color: #ebebeb;
-    padding: 10px;
     margin-top: 20px;
-    margin-left: 10px;    
 }
 
-.center-section {
-    background-color: #ebebeb;
-    margin-top: 20px;
-    padding: 10px;
+.section .left-section { 
 }
 
-.right-section {
-    background-color: #ebebeb;
-    background-color: #549F93;
-    padding: 10px;
-    margin-top: 20px;
-    margin-right: 10px;
+.section .center-section {
+
+}
+
+.section .right-section {
 }
 
 .search-container {
     margin-top: 10px;
     padding: 5px;
     margin: 0 auto;
+}
+
+.clubs-container {
+    margin-right: 10px;
+    width:100%
 }
 
 /* CSS accesso non autenticato */
