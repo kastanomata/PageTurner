@@ -1,6 +1,9 @@
-<div class="<%= local_assigns[:class_name] || 'bookshelf' %>">
+<% 
+  bookshelf_class = local_assigns[:class_name] || 'bookshelf'
+  debug bookshelf_class
+ %>
+<div class="<%= bookshelf_class %>">
   <h3><%= link_to bookshelf.name, bookshelf, class: "btn-link" %></h3>
-
   <%= display_bookshelf_thumbnails bookshelf %>
   
   <% if local_assigns[:show_bookclub_info] && bookshelf.bookclub %>
