@@ -39,9 +39,7 @@ module Authentication
     end
 
     def ownership_required?
-      (%w[edit update destroy].include?(action_name) &&
-      OwnershipUtility::OWNER_ASSOCIATIONS.key?(self.class)) ||
-     !Current.user.admin?
+      %w[edit update destroy].include?(action_name)
     end
 
     def find_resource_by_params
@@ -66,7 +64,9 @@ module Authentication
       end
 
       # Check ownership
-      unless current_user_owns?(resource)
+      can_access_resource = current_user_owns?(resource) || Current.user.admin?
+      debug can_access_resource
+      unless can_access_resource
         redirect_to unauthorized_path
       end
     end
