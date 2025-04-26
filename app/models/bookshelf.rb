@@ -8,7 +8,7 @@ class Bookshelf < ApplicationRecord
   # validates :description, length: { maximum: 255 }
 
   def add_book(book)
-    BookshelfContain.create!(bookshelf: self, book: book)
+    BookshelfContain.find_or_create_by!(bookshelf: self, book: book)
   end
 
   def remove_book(book)

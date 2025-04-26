@@ -3,13 +3,13 @@
     <div class="left-col">
       <div class="user-info">
         <h1><%= @user.nickname %></h1>
-        <%= link_to "Edit this user", edit_user_path(@user), class: "btn-link" if Current.user&.admin? or current_user_owns?(@user)%>
+        <%= link_to "Edit this user", edit_user_path(@user), class: "btn--link" if Current.user&.admin? or current_user_owns?(@user)%>
         
         <section class="stats">
               <%= render_user_relationships_widget @user%>
         </section>
       </div>
-      <div class="btn-link">
+      <div class="btn--link">
         <%= render_report_button @user %>
         <%= user_ban_status @user %>
 
@@ -23,8 +23,8 @@
   </div>
 
 
-  <div class="user-content" style="display: flex; gap: 20px;">
-    <div class="bookshelves" style="flex: 1;">
+  <div class="user-content">
+    <div class="bookshelves bookshelves--user">
       <h2>Bookshelves
       <% if Current.user&.id == @user.id%>
         <%= link_to new_bookshelf_path, class: "new-post-btn" do %>
@@ -32,19 +32,20 @@
         <% end %>
       <% end %>
       </h2>
-        <%= render_user_bookshelves @user %>
-      </div>
+      <%= render_user_bookshelves @user %>
     </div>
 
-    <div class="posts" style="flex: 1;">
+    <div class="posts posts--user">
       <h2>Posts
-      <% if Current.user&.id == @user.id%>
-        <%= link_to new_post_path, class: "new-post-btn" do %>
-         <span class="footer-button-container plus-icon">+</span>
+        <% if Current.user&.id == @user.id%>
+          <%= link_to new_post_path, class: "new-post-btn" do %>
+           <span class="footer-button-container plus-icon">+</span>
+          <% end %>
         <% end %>
-      <% end %>
       </h2>
-        <%= render_user_posts @user %>
+      <%= render_user_posts @user %>
     </div>
+
   </div>
+
 </div>

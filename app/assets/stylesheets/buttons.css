@@ -20,6 +20,8 @@
 }
 
 .btn--primary {
+  font-weight: 600;
+  font-size: large;
   background-color: #38a169; /* Persian green */
   color: #fff;
 }

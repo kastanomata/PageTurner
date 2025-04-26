@@ -38,7 +38,6 @@ module SeedingUtility
       end
     end
 
-
     def seed_author(author_details)
       return nil unless author_details[:openlibrary_id].present?
 

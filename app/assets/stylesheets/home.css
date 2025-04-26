@@ -18,13 +18,12 @@
 }
 
 .section .right-section {
+  background-color: #ebebeb;
+  padding: 10px;
+  margin-top: 20px;
+  margin-right: 10px;
 }
 
-.search-container {
-    margin-top: 10px;
-    padding: 5px;
-    margin: 0 auto;
-}
 
 .clubs-container {
     margin-right: 10px;
@@ -33,9 +32,17 @@
 
 /* CSS accesso non autenticato */
 /* Container principale per il contenuto */
+
+.container{
+  max-width: 1200px;
+  widht: 90%;
+  margin: 0 auto;
+  background-color: #ebebeb;
+}
+
 .container-big {
-    max-width: 750px;
-    width: 100%;
+    max-width: 100%;
+    width: 90%;
     margin: 20px auto;
     padding: 40px;
     display: flex;

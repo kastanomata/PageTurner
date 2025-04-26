@@ -23,10 +23,6 @@
     float: right;
 }
 
-.footer-links {
-    margin: 10px 0;
-}
-
 .footer-link {
     display: inline-block;
     color: #ebebeb;
@@ -34,6 +30,7 @@
     font-weight: 500;
     font-size: 1.4rem;
     padding: 0.5rem 1rem;
+    margin: 10px 0;
     transition: transform 0.2s ease, color 0.2s ease;
   }
   

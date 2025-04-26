@@ -32,11 +32,6 @@
     color: #555;
 }
 
-.club-card a {
-    color: #007bff;
-    text-decoration: none;
-}
-
 .club-card a:hover {
     text-decoration: underline;
 }

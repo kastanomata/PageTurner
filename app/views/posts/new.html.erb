@@ -1,6 +1,9 @@
 <% content_for :title, "New post" %>
 
 <div class="postcard-container">
+  <div class="post-header">
+    New Post
+  </div>
   <div class="postcard">
     <!-- Lato sinistro -->
     <div class="postcard-left">
@@ -11,9 +14,7 @@
 
     <!-- Lato destro -->
     <div class="postcard-right">
-      <div class="post-header">
-        New Post
-      </div>
+      
       <div class="postcard-form-container">
         <form>
            <%= render "form", post: @post %>
@@ -23,7 +24,7 @@
   </div>
 
     <div class="back-link">
-      <%= link_to "Back to posts", posts_path, class: "btn-link" %>
+      <%= link_to "Back to posts", posts_path, class: "btn--link" %>
     </div>
 
 </div>

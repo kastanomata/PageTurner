@@ -16,9 +16,9 @@
   <%= form.hidden_field :author_id, value: Current.user&.id %>
 
   <%= form.label :text, "Text:" %>
-  <%= form.text_area :text %>
+  <%= form.text_area :text, rows: 1%>
 
-  <div class="actions">
-  <%= form.submit %>
+  <div>
+  <%= form.submit class: "btn--link-persiano"%>
   </div>
 <% end %>

@@ -29,7 +29,7 @@
   <% end %>
   <%= tag.div(flash[:alert], class: "flash-message alert") if flash[:alert] %>
   <%= tag.div(flash[:notice], class: "flash-message notice") if flash[:notice] %>
-  <div class="container-fluid" style="margin-bottom: 50px">
+  <div >
     <%= yield %>
   </div>
   <%= render "layouts/footer" %>

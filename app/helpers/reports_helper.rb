@@ -15,7 +15,7 @@ module ReportsHelper
     owner = reported.public_send(owner_association)
     return if owner == Current.user
 
-    content_tag(:div, class: "btn-link") do
+    content_tag(:div, class: "btn--link") do
       render "reports/report_button", reported: reported
     end
   end

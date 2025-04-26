@@ -1,10 +1,10 @@
-<div id="<%= dom_id @bookshelf %>">
+<div id="<%= dom_id bookshelf %>">
   <div class="bookshelf">
-    <h2><%= @bookshelf.name %></h2>
+    <h2><%= bookshelf.name %></h2>
     <p>Created by: <%= link_to bookshelf.creator.nickname, user_path(bookshelf.creator) %></p>
     <div class="bookshelf-books-container">
       <%
-        @bookshelf.books.each do |book| 
+        bookshelf.books.each do |book| 
           if book.nil?
             continue
           end
@@ -17,7 +17,7 @@
           </div>
           <div class="bookshelf-actions" style="display: flex; gap: 10px;">
             <% if current_user_owns?(@bookshelf) %>
-              <%= button_to 'Remove from Bookshelf', bookshelf_contain_path(name: @bookshelf.name, creator: @bookshelf.creator, book: book.isbn), method: :delete, class: 'btn btn--delete', style: 'padding: 5px 10px' %>
+              <%= button_to 'Remove from Bookshelf', bookshelf_contain_path(name: bookshelf.name, creator: bookshelf.creator, book: book.isbn), method: :delete, class: 'btn btn--delete', style: 'padding: 5px 10px' %>
             <% end %>
           </div>
         </div>

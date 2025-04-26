@@ -56,7 +56,7 @@ module PostsHelper
   def destroy_post_button(post)
     button_to "Destroy this post", post,
               method: :delete,
-              class: "btn-link-red btn-destroy",
+              class: "btn--link-red btn-destroy",
               form: { data: { turbo_confirm: "Are you sure?" } }
   end
 end

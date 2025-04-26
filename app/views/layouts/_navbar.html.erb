@@ -2,12 +2,17 @@
   <div class="navbar-brand">
     <%= link_to "PageTurner", root_path, class: "navbar-logo" %>
   </div>
-  <div class="navbar-links">
-    <%= link_to "Posts", posts_path, class: "navbar-link #{'active' if current_page?(posts_path)}" %>
+  <div class="navbar-link-container">
     <%= link_to "Bookclubs", clubs_path, class: "navbar-link #{'active' if current_page?(clubs_path)}" %>
     <%= link_to "Bookshelves", bookshelves_path, class: "navbar-link #{'active' if current_page?(bookshelves_path)}" %>
     <%= link_to "Books", books_path, class: "navbar-link #{'active' if current_page?(books_path)}" %>
   </div>
+
+  <div class="search-container">
+    <%= render_search_form %>
+  </div>
+
+
   <div class="navbar-user">
     <%= user_navbar_content %>
   </div>

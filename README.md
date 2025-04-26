@@ -26,6 +26,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 
 - [x] Fix navbar "logout" button not displaying correctly
 - [x] Style report buttons
+- [ ] font ideas: Sagona/Bookman
 - [ ] Add tab icon in browser
 - [ ] Add "404 - Not Found"
 - [ ] Seed more reviews for YA Fantasy club

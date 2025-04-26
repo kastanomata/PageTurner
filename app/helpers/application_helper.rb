@@ -26,4 +26,18 @@ module ApplicationHelper
       ], "\n")
     end
   end
+
+  # navbar search form
+  def render_search_form
+    content_tag :div, class: "search-form-wrapper" do
+      form_tag(search_path, method: :get, class: "search-form") do
+        safe_join([
+          text_field_tag(:query, params[:query], placeholder: "Cerca...", class: "search-input"),
+            button_tag(type: "submit", class: "btn btn--secondary") do
+            image_tag("magnifying_glass.png", alt: "Search", class: "search-icon", size: "16x16")
+            end
+        ])
+      end
+    end
+  end
 end

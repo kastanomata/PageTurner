@@ -10,6 +10,13 @@
   background-color: whitesmoke;
 }
 
+.bookshelves-container {
+  padding: 10px;
+  border: #ddd 1px solid;
+  border-radius: 8px;
+  background-color: #549F93;
+}
+
 .bookshelf.special-bookshelf {
   background-color: whitesmoke;
   border: 2px solid rgb(2, 2, 47);

@@ -178,3 +178,13 @@
   background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
   pointer-events: none;
 }
+
+.post-show-container{
+  display: grid;
+  grid-template-columns: 65% 25%;
+  width: 100%;
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
+}

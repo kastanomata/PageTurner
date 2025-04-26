@@ -1,32 +1,45 @@
-<%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="form-container">
+  <%= form_with(model: user, class: "user-form") do |form| %>
+    <% if user.errors.any? %>
+      <div class="form-errors">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+          <% user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <h1 class='form-title'> We are glad to make your acquaintance! </h1>
+    <span> Please fill out this form to create your account. <span>
 
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="form-group">
+      <%= form.label :email_address, class: "form-label" %>
+      <%= form.email_field :email_address, 
+            class: "form-control",
+            required: true, 
+            autofocus: true, 
+            placeholder: "Enter your email address", 
+            value: params[:email_address] %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :password, class: "form-label" %>
+      <%= form.password_field :password, 
+            class: "form-control",
+            required: true, 
+            placeholder: "Enter your password", 
+            minlength: 8, 
+            maxlength: 72 %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :avatar, "Foto Profilo", class: "form-label" %>
+      <%= form.file_field :avatar, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit class: "btn btn--primary" %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :email_address, style: "display: block" %>
-    <%= form.email_field :email_address, required: true, autofocus: true, placeholder: "Enter your email address", value: params[:email_address] %><br>
-  </div>
-
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.password_field :password, required: true, placeholder: "Enter your password", minlength: 8, maxlength: 72 %><br>
-  </div>
-
-  <div class="field">
-    <%= form.label :avatar, "Foto Profilo" %>
-    <%= form.file_field :avatar %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
