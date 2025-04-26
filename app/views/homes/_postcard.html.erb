@@ -34,10 +34,10 @@ function initPostISBNForm() {
   const updateBookDetails = (book) => {
     if (book) {
       titleInput.value = book.title;
-      coverPreview.src = book.poster || '<%= asset_path('placeholder.jpg') %>';
+      coverPreview.src = book.poster || '<%= asset_path('bookart_not_found.png') %>';
     } else {
       titleInput.value = '';
-      coverPreview.src = '<%= asset_path('placeholder.jpg') %>';
+      coverPreview.src = '<%= asset_path('bookart_not_found.png') %>';
     }
   };
 
