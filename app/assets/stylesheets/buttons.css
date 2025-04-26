@@ -22,22 +22,27 @@
 .btn--primary {
   font-weight: 600;
   font-size: large;
+  background-color: #1f2937; /* same color as navbar */
+  color: #fff;
+}
+
+.btn--secondary {
+  background-color: #007bff; /* Blue */
+  color: #fff;
+}
+
+.btn--affirmative {
   background-color: #38a169; /* Persian green */
   color: #fff;
 }
 
-.btn--danger {
+.btn--negative {
   background-color: #a33737; /* Red */
   color: #fff;
 }
 
 .btn--delete {
   background-color:cadetblue; 
-  color: #fff;
-}
-
-.btn--secondary {
-  background-color: #007bff; /* Blue */
   color: #fff;
 }
 
@@ -68,20 +73,24 @@
 }
 
 .btn--primary:hover {
+  background-color: #1f2732; /* Darker blue */
+}
+
+.btn--secondary:hover {
+  background-color: #0056b3; /* Darker blue */
+}
+
+.btn--affirmative:hover {
   background-color: #2f855a; /* Darker green */
 }
 
-.btn--danger:hover {
+.btn--negative:hover {
   background-color: #9b2c2c; /* Darker red */
 }
 
 .btn--delete {
   background-color:#426d6e; 
   color: #fff;
-}
-
-.btn--secondary:hover {
-  background-color: #0056b3; /* Darker blue */
 }
 
 .btn--outline:hover {

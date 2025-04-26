@@ -114,7 +114,7 @@ module ReportsHelper
       button_to("Delete", report_path(report),
                 method: :delete,
                 data: { confirm: "Are you sure?" },
-                class: "btn btn-danger",
+                class: "btn btn--delete",
                 style: "padding: 5px 10px;")
     end
   end

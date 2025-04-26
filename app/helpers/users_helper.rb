@@ -9,6 +9,7 @@ module UsersHelper
   end
 
   def currently_reading(user)
+    return if user.reading.nil?
     book = Book.find(user&.reading_id)
     return unless book
 
@@ -53,10 +54,10 @@ module UsersHelper
       button_to "UNBAN", user_ban_path(user_id: user.id, id: user.active_ban.id),
               method: :delete,
               data: { confirm: "Unban #{user.nickname}?" },
-              class: "btn btn-success btn-sm"
+              class: "btn btn-success btn--sm"
     else
       link_to "BAN", new_user_ban_path(user),
-              class: "btn btn-warning btn-sm"
+              class: "btn btn-warning btn--sm"
     end
   end
 end

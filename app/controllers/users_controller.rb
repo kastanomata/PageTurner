@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   allow_unauthenticated_access only: %i[ new create show ]
   require_admin_access only: %i[ index ]
   before_action :set_user, only: %i[ show edit update destroy ]
-  skip_before_action :check_nickname, only: [ :edit, :update ]
   before_action :logged_in_user, only: [ :index, :edit, :update, :destroy, :following, :followers ]
+  skip_before_action :check_nickname, only: [ :edit, :update, :destroy ]
   skip_before_action :check_ban, only: [ :banned ]
 
   # GET /users or /users.json
@@ -144,6 +144,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.expect(user: [ :email_address, :password, :nickname, :description, :birthday, :avatar, :admin ]).permit(:book_id, :email_address, :password, :avatar)
+      params.expect(user: [ :email_address, :password, :nickname, :description, :birthday, :avatar, :admin ]).permit(:nickname, :description, :birthday, :avatar)
     end
 end

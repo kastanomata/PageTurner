@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   private
 
   def check_nickname
+    Rails.logger.info "CHECKING NICKNAME FOR ACTION: #{action_name}"
     if authenticated? && Current.user&.nickname.nil?
       ("User #{Current.user.id} has no nickname set.")
       redirect_to "/users/#{Current.user&.id}/edit"

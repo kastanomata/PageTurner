@@ -37,6 +37,14 @@
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
+.form-actions {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 10px; 
+  flex-wrap: wrap;
+}
+
 /* Error styling */
 .form-errors {
   color: #dc3545;

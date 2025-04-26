@@ -1,11 +1,5 @@
 <style>
-  .other-options-container {
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    gap: 10px; 
-    flex-wrap: wrap;
-  }
+
 </style>
 
 <div class="form-container">
@@ -29,7 +23,7 @@
     <%= link_to "Forgot password?", new_password_path, class: "btn btn--link" %>
   </div>
 
-  <div class="other-options-container" >
+  <div class="form-actions" >
     <% if Rails.env.development? %>
       <%= form_tag "/auth/developer", method: :post, data: { turbo: false } do %>
         <button type="submit" class="btn btn--secondary">
