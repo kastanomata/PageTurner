@@ -10,13 +10,6 @@
   background-color: whitesmoke;
 }
 
-.bookshelves-container {
-  padding: 10px;
-  border: #ddd 1px solid;
-  border-radius: 8px;
-  background-color: #ebebeb;
-}
-
 .bookshelf.special-bookshelf {
   background-color: whitesmoke;
   border: 2px solid rgb(2, 2, 47);
@@ -26,25 +19,34 @@
   margin-left: 10px;
 }
 
-.bookshelf h2 {
-  margin-top: 0;
+.bookshelves-container {
+  padding: 10px;
+  border: #ddd 1px solid;
+  border-radius: 8px;
+  background-color: #ebebeb;
 }
 
-.books {
+.bookshelf-books-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   overflow-x: auto;
   padding: 10px 0;
 }
 
-.book-card {
-  text-align: center;
+.bookshelf-actions-container {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
 }
 
-.book-thumbnail {
-  width: 100px;
-  height: auto;
-  border-radius: 4px;
+.bookshelf-actions-container > * {
+  flex: 1;
+  text-align: center; /* Optional: centers content inside each element */
+}
+
+.bookshelf h2 {
+  margin-top: 0;
 }
 
 .bookshelf-footer {

@@ -1,28 +1,27 @@
-<div id="<%= dom_id bookshelf %>">
+<div id="<%= dom_id @bookshelf %>">
   <div class="bookshelf">
-    <h2><%= bookshelf.name %></h2>
-    
-    <div class="books" style="display: flex; flex-direction: column;">
+    <h2><%= @bookshelf.name %></h2>
+    <p>Created by: <%= link_to bookshelf.creator.nickname, user_path(bookshelf.creator) %></p>
+    <div class="bookshelf-books-container">
       <%
-        bookshelf_books = BookshelfContain.where(name: bookshelf.name, creator: bookshelf.creator)
-        bookshelf.books.each do |book| 
-          unless book.nil?
-      %>
-        <div>
-            <%= render partial: "books/book_card", locals: { book: book, bookshelf: bookshelf} %>
-        </div>
-      <%
+        @bookshelf.books.each do |book| 
+          if book.nil?
+            continue
           end
-        end
       %>
-
-    </div>
-    
-    <div class="bookshelf-footer">
-        <p>Created by: <%= link_to bookshelf.creator.nickname, user_path(bookshelf.creator) %></p>
-      <p>
-        <%= link_to "Show this bookshelf", bookshelf %>
-      </p>
+        <div class="book-card">    
+          <!-- TODO add author and more info to book_card -->
+          <%= render partial: 'books/cover', locals: { book: book } %>
+          <div class="book-title">
+              <span><%= book.title %></span>
+          </div>
+          <div class="bookshelf-actions" style="display: flex; gap: 10px;">
+            <% if current_user_owns?(@bookshelf) %>
+              <%= button_to 'Remove from Bookshelf', bookshelf_contain_path(name: @bookshelf.name, creator: @bookshelf.creator, book: book.isbn), method: :delete, class: 'btn btn--delete', style: 'padding: 5px 10px' %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 

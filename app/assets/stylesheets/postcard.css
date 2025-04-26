@@ -37,7 +37,6 @@
   }
   
   .book-image {
-    max-width: 120px;
     height: auto;
     border-radius: 8px;
     object-fit: contain;

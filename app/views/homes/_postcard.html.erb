@@ -12,8 +12,6 @@
     
     <!-- Right Side -->
     <div class="postcard-right">
-      <div class="post-header">New Post</div>
-        <div class="search-results" id="isbn-search-results"></div>
       <%= render "posts/form", post: @post %>
     </div>
   </div>
@@ -45,7 +43,7 @@ function initPostISBNForm() {
     const cleanedISBN = cleanISBN(isbn);
     
     // Show suggestions for partial matches
-    if (cleanedISBN.length >= 7) {
+    if (cleanedISBN.length >= 5) {
       fetch(`/books.json?isbn=${encodeURIComponent(cleanedISBN)}`)
         .then(response => response.json())
         .then(books => {

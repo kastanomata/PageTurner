@@ -5,6 +5,10 @@
 }
 
 .book-card {
+  display: flex; 
+  flex-direction: column;
+  align-items: center; 
+  margin-bottom: 10px; 
   width: 200px;
   text-align: center;
   border: 1px solid #ddd;
@@ -12,6 +16,47 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
+}
+
+.book-title {
+  margin: 0.5rem 0 0.5rem;
+  margin-right: -1rem;  
+  font-size: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  max-width: 80%;
+  --fade-width: 40px;
+}
+
+.book-title::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--fade-width);
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, #f5f5f5 100%);
+  pointer-events: none;
+}
+
+.book-title span {
+  display: inline-block;
+  padding-right: var(--fade-width);
+  transition: transform 0.4s ease-out;
+}
+
+.book-title:hover span {
+  animation: scroll-title 8s linear infinite;
+}
+
+@keyframes scroll-title {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% + var(--fade-width)));
+  }
 }
 
 .book-poster {
@@ -101,7 +146,3 @@
   flex: 1;
 }
 
-.book-title {
-  margin: 0 0 0.5rem;
-  font-size: 1.2rem;
-}

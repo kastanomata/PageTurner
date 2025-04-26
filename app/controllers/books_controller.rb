@@ -12,7 +12,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       format.html  # Regular HTML response
-      format.json { render json: @books.to_json(only: [ :id, :isbn, :title, :author ]) }
+      format.json { render json: @books.to_json(only: [ :id, :isbn, :title, :author, :cover, :thumbnail, :poster ]) }
     end
   end
 
