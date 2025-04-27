@@ -43,7 +43,7 @@ module BooksHelper
     end
 
     container_classes = [ "book-image-container", size_class ]
-    container_classes << "book-image-container--not-found" if image_version.include?("bookart_not_found.png")
+    container_classes << "book-image-container--not-found" if File.basename(image_version) == "bookart_not_found.png"
 
     content_tag(:div, class: container_classes.join(" "), id: image_id) do
       image_tag(image_version, class: "book-image", alt: "#{book&.title || 'Default'} #{size} image")

@@ -6,7 +6,7 @@ module BookshelvesHelper
       content_tag(:div, class: "bookshelf-thumbnails-scroller") do
         safe_join(thumbnails.map do |book|
           if book.thumbnail
-            link_to(image_tag(book.thumbnail, alt: book.title), book)
+            link_to(book_image(book, size: "thumbnail"), book)
           end
         end)
       end

@@ -33,8 +33,8 @@
 }
 
 .book-image--thumbnail {
-  width: 100px !important;
-  height: 150px !important;
+  width: 40px !important;
+  height: auto !important;
 }
 
 .book-image--poster {
