@@ -1,0 +1,71 @@
+/* Base image container - use a wrapper for better control */
+.book-image-container {
+  position: relative;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Actual image element styling */
+.book-image {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Placeholder treatment */
+.book-image-container--not-found {
+  background-image: url('<%= asset_path("bookart_not_found.png") %>');
+  width: 30%;
+  height: auto;
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f0f0f0;
+}
+
+/* Size variants with !important to override potential conflicts */
+.book-image--cover {
+  width: 200px !important;
+  height: 300px !important;
+}
+
+.book-image--thumbnail {
+  width: 100px !important;
+  height: 150px !important;
+}
+
+.book-image--poster {
+  width: 300px !important;
+  height: 450px !important;
+}
+
+/* When no image is present, hide the img element */
+.book-image-container--not-found .book-image {
+  opacity: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .book-image--cover {
+    width: 150px !important;
+    height: 225px !important;
+  }
+  
+  .book-image--poster {
+    width: 200px !important;
+    height: 300px !important;
+  }
+  
+  .book-image-container--not-found {
+    background-size: 50%;
+  }
+}
+
+/* Interactive states */
+.book-image-container:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}

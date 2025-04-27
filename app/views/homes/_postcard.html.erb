@@ -2,11 +2,7 @@
   <div class="postcard">
     <!-- Left Side -->
     <div class="postcard-left">
-      <div class="book-image-container">
-        <img src="<%= asset_path('bookart_not_found.png') %>" 
-             alt="Book Cover Preview" 
-             class="book-image"  id="book-cover-preview" style="width: 80%; height: auto;">
-      </div>
+      <%= book_image(@post.book, size: "poster", image_id: "book-cover-preview") %>
     </div>
     
     <!-- Right Side -->
@@ -20,7 +16,8 @@
 function initPostISBNForm() {
   const isbnInput = document.querySelector('#post_isbn');
   const titleInput = document.querySelector('#post_title');
-  const coverPreview = document.querySelector('#book-cover-preview');
+  // Updated selector to target the img within the container
+  const coverPreview = document.querySelector('#book-cover-preview .book-image');
   const searchResults = document.querySelector('#isbn-search-results');
   let isProgrammaticChange = false;
 

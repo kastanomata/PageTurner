@@ -109,8 +109,8 @@ class User < ApplicationRecord
   def get_special_bookshelves
     special_bookshelves = bookshelves.where(bookclub: nil, special: true)
     [
-      special_bookshelves.where("title ILIKE ?", "%read%"),
-      special_bookshelves.where("title ILIKE ?", "%liked%")
+      special_bookshelves.where("name LIKE ?", "%Read%"),
+      special_bookshelves.where("name LIKE ?", "%Liked%")
     ]
   end
 

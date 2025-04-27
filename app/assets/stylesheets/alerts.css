@@ -1,0 +1,16 @@
+.flash-message {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.flash-message.alert {
+  background-color: #f8d7da;
+  color: red;
+}
+
+.flash-message.notice {
+  background-color: #d4edda;
+  color: green;
+}

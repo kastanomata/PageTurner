@@ -58,13 +58,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         # Update special bookshelves to match the new nickname
-        @user.get_special_bookshelves.each do |bookshelf|
-          if bookshelf.name.include?("Read Books")
-            bookshelf.update(name: "#{@user.nickname}'s Read Books")
-          elsif bookshelf.name.include?("Liked Books")
-            bookshelf.update(name: "#{@user.nickname}'s Liked Books")
-          end
-        end
+        debug "Updating special bookshelves #{@user.get_special_bookshelves.inspect}"
+        shelves = @user.get_special_bookshelves
+        shelves[0].update(name: "#{@user.nickname}'s Read Books")
+        shelves[1].update(name: "#{@user.nickname}'s Liked Books")
         format.html { redirect_to @user, notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else

@@ -27,6 +27,29 @@ module BooksHelper
               disabled: Current.user.reading == book
   end
 
+  def book_image(book, size: "cover", image_id: nil)
+    size_class, image_version = case size
+    when "cover" then [ "book-image--cover", book&.cover ]
+    when "thumbnail" then [ "book-image--thumbnail", book&.thumbnail ]
+    when "poster" then [ "book-image--poster", book&.poster ]
+    else [ "", book&.cover || book&.thumbnail || book&.poster ]
+    end
+
+    # Use the asset_path helper directly and ensure we have a string
+    image_version = if image_version.blank?
+      asset_path("bookart_not_found.png")
+    else
+      image_version.to_s
+    end
+
+    container_classes = [ "book-image-container", size_class ]
+    container_classes << "book-image-container--not-found" if image_version.include?("bookart_not_found.png")
+
+    content_tag(:div, class: container_classes.join(" "), id: image_id) do
+      image_tag(image_version, class: "book-image", alt: "#{book&.title || 'Default'} #{size} image")
+    end
+  end
+
   private
 
   def read_bookshelf_button(book)
@@ -65,20 +88,5 @@ module BooksHelper
               method: :delete,
               class: "btn btn-#{style}",
               data: { confirm: "Remove '#{book.title}' from your #{type} books?" }
-  end
-
-  def get_special_bookshelves
-    return [] unless Current.user
-
-    Current.user.bookshelves
-            .includes(:books)  # Eager load books to prevent N+1 queries
-            .where(bookclub: nil, special: true)
-            .order(created_at: :asc)
-            .then do |shelves|
-              [
-                shelves.find_by(name: "#{Current.user.nickname}'s Read Books"),
-                shelves.find_by(name: "#{Current.user.nickname}'s Liked Books")
-              ]
-            end
   end
 end

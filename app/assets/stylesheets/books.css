@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: space-between;
 }
 
 .book-card {
@@ -25,8 +26,8 @@
   white-space: nowrap;
   overflow: hidden;
   position: relative;
-  max-width: 80%;
-  --fade-width: 40px;
+  max-width: 100%;
+  --fade-width: 20px;
 }
 
 .book-title::after {
@@ -59,23 +60,7 @@
   }
 }
 
-.book-poster {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-}
 
-.book-cover {  
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-}
-
-.book-thumbnail {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-}
 
 .no-cover {
   width: 100%;
@@ -130,16 +115,14 @@
 }
 
 .currently-reading {
+  flex-grow: 1;
   border: 1px solid #ddd;
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0 1rem;
+  /* margin: 1rem 0; */
   display: flex;
-  gap: 1rem;
-  align-items: start;
-}
-
-.book-cover img {
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .book-info {

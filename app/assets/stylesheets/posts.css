@@ -115,12 +115,6 @@
   vertical-align: middle;
 }
 
-.book-image {
-  height:100%;
-  width:100%;
-  align-self: center;
-}
-
 /* POSTCARD */
 /* Postcard-specific ISBN styles */
 #isbn-search-results {

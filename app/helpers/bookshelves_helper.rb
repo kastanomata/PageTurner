@@ -45,6 +45,21 @@ module BookshelvesHelper
     end
   end
 
+  def get_special_bookshelves
+    return [] unless Current.user
+
+    Current.user.bookshelves
+            .includes(:books)  # Eager load books to prevent N+1 queries
+            .where(bookclub: nil, special: true)
+            .order(created_at: :asc)
+            .then do |shelves|
+              [
+                shelves.find_by(name: "#{Current.user.nickname}'s Read Books"),
+                shelves.find_by(name: "#{Current.user.nickname}'s Liked Books")
+              ]
+            end
+  end
+
   private
 
   def render_bookshelf_card(bookshelf, user)

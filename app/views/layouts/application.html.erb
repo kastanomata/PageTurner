@@ -24,12 +24,15 @@
 
   
   <body>
+  <!--DO NOT REMOVE: This avoids janky behaviour of browser when stylesheets are not loaded-->
+  <script>0</script>
+  <!--DO NOT REMOVE-->
   <% unless controller.controller_name == 'errors' %>
     <%= render "layouts/navbar" %>
   <% end %>
   <%= tag.div(flash[:alert], class: "flash-message alert") if flash[:alert] %>
   <%= tag.div(flash[:notice], class: "flash-message notice") if flash[:notice] %>
-  <div >
+  <div style='margin-bottom: 3rem;'>
     <%= yield %>
   </div>
   <%= render "layouts/footer" %>

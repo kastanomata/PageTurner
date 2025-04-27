@@ -9,29 +9,10 @@ module UsersHelper
   end
 
   def currently_reading(user)
-    return if user.reading.nil?
-    book = Book.find(user&.reading_id)
-    return unless book
-
-    content_tag(:div, class: "currently-reading") do
-      safe_join([
-        content_tag(:div, class: "book-cover") do
-          if book.cover
-            image_tag(book.cover, alt: "#{book.title} cover")
-          else
-            image_tag("bookart_not_found.png",
-                     alt: "Default book cover")
-          end
-        rescue
-          image_tag("bookart_not_found.png",
-                   alt: "Default book cover")
-        end,
-
-        content_tag(:div, class: "book-info") do
-          link_to(book.title, book_path(book),
-            class: "book-title")
-        end
-      ])
+    if user&.reading_id.present?
+      render_currently_reading user
+    else
+      content_tag(:h3, "#{user.nickname} is currently reading...", class: "currently-reading currently-reading-header")
     end
   end
 
@@ -54,10 +35,26 @@ module UsersHelper
       button_to "UNBAN", user_ban_path(user_id: user.id, id: user.active_ban.id),
               method: :delete,
               data: { confirm: "Unban #{user.nickname}?" },
-              class: "btn btn-success btn--sm"
+              class: "btn btn--affirmative btn--sm"
     else
       link_to "BAN", new_user_ban_path(user),
-              class: "btn btn-warning btn--sm"
+              class: "btn btn--negative btn--sm"
     end
   end
+
+  private
+
+  def render_currently_reading(user)
+    book = Book.find_by(id: user&.reading_id)
+    return unless book
+    elements = []
+    elements[0] = content_tag(:h3, "#{user.nickname} is currently reading...", class: "currently-reading-header")
+    elements[2] = book_image(book, size:"thumbnail")
+    elements[1] = content_tag(:div, class: "book-info") do
+            link_to(book.title, book_path(book), class: "btn btn--link book-title")
+            end
+
+    content_tag(:div, safe_join(elements), class: "currently-reading")
+  end
+
 end

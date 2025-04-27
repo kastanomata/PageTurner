@@ -18,8 +18,13 @@
 }
 
 .right-column {
+  display: flex;
   flex: 2;
   height: 100%;
+}
+
+.user-description {
+  flex-grow: 4;
 }
 
 .cards-container {
