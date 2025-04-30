@@ -73,7 +73,13 @@ module SeedingUtility
           book_attributes[:author] = author
           book_attributes[:created_at] = Time.now
           book_attributes[:updated_at] = Time.now
-          Book.create!(book_attributes.except(:_codename, :author_openlibrary_id))
+          book = Book.create!(book_attributes.except(:_codename, :author_openlibrary_id, :tags))
+          if book_details[:tags].present?
+            book_details[:tags].each do |tag_name|
+              tag = Tag.find_or_create_by!(name: tag_name.downcase.strip)
+              Tagging.find_or_create_by!(book: book, tag: tag)
+            end
+          end
         else
           warning "Book not found: #{book_attributes[:_codename]}"
         end

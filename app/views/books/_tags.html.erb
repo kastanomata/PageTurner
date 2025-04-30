@@ -1,0 +1,7 @@
+<div class="tags mb-3">
+  <% tags.each do |tag| %>
+    <span class="tag" style="background-color: <%= tag_color(tag.name) %>">
+      <%= tag.name %>
+    </span>
+  <% end %>
+</div>

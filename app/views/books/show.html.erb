@@ -14,6 +14,22 @@
     <% end %>
     <h3><%= @book.title %></h3>
     <p>ISBN: <%= @book.isbn %></p>
+
+    <div class="book-tags">
+      <h3>Tags:</h3>
+      <% if @book.tags.any? %>
+        <div class="tag-list">
+          <% @book.tags.each do |tag| %>
+            <span class="tag badge bg-secondary">
+              <%= link_to tag.name, tag_path(tag), class: "text-white text-decoration-none" %>
+            </span>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-muted">No tags available for this book</p>
+      <% end %>
+    </div>
+
     <%= add_book_to_bookshelf_buttons @book %>
     <%= set_book_as_reading @book %>
   </div>

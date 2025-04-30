@@ -48,6 +48,7 @@ class BooksController < ApplicationController
       @book.thumbnail = book_details[:thumbnail] if book_details[:thumbnail].present?
       @book.cover = book_details[:cover] if book_details[:cover].present?
       @book.poster = book_details[:poster] if book_details[:poster].present?
+      @book.process_open_library_tags(book_details[:tags]) if book_details[:tags]
     end
 
     if @book.save

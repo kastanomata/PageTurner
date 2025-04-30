@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  get "tags/show"
   resources :authors
   get "search", to: "search#index", as: "search"
 
   resources :clubs
   resource :session
+  resources :tags, only: [ :show ]
 
   get "session/new" => "sessions#new", as: :login
   get "/banned", to: "users#banned", as: :banned_user

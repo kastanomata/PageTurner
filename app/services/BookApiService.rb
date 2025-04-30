@@ -16,6 +16,7 @@ class BookApiService
       author_openlibrary_url = book_data.dig("authors", 0, "url")
       author_openlibrary_id = author_openlibrary_url&.split("/")
       author_openlibrary_id = author_openlibrary_id[4] unless author_openlibrary_id.nil?
+      tags = extract_and_normalize_tags(book_data)
       if book_data
         {
           openlibrary_id: work_openlibrary_id,
@@ -23,7 +24,8 @@ class BookApiService
           title: book_data["title"],
           thumbnail: book_data.dig("cover", "small"),
           cover: book_data.dig("cover", "medium"),
-          poster: book_data.dig("cover", "large")
+          poster: book_data.dig("cover", "large"),
+          tags: tags
         }
       end
     rescue JSON::ParserError, URI::InvalidURIError, Net::HTTPError => e
@@ -73,5 +75,16 @@ class BookApiService
     }
 
     "https://covers.openlibrary.org/a/olid/#{photos.first}-#{sizes[size]}.jpg"
+  end
+
+  def self.extract_and_normalize_tags(book_data)
+    raw_tags = book_data.dig("subjects")&.pluck("name") || []
+
+    raw_tags.map do |tag|
+      tag.downcase
+         .gsub(/\s+/, " ")
+         .gsub(/[^\w\s]/, "")
+         .strip
+    end.uniq.reject(&:blank?)
   end
 end

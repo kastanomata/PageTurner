@@ -50,6 +50,11 @@ module BooksHelper
     end
   end
 
+  def tag_color(tag_name)
+    colors = [ "#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4", "#FFEEAD" ]
+    colors[tag_name.downcase.hash % colors.size]
+  end
+
   private
 
   def read_bookshelf_button(book)
