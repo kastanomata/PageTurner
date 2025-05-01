@@ -34,10 +34,19 @@ module ApplicationHelper
         safe_join([
           text_field_tag(:query, params[:query], placeholder: "Cerca...", class: "search-input"),
             button_tag(type: "submit", class: "btn btn--secondary") do
-            image_tag("magnifying_glass.png", alt: "Search", class: "search-icon", size: "16x16")
+              render_icon_image("magnifying_glass")
             end
         ])
       end
+    end
+  end
+
+  # display icon
+  def render_icon_image(name)
+    if File.exist?(Rails.root.join("app", "assets", "images", "icons", "#{name}.png"))
+      image_tag("icons/#{name}.png", alt: name.to_s.humanize, class: "icon-image", size: "32x32")
+    else
+      content_tag(:span, name.to_s.humanize, class: "missing-icon")
     end
   end
 end

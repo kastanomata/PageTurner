@@ -1,0 +1,35 @@
+.book-indicators-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.book-indicator {
+  /* Button-like appearance */
+  display: inline-block;
+  padding: 5px 5px; /* Increased padding for larger size */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  color: #333;
+  font-size: 1.5rem; /* Increased font size */
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  
+  /* Remove hover animation */
+  transition: none;
+  
+  /* Positioning */
+  position: relative;
+  z-index: 1; /* Ensure it appears above adjacent content */
+  margin-top: -50px; /* Pull up over the northern div */
+  margin-bottom: 20px; /* Maintain space for content below */
+}
+
+/* .read-indicator {
+
+}
+
+.liked-indicator {
+} */

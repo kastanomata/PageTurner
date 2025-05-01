@@ -11,7 +11,8 @@
       %>
         <div class="book-card">    
           <!-- TODO add author and more info to book_card -->
-          <%= render partial: 'books/cover', locals: { book: book } %>
+          <%= book_image book %>
+          <%= book_status_indicators(bookshelf.creator, book) %>
           <div class="btn btn--link book-title">
               <span><%= book.title %></span>
           </div>

@@ -1,0 +1,13 @@
+.icon-image {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+
+.missing-icon {
+  display: inline-block;
+  padding: 0 0.5em;
+  background: #eee;
+  border-radius: 3px;
+  font-size: 0.8em;
+}

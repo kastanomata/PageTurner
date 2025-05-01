@@ -9,6 +9,24 @@ module BooksHelper
     end
   end
 
+  def book_status_indicators(user, book)
+    return unless user
+
+    read_shelf, liked_shelf = get_special_bookshelves
+
+    read = read_shelf&.books&.include?(book)
+    liked = liked_shelf&.books&.include?(book)
+    reading = user.reading_id == book.id
+
+    content_tag :div, class: "book-indicators-container" do
+      safe_join([
+        (content_tag(:span, render_icon_image("reading"), class: "book-indicator reading-indicator", title: "Currently reading") if reading),
+        (content_tag(:span, render_icon_image("read"), class: "book-indicator read-indicator", title: "Read") if read),
+        (content_tag(:span, render_icon_image("liked"), class: "book-indicator liked-indicator", title: "Liked") if liked)
+      ].compact)
+    end
+  end
+
   def set_book_as_reading(book)
     return unless Current.user
 

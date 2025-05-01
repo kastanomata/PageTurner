@@ -5,6 +5,7 @@
     width: 100%;
     border-top: 1px solid #ddd;
     background-color: #1f2937; /* dark gray */
+    z-index: 9999;
   }
 
 .footer-content {
