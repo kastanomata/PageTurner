@@ -8,7 +8,7 @@ module AuthorsHelper
 
     # Add fallbacks for missing data
     details[:bio] ||= "No biography available"
-    details[:thumbnail] ||= image_path("author_placeholder.png")
+    details[:thumbnail] ||= image_path("authorportrait_not_found.png")
     details[:portrait] ||= details[:thumbnail]
 
     @author_details[author_id] = details

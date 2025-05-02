@@ -3,9 +3,12 @@ require "net/http"
 require "json"
 class BookApiService
   BASE_URL = "https://openlibrary.org/api/books"
+  allowed_tags_filepath = Rails.root.join("app", "services", "subjects_to_tags.csv")
+  @allowed_tags = CSV.read(allowed_tags_filepath, headers: false).map { |row| [ row[0].downcase, row[1].downcase ] } unless File.exist?(allowed_tags_filepath)
 
   def self.fetch_book_details(isbn)
     begin
+      # https://openlibsrary.org/api/books?bibkeys=ISBN:9780547928227&format=json&jscmd=data
       url = URI("#{BASE_URL}?bibkeys=ISBN:#{isbn}&format=json&jscmd=data")
       response = Net::HTTP.get(url)
       return {} if response.empty?
@@ -79,12 +82,18 @@ class BookApiService
 
   def self.extract_and_normalize_tags(book_data)
     raw_tags = book_data.dig("subjects")&.pluck("name") || []
-
+    log @allowed_tags
     raw_tags.map do |tag|
-      tag.downcase
-         .gsub(/\s+/, " ")
-         .gsub(/[^\w\s]/, "")
-         .strip
-    end.uniq.reject(&:blank?)
+      normalized_tag = tag.downcase
+                         .gsub(/\s+/, " ")
+                         .gsub(/[^\w\s]/, "")
+                         .strip
+      category, subcategory = @allowed_tags.find { |cat, sub| tag.downcase.include?(cat) && tag.downcase.include?(sub) }
+      if category && subcategory
+        "#{category}:#{subcategory}"
+      elsif @allowed_tags.flatten.include?(normalized_tag)
+        normalized_tag
+      end
+    end.compact.uniq.reject(&:blank?)
   end
 end
