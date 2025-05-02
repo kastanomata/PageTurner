@@ -9,13 +9,21 @@
       <%= render 'shared/user_stats' %>
     </section>
   </aside>
-  <div class="col-md-8">
+  <div class="user-cards-container">
     <h3><%= @title %></h3>
     <% if @users.any? %>
-      <ul class="users follow">
-        <%= render @users %>
-      </ul>
-      <%= will_paginate %>
+      <% @users.each do |user| %>
+      <div class="user-card">
+        <div class="user-info">
+          <%= user.nickname %> | <strong><%= user.email_address %></strong>
+        </div>
+
+        <div class="user-actions">
+          <%= render_user_relationships_widget user %>
+        </div>
+      </div>
+      <% end %>
+      <%= will_paginate @users %>
     <% end %>
   </div>
 </div>

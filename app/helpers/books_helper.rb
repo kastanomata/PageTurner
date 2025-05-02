@@ -4,7 +4,7 @@ module BooksHelper
     liked_button = liked_bookshelf_button(book)
     return unless read_button || liked_button
 
-    content_tag :div, class: "bookshelf-buttons d-flex gap-2" do
+    content_tag :div, class: "book-actions" do
       safe_join([ read_button, liked_button ].compact)
     end
   end
@@ -30,7 +30,7 @@ module BooksHelper
   def set_book_as_reading(book)
     return unless Current.user
 
-    if Current.user.reading.nil?
+    if Current.user.reading_id.nil?
       button_text = "Start reading #{book.title}"
     else
       button_text = Current.user.reading_id == book.id ?
@@ -42,7 +42,7 @@ module BooksHelper
               update_reading_path(book_id: book.id),
               method: :patch,
               class: "reading-button",
-              disabled: Current.user.reading == book
+              disabled: Current.user.reading_id == book.id
   end
 
   def book_image(book, size: "cover", image_id: nil)

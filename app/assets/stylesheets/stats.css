@@ -1,5 +1,7 @@
 .stats {
   display: flex;
+  justify-content: center; 
+  align-items: center;
   gap: 12px; /* Spazio minimo tra i link */
   margin-top: 0;
   padding: 0;

@@ -1,9 +1,9 @@
-<% unless @user.id == Current.user&.id %>
+<% unless user.id == Current.user&.id %>
   <div style="align-items: center">
-  <% if Current.user&.following?(@user) %>
-    <%= render 'relationships/unfollow' %>
-  <% else %>
-    <%= render 'relationships/follow' %>
-  <% end %>
+    <% if Current.user&.following?(user) %>
+      <%= render 'relationships/unfollow', user: user %>
+    <% else %>
+      <%= render 'relationships/follow', user: user %>
+    <% end %>
   </div>
 <% end %>
