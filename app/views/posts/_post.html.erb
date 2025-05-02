@@ -4,7 +4,7 @@
     <div class="postcard-left">
       <div class="postcard-image-container">
         <% if @post.book %>
-          <%= render partial: "books/poster", locals: { book: @post.book }, class: "book-image" %>
+          <%= book_image @post.book, size: "poster" %>
         <% end %>
       </div>
     </div>
