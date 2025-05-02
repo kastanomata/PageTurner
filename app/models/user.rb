@@ -131,4 +131,20 @@ class User < ApplicationRecord
   def permanently_banned?
     active_ban&.expires_at.nil?
   end
+
+  def suggested_books(limit: 5)
+    read_books = bookshelves.joins(:bookshelf_contains)
+                           .where("LOWER(bookshelves.name) LIKE ?", "%read%")
+                           .first
+                           &.books || Book.none
+
+    return Book.order(popularity: :desc).limit(limit) if read_books.empty?
+
+    Book.joins(:tags)
+        .where(tags: { id: read_books.joins(:tags).select(:id) })
+        .where.not(id: read_books.select(:id))
+        .group(:id)
+        .order("COUNT(tags.id) DESC")
+        .limit(limit)
+  end
 end

@@ -1,0 +1,9 @@
+<h1>Books tagged with "<%= @tag.name %>"</h1>
+
+<div class="row">
+  <% @tag.books.each do |book| %>
+    <div class="col-md-4 mb-4">
+      <%= render 'books/thumbnail', book: book %>
+    </div>
+  <% end %>
+</div>

@@ -20,6 +20,7 @@ class BooksController < ApplicationController
   # GET /books/1 or /books/1.json
   def show
     @book = Book.find_by(id: params[:id])
+    @popular_tags = Tag.popular(5)
     unless @book
       api_data = BookApiService.fetch_by_isbn(params[:id])
       if api_data[:error]
@@ -49,6 +50,7 @@ class BooksController < ApplicationController
       @book.thumbnail = book_details[:thumbnail] if book_details[:thumbnail].present?
       @book.cover = book_details[:cover] if book_details[:cover].present?
       @book.poster = book_details[:poster] if book_details[:poster].present?
+      @book.process_open_library_tags(book_details[:tags]) if book_details[:tags]
     end
 
     if @book.save

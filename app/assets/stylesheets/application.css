@@ -47,3 +47,23 @@ body {
     margin: auto;
     transition: background-color 0.3s ease;
 }
+
+.tag {
+    display: inline-block;
+    padding: 0.25em 0.6em;
+    margin: 0 0.5em 0.5em 0;
+    border-radius: 15px;
+    font-size: 0.9em;
+    color: white;
+    transition: transform 0.2s;
+  
+    &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+  }
+  
+  .tag-badge {
+    @extend .tag;
+    background: #6c757d;
+  }

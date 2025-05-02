@@ -21,6 +21,10 @@
 
   </div>
 
+  <h3>Suggested Books</h3>
+  <% @user.suggested_books.each do |book| %>
+    <%= render 'books/cover', book: book %>
+  <% end %>
 
   <div class="user-content">
     <div class="bookshelves bookshelves--user">
