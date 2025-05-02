@@ -1,9 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  creator: MyString
+  name: "Antonio Solimando"
+  creator_id: 1
+  bookclub: 1
+  special: false
+  id: 1
 
 two:
-  name: MyString
-  creator: MyString
+  name: "Alessandro De Rosa"
+  creator_id: 2
+  bookclub: 2
+  special: true
+  id: 2

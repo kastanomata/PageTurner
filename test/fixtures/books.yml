@@ -1,7 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  isbn: MyString
+  isbn: "9780618391110"
+  title: "The Silmarillion"
+  openlibrary_id: "OL27495W"
+  author_id: 1
+  id: 1
 
 two:
-  isbn: MyString
+  isbn: "9780618346257"
+  title: "The Fellowship of the Ring"
+  openlibrary_id: "OL27513W"
+  author_id: 1
+  id: 2
