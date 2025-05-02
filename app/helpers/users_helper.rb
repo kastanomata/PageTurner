@@ -12,7 +12,7 @@ module UsersHelper
     if user&.reading_id.present?
       render_currently_reading user
     else
-      content_tag(:h3, "#{user.nickname} is currently reading...", class: "currently-reading currently-reading-header")
+      content_tag(:h3, "#{user.nickname} is not reading any book at the moment.", class: "currently-reading currently-reading-header")
     end
   end
 

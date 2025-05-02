@@ -33,7 +33,7 @@ module BooksHelper
     if Current.user.reading.nil?
       button_text = "Start reading #{book.title}"
     else
-      button_text = Current.user.reading == book ?
+      button_text = Current.user.reading_id == book.id ?
                    "Currently reading #{book.title}" :
                    "Switch to reading #{book.title}"
     end
