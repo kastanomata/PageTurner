@@ -1,16 +1,19 @@
 <p style="color: green"><%= notice %></p>
+<div class="a">
+  <div class="post-show-container">
+    <div class="postcard-container">
+      <%= render @post %>
 
-<div class="user content">
-  <%= render @post %>
-
-  <% if Current.user&.admin? || @post.author == Current.user %>
-    <div class="admin-action">
-      <% if @post.author == Current.session&.id %>
-        <%= link_to "Edit this post", edit_post_path(@post) %>
+      <% if Current.user&.admin? || @post.author == Current.user %>
+        <div class="admin-action", style="margin-top: 20px;">
+          <% if @post.author == Current.session&.id %>
+            <%= button_to "Edit this post", edit_post_path(@post) %>
+          <% end %>
+          <%= button_to "Destroy this post", @post, method: :delete, class:"button" %>
+        </div>
       <% end %>
-      <%= button_to "Destroy this post", @post, method: :delete %>
     </div>
-  <% end %>
+  </div>
 
   <div class="comment-container">
       <h3>Comments</h3>
@@ -30,7 +33,7 @@
           <% end %>
         <% end %>
       </div>
-      
+
       <% if authenticated? %>
         <div class="comment-form">
           <%= render "comments/form", comment: @comment %>

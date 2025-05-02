@@ -115,11 +115,24 @@
 }
 
 .post-show-container{
-  display: grid;
+  flex: 2;
+  background-color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  /*display: grid;
   grid-template-columns: 65% 25%;
   width: 100%;
   padding: 10px;
   margin-left: 20px;
   margin-right: 20px;
   box-sizing: border-box;
+  */
+}
+
+.a{
+  display: flex; 
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  gap: 20px; /* spazio tra i due div */
 }

@@ -1,16 +1,14 @@
-<div class="post-show-container", id="<%= dom_id post %>">
-  <div class="postcard-container">
-    <div class="postcard">
 
-      <div class="postcard-left">
-        <div class="postcard-image-container">
-          <% if @post.book %>
-            <%= render partial: "books/poster", locals: { book: @post.book }, class: "book-image" %>
-          <% end %>
-        </div>
+
+  <div class="postcard">
+    <div class="postcard-left">
+      <div class="postcard-image-container">
+        <% if @post.book %>
+          <%= render partial: "books/poster", locals: { book: @post.book }, class: "book-image" %>
+        <% end %>
       </div>
-
-      <div class="postcard-right"> 
+    </div>
+    <div class="postcard-right"> 
       <div class="post-header">
         <h1><%= @post.title %></h1>
     
@@ -32,12 +30,9 @@
         <%= display_likes_count @post %>
         <%= like_button @post %>
       </div>
-      
-
     </div>
   </div>
 
-  <div style="margin-top: 10px;">
+  <div>
     <%= render_report_button @post %>
   </div>
-</div>
