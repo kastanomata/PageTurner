@@ -1,6 +1,5 @@
 <% 
   bookshelf_class = local_assigns[:class_name] || 'bookshelf'
-  debug bookshelf_class
  %>
 <div class="<%= bookshelf_class %>">
   <h3><%= link_to bookshelf.name, bookshelf, class: "btn--link" %></h3>

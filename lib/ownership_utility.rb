@@ -6,6 +6,7 @@ module OwnershipUtility
     Comment => :user,
     User => :itself,
     Membership => :follower,
+    Like => :user,
     Relationship => :follower
   }.freeze
 

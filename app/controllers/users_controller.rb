@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         # Update special bookshelves to match the new nickname
-        debug "Updating special bookshelves #{@user.get_special_bookshelves.inspect}"
+        # debug "Updating special bookshelves #{@user.get_special_bookshelves.inspect}"
         shelves = @user.get_special_bookshelves
         shelves[0].update(name: "#{@user.nickname}'s Read Books")
         shelves[1].update(name: "#{@user.nickname}'s Liked Books")
@@ -85,7 +85,7 @@ class UsersController < ApplicationController
   def update_reading
     book = Book.find_by(id: params[:book_id])
     transaction = Current.user.update(reading_id: book&.id)
-    debug transaction.inspect
+    # debug transaction.inspect
     if book && transaction
       flash[:notice] = "Now reading #{book.title}"
     else
@@ -141,6 +141,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.expect(user: [ :email_address, :password, :nickname, :description, :birthday, :avatar, :admin ]).permit(:nickname, :description, :birthday, :avatar)
+      params.expect(user: [ :email_address, :password, :nickname, :description, :birthday, :avatar, :admin ]).permit(:nickname, :email_address, :password, :description, :birthday, :avatar)
     end
 end

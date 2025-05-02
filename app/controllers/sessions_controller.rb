@@ -21,6 +21,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  # def failure
+  #   error = request.env["omniauth.error"]
+  # end
+
   def destroy
     # puts "CURRENT ID:", Current.session.id
     terminate_session

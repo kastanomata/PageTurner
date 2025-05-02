@@ -65,7 +65,7 @@ module Authentication
 
       # Check ownership
       can_access_resource = current_user_owns?(resource) || Current.user.admin?
-      debug can_access_resource
+      # debug can_access_resource
       unless can_access_resource
         redirect_to unauthorized_path
       end

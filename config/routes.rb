@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resource :session
 
   get "session/new" => "sessions#new", as: :login
+  get "/session/failure", to: "sessions#failure"
   get "/banned", to: "users#banned", as: :banned_user
 
   resources :passwords, param: :token

@@ -40,12 +40,13 @@ module LoggingUtility
   end
 
   # Specific log methods with pre-configured levels
-  def info(message)    = log(message, level: :info)
-  def success(message) = log(message, level: :success)
-  def warning(message) = log(message, level: :warning)
-  def error(message)   = log(message, level: :error)
-  def debug(message)   = log(message, level: :debug)
-  def fatal(message)   = log(message, level: :fatal)
+  # DO NOT UNCOMMENT THE info METHOD, it supersedes another function in OAuth and causes problems
+  # def info(message: nil)    = log(message, level: :info)
+  def success(message: nil) = log(message, level: :success)
+  def warning(message: nil) = log(message, level: :warning)
+  def error(message: nil)   = log(message, level: :error)
+  def debug(message: nil)   = log(message, level: :debug)
+  def fatal(message: nil)   = log(message, level: :fatal)
 
   # Specialized logging formats
   def divider(char = "─", color: :gray)
