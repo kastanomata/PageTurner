@@ -1,10 +1,21 @@
 # app/services/book_api_service.rb
 require "net/http"
 require "json"
+require "csv"
 class BookApiService
   BASE_URL = "https://openlibrary.org/api/books"
   allowed_tags_filepath = Rails.root.join("app", "services", "subjects_to_tags.csv")
-  @allowed_tags = CSV.read(allowed_tags_filepath, headers: false).map { |row| [ row[0].downcase, row[1].downcase ] } unless File.exist?(allowed_tags_filepath)
+  @allowed_tags ||= begin
+    if File.exist?(allowed_tags_filepath)
+      CSV.read(allowed_tags_filepath, headers: false).map do |row|
+        column1 = row[0] ? row[0].downcase : nil
+        column2 = row[1] ? row[1].downcase : nil
+        [ column1, column2 ]
+      end
+    else
+      []
+    end
+  end
 
   def self.fetch_book_details(isbn)
     begin
@@ -82,7 +93,7 @@ class BookApiService
 
   def self.extract_and_normalize_tags(book_data)
     raw_tags = book_data.dig("subjects")&.pluck("name") || []
-    log @allowed_tags
+    # log @allowed_tags
     raw_tags.map do |tag|
       normalized_tag = tag.downcase
                          .gsub(/\s+/, " ")

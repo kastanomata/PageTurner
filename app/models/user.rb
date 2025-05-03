@@ -138,7 +138,7 @@ class User < ApplicationRecord
                            .first
                            &.books || Book.none
 
-    return Book.order(popularity: :desc).limit(limit) if read_books.empty?
+    return Book.limit(limit) if read_books.empty?
 
     Book.joins(:tags)
         .where(tags: { id: read_books.joins(:tags).select(:id) })
