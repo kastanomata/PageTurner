@@ -1,13 +1,47 @@
+<div class="a">
+  <div class="post-show-container">
+    <div class="postcard-container">
+      <%= render @post %>
 
+      <% if Current.user&.admin? || @post.author == Current.user %>
+        <div class="admin-action", style="margin-top: 20px;">
+          <% if @post.author == Current.session&.id %>
+            <%= button_to "Edit this post", edit_post_path(@post) %>
+          <% end %>
+          <%= button_to "Destroy this post", @post, method: :delete, class:"button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<div class="user content">
-  <%= render @post %>
+  <div class="comment-container">
+      <h3>Comments</h3>
 
-<div style="display: flex; flex-direction: horizontal;" >  
-  <%= render_report_button @post %>
-  <%= post_management_buttons(@post) %>
+      <div class="comments-scrollable">
+        <% unless @post.comments.present? %>
+          <p>No comments yet.</p>
+        <% else %>
+          <% @post.comments.each do |comment| %>
+            <% # log_star comment.inspect %>
+            <% if comment[:author_id].present? %>
+              <div class="comment">
+                <span><strong><%= User.find(comment[:author_id]).nickname %>:</strong></span>
+                <span><%= comment.text %></span>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <% if authenticated? %>
+        <div class="comment-form">
+          <%= render "comments/form", comment: @comment %>
+        </div>
+      <% else %>
+        <div class="comment-form">
+          <%= link_to "Log in to comment!", login_path %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-  
-
-  <%= comments_section(@post) %>
-  

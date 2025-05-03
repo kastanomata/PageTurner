@@ -1,6 +1,6 @@
 /* Stile per il contenitore del form */
 .form-container {
-  max-width: 400px;
+  max-width: 100%;
   margin: 50px auto;
   padding: 10px;
   background-color: #fff;
@@ -23,7 +23,7 @@
 
 /* Stile per i campi di input */
 .form-control {
-  width: 100%;
+  width: 95%;
   padding: 10px;
   font-size: 1rem;
   border: 1px solid #ccc;

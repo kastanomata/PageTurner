@@ -35,8 +35,8 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Add Guest User homepage 
 - [x] Order bookshelves
 - [x] Divide special bookshelves from user-created
-- [ ] Add "New post" button/form
-- [ ] Add club infocard to the right
+- [x] Add "New post" button/form
+- [x] Add club infocard to the right
 
 ### Search
 - [ ] Styling
@@ -45,7 +45,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Remove "Create new bookshelf" and "Create new post" buttons from other user pages
 - [x] Fix user autofollow on user create
 - [x] Fix user description on user profile
-- [ ] Fix curator's club bookshelves showing up on profile
+- [x] Fix curator's club bookshelves showing up on profile
 - [ ] Add a way to request becoming a author
 - [ ] Add favorite book
 - [ ] Add block user functionality

@@ -1,24 +1,38 @@
-<div id="<%= dom_id post %>">
-<div class="post-container">
-  <div class="post-header">
-    <h1><%= @post.title %></h1>
-  </div>
-  <div class="post-meta" style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-    <p>Posted by: <%= link_to @post.author.nickname, user_path(@post.author) %></p>
-  </div>
 
-  <div class="post-body" style="display: flex; gap: 20px;">
-    <% if @post.book %>
-      <%= render partial: "books/cover", locals: { book: @post.book } %>
-    <% end %>
 
-    <div class="post-content" style="flex: 2;">
-      <p><%= @post.text %></p>
+  <div class="postcard">
+    <div class="postcard-left">
+      <div class="postcard-image-container">
+        <% if @post.book %>
+          <%= book_image @post.book, size: "poster" %>
+        <% end %>
+      </div>
     </div>
-    <div class="post-actions" style="flex: 2;">
-      <%= display_likes_count @post %>
-      <%= like_button @post %>
+    <div class="postcard-right"> 
+      <div class="post-header">
+        <h1><%= @post.title %></h1>
+    
+        <div class="post-meta" style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+          <p>Posted by: <%= link_to @post.author.nickname, user_path(@post.author) %></p>
+          <!--# TODO add support for absent post author-->
+          <%# if @post.author %> 
+          <%# else %>
+          <!--      <p>Posted by: <em>[User not found]</em></p>-->
+          <%# end %>
+        </div>
+      </div>
+        
+      <div class="post-content" style="flex: 2;">
+        <p><%= @post.text %></p>
+      </div>
+        
+      <div class="post-actions" style="flex: 2;">
+        <%= display_likes_count @post %>
+        <%= like_button @post %>
+      </div>
     </div>
   </div>
 
-</div>
+  <div>
+    <%= render_report_button @post %>
+  </div>

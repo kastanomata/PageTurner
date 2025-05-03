@@ -17,29 +17,5 @@
     color: #721c24;
   }
   
-  /* User card layout */
-  /* .user-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
-    margin-bottom: 10px;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
-    transition: background-color 0.2s;
-  }
-  
-  .user-card:hover {
-    background-color: #f8f9fa;
-  }
-  
-  .user-actions {
-    display: flex;
-    gap: 8px;
-  }
-  
-  .btn--sm {
-    padding: 5px 10px;
-    font-size: 0.8rem;
-  }
-*/
+
+

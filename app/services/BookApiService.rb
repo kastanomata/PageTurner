@@ -93,18 +93,11 @@ class BookApiService
 
   def self.extract_and_normalize_tags(book_data)
     raw_tags = book_data.dig("subjects")&.pluck("name") || []
-    # log @allowed_tags
     raw_tags.map do |tag|
-      normalized_tag = tag.downcase
-                         .gsub(/\s+/, " ")
-                         .gsub(/[^\w\s]/, "")
-                         .strip
-      category, subcategory = @allowed_tags.find { |cat, sub| tag.downcase.include?(cat) && tag.downcase.include?(sub) }
-      if category && subcategory
-        "#{category}:#{subcategory}"
-      elsif @allowed_tags.flatten.include?(normalized_tag)
-        normalized_tag
-      end
-    end.compact.uniq.reject(&:blank?)
+      tag.downcase
+         .gsub(/\s+/, " ")
+         .gsub(/[^\w\s]/, "")
+         .strip
+    end.uniq.reject(&:blank?)
   end
 end

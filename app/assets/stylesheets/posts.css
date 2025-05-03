@@ -106,6 +106,7 @@
   font-size: 1rem;
   font-weight: bold;
 }
+
 .new-post-btn:hover {
   background-color: #0056b3;
 }
@@ -148,13 +149,8 @@
 }
 
 /* FORM POSTCARD STYLING */
-.isbn-input-container {
-  position: relative;
-  width: 100%;
-}
-
 .isbn-input {
-  width: 100%;
+  width: 50%;
   box-sizing: border-box;
   padding-right: 20px; /* Space for fade effect */
   white-space: nowrap;
@@ -173,12 +169,25 @@
   pointer-events: none;
 }
 
-.post-show-container{
-  display: grid;
+.post-show-container {
+  flex: 2;
+  background-color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  /*display: grid;
   grid-template-columns: 65% 25%;
   width: 100%;
   padding: 10px;
   margin-left: 20px;
   margin-right: 20px;
   box-sizing: border-box;
+  */
+}
+
+.a {
+  display: flex; 
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  gap: 20px; /* spazio tra i due div */
 }

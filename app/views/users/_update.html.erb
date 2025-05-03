@@ -47,9 +47,6 @@
 
   <div class="form-actions">
     <%= form.submit "Save Changes", class: "btn btn--primary" %>
-    <%= link_to "Delete this user", 
-          user_path(user), 
-          class: "btn btn--negative",
-          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-  </div>
 <% end %>
+    <%= button_to "Delete this user", user_path(user), method: :delete, class: "btn btn--negative"%>
+  </div>
