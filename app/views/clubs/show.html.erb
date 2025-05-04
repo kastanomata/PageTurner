@@ -1,9 +1,17 @@
 
-<h1>Book Club</h1>
 <div class="club-header">
-  <%= render partial: "shared/club_stats", locals: { club: @club } %>
-  <%= render partial: "memberships/member_form", locals: { club: @club } %>
-  <%= render @club %>
+  <div class="club-card">
+    <h3 style="font-size: larger"><%= @club.name %></h3>
+    <div style="display:flex; gap:2rem; padding-left:2rem; align-items:center;">
+      <%= render partial: "shared/club_stats", locals: { club: @club } %>
+      <%= render partial: "memberships/member_form", locals: { club: @club } %>
+    </div>
+    <p><%= @club.description %></p>
+    <div style="display: flex; justify-content: space-between;">
+      <p>Created by: <%= link_to @club.curator.nickname, user_path(@club.curator) %></p>
+    </div>
+  </div>
+
 </div>
 
 <div class="btn--link">
@@ -11,10 +19,9 @@
 </div>
 
 <div class="club-content">
-
   <div class="club-bookshelves">
     <% @club.bookshelves.each do |bookshelf| %>
-      <%= render bookshelf %>
+      <%= render partial: "bookshelves/bookshelf_card", locals: { bookshelf: bookshelf } %>
     <% end %>
   </div>
 

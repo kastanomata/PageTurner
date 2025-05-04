@@ -17,6 +17,9 @@ module UsersHelper
   end
 
   def user_ban_status(user)
+    unless authenticated? and admin?
+      return
+    end
     if user.active_ban
       content_tag(:span, class: "ban-status banned") do
         if user.permanently_banned?

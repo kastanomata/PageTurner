@@ -2,9 +2,7 @@
   <div class="split-container">
     <div class="left-column">
       <div class="user-info">
-        <h1><%= @user.nickname %></h1>
-        <%= link_to "Edit your profile", edit_user_path(@user), class: "btn--link" if current_user_owns? @user%>
-        
+        <h1><%= @user.nickname %></h1>       
         <section class="stats">
               <%= render_user_relationships_widget @user%>
         </section>
@@ -12,6 +10,7 @@
       <div class="btn--link">
         <%= render_report_button @user %>
         <%= user_ban_status @user %>
+        <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn--secondary btn--sm" if current_user_owns? @user%>
       </div>
     </div>   
     <div class="right-column">
