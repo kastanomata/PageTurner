@@ -2,6 +2,8 @@ class Club < ApplicationRecord
   belongs_to :curator, class_name: "User"
   has_many :bookshelves, foreign_key: "bookclub", dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :reading_goals, dependent: :destroy
+  has_many :books, through: :reading_goals
 
   validates :name, presence: true
 

@@ -1,0 +1,22 @@
+<h2>New Reading Goal</h2>
+
+<%= form_with(model: [@club, @reading_goal]) do |form| %>
+  <div class="field">
+    <%= form.label :book_id %>
+    <%= form.collection_select :book_id, Book.all, :id, :title, prompt: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.date_field :end_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Create Reading Goal' %>
+  </div>
+<% end %>

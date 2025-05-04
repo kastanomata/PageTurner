@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_30_071854) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_04_123534) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -145,6 +145,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_30_071854) do
     t.string "curator"
   end
 
+  create_table "reading_goals", force: :cascade do |t|
+    t.integer "club_id", null: false
+    t.integer "book_id", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_reading_goals_on_book_id"
+    t.index ["club_id"], name: "index_reading_goals_on_club_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -213,6 +225,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_30_071854) do
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "omni_auth_identities", "users"
+  add_foreign_key "reading_goals", "books"
+  add_foreign_key "reading_goals", "clubs"
   add_foreign_key "sessions", "users"
   add_foreign_key "taggings", "books"
   add_foreign_key "taggings", "tags"
