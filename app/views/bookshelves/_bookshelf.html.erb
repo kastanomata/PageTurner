@@ -3,7 +3,7 @@
     <h2><%= bookshelf.name %></h2>
     <p>Created by: <%= link_to bookshelf.creator.nickname, user_path(bookshelf.creator) %></p>
     <div class="bookshelf-books-container">
-      <% @bookshelf.bookshelf_contains.includes(:book).each do |contain| %>
+      <% bookshelf.bookshelf_contains.includes(:book).each do |contain| %>
         <% book = contain.book %>
         <% next unless book %>
         <div class="book-card">    
@@ -13,8 +13,8 @@
               <span><%= book.title %></span>
           </div>
           <div class="bookshelf-actions" style="display: flex; gap: 10px;">
-            <% if current_user_owns?(@bookshelf) %>
-              <%= button_to 'Remove from Bookshelf', bookshelf_contain_path(name: bookshelf.name, creator: bookshelf.creator, book: book.isbn), method: :delete, class: 'btn btn--delete', style: 'padding: 5px 10px' %>
+            <% if current_user_owns?(bookshelf) %>
+              <%= button_to 'Remove from Bookshelf', bookshelf_contain_path(contain), method: :delete, class: 'btn btn--delete', style: 'padding: 5px 10px' %>
             <% end %>
           </div>
           <!-- Hover Info Card -->

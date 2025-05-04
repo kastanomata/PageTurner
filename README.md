@@ -46,17 +46,17 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Fix user autofollow on user create
 - [x] Fix user description on user profile
 - [x] Fix curator's club bookshelves showing up on profile
+- [ ] Add "new post" functionality (postcard) on profile
 - [ ] Add a way to request becoming a author
 - [ ] Add favorite book
 - [ ] Add block user functionality
 
 ### Books
-- [ ] Fix books input from user
-- [ ] Fix books show (only admin should be able to edit Books)
-- [ ] Add buttons on book show page to quickly add the book to read or liked bookshelf
-
-### Authors
-- [ ] Add styling for author's info on book page
+- [x] Add buttons on book show page to quickly add the book to read or liked bookshelf
+- [x] Fix books show (only admin should be able to edit Books)
+- [ ] Add books input from user
+- [ ] Fix author card on book
+- [ ] Add post about book display
 
 ### Bookshelves
 - [x] Bookshelf creation #styling
@@ -66,7 +66,10 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Display Posts made about the books in the bookshelf show view
 
 ### Bookclubs 
-- [ ] Style bookclub creation form
+- [ ] Style creation form
+- [ ] Style index 
+- [ ] Style show page 
+- [ ] Add post support 
 
 ### Posts
 - [x] Add interaction (comments, likes) support
@@ -90,19 +93,11 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 
 ### Admin
 - [x] Should not be able edit post
-- [ ] Add "Make User into Curator" support
+- [x] Add "Make User into Curator" support
 - [ ] Add "Make User into Author" support
 
 ### Routing
 - [ ] Add "Credits" redirect on footer
-
-### Database refactor
-- [x] Users -> club (string (name)) to is_curator
-- [x] Bookshelf_contains -> book (isbn) to book_id and (name, creator) to bookshelf_id 
-- [x] Bookshelf -> creator (email) to creator_id (references user)
-- [x] Clubs -> curator (email) to curator_id (references user)
-- [x] Posts -> creator (email) to poster_id (references user), [club, curator] to club_id, book (isbn) to book_id 
-- [x] Reports -> add polymorphic associations support
 
 ### Testing
 
