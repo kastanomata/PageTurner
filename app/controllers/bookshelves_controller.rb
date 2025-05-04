@@ -9,6 +9,10 @@ class BookshelvesController < ApplicationController
 
   # GET /bookshelves/1 or /bookshelves/1.json
   def show
+    @bookshelf = Bookshelf.includes(bookshelf_contains: { book: :author }).find(params[:id])
+    @timeline_entries = @bookshelf.bookshelf_contains
+    .order(created_at: :asc)
+    .includes(book: :author)
   end
 
   # GET /bookshelves/new

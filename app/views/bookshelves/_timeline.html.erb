@@ -1,0 +1,37 @@
+<style>
+  .timeline {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+  .timeline-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .book-image--timeline {
+    width: 2rem;
+    height: auto; 
+  }
+</style>
+
+<h1>Your Timeline</h1>
+<div class="timeline-container">
+  <div class="timeline">
+    <% @timeline_entries.each do |entry| %>
+      <div class="timeline-item">
+        <%= book_image(entry.book, size: "thumbnail", class: "book-image--timeline") %>
+        <h4><%= entry.book.title %></h4>
+        <p class="author"><%= entry.book.author.name %></p>
+        <div class="timeline-date">
+          <%= entry.created_at.strftime("%b %d, %Y") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

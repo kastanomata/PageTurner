@@ -2,7 +2,6 @@
 .book-image-container {
   position: relative;
   background-color: #f5f5f5;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
 }
 
@@ -26,20 +25,20 @@
   background-color: #f0f0f0;
 }
 
-/* Size variants with !important to override potential conflicts */
+/* Size variants with to override potential conflicts */
 .book-image--cover {
-  width: 200px !important;
-  height: 300px !important;
+  width: 200px;
+  height: 300px;
 }
 
 .book-image--thumbnail {
-  width: 40px !important;
-  height: auto !important;
+  width: 40px;
+  height: auto;
 }
 
 .book-image--poster {
-  width: 300px !important;
-  height: 450px !important;
+  width: 300px;
+  height: 450px;
 }
 
 /* When no image is present, hide the img element */
@@ -50,22 +49,16 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .book-image--cover {
-    width: 150px !important;
-    height: 225px !important;
+    width: 150px;
+    height: 225px;
   }
   
   .book-image--poster {
-    width: 200px !important;
-    height: 300px !important;
+    width: 200px;
+    height: 300px;
   }
   
   .book-image-container--not-found {
     background-size: 50%;
   }
-}
-
-/* Interactive states */
-.book-image-container:hover {
-  transform: scale(1.03);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }

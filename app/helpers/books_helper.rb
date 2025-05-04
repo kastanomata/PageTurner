@@ -45,7 +45,7 @@ module BooksHelper
               disabled: Current.user.reading_id == book.id
   end
 
-  def book_image(book, size: "cover", image_id: nil)
+  def book_image(book, size: "cover", image_id: nil, class: "")
     size_class, image_version = case size
     when "cover" then [ "book-image--cover", book&.cover ]
     when "thumbnail" then [ "book-image--thumbnail", book&.thumbnail ]
@@ -60,11 +60,13 @@ module BooksHelper
       image_version.to_s
     end
 
-    container_classes = [ "book-image-container", size_class ]
+    container_classes = [ "book-image-container" ]
     container_classes << "book-image-container--not-found" if File.basename(image_version) == "bookart_not_found.png"
 
+    image_classes = [ "book-image", size_class,  binding.local_variable_get(:class) ].compact.join(" ")
+
     content_tag(:div, class: container_classes.join(" "), id: image_id) do
-      image_tag(image_version, class: "book-image", alt: "#{book&.title || 'Default'} #{size} image")
+      image_tag(image_version, class: image_classes, alt: "#{book&.title || 'Default'} #{size} image")
     end
   end
 
