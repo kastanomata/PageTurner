@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_04_123534) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_05_090053) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -56,6 +56,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_04_123534) do
     t.datetime "updated_at", null: false
     t.index ["moderator_id"], name: "index_bans_on_moderator_id"
     t.index ["user_id"], name: "index_bans_on_user_id"
+  end
+
+  create_table "book_suggestions", force: :cascade do |t|
+    t.integer "club_id", null: false
+    t.integer "book_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_suggestions_on_book_id"
+    t.index ["club_id"], name: "index_book_suggestions_on_club_id"
+    t.index ["user_id"], name: "index_book_suggestions_on_user_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -221,6 +232,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_04_123534) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bans", "users"
   add_foreign_key "bans", "users", column: "moderator_id"
+  add_foreign_key "book_suggestions", "books"
+  add_foreign_key "book_suggestions", "clubs"
+  add_foreign_key "book_suggestions", "users"
   add_foreign_key "books", "authors"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"

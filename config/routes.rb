@@ -58,6 +58,7 @@ Rails.application.routes.draw do
 
   # URLs like clubs/1/members, member method allows to use links containing the id
   resources :clubs do
+    resources :book_suggestions, only: [:create, :destroy]
     resources :reading_goals, only: [ :new, :create, :show ]
     member do
       get :members

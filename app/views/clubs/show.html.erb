@@ -11,6 +11,7 @@
 </div>
 
 <div class="club-content">
+  <% if @club.members.include?(Current.user) %>
   <% if @club.reading_goals.any? %>
     <h3>Current Reading Goals</h3>
     <% @club.reading_goals.each do |goal| %>
@@ -25,6 +26,33 @@
 
   <% if Current.user == @club.curator %>
     <%= link_to 'Add New Reading Goal', new_club_reading_goal_path(@club) %>
+  <% end %>
+
+
+  <div class="book-suggestions">
+    <h2>Suggested Books</h2>
+    
+    <% if @club.suggested_books.any? %>
+      <ul>
+        <% @club.book_suggestions.includes(:book, :user).each do |suggestion| %>
+          <li>
+            <%= link_to suggestion.book.title, suggestion.book %>
+            suggested by <%= suggestion.user.nickname %>
+            <% if Current.user == suggestion.user %>
+              <%= button_to 'Remove', club_book_suggestion_path(@club, suggestion), method: :delete %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No suggestions yet!</p>
+    <% end %>
+  
+    <%= form_with model: [@club, @club.book_suggestions.new], local: true do |f| %>
+      <%= f.collection_select :book_id, Book.order(:title), :id, :title, { prompt: "Select a book" } %>
+      <%= f.submit "Suggest Book" %>
+    <% end %>
+  </div>
   <% end %>
 
   <div class="club-bookshelves">

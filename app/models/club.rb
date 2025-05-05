@@ -4,6 +4,8 @@ class Club < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :reading_goals, dependent: :destroy
   has_many :books, through: :reading_goals
+  has_many :book_suggestions, dependent: :destroy
+  has_many :suggested_books, through: :book_suggestions, source: :book
 
   validates :name, presence: true
 

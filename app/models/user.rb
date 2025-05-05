@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   validates :nickname, uniqueness: { case_sensitive: false, allow_nil: true }
 
+  has_many :book_suggestions, dependent: :destroy
+
   has_many :sessions, dependent: :destroy
   has_many :omni_auth_identities, dependent: :destroy
 

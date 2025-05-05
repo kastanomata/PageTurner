@@ -9,6 +9,7 @@ class ClubsController < ApplicationController
 
   # GET /clubs/1 or /clubs/1.json
   def show
+    @club = Club.includes(book_suggestions: [:book, :user]).find(params[:id])
   end
 
   # GET /clubs/new
