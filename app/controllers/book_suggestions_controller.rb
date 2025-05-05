@@ -26,7 +26,7 @@ class BookSuggestionsController < ApplicationController
   end
 
   def ensure_member
-    return if @club.members.include?(current_user)
+    return if @club.members.include?(Current.user)
 
     redirect_to @club, alert: "You must be a club member to suggest books"
   end

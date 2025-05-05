@@ -12,47 +12,57 @@
 
 <div class="club-content">
   <% if @club.members.include?(Current.user) %>
-  <% if @club.reading_goals.any? %>
-    <h3>Current Reading Goals</h3>
-    <% @club.reading_goals.each do |goal| %>
-      <div class="reading-goal">
-        <h4><%= goal.book.title %></h4>
-        <p>Reading period: <%= goal.start_date %> to <%= goal.end_date %></p>
-      </div>
-    <% end %>
-  <% else %>
-    <p>No reading goals set yet.</p>
-  <% end %>
-
-  <% if Current.user == @club.curator %>
-    <%= link_to 'Add New Reading Goal', new_club_reading_goal_path(@club) %>
-  <% end %>
-
-
-  <div class="book-suggestions">
-    <h2>Suggested Books</h2>
-    
-    <% if @club.suggested_books.any? %>
-      <ul>
-        <% @club.book_suggestions.includes(:book, :user).each do |suggestion| %>
-          <li>
-            <%= link_to suggestion.book.title, suggestion.book %>
-            suggested by <%= suggestion.user.nickname %>
-            <% if Current.user == suggestion.user %>
-              <%= button_to 'Remove', club_book_suggestion_path(@club, suggestion), method: :delete %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
+    <% if @club.reading_goals.any? %>
+      <h3>Current Reading Goals</h3>
+      <% @club.reading_goals.each do |goal| %>
+        <div class="reading-goal">
+          <h4><%= goal.book.title %></h4>
+          <p>Reading period: <%= goal.start_date %> to <%= goal.end_date %></p>
+        </div>
+      <% end %>
     <% else %>
-      <p>No suggestions yet!</p>
+      <p>No reading goals set yet.</p>
     <% end %>
-  
-    <%= form_with model: [@club, @club.book_suggestions.new], local: true do |f| %>
-      <%= f.collection_select :book_id, Book.order(:title), :id, :title, { prompt: "Select a book" } %>
-      <%= f.submit "Suggest Book" %>
+
+    <% if Current.user == @club.curator %>
+      <%= link_to 'Add New Reading Goal', new_club_reading_goal_path(@club) %>
     <% end %>
-  </div>
+
+
+    <div class="book-suggestions">
+      <h2>Suggested Books</h2>
+
+      <% if @club.suggested_books.any? %>
+        <ul>
+          <% @club.book_suggestions.includes(:book, :user).each do |suggestion| %>
+            <li>
+              <%= link_to suggestion.book.title, suggestion.book %>
+              suggested by <%= suggestion.user.nickname %>
+              <% if Current.user == suggestion.user %>
+                <%= button_to 'Remove', club_book_suggestion_path(@club, suggestion), method: :delete %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No suggestions yet!</p>
+      <% end %>
+
+      <%= form_with model: [@club, @club.book_suggestions.new], local: true do |f| %>
+        <%= f.collection_select :book_id, Book.order(:title), :id, :title, { prompt: "Select a book" } %>
+        <%= f.submit "Suggest Book" %>
+      <% end %>
+    </div>
+
+    <% if Current.user == @club.curator %>
+      <%= form_with url: club_next_book_path(@club), method: :patch do |form| %>
+        <div class="field">
+          <%= form.label :book_id, 'Select Next Book' %>
+          <%= form.collection_select :book_id, Book.all, :id, :title %>
+        </div>
+        <%= form.submit 'Set Next Book' %>
+      <% end %>
+    <% end %>
   <% end %>
 
   <div class="club-bookshelves">

@@ -7,6 +7,7 @@ class Book < ApplicationRecord
   has_many :clubs, through: :reading_goals
   has_many :book_suggestions, dependent: :destroy
   has_many :suggesting_clubs, through: :book_suggestions, source: :club
+  has_many :clubs_as_next, class_name: "Club", foreign_key: "next_book_id"
 
   has_many :current_readers,
   class_name: "User",
