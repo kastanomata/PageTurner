@@ -1,0 +1,10 @@
+[
+  {
+    "_number": 1,
+    "title": "The Big Tolkien Meetup",
+    "text": "Lorem ipsum",
+    "author_email": "antonioturco@example.com",
+    "book_isbn": null,
+    "club_curator": "antonioturco@example.com"
+  }
+]

@@ -26,7 +26,7 @@ def clear_existing_data
   puts "Cleared existing data..."
 end
 
-# clear_existing_data
+clear_existing_data
 seed_users
 puts "Seeded #{User.count} users."
 seed_books
@@ -37,6 +37,8 @@ seed_bookshelves
 puts "Seeded #{Bookshelf.count} bookshelves."
 seed_posts
 puts "Seeded #{Post.count} posts."
+seed_events
+puts "Seeded #{Event.count} events."
 initialize_tables
 puts "Initialized Special Bookshelves, Relationships and Memberships."
 

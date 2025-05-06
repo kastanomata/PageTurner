@@ -119,6 +119,37 @@ module SeedingUtility
       end
     end
 
+    def seed_events
+      events = load_json_file(Rails.root.join("db", "seeds", "events.json"))
+
+      events.each do |event_attributes|
+        # Find or initialize the organizer (user)
+        organizer = User.find_by!(email_address: event_attributes[:author_email])
+
+        # Initialize the event with direct attributes
+        event = Event.new(
+          title: event_attributes[:title],
+          description: event_attributes[:text],
+          organizer_id: organizer.id,
+          start_time: Time.current + 1.week, # Default to one week from now
+          end_time: Time.current + 1.week + 2.hours # Default to 2 hour duration
+        )
+
+        # Associate book if ISBN is provided
+        if event_attributes[:book_isbn].present?
+          event.book = Book.find_by(isbn: event_attributes[:book_isbn])
+        end
+
+        # Associate club if curator is provided
+        if event_attributes[:club_curator].present?
+          club_curator = User.find_by(email_address: event_attributes[:club_curator])
+          event.club_id = Club.find_by(curator: club_curator).id if club_curator
+        end
+
+        event.save!
+      end
+    end
+
     private
 
     def random_time_between(start_time = 1.year.ago, end_time = Time.now)

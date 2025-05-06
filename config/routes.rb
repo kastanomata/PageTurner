@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   get "tags/show"
   resources :authors
   get "search", to: "search#index", as: "search"

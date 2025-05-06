@@ -23,7 +23,6 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ---
 
 ## Work in Progress
-
 - [x] Fix navbar "logout" button not displaying correctly
 - [x] Style report buttons
 - [ ] font ideas: Sagona/Bookman
