@@ -10,6 +10,8 @@ class ClubsController < ApplicationController
   # GET /clubs/1 or /clubs/1.json
   def show
     @club = Club.includes(book_suggestions: [ :book, :user ]).find(params[:id])
+    @club = Club.includes(polls: { poll_options: [ :book, :votes ] }).find(params[:id])
+    @books = Book.all
   end
 
   # GET /clubs/new

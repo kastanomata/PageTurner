@@ -1,0 +1,54 @@
+.poll-card {
+    border: 2px solid #e9ecef;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+  
+    .countdown-display {
+        [data-countdown-target="timer"] {
+          display: inline-block !important;
+          min-width: 240px;
+          font-family: 'Courier New', monospace;
+          font-size: 1.1rem;
+          font-weight: 700;
+          color: #dc3545;
+          
+          .time-segment {
+            display: inline-block;
+            min-width: 40px;
+            text-align: center;
+          }
+        }
+      
+        .bi-clock-history {
+          font-size: 1.2rem;
+          vertical-align: middle;
+          margin-left: 8px;
+        }
+    }
+  }
+
+  .poll-expired {
+    [data-countdown-target="timer"] {
+      color: #6c757d !important;
+      &::after {
+        content: " (ended)";
+        font-weight: normal;
+      }
+    }
+    
+    .bi-clock-history {
+      display: none;
+    }
+  }
+
+  .poll-actions {
+    border-top: 1px solid #eee;
+    padding-top: 0.5rem;
+    margin-top: 1rem;
+    
+    .btn-danger {
+      font-size: 0.8rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }

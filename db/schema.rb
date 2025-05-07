@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_05_090053) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_07_064318) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -145,6 +145,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_05_090053) do
     t.index ["user_id"], name: "index_omni_auth_identities_on_user_id"
   end
 
+  create_table "poll_options", force: :cascade do |t|
+    t.integer "poll_id", null: false
+    t.integer "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_poll_options_on_book_id"
+    t.index ["poll_id"], name: "index_poll_options_on_poll_id"
+  end
+
+  create_table "polls", force: :cascade do |t|
+    t.integer "club_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "expires_at"
+    t.index ["club_id"], name: "index_polls_on_club_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "text"
@@ -228,6 +245,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_05_090053) do
     t.index ["reading_id"], name: "index_users_on_reading_id"
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "poll_id", null: false
+    t.integer "poll_option_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["poll_id"], name: "index_votes_on_poll_id"
+    t.index ["poll_option_id"], name: "index_votes_on_poll_option_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bans", "users"
@@ -239,10 +267,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_05_090053) do
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "omni_auth_identities", "users"
+  add_foreign_key "poll_options", "books"
+  add_foreign_key "poll_options", "polls"
+  add_foreign_key "polls", "clubs"
   add_foreign_key "reading_goals", "books"
   add_foreign_key "reading_goals", "clubs"
   add_foreign_key "sessions", "users"
   add_foreign_key "taggings", "books"
   add_foreign_key "taggings", "tags"
   add_foreign_key "users", "books", column: "reading_id"
+  add_foreign_key "votes", "poll_options"
+  add_foreign_key "votes", "polls"
+  add_foreign_key "votes", "users"
 end

@@ -63,7 +63,9 @@ Rails.application.routes.draw do
     member do
       get :members
     end
+    resources :polls, only: [ :new, :create, :destroy ]
   end
+  post "clubs/:club_id/polls/:id/vote", to: "votes#create", as: :vote_club_poll
   resources :memberships, only: [ :create, :destroy ]
 
   # Defines error paths

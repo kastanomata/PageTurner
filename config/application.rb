@@ -26,5 +26,7 @@ module PageTurner
 
     # Include the authenticity token in remote forms.
     config.action_view.embed_authenticity_token_in_remote_forms = true
+    config.time_zone = "Rome"
+    config.active_record.default_timezone = :utc
   end
 end

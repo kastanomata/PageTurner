@@ -6,6 +6,7 @@ class Club < ApplicationRecord
   has_many :books, through: :reading_goals
   has_many :book_suggestions, dependent: :destroy
   has_many :suggested_books, through: :book_suggestions, source: :book
+  has_many :polls, dependent: :destroy
 
   validates :name, presence: true
 
@@ -31,5 +32,10 @@ class Club < ApplicationRecord
 
   def members_count
     passive_memberships.count
+  end
+
+  def expiring_polls
+    polls.where("expires_at > ?", Time.current)
+         .or(polls.where(expires_at: nil))
   end
 end

@@ -1,4 +1,3 @@
-
 <h1>Book Club</h1>
 <div class="club-header">
   <%= render partial: "shared/club_stats", locals: { club: @club } %>
@@ -53,7 +52,81 @@
       <%= f.submit "Suggest Book" %>
     <% end %>
   </div>
-  <% end %>
+
+  <div class="club-polls">
+    <% if @club.curator == Current.user %>
+      <div class="mb-4">
+        <%= link_to 'New Poll', new_club_poll_path(@club), 
+            class: 'btn btn-success' %>
+      </div>
+    <% end %>
+
+    <% @club.polls.each do |poll| %>
+      <div class="poll-card card mb-4" 
+        data-controller="countdown" 
+        data-countdown-expires-at-value="<%= poll.expires_at.iso8601 %>">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <div class="poll-meta mt-3 text-muted small">
+              Created <%= time_ago_in_words(poll.created_at) %> ago
+              <% if poll.expires_at? %>
+                Expires <%= poll.expires_at.strftime("%b %d, %Y %H:%M") %>
+              <% end %>
+            </div>
+            <h3 class="card-title mb-0">Next Reading</h3>
+            <div class="countdown-display">
+              <span data-countdown-target="timer" class="text-danger fw-bold"></span>
+              <i class="bi-clock-history"></i>
+            </div>
+          </div>
+    
+          <div class="poll-results mt-3">
+            <% poll.poll_options.includes(:book, :votes).each do |option| %>
+              <div class="poll-option d-flex justify-content-between align-items-center mb-2 p-2 border rounded">
+                <div>
+                  <strong><%= option.book.title %></strong>
+                  <span class="text-muted ms-2">
+                    <%= poll.active? ? "Active" : "Closed" %> •
+                    (<%= option.votes.count %> votes)
+                  </span>
+                </div>
+        
+                <% if poll.active? %>
+                  <% if @club.is_member?(Current.user) %>
+                    <% if Current.user.votes.exists?(poll: poll) %>
+                      <span class="badge bg-success">Voted</span>
+                    <% else %>
+                      <%= button_to "Vote", 
+                        vote_club_poll_path(
+                          club_id: @club.id,
+                          id: poll.id,
+                          poll_option_id: option.id
+                        ), 
+                        method: :post,
+                        class: 'btn btn-sm btn-primary',
+                        data: { countdown_target: "voteButton" } %>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <div class="text-danger small">Voting closed</div>
+                <% end %>
+              </div>
+            <% end %>
+            <% if poll.curator == Current.user %>
+              <div class="poll-actions mt-2">
+                <%= button_to "Delete Poll", 
+                    club_poll_path(@club, poll), 
+                    method: :delete, 
+                    class: 'btn btn-danger btn-sm',
+                    form: { data: { turbo_confirm: "Are you sure you want to delete this poll?" } } %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
 
   <div class="club-bookshelves">
     <% @club.bookshelves.each do |bookshelf| %>
@@ -76,5 +149,4 @@
   </div>
 <% end %>
 
- <%= link_to "Back to clubs", clubs_path %>
-
+<%= link_to "Back to clubs", clubs_path %>
