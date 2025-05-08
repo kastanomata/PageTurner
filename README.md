@@ -46,8 +46,8 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Fix user autofollow on user create
 - [x] Fix user description on user profile
 - [x] Fix curator's club bookshelves showing up on profile
-- [ ] Add "new post" functionality (postcard) on profile
-- [ ] Add a way to request becoming a author
+- [x] Add "new post" functionality (postcard) on profile
+- [x] Add a way to request becoming a author
 - [ ] Add favorite book
 - [ ] Add block user functionality
 
@@ -75,13 +75,13 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ### Posts
 - [x] Add interaction (comments, likes) support
 - [x] Create Posts (params[:isbn] è nil)
-- [ ] Style comments, likes and action buttons #styling
+- [ ] Style comments, likes and action buttons
 
 ### Bookclubs
 - [x] Add "Report Club" functionality support
 - [x] Add "Report Club" Button
+- [x] Add "New post" button/form
 - [ ] Create Club (problema con il campo creator del form)
-- [ ] Add "New post" button/form
 - [ ] Add support for "Community posts" from curator
 - [ ] Add events
 - [ ] Add support for group reading
@@ -90,12 +90,12 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ### Reports
 - [x] Generate reports (report_id nil e reported_type nil)
 - [x] Add button to access root/reports#index
-- [ ] Delete report
+- [x] Delete report
 
 ### Admin
 - [x] Should not be able edit post
 - [x] Add "Make User into Curator" support
-- [ ] Add "Make User into Author" support
+- [x] Add "Make User into Author" support
 
 ### Routing
 - [ ] Add "Credits" redirect on footer
@@ -103,7 +103,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ### Testing
 
 ### Errors
-- [ ] Fix error navbar not showing correctly
+- [x] Fix error navbar not showing correctly
 - [ ] Render correct errors based on context
 
 ---
