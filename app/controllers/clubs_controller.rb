@@ -9,11 +9,14 @@ class ClubsController < ApplicationController
 
   # GET /clubs/1 or /clubs/1.json
   def show
+    @post = Post.new
+    @post.club = @club
   end
 
   # GET /clubs/new
   def new
     @club = Club.new
+    
   end
 
   # GET /clubs/1/edit

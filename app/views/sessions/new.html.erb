@@ -2,15 +2,15 @@
   <%= form_with url: session_path, class: "sign-in-form" do |form| %>
     <h1 class="form-title">Sign in</h1>
     <p class="form-subtitle">Welcome back! Please sign in to your account.</p>
-    <div class="form-group">
+    <div class="form-group" style="width: 50%;">
       <%= form.email_field :email_address, class: "form-control", required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" style="width: 50%;">
       <%= form.password_field :password, class: "form-control", required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %>
     </div>
 
-    <div class="form-group" style="text-align: center;">
+    <div class="form-group" style="width: 50%; text-align: center;">
       <%= form.submit "Sign in", class: "btn btn--primary" %>
     </div>
   <% end %>

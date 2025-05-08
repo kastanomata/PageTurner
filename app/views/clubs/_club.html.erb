@@ -1,5 +1,5 @@
 <div id="<%= dom_id club %>" class="club-card">
-    <h3><%= link_to club.name, club_path(club), class: "club-link" %></h3>
+    <h3><%= link_to club.name, club_path(club), class: "btn btn--link" %></h3>
     <p><%= club.description %></p>
     <div style="display: flex; justify-content: space-between;">
       <p>Created by: <%= link_to club.curator.nickname, user_path(club.curator) %></p>

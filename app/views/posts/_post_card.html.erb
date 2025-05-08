@@ -1,6 +1,6 @@
 <div class="post-card">
     <div class="post-header">
-        <h2><%= post.title %></h2>
+        <h2> <%= link_to post.title, post_path(post), class: "btn btn--link post-title"%> </h2>
     </div>
     <div class="post-content" style="display: flex; gap: 1rem;">
         <div class="cover">
@@ -8,15 +8,11 @@
         </div>
         <div class="post-details">
             <p><%= post.text %></p>
-            <% if post.author %>
-                <p> Posted by <%= link_to post.author.nickname, user_path(post.author) %> </p>
-            <% end %>
             <% if post.club %>
-                <p> in the <%= link_to post.club.name, club_path(post.club) %> club.</p>
+                <p> Posted by <%= link_to post.author.nickname, user_path(post.author), class: "btn btn--link" %> in the <%= link_to post.club.name, club_path(post.club), class: "btn btn--link" %> club. </p>
+            <% else %>
+                <p> Posted by <%= link_to post.author.nickname, user_path(post.author), class: "btn btn--link" %> </p>
             <% end %>
-            <p>
-                <%= link_to "Show this post", post_path(post) %>
-            </p>
         </div>
     </div>
 </div>

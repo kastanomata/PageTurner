@@ -6,15 +6,20 @@ module HomesHelper
       render "guestpage"
     end
   end
-  # this renders the homepage posts specific to the logged-in user
-  def render_homepage_posts(user)
-    posts = Post.where(author_id: user.following_ids).order(created_at: :desc)
-    content = []
 
+  def render_homepage_posts(user)
+    # Posts from users the current user follows
+    following_posts = Post.where(author_id: user.following_ids).order(created_at: :desc)
+    # Posts from clubs the user is a member of
+    memberships_posts = Post.where(club_id: user.partecipates.ids).order(created_at: :desc)
+    
+    # Combine both post collections and sort by creation date
+    posts = (following_posts + memberships_posts).sort_by(&:created_at).reverse
+    content = []
+    
     if posts.any?
       list_content = render(partial: "posts/post_card", collection: posts, as: :post)
-      # FIXME is there a better way to avoid the space to the left?
-      content << content_tag(:ul, list_content, style: "margin-left: -2.5em;")
+      content << content_tag(:ul, list_content, class: "home-posts-list")
     else
       content << content_tag(:p, "Nessun post disponibile.")
     end

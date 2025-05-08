@@ -1,6 +1,6 @@
 <div class="club-card">
-    <div class="club-header">
-        <h2><%= link_to club.name, club_path(club), class: "btn--link" %></h2>
+    <div class="club-header" style="text-align:right; padding-right: 1rem;">
+        <h2><%= link_to club.name, club_path(club), class: "btn btn--link" %></h2>
     </div>
     <div class="club-content" style="display: flex; gap: 1rem;">
         <div class="club-details">
@@ -14,13 +14,8 @@
                 <% end %>
                 
                 <p>
-                    <%= pluralize(club.members_count, 'member') %> •
-                    <%#= pluralize(club.bookshelves_count, 'bookshelf') %>
+                    <%= pluralize(club.members_count, 'member') %> 
                 </p>
-                
-                <%# if club.location.present? %>
-<!--                    <p><%#= club.location %></p>-->
-                <%# end %>
             </div>
         </div>
     </div>

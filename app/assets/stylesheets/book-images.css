@@ -16,9 +16,6 @@
 
 /* Placeholder treatment */
 .book-image-container--not-found {
-  background-image: url('<%= asset_path("bookart_not_found.png") %>');
-  width: 30%;
-  height: auto;
   background-size: 60%;
   background-repeat: no-repeat;
   background-position: center;
@@ -43,7 +40,9 @@
 
 /* When no image is present, hide the img element */
 .book-image-container--not-found .book-image {
-  opacity: 0;
+  opacity: 50%;
+  width: 30%;
+  height: auto;
 }
 
 /* Responsive adjustments */

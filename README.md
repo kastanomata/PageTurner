@@ -25,6 +25,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ## Work in Progress
 - [x] Fix navbar "logout" button not displaying correctly
 - [x] Style report buttons
+- [ ] Fix delete sessions!gi
 - [ ] font ideas: Sagona/Bookman
 - [ ] Add tab icon in browser
 - [ ] Add "404 - Not Found"
@@ -65,6 +66,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Display Posts made about the books in the bookshelf show view
 
 ### Bookclubs 
+- [ ] Add destroy and edit buttons to club
 - [ ] Style creation form
 - [ ] Style index 
 - [ ] Style show page 

@@ -10,6 +10,8 @@ class Club < ApplicationRecord
 
   has_many :reports, as: :reported, dependent: :destroy # TODO add memory of reports on comment deletion
 
+  after_create :add_creator_as_member
+
   # Becomes a member of a club.
   def becomes_member(user)
     passive_memberships.create(follower_id: user.id)
@@ -27,5 +29,12 @@ class Club < ApplicationRecord
 
   def members_count
     passive_memberships.count
+  end
+
+  
+  private
+
+  def add_creator_as_member
+    passive_memberships.find_or_create_by(follower_id: curator_id)
   end
 end

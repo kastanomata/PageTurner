@@ -1,44 +1,34 @@
 
 <div class="club-header">
-  <div class="club-card">
-    <h3 style="font-size: larger"><%= @club.name %></h3>
+  <div class="club-info">
+    <h3 style="font-size: 3rem; margin: 0 10px;"><%= @club.name %></h3>
     <div style="display:flex; gap:2rem; padding-left:2rem; align-items:center;">
       <%= render partial: "shared/club_stats", locals: { club: @club } %>
       <%= render partial: "memberships/member_form", locals: { club: @club } %>
+      <%= render_report_button @club %>
     </div>
     <p><%= @club.description %></p>
-    <div style="display: flex; justify-content: space-between;">
-      <p>Created by: <%= link_to @club.curator.nickname, user_path(@club.curator) %></p>
-    </div>
+    <p>Created by: <%= link_to @club.curator.nickname, user_path(@club.curator) %></p>
   </div>
-
 </div>
 
-<div class="btn--link">
-  <%= render_report_button @club %>
-</div>
-
-<div class="club-content">
+<div class="club-body">
   <div class="club-bookshelves">
     <% @club.bookshelves.each do |bookshelf| %>
       <%= render partial: "bookshelves/bookshelf_card", locals: { bookshelf: bookshelf } %>
     <% end %>
   </div>
-
   <div class="club-posts">
+    <%= render partial: "shared/postcard_form" %>
     <% @club.posts.each do |post| %>
       <%= render partial: "posts/post_card", locals: { post: post } %>
     <% end %>
   </div>
 
+
 </div>
 
-<% if authenticated? and Current.user == @club.curator %>
-  <div>
-    <%= link_to "Edit this club", edit_club_path(@club) %> |
-    <%= button_to "Destroy this club", @club, method: :delete %>
-  </div>
-<% end %>
 
- <%= link_to "Back to clubs", clubs_path %>
+
+
 
