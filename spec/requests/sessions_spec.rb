@@ -37,7 +37,7 @@ RSpec.describe "Sessions", type: :request do
       expect do
         delete session_path
       end.to change { user.sessions.count }.from(1).to(0)
-      expect(response).to redirect_to new_session_path
+      expect(response).to redirect_to login_path
     end
   end
 end

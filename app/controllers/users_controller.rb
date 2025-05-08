@@ -96,6 +96,15 @@ class UsersController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def update_author_request
+    @user = User.find(params[:id])
+    if @user.update(author_request: params[:user][:author_request])
+      redirect_to edit_user_path(@user), notice: "Author request updated successfully."
+    else
+      redirect_to edit_user_path(@user), alert: "Failed to update author request."
+    end
+  end
+
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy!

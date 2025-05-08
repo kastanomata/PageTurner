@@ -39,6 +39,6 @@ class Sessions::OmniAuthsController < ApplicationController
   end
 
   def failure
-    redirect_to new_session_path, alert: "Authentication failed, please try again."
+    redirect_to login_path, alert: "Authentication failed, please try again."
   end
 end

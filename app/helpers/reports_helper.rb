@@ -18,6 +18,7 @@ module ReportsHelper
   end
 
   def render_report_card(report)
+    # TODO Add button to ban owner of reported item
     content_tag(:div, class: "report-card", style: "display: flex; justify-content: space-between; align-items: center; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px;", id: dom_id(report)) do
       safe_join([
         render_report_info(report),

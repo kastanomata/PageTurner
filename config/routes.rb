@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   resources :events
   get "tags/show"
   resources :authors
+  resources :author_requests, only: [ :index ] do
+    member do
+      patch :accept
+      patch :deny
+    end
+  end
   get "search", to: "search#index", as: "search"
 
   resources :clubs
@@ -16,6 +22,10 @@ Rails.application.routes.draw do
   patch "/update_reading", to: "users#update_reading", as: :update_reading
   resources :users do
     resources :bans, only: [ :create, :new, :destroy ]
+  end
+  resources :users do
+    patch "update_author_request", on: :member
+    patch "cancel_author_request", on: :member
   end
   resources :posts do
     resources :likes

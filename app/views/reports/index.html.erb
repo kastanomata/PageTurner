@@ -2,10 +2,44 @@
 
 <% content_for :title, "Reports" %>
 
-<h1>Reports</h1>
 
+<h1>Author Requests</h1>
+<div class="requests-list">
+  <% if pending_author_requests.any? %>
+    <% pending_author_requests.each do |user| %>
+      <div class="request-card">
+        <div class="request-info">
+          <h3><%= user.nickname %></h3>
+          <p>Requested Author ID: <%= user.author_request %></p>
+        </div>
+
+        <div class="request-actions">
+          <%= button_to "Accept", 
+                accept_author_request_path(user), 
+                method: :patch, 
+                class: "btn btn--affirmative",
+                data: { confirm: "Accept this author request?" } %>
+
+          <%= button_to "Deny", 
+                deny_author_request_path(user), 
+                method: :patch, 
+                class: "btn btn--negative",
+                data: { confirm: "Deny this author request?" } %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="empty">No pending author requests</p>
+  <% end %>
+</div>
+
+<h1>Reports</h1>
 <div id="reports">
-  <% @reports.each do |report| %>
-    <%= render_report_card(report) %>
+  <% if @reports.any? %>
+    <% @reports.each do |report| %>
+      <%= render_report_card(report) %>
+    <% end %>
+  <% else %>
+    <p class="empty">No reports at the moment</p>
   <% end %>
 </div>

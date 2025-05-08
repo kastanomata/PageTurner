@@ -27,7 +27,7 @@ RSpec.describe "Password", type: :request do
       #   post passwords_path, params: { email_address: user.email_address }
       # end.to have_enqueued_email(PasswordMailer, :reset).exactly(:once)
 
-      expect(response).to redirect_to new_session_path
+      expect(response).to redirect_to login_path
       follow_redirect!
       assert_select "div", text: "Password reset instructions sent (if user with that email address exists)."
 
@@ -66,7 +66,7 @@ RSpec.describe "Password", type: :request do
       expect do
         patch password_path(token), params: { password: "W3lcome?" }
       end.to change { user.reload.password_digest }
-      expect(response).to redirect_to(new_session_path)
+      expect(response).to redirect_to(login_path)
       expect(User.authenticate_by(email_address: user.email_address, password: "W3lcome?")).to_not be_nil
 
       # Reset the token after a successful password change
@@ -75,7 +75,7 @@ RSpec.describe "Password", type: :request do
       expect do
         patch password_path(token), params: { password: "W3lcome?", password_confirmation: "W3lcome?" }
       end.to change { user.reload.password_digest }
-      expect(response).to redirect_to(new_session_path)
+      expect(response).to redirect_to(login_path)
       expect(User.authenticate_by(email_address: user.email_address, password: "W3lcome?")).to_not be_nil
     end
   end

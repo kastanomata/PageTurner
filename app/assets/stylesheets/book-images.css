@@ -16,10 +16,13 @@
 
 /* Placeholder treatment */
 .book-image-container--not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-size: 60%;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #f0f0f0;
+  background-color: #fff;
 }
 
 /* Size variants with to override potential conflicts */

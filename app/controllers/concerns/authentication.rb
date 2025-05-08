@@ -94,7 +94,7 @@ module Authentication
     def request_authentication(level)
       if level&.nil?
         session[:return_to_after_authenticating] = request.url
-        redirect_to new_session_path
+        redirect_to login_path
       elsif level == "admin"
         render template: "errors/unauthorized", status: :unauthorized
       end

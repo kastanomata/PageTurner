@@ -1,0 +1,45 @@
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.request-tabs {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  &.active {
+    border-bottom: 2px solid #007bff;
+    font-weight: bold;
+  }
+}
+
+.request-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.request-info {
+  flex: 1;
+}
+
+.request-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.empty {
+  padding: 20px;
+  text-align: center;
+  color: #666;
+}

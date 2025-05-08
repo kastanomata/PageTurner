@@ -1,10 +1,23 @@
+<style>
+  .container-edit {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+  
+  .edit-section {
+    flex: 1;
+  }
+</style>
+
 <% content_for :title, "Editing user" %>
-
+<h1 class="title">Editing user</h1>
 <div class="container-edit">
-  <h1 class="title">Editing user</h1>
-
-  <%= render "update", user: @user %>
-
-  <br>
-
+  <div class="edit-section" style="flex:2;">
+    <%= render "update", user: @user %>
+  </div>
+  
+  <div class="edit-section">
+    <%= make_author_request(@user) %>
+  </div>
 </div>
