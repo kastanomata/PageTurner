@@ -33,6 +33,17 @@
           class: "form-control" %>
   </div>
 
+<% if form.object.is_curator? %>
+  <div class="field">
+    <%= form.label :curator_icon %>
+    <%= form.collection_select :curator_icon,
+                              CuratorIcon.all,
+                              :id,
+                              :name,
+                              { include_blank: 'No icon' } %>
+  </div>
+<% end %>
+
   <div class="form-group">
     <%= form.label :avatar, "Profile Photo", class: "form-label" %>
     <%= form.file_field :avatar, 

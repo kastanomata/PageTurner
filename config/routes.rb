@@ -68,6 +68,10 @@ Rails.application.routes.draw do
   post "clubs/:club_id/polls/:id/vote", to: "votes#create", as: :vote_club_poll
   resources :memberships, only: [ :create, :destroy ]
 
+  namespace :admin do
+    resources :curator_icons, except: [ :show ]
+  end
+
   # Defines error paths
   get "/unauthorized", to: "errors#unauthorized", as: :unauthorized
   get "/not_found", to: "errors#not_found", as: :not_found

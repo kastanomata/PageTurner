@@ -19,14 +19,16 @@
     "password": "password",
     "nickname": "kastanomata",
     "description": "Hi, I'm Antonio. I enjoy reading historical fiction and exploring stories that bring the past to life.",
-    "birthday": "2002-09-11"
+    "birthday": "2002-09-11",
+    "is_curator": true
     },
     {
     "email_address": "alessandrotemperini@example.com",
     "password": "password",
     "nickname": "AleNino",
     "description": "Hello, I'm Alessandro. I love reading tech blogs and books about programming and innovation.",
-    "birthday": "2002-08-26"
+    "birthday": "2002-08-26",
+    "is_curator": true
     },
     {
     "email_address": "alfredosegala@example.com",
@@ -40,14 +42,16 @@
     "password": "password",
     "nickname": "Rosy",
     "description": "Hi, I'm Maria. I love reading poetry and classic literature that stirs the soul.",
-    "birthday": "2001-05-14"
+    "birthday": "2001-05-14",
+    "is_curator": true
     },
     {
     "email_address": "giovanniblu@example.com",
     "password": "password",
     "nickname": "Gio",
     "description": "Hi, I'm Giovanni. I enjoy reading adventure novels and books about personal development.",
-    "birthday": "1999-11-22"
+    "birthday": "1999-11-22",
+    "is_curator": true
     },
     {
     "email_address": "elisabettaverdi@example.com",
@@ -61,7 +65,8 @@
     "password": "password",
     "nickname": "LucaB",
     "description": "Hi, I'm Luca. I enjoy reading YA books and exploring stories about coming-of-age and self-discovery.",
-    "birthday": "1998-07-15"
+    "birthday": "1998-07-15",
+    "is_curator": true
     },
     {
     "email_address": "giulialilla@example.com",

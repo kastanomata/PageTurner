@@ -88,3 +88,14 @@
   display: flex;
   gap: 8px;
 }
+
+.default-icon {
+  width: 50px;
+  height: 50px;
+  background: #f0f0f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}

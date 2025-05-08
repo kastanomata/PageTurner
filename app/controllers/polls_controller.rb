@@ -4,8 +4,8 @@ class PollsController < ApplicationController
 
   def new
     @poll = @club.polls.new
-    @poll.poll_options.build # For form nested attributes
-    @books = Book.all # Or scope this to your needs
+    @poll.poll_options.build
+    @books = Book.all
   end
 
   def create

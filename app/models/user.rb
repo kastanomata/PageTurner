@@ -1,5 +1,6 @@
 include InitializeUtility
 class User < ApplicationRecord
+  belongs_to :curator_icon, optional: true
   has_one_attached :avatar
   has_secure_password
 

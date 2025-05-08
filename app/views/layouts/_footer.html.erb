@@ -13,6 +13,7 @@
             <% if admin? %>
                 <%= link_to "Reports", reports_path, class: "footer-link #{'active' if current_page?(reports_path)}" %>
                 <%= link_to "Users", users_path, class: "footer-link #{'active' if current_page?(users_path)}" %>
+                <%= link_to 'Manage Curator Icons', admin_curator_icons_path, class: 'footer-link' %>
             <% end %>
         </div>
         <div class="footer-brand">

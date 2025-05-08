@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_07_064318) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_08_131327) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -113,6 +113,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_07_064318) do
     t.integer "post_id"
     t.text "text"
     t.string "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "curator_icons", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -241,6 +247,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_07_064318) do
     t.boolean "admin"
     t.boolean "is_curator"
     t.integer "reading_id"
+    t.integer "curator_icon_id"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
     t.index ["reading_id"], name: "index_users_on_reading_id"
   end
@@ -276,6 +283,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_07_064318) do
   add_foreign_key "taggings", "books"
   add_foreign_key "taggings", "tags"
   add_foreign_key "users", "books", column: "reading_id"
+  add_foreign_key "users", "curator_icons"
   add_foreign_key "votes", "poll_options"
   add_foreign_key "votes", "polls"
   add_foreign_key "votes", "users"

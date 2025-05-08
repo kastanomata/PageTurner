@@ -1,5 +1,7 @@
 class Club < ApplicationRecord
   belongs_to :curator, class_name: "User"
+  after_save :update_curator_status
+
   has_many :bookshelves, foreign_key: "bookclub", dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :reading_goals, dependent: :destroy
@@ -37,5 +39,21 @@ class Club < ApplicationRecord
   def expiring_polls
     polls.where("expires_at > ?", Time.current)
          .or(polls.where(expires_at: nil))
+  end
+
+  private
+
+  def update_curator_status
+    # Set current curator status
+    if curator_id_previously_changed?
+      # Clear previous curator status if needed
+      old_curator = User.find_by(id: curator_id_previous_change.first)
+      if old_curator && old_curator.clubs.empty?
+        old_curator.update(is_curator: false)
+      end
+
+      # Set new curator status
+      curator.update(is_curator: true) if curator
+    end
   end
 end

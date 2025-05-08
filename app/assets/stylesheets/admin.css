@@ -1,0 +1,12 @@
+.icon-preview {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 4px;
+  }
+  
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
