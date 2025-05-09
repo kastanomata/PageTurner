@@ -3,17 +3,22 @@
         "name": "Fantasy Collection",
         "creator_nickname": "kastanomata",
         "books_list": [
-            { "isbn": "9780618391110", "_codename": "The Silmarillion" },
-            { "isbn": "9780547928227", "_codename": "The Hobbit" },
-            { "isbn": "9780007309368", "_codename": "Unfinished Tales" }
+            { "isbn": "9780618391110", "_codename": "The Silmarillion" },  
+            { "isbn": "9780618346257", "_codename": "The Fellowship of the Ring" },  
+            { "isbn": "9780618346264", "_codename": "The Two Towers" },  
+            { "isbn": "9780618346271", "_codename": "The Return of the King" },  
+            { "isbn": "9780547928227", "_codename": "The Hobbit" }  
         ]
     },
     {
-        "name": "Classic Literature",
+        "name": "Banned Books",
         "creator_nickname": "AleNino",
         "books_list": [
             { "isbn": "9780451524935", "_codename": "1984" },
-            { "isbn": "9780061120084", "_codename": "To Kill a Mockingbird" }
+            { "isbn": "9780451526342", "_codename": "Animal Farm" },
+            { "isbn": "9780141182537", "_codename": "Lolita" },
+            { "isbn": "9780142437179", "_codename": "The Adventures of Huckleberry Finn" },
+            { "isbn": "9781451673319", "_codename": "Fahrenheit 451" }
         ]
     },
     {
@@ -21,7 +26,9 @@
         "creator_nickname": "Fredo",
         "books_list": [
             { "isbn": "9780743273565", "_codename": "The Great Gatsby" },
-            { "isbn": "9780316769488", "_codename": "The Catcher in the Rye" }
+            { "isbn": "9780141439570", "_codename": "The Picture of Dorian Gray" },
+            { "isbn": "9780316769488", "_codename": "The Catcher in the Rye" },
+            { "isbn": "9780142437247", "_codename": "Moby-Dick or, The Whale" }
         ]
     }
 ]
