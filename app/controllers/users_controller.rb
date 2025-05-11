@@ -133,14 +133,37 @@ class UsersController < ApplicationController
     redirect_to edit_user_path(@user), notice: "Foto profilo rimossa con successo."
   end
 
+  def background_settings
+    @user = Current.user
+    @themes = User::BACKGROUND_THEMES
+  end
+
+  def update_background
+    @user = Current.user
+    if @user.update(background_theme: params[:user][:background_theme])
+      refresh_background
+      redirect_to user_path(@user),
+                  notice: "Background theme updated successfully!"
+    else
+      render :background_settings
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params.expect(:id))
     end
 
+    def refresh_background
+      # Force refresh cached background
+      response.headers["Ca:che-Control"] = "no-cache, no-store"
+      response.headers["Pragma"] = "no-cache"
+      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+    end
+
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:nickname, :email_address, :password, :description, :birthday, :avatar, :curator_icon_id)
+      params.require(:user).permit(:nickname, :email_address, :password, :description, :birthday, :avatar, :curator_icon_id, :background_theme)
     end
 end

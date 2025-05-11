@@ -50,6 +50,16 @@ class User < ApplicationRecord
   foreign_key: "book_id",
   optional: true
 
+  BACKGROUND_THEMES = {
+    "classic" => "Classic Bookshelf",
+    "fantasy" => "Fantasy Library",
+    "sci-fi" => "Sci-Fi Spaceship",
+    "mystery" => "Mystery Room",
+    "default" => "Default Theme"
+  }.freeze
+
+  validates :background_theme, inclusion: { in: BACKGROUND_THEMES.keys }
+
   ## OAUTH ##
   def self.create_from_oauth(auth)
     email = auth.info.email

@@ -10,7 +10,7 @@
           </div>
         <% end %>
         <%= link_to "Edit your profile", edit_user_path(@user), class: "btn--link" if current_user_owns? @user%>
-        
+        <%= link_to 'Change Backgrounds', background_settings_user_path(@user), class: 'nav-link' %>
         <section class="stats">
               <%= render_user_relationships_widget @user%>
         </section>
@@ -33,11 +33,11 @@
     </div>
   </div>
 
-<!--  <h3>Suggested Books</h3>-->
+<h3>Suggested Books</h3>
   <!-- FIXME fix user suggested book not working -->
-  <%# @user.suggested_books.each do |book| %>
-    <%#= render 'books/cover', book: book %>
-  <%# end %>
+  <% @user.suggested_books.each do |book| %>
+    <%= render 'books/cover', book: book %>
+  <% end %>
 
   <div class="user-content">
     <div class="bookshelves bookshelves--user">

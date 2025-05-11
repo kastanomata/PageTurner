@@ -56,6 +56,7 @@ module Authentication
     def require_ownership
       # param-based lookup
       resource ||= find_resource_by_params
+      puts resource, "--> Resource"
 
       # Handle missing resource
       unless resource

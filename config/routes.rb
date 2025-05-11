@@ -52,9 +52,11 @@ Rails.application.routes.draw do
       get :show_memberships
       patch :make_admin
       delete :remove_avatar
+      get :background_settings
+      patch :update_background
     end
   end
-  resources :relationships,       only: [ :create, :destroy ]
+  resources :relationships, only: [ :create, :destroy ]
 
   # URLs like clubs/1/members, member method allows to use links containing the id
   resources :clubs do
