@@ -7,7 +7,6 @@ class Poll < ApplicationRecord
   validates :expires_at, presence: true
 
   accepts_nested_attributes_for :poll_options, allow_destroy: true, reject_if: :all_blank
-  before_validation :set_curator_from_club
 
   def time_remaining
     return 0 if expired?

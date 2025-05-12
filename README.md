@@ -30,6 +30,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Add tab icon in browser
 - [ ] Add "404 - Not Found"
 - [ ] Seed more reviews for YA Fantasy club
+- [ ] Fix font in text fields
  
 ### Homepage 
 - [x] Add Guest User homepage 
@@ -75,6 +76,12 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [ ] Style index 
 - [ ] Style show page 
 - [ ] Add post support 
+
+#### Polls
+- [ ] Save result of poll somewhere 
+
+#### Reading Goals
+- [ ] Add button to delete reading goal
 
 ### Posts
 - [x] Add interaction (comments, likes) support

@@ -24,6 +24,8 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Current.user.posts.new(post_params.except(:isbn))
+    # Store the referring URL for error cases
+    @referrer = request.referer
 
     begin
       @book = Book.find_or_create_by_isbn!(params[:post][:isbn])
@@ -32,11 +34,10 @@ class PostsController < ApplicationController
       if @post.save
         redirect_to @post, notice: "Post created!"
       else
-        render :new
+        redirect_to @referrer, alert: @post.errors.full_messages.to_sentence
       end
     rescue => e
-      @post.errors.add(:base, "Book lookup failed: #{e.message}")
-      render :new
+      redirect_to @referrer, alert: "Book lookup failed: #{e.message}"
     end
   end
 
