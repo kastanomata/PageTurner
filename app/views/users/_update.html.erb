@@ -35,8 +35,8 @@
 
 <% if form.object.is_curator? %>
   <div class="field">
-    <%= form.label :curator_icon %>
-    <%= form.collection_select :curator_icon,
+    <%= form.label :curator_icon_id %>
+    <%= form.collection_select :curator_icon_id,
                               CuratorIcon.all,
                               :id,
                               :name,
