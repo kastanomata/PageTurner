@@ -61,9 +61,11 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ### Bookshelves
 - [x] Bookshelf creation #styling
 - [ ] Bookshelf deletion and update
-- [ ] Special Bookshelves should not be modifiable
+- [ ] Remove book from bookshelf
+- [ ] Special Bookshelves name should not be modifiable
 - [ ] Add "Add book to Bookshelf" functionality
 - [ ] Display Posts made about the books in the bookshelf show view
+- [ ] Fix Bookshelf update
 
 ### Bookclubs 
 - [ ] Add destroy and edit buttons to club
