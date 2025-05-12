@@ -1,9 +1,12 @@
 include InitializeUtility
 class User < ApplicationRecord
+  belongs_to :curator_icon, optional: true
   has_one_attached :avatar
   has_secure_password
 
   validates :nickname, uniqueness: { case_sensitive: false, allow_nil: true }
+
+  has_many :book_suggestions, dependent: :destroy
 
   has_many :sessions, dependent: :destroy
   has_many :omni_auth_identities, dependent: :destroy
@@ -23,6 +26,8 @@ class User < ApplicationRecord
   has_many :bookshelves, dependent: :destroy, foreign_key: "creator_id", inverse_of: :creator
   has_many :bookshelf_contains, through: :bookshelves, dependent: :destroy
   has_one :club, foreign_key: "curator_id", dependent: :destroy
+
+  has_many :votes, dependent: :destroy
 
   # TODO add memory of reports on user deletion
   has_many :reports, as: :reported, dependent: :destroy
@@ -44,6 +49,16 @@ class User < ApplicationRecord
   class_name: "Book",
   foreign_key: "book_id",
   optional: true
+
+  BACKGROUND_THEMES = {
+    "classic" => "Classic Bookshelf",
+    "fantasy" => "Fantasy Library",
+    "sci-fi" => "Sci-Fi Spaceship",
+    "mystery" => "Mystery Room",
+    "default" => "Default Theme"
+  }.freeze
+
+  validates :background_theme, inclusion: { in: BACKGROUND_THEMES.keys }
 
   ## OAUTH ##
   def self.create_from_oauth(auth)

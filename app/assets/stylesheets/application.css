@@ -64,6 +64,81 @@ body {
   }
   
   .tag-badge {
-    @extend .tag;
+    display: inline-block;
+    padding: 0.25em 0.6em;
+    margin: 0 0.5em 0.5em 0;
+    border-radius: 15px;
+    font-size: 0.9em;
+    color: white;
+    transition: transform 0.2s;
     background: #6c757d;
   }
+
+  .tag-badge:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+
+.curator-icon {
+width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* Background Themes */
+.theme-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.theme-option input[type="radio"] {
+  display: none;
+}
+
+.theme-preview {
+  height: 120px;
+  width: 100%;
+  border-radius: 6px;
+  padding: 10px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-preview:hover {
+  transform: scale(1.05);
+}
+
+.theme-option input[type="radio"]:checked + .theme-preview {
+  outline: 3px solid #007bff;
+}
+
+/* Default theme styling */
+.default-theme {
+  background-color: #ffffff !important;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.default-theme .theme-label {
+  color: #333333;
+  text-shadow: none;
+}
+
+/* Body background styles */
+body {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+body[data-background-theme="default"] {
+  background: #f8f9fa !important;
+  background-image: none !important;
+}

@@ -2,7 +2,14 @@
   <div class="split-container">
     <div class="left-column">
       <div class="user-info">
-        <h1><%= @user.nickname %></h1>       
+        <h1><%= @user.nickname %></h1>
+        <% if @user.avatar.attached? %>
+          <div>
+            <%= image_tag url_for(@user.avatar), alt: "Foto Profilo" %>
+            <%= button_to "Rimuovi Foto", remove_avatar_user_path(@user), method: :delete, data: { confirm: "Sei sicuro di voler rimuovere la foto?" } %>
+          </div>
+        <% end %>
+        <%= link_to 'Change Backgrounds', background_settings_user_path(@user), class: 'nav-link' %>
         <section class="stats">
               <%= render_user_relationships_widget @user%>
         </section>
@@ -17,14 +24,20 @@
       <%= user_description @user  %>
       <%= currently_reading @user %>  
     </div>
-
+    <div class="curator-info">
+      <% if @user.curator_icon %>
+        <%= image_tag @user.curator_icon.icon, class: 'curator-icon' %>
+      <% else %>
+        <div class="default-icon">👤</div>
+      <% end %>
+    </div>
   </div>
 
-<!--  <h3>Suggested Books</h3>-->
+<h3>Suggested Books</h3>
   <!-- FIXME fix user suggested book not working -->
-  <%# @user.suggested_books.each do |book| %>
-    <%#= render 'books/cover', book: book %>
-  <%# end %>
+  <% @user.suggested_books.each do |book| %>
+    <%= render 'books/cover', book: book %>
+  <% end %>
 
   <div class="user-content">
     <div class="bookshelves bookshelves--user">

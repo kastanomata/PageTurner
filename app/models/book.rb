@@ -3,6 +3,10 @@ class Book < ApplicationRecord
   belongs_to :author
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
+  has_many :reading_goals, dependent: :destroy
+  has_many :clubs, through: :reading_goals
+  has_many :book_suggestions, dependent: :destroy
+  has_many :suggesting_clubs, through: :book_suggestions, source: :club
 
   has_many :current_readers,
   class_name: "User",

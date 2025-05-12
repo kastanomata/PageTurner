@@ -63,17 +63,27 @@ Rails.application.routes.draw do
       get :show_memberships
       patch :make_admin
       delete :remove_avatar
+      get :background_settings
+      patch :update_background
     end
   end
-  resources :relationships,       only: [ :create, :destroy ]
+  resources :relationships, only: [ :create, :destroy ]
 
   # URLs like clubs/1/members, member method allows to use links containing the id
   resources :clubs do
+    resources :book_suggestions, only: [ :create, :destroy ]
+    resources :reading_goals, only: [ :new, :create, :show ]
     member do
       get :members
     end
+    resources :polls, only: [ :new, :create, :destroy ]
   end
+  post "clubs/:club_id/polls/:id/vote", to: "votes#create", as: :vote_club_poll
   resources :memberships, only: [ :create, :destroy ]
+
+  namespace :admin do
+    resources :curator_icons, except: [ :show ]
+  end
 
   # Defines error paths
   get "/unauthorized", to: "errors#unauthorized", as: :unauthorized

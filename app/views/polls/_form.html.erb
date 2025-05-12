@@ -1,0 +1,48 @@
+<%= form_with model: [@club, @poll] do |f| %>
+  <div class="poll-options mt-4">
+    <h4>Book Options</h4>
+    <div id="poll-options-container">
+      <%= f.fields_for :poll_options do |po| %>
+        <div class="poll-option-field mb-3">
+          <%= po.label :book_id, "Select Book" %>
+          <%= po.collection_select :book_id, Book.all, :id, :title, 
+              { include_blank: "Choose a book" }, class: 'form-select' %>
+        </div>
+      <% end %>
+    </div>
+
+    <button type="button" id="add-book-option" class="btn btn-secondary">
+      + Add Another Book
+    </button>
+  </div>
+
+  <div class="field">
+    <%= f.label :expires_at, "Voting Deadline" %>
+    <%= f.datetime_local_field :expires_at, required: true %>
+  </div>
+
+  <%= f.submit "Create Poll", class: "btn btn-primary mt-3" %>
+<% end %>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const addButton = document.getElementById('add-book-option');
+  const container = document.getElementById('poll-options-container');
+  let index = <%= @poll.poll_options.size %>;
+
+  addButton.addEventListener('click', function() {
+    const template = `
+      <div class="poll-option-field mb-3">
+        <label>Select Book</label>
+        <select class="form-select" 
+                name="poll[poll_options_attributes][${index}][book_id]"
+                id="poll_poll_options_attributes_${index}_book_id">
+          <%= options_from_collection_for_select(Book.all, :id, :title) %>
+        </select>
+      </div>
+    `;
+    container.insertAdjacentHTML('beforeend', template);
+    index++;
+  });
+});
+</script>

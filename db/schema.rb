@@ -58,6 +58,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_08_160156) do
     t.index ["user_id"], name: "index_bans_on_user_id"
   end
 
+  create_table "book_suggestions", force: :cascade do |t|
+    t.integer "club_id", null: false
+    t.integer "book_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_suggestions_on_book_id"
+    t.index ["club_id"], name: "index_book_suggestions_on_club_id"
+    t.index ["user_id"], name: "index_book_suggestions_on_user_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "isbn"
     t.datetime "created_at", null: false
@@ -118,6 +129,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_08_160156) do
     t.integer "organizer_id", null: false
     t.index ["book_id"], name: "index_events_on_book_id"
     t.index ["organizer_type", "organizer_id"], name: "index_events_on_organizer"
+  end 
+  
+  create_table "curator_icons", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "likes", force: :cascade do |t|
@@ -148,6 +165,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_08_160156) do
     t.index ["user_id"], name: "index_omni_auth_identities_on_user_id"
   end
 
+  create_table "poll_options", force: :cascade do |t|
+    t.integer "poll_id", null: false
+    t.integer "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_poll_options_on_book_id"
+    t.index ["poll_id"], name: "index_poll_options_on_poll_id"
+  end
+
+  create_table "polls", force: :cascade do |t|
+    t.integer "club_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "expires_at"
+    t.index ["club_id"], name: "index_polls_on_club_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "text"
@@ -157,6 +191,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_08_160156) do
     t.string "book_id"
     t.string "club_id"
     t.string "curator"
+  end
+
+  create_table "reading_goals", force: :cascade do |t|
+    t.integer "club_id", null: false
+    t.integer "book_id", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_reading_goals_on_book_id"
+    t.index ["club_id"], name: "index_reading_goals_on_club_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -216,21 +262,46 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_08_160156) do
     t.boolean "is_curator"
     t.integer "reading_id"
     t.string "author_request"
+    t.integer "curator_icon_id"
+    t.string "background_theme", default: "default"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
     t.index ["reading_id"], name: "index_users_on_reading_id"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "poll_id", null: false
+    t.integer "poll_option_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["poll_id"], name: "index_votes_on_poll_id"
+    t.index ["poll_option_id"], name: "index_votes_on_poll_option_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bans", "users"
   add_foreign_key "bans", "users", column: "moderator_id"
+  add_foreign_key "book_suggestions", "books"
+  add_foreign_key "book_suggestions", "clubs"
+  add_foreign_key "book_suggestions", "users"
   add_foreign_key "books", "authors"
   add_foreign_key "events", "books"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "omni_auth_identities", "users"
+  add_foreign_key "poll_options", "books"
+  add_foreign_key "poll_options", "polls"
+  add_foreign_key "polls", "clubs"
+  add_foreign_key "reading_goals", "books"
+  add_foreign_key "reading_goals", "clubs"
   add_foreign_key "sessions", "users"
   add_foreign_key "taggings", "books"
   add_foreign_key "taggings", "tags"
   add_foreign_key "users", "books", column: "reading_id"
+  add_foreign_key "users", "curator_icons"
+  add_foreign_key "votes", "poll_options"
+  add_foreign_key "votes", "polls"
+  add_foreign_key "votes", "users"
 end

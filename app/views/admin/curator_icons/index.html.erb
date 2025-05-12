@@ -1,0 +1,33 @@
+<div class="admin-header">
+  <h1>Manage Curator Icons</h1>
+  <%= link_to 'New Icon', new_admin_curator_icon_path, class: 'btn btn-primary' %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Preview</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @curator_icons.each do |icon| %>
+      <tr>
+        <td>
+          <% if icon.icon.attached? %>
+            <%= image_tag icon.icon, class: 'icon-preview' %>
+          <% end %>
+        </td>
+        <td><%= icon.name %></td>
+        <td>
+          <%= button_to 'Delete',
+                      admin_curator_icon_path(icon),
+                      method: :delete,
+                      class: 'btn btn-danger',
+                      data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

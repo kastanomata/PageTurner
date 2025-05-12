@@ -7,7 +7,8 @@ module OwnershipUtility
     User => :itself,
     Membership => :follower,
     Like => :user,
-    Relationship => :follower
+    Relationship => :follower,
+    Poll => :curator
   }.freeze
 
   def current_user_owns?(content)

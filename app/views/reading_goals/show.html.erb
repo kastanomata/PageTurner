@@ -1,0 +1,36 @@
+<div class="reading-goal-show">
+  <h2>Reading Goal Details</h2>
+  
+  <div class="goal-info">
+    <h3>
+      <%= @reading_goal.book.title %>
+      <small>for <%= @club.name %></small>
+    </h3>
+    
+    <div class="timeframe">
+      <p>
+        <strong>Reading Period:</strong>
+        <%= @reading_goal.start_date.strftime("%B %d, %Y") %> 
+        to 
+        <%= @reading_goal.end_date.strftime("%B %d, %Y") %>
+      </p>
+      
+      <p>
+        <strong>Total days:</strong>
+        <%= (@reading_goal.end_date - @reading_goal.start_date).to_i %> days
+      </p>
+    </div>
+  </div>
+
+  <%= link_to 'Back to Club', @club, class: 'btn btn-secondary' %>
+  
+  <% if Current.user == @club.curator %>
+    <div class="curator-actions mt-3">
+      <%= link_to 'Edit Goal', edit_club_reading_goal_path(@club, @reading_goal), class: 'btn btn-warning' %>
+      <%= link_to 'Delete Goal', club_reading_goal_path(@club, @reading_goal), 
+          method: :delete, 
+          data: { confirm: 'Are you sure?' }, 
+          class: 'btn btn-danger' %>
+    </div>
+  <% end %>
+</div>

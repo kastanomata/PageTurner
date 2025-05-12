@@ -11,12 +11,14 @@ class ClubsController < ApplicationController
   def show
     @post = Post.new
     @post.club = @club
+    @club = Club.includes(book_suggestions: [ :book, :user ]).find(params[:id])
+    @club = Club.includes(polls: { poll_options: [ :book, :votes ] }).find(params[:id])
+    @books = Book.all
   end
 
   # GET /clubs/new
   def new
     @club = Club.new
-    
   end
 
   # GET /clubs/1/edit

@@ -23,7 +23,12 @@
   </head>
 
   
-  <body>
+  <body style="<%= 'background-color: #ffffff; background-image: none;' if (Current.user&.background_theme || 'default') == 'default' %>;
+            <%= "background-image: url('#{asset_path("#{Current.user&.background_theme}.jpg")}');" unless (Current.user&.background_theme || 'default') == 'default' %>;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;">
   <!--DO NOT REMOVE: This avoids janky behaviour of browser when stylesheets are not loaded-->
   <script>0</script>
   <!--DO NOT REMOVE-->

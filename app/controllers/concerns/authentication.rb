@@ -56,6 +56,7 @@ module Authentication
     def require_ownership
       # param-based lookup
       resource ||= find_resource_by_params
+      puts resource, "--> Resource"
 
       # Handle missing resource
       unless resource
@@ -112,9 +113,7 @@ module Authentication
     end
 
     def terminate_session
-      id = Current.session.id
-      puts "CURRENT ID:", Current.session.id
-      Session.delete(id: id)
+      Session.delete(Current.session.id)
       Current.session = nil
       cookies.delete(:session_id)
     end
