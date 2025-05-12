@@ -124,15 +124,22 @@ module SeedingUtility
 
       events.each do |event_attributes|
         # Find or initialize the organizer (user)
-        organizer = User.find_by!(email_address: event_attributes[:author_email])
+        if event_attributes[:organizer_type] == "club"
+          curator_id = User.find_by!(email_address: event_attributes[:organizer_email]).id
+          organizer_id = Club.find_by!(curator_id: curator_id).id
+        elsif event_attributes[:organizer_type] == "author"
+          author_id = User.find_by!(email_address: event_attributes[:organizer_email]).id
+          organizer_id = Author.find_by!(account_id: author_id).id
+        end
 
         # Initialize the event with direct attributes
         event = Event.new(
           title: event_attributes[:title],
           description: event_attributes[:text],
-          organizer_id: organizer.id,
           start_time: Time.current + 1.week, # Default to one week from now
-          end_time: Time.current + 1.week + 2.hours # Default to 2 hour duration
+          end_time: Time.current + 1.week + 2.hours, # Default to 2 hour duration
+          organizer_type: event_attributes[:organizer_type],
+          organizer_id: organizer_id
         )
 
         # Associate book if ISBN is provided

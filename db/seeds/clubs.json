@@ -5,6 +5,11 @@
         "curator_email": "antonioturco@example.com"
     },
     {
+        "name": "A Song of Ice and Fire",
+        "description": "A club for fans of George R.R. Martin's epic series. Join us in waiting the next book :(",
+        "curator_email": "giovanniblu@example.com"
+    },
+    {
         "name": "Banned Books Brigade",
         "description": "A club dedicated to reading and discussing books that have been banned or challenged. Fight against censorship!",
         "curator_email": "alessandrotemperini@example.com"
@@ -13,11 +18,6 @@
         "name": "Evergreen Book Club",
         "description": "A club for readers who love timeless classics and modern masterpieces.",
         "curator_email": "mariarosa@example.com"
-    },
-    {
-        "name": "A Song of Ice and Fire",
-        "description": "A club for fans of George R.R. Martin's epic series. Join us in waiting the next book :(",
-        "curator_email": "giovanniblu@example.com"
     },
     {
         "name": "YA Fantasy Lovers",

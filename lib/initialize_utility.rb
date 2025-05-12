@@ -13,11 +13,13 @@ module InitializeUtility
     # Create relationships and memberships
     random_follows = User.ids.sample(3)
     random_follows.each do |id|
-      Relationship.create!(follower_id: user.id, followed_id: id)
+      if user.id != id
+        Relationship.create_or_find_by!(follower_id: user.id, followed_id: id)
+      end
     end
     random_memberships = Club.ids.sample(1)
     random_memberships.each do |id|
-      Membership.create!(follower_id: user.id, club_id: id)
+      Membership.create_or_find_by!(follower_id: user.id, club_id: id)
     end
   end
 

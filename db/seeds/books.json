@@ -16,28 +16,17 @@
     { "isbn": "9780141182537", "_codename": "Lolita" },
     { "isbn": "9780142437179", "_codename": "The Adventures of Huckleberry Finn" },
     { "isbn": "9781451673319", "_codename": "Fahrenheit 451" },
-    { "isbn": "9780141439570", "_codename": "The Picture of Dorian Gray" },
-    { "isbn": "9780385490818", "_codename": "The Handmaid's Tale" },    
 
-    { "isbn": "9780316769488", "_codename": "The Catcher in the Rye" },
-    { "isbn": "9780743273565", "_codename": "The Great Gatsby" },
-    { "isbn": "9780142437247", "_codename": "Moby-Dick or, The Whale" },
-    { "isbn": "9780141182803", "_codename": "Ulysses" },
-    { "isbn": "9780141185064", "_codename": "The Grapes of Wrath" },
-    { "isbn": "9780140283334", "_codename": "Lord of the Flies" },
+    { "isbn": "9798412567747", "_codename": "Northanger Abbey" },
+    { "isbn": "9780760701652", "_codename": "Emma" },
+    { "isbn": "9781503292734", "_codename": "Sense and Sensibility" },
     { "isbn": "9780141439556", "_codename": "Wuthering Heights" },
     { "isbn": "9780141439518", "_codename": "Pride and Prejudice" },
 
     { "isbn": "9780316015844", "_codename": "Twilight" },
     { "isbn": "9788876250286", "_codename": "New Moon" },
     { "isbn": "9780316160209", "_codename": "Eclipse" },
-    { "isbn": "9780316226134", "_codename": "Breaking Dawn" },
-
     { "isbn": "9780590353427", "_codename": "Harry Potter and the Sorcerer's Stone" },
-    { "isbn": "9781338878936", "_codename": "Harry Potter and the Chamber of Secrets" },
-    { "isbn": "9781338878943", "_codename": "Harry Potter and the Prisoner of Azkaban" },
-    { "isbn": "9781338878950", "_codename": "Harry Potter and the Goblet of Fire" },
-    { "isbn": "9781338878974", "_codename": "Harry Potter and the Order of the Phoenix" },
-    { "isbn": "9781338878967", "_codename": "Harry Potter and the Half-Blood Prince" },
-    { "isbn": "9781338878981", "_codename": "Harry Potter and the Deathly Hallows" }
+    { "isbn": "9781338878936", "_codename": "Harry Potter and the Chamber of Secrets" }
+    
 ]

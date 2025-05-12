@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_08_075801) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_08_160156) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -110,15 +110,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_08_075801) do
     t.string "title", null: false
     t.text "description"
     t.integer "book_id"
-    t.integer "organizer_id", null: false
-    t.integer "club_id"
     t.datetime "start_time", null: false
     t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "organizer_type", null: false
+    t.integer "organizer_id", null: false
     t.index ["book_id"], name: "index_events_on_book_id"
-    t.index ["club_id"], name: "index_events_on_club_id"
-    t.index ["organizer_id"], name: "index_events_on_organizer_id"
+    t.index ["organizer_type", "organizer_id"], name: "index_events_on_organizer"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -227,8 +226,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_08_075801) do
   add_foreign_key "bans", "users", column: "moderator_id"
   add_foreign_key "books", "authors"
   add_foreign_key "events", "books"
-  add_foreign_key "events", "clubs"
-  add_foreign_key "events", "users", column: "organizer_id"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "omni_auth_identities", "users"

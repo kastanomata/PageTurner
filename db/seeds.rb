@@ -41,5 +41,4 @@ seed_events
 puts "Seeded #{Event.count} events."
 initialize_tables
 puts "Initialized Special Bookshelves, Relationships and Memberships."
-
 puts "Seeding completed."

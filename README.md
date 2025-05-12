@@ -37,6 +37,8 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Divide special bookshelves from user-created
 - [x] Add "New post" button/form
 - [x] Add club infocard to the right
+- [ ] Not show posts from yourself
+- [ ] Don't show duplicate when club + follow
 
 ### Search
 - [ ] Styling
