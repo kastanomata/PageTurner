@@ -32,13 +32,15 @@
       <% end %>
     </div>
   </div>
-
+<div class="suggested-row"> 
 <h3>Suggested Books</h3>
   <!-- FIXME fix user suggested book not working -->
-  <% @user.suggested_books.each do |book| %>
-    <%= render 'books/cover', book: book %>
-  <% end %>
-
+  <div class="carosello" id="book-carosello">
+    <% @user.suggested_books.each do |book| %>
+      <%= book_image book, size:"cover", class: "suggested-book" %>
+    <% end %>
+  </div>
+</div>
   <div class="user-content">
     <div class="bookshelves bookshelves--user">
       <h2>Bookshelves
