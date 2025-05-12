@@ -32,6 +32,62 @@ module InitializeUtility
     end
   end
 
+  def initialize_book(isbn)
+    # FIXME cleanup
+    book_details = BookApiService.fetch_book_details(isbn)
+    book_details[:isbn] = isbn
+    return warning("Book not found: #{isbn}") unless book_details
+    # puts "#{book_details.inspect}"
+    # Handle author
+    author_details = BookApiService.fetch_author_details(book_details[:author_openlibrary_id])
+    # puts "#{author_details.inspect}"
+    author = initialize_author(author_details)
+    book_details[:author] = author
+
+    # Set timestamps
+    book_details[:created_at] = Time.now
+    book_details[:updated_at] = Time.now
+
+    # Create book
+    book = Book.create_or_find_by!(book_details.except(:author_openlibrary_id, :tags))
+
+    # Handle tags if present
+    if book_details[:tags].present?
+      book_details[:tags].each do |tag_name|
+        tag = Tag.find_or_create_by!(name: tag_name.downcase.strip)
+        Tagging.find_or_create_by!(book: book, tag: tag)
+      end
+    end
+
+    # puts "#{book.inspect}"
+    book
+  rescue => e
+    warn "Failed to seed book #{isbn}: #{e.message}"
+    nil
+  end
+
+  def initialize_author(author_details)
+    return nil unless author_details[:openlibrary_id].present?
+
+    begin
+      new_author = Author.find_or_create_by!(openlibrary_id: author_details[:openlibrary_id]) do |author|
+        puts "Creating new author #{author_details[:name]}"
+        author.name = author_details[:name] || "Unknown Author"
+        author.bio = author_details[:bio] if author_details.key?(:bio)
+        author.born_on = author_details[:birth_date] if author_details.key?(:birth_date)
+        author.died_on = author_details[:death_date] if author_details.key?(:death_date)
+        author.remote_avatar_url = author_details[:portrait] if author_details[:portrait].present?
+      end
+    rescue ActiveRecord::RecordInvalid => e
+      Rails.logger.error "Author seeding failed: #{e.record.errors.full_messages.join(', ')}"
+      nil
+    rescue StandardError => e
+      Rails.logger.error "Unexpected error seeding author: #{e.message}"
+      nil
+    end
+    new_author
+  end
+
 
   def initialize_tables
     # User initialization

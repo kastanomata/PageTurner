@@ -17,11 +17,11 @@
     {
         "name": "Evergreen Book Club",
         "description": "A club for readers who love timeless classics and modern masterpieces.",
-        "curator_email": "mariarosa@example.com"
+        "curator_email": "damianospadaccini@example.com"
     },
     {
         "name": "YA Fantasy Lovers",
         "description": "A club for young adult fantasy enthusiasts. Explore magical worlds and epic adventures together!",
-        "curator_email": "lucabianchi@example.com"
+        "curator_email": "claudiamezi@example.com"
     }
 ]

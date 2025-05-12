@@ -1,35 +1,4 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
 
-  <div class="form-group">
-    <%= form.label :isbn, "Book ISBN", style: "display: block" %>
-    <div class="isbn-input-container">
-      <%= form.text_field :isbn, class: "form-control isbn-input" %>
-    </div>
-    <div class="search-results" id="isbn-search-results"></div>
-  </div>
 
-  <div class="form-group">
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title, class: "form-control" %>
-  </div>
 
-  <div class="form-group">
-    <%= form.label :text, style: "display: block" %>
-    <%= form.text_area :text, class: "form-control content-textarea", rows: 6 %>
-  </div>
-
-  <div>
-    <%= form.submit "Post", class: "btn btn--primary btn--lg"%>
-  </div>
-<% end %>

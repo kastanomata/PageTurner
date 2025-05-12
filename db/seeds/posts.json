@@ -16,14 +16,14 @@
     {
         "title": "The Dark Middle Chapter",
         "text": "The Two Towers shows our heroes at their lowest point before the eventual triumph. Gollum's duality is fascinating.",
-        "author_email": "mariarosa@example.com",
+        "author_email": "damianospadaccini@example.com",
         "book_isbn": "9780618346264",
         "club_name": "Mellon"
     },
     {
         "title": "A Satisfying Conclusion",
         "text": "The Return of the King delivers on all fronts - the battles are epic, the character arcs complete, and the ending bittersweet.",
-        "author_email": "mariarosa@example.com",
+        "author_email": "damianospadaccini@example.com",
         "book_isbn": "9780618346271",
         "club_name": "Mellon"
     },
@@ -65,7 +65,7 @@
     {
         "title": "The Long Wait Begins",
         "text": "A Dance with Dragons ends on so many cliffhangers! Martin's world remains richly detailed, but when will we get the next installment?",
-        "author_email": "lucabianchi@example.com",
+        "author_email": "claudiamezi@example.com",
         "book_isbn": "9780553801477",
         "club_name": "A Song of Ice and Fire"
     },
@@ -107,28 +107,28 @@
     {
         "title": "Austen's Gothic Parody",
         "text": "Northanger Abbey is a delightful satire of gothic novels that also delivers Austen's signature social commentary.",
-        "author_email": "mariarosa@example.com",
+        "author_email": "damianospadaccini@example.com",
         "book_isbn": "9798412567747",
         "club_name": "Evergreen Book Club"
     },
     {
         "title": "The Perfect Comedy of Manners",
         "text": "Emma shows Austen at the height of her powers - the matchmaking protagonist who can't see her own heart is brilliant.",
-        "author_email": "mariarosa@example.com",
+        "author_email": "damianospadaccini@example.com",
         "book_isbn": "9780760701652",
         "club_name": "Evergreen Book Club"
     },
     {
         "title": "Sense vs. Sensibility",
         "text": "The contrast between the Dashwood sisters provides endless material for discussion about rationality and emotion.",
-        "author_email": "mariarosa@example.com",
+        "author_email": "damianospadaccini@example.com",
         "book_isbn": "9781503292734",
         "club_name": "Evergreen Book Club"
     },
     {
         "title": "Heathcliff's Tormented Love",
         "text": "Wuthering Heights' bleak moors and passionate characters create a gothic masterpiece that transcends time.",
-        "author_email": "mariarosa@example.com",
+        "author_email": "damianospadaccini@example.com",
         "book_isbn": "9780141439556",
         "club_name": "Evergreen Book Club"
     },
@@ -142,7 +142,7 @@
     {
         "title": "Sparkly Vampires Divide Readers",
         "text": "Twilight sparked a cultural phenomenon, though its romanticization of toxic relationships is problematic.",
-        "author_email": "lucabianchi@example.com",
+        "author_email": "claudiamezi@example.com",
         "book_isbn": "9780316015844",
         "club_name": "YA Fantasy Lovers"
     },
@@ -156,21 +156,21 @@
     {
         "title": "The Love Triangle Concludes",
         "text": "Eclipse tries to have it both ways with the vampire-werewolf conflict, but the melodrama overwhelms the plot.",
-        "author_email": "lucabianchi@example.com",
+        "author_email": "claudiamezi@example.com",
         "book_isbn": "9780316160209",
         "club_name": "YA Fantasy Lovers"
     },
     {
         "title": "The Magic Begins",
         "text": "Harry Potter and the Sorcerer's Stone introduces the wizarding world with charm and wonder. A perfect start to the series.",
-        "author_email": "lucabianchi@example.com",
+        "author_email": "claudiamezi@example.com",
         "book_isbn": "9780590353427",
         "club_name": "YA Fantasy Lovers"
     },
     {
         "title": "Darker and More Complex",
         "text": "The Chamber of Secrets expands the Potter universe while maintaining the magic of the first book. The basilisk is terrifying!",
-        "author_email": "lucabianchi@example.com",
+        "author_email": "claudiamezi@example.com",
         "book_isbn": "9781338878936",
         "club_name": "YA Fantasy Lovers"
     }

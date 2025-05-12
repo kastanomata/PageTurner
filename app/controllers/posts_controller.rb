@@ -1,3 +1,4 @@
+include InitializeUtility
 class PostsController < ApplicationController
   allow_unauthenticated_access only: %i[index show]
   before_action :set_post, only: %i[ show edit update destroy ]
@@ -28,7 +29,9 @@ class PostsController < ApplicationController
     @referrer = request.referer
 
     begin
-      @book = Book.find_or_create_by_isbn!(params[:post][:isbn])
+      isbn = params[:post][:isbn]
+      puts "#{isbn}"
+      @book = InitializeUtility.initialize_book(isbn)
       @post.book = @book
 
       if @post.save

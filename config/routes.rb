@@ -8,6 +8,12 @@ Rails.application.routes.draw do
       patch :deny
     end
   end
+  resources :books, only: [] do
+    collection do
+      get :search 
+      get :fetch
+    end
+  end
   get "search", to: "search#index", as: "search"
 
   resources :clubs
