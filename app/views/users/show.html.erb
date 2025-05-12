@@ -1,4 +1,16 @@
 <div>
+  <div  style="<%= 'background-color: #ffffff;' if (Current.user&.background_theme || 'default') == 'default' %>
+            <%= "background-image: url('#{asset_path("#{Current.user&.background_theme}.jpg")}');" unless (Current.user&.background_theme || 'default') == 'default' %>
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            position: relative;
+            min-height: 25vh;
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;">
+  </div>
   <div class="split-container">
     <div class="left-column">
       <div class="user-info">
@@ -9,7 +21,6 @@
             <%= button_to "Rimuovi Foto", remove_avatar_user_path(@user), method: :delete, data: { confirm: "Sei sicuro di voler rimuovere la foto?" } %>
           </div>
         <% end %>
-        <%= link_to 'Change Backgrounds', background_settings_user_path(@user), class: 'nav-link' %>
         <section class="stats">
               <%= render_user_relationships_widget @user%>
         </section>

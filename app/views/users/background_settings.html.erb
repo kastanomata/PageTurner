@@ -1,33 +1,27 @@
-<div class="container">
+<div class="container" data-controller="background">
   <h2>Book-themed Background Settings</h2>
-  
-  <%= form_with model: @user, url: update_background_user_path(@user),
-        data: { 
-               controller: "background",
-               background_updater_theme_value: @user.background_theme
-             } do |f| %>
-    <% User::BACKGROUND_THEMES.each do |key, name| %>
-      <label class="theme-option">
-        <%= f.radio_button :background_theme, key, class: "theme-radio" %>
-        <span class="theme-label"><%= name %></span>
-        <div class="theme-preview <%= 'default-theme' if key == 'default' %>" 
-             style="<%= key == 'default' ? 'background-color: #ffffff;' : "background-image: url('#{asset_path("#{key}.jpg")}');" %>">
-        </div>
-      </label>
-    <% end %>
+    
+  <%= form_with model: @user, 
+               url: update_background_user_path(@user),
+               data: { action: "submit->background#update" } do |f| %>
+    <div class="theme-grid">
+      <% User::BACKGROUND_THEMES.each do |key, config| %>
+        <label class="theme-option" data-theme="<%= key %>">
+          <%= f.radio_button :background_theme, key, 
+                class: "theme-radio",
+                data: { action: "click->background#preview" } %>
+          
+          <div class="theme-preview <%= 'default-theme' if key == 'default' %>">
+            <% if key != 'default' %>
+              <div class="theme-image" 
+                   style="background-image: url('<%= asset_path("#{key}.jpg") %>')"></div>
+            <% end %>
+            <span class="theme-label"><%= key %></span>
+          </div>
+        </label>
+      <% end %>
+    </div>
 
-    <%= f.submit "Save Book Theme", class: "btn btn-primary mt-3" %>
+    <%= f.submit "Save Theme", class: "btn btn-primary mt-3" %>
   <% end %>
 </div>
-
-<style>
-  <% User::BACKGROUND_THEMES.each_key do |key| %>
-    <% next if key == 'default' %>
-    .theme-preview.<%= key %> {
-      background-image: url('<%= asset_path("#{key}.jpg") %>');
-    }
-    body[data-background-theme="<%= key %>"] {
-      background-image: url('<%= asset_path("#{key}.jpg") %>');
-    }
-  <% end %>
-</style>
