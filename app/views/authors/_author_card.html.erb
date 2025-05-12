@@ -1,57 +1,45 @@
-<div class="author-details card mb-4">
+<div class="author-details card">
   <% if author_details(author.openlibrary_id).present? %>
-    <div class="row g-0">
-      <div class="col-md-4">
-        <%= image_tag author_details(author.openlibrary_id)[:portrait], 
-                     class: 'img-fluid rounded-start',
-                     alt: "Portrait of #{author.name}" %>
+    <div class="author-content">
+      <% if author_details(author.openlibrary_id)[:photos].present? %>
+      <div class="image-container">
+        <%= image_tag "https://covers.openlibrary.org/a/id/#{author_details(author.openlibrary_id)[:photos][0]}-M.jpg",
+                      class: 'author-image',
+                      alt: "Photo of #{author.name}" %>
       </div>
-      <div class="col-md-8">
+      <% end %>
+      <div class="bio-container">
         <div class="card-body">
-          <h2 class="card-title"><%= author.name %></h2>
+          <h2 class="author-name"><%= author.name %></h2>
           
           <% if author_details(author.openlibrary_id)[:bio].present? %>
-            <div class="author-bio mb-3">
-              <%= simple_format author_details(author.openlibrary_id)[:bio] %>
+            <div class="author-bio">
+              <%= truncate(author_details(author.openlibrary_id)[:bio], length: 300) %>
+              <span class="read-more">...read more</span>
             </div>
           <% end %>
 
           <div class="author-meta">
             <% if author_details(author.openlibrary_id)[:birth_date].present? %>
-              <p class="card-text">
+              <p class="meta-text">
                 <strong>Born:</strong> 
                 <%= author_details(author.openlibrary_id)[:birth_date] %>
               </p>
             <% end %>
 
             <% if author_details(author.openlibrary_id)[:death_date].present? %>
-              <p class="card-text">
+              <p class="meta-text">
                 <strong>Died:</strong> 
                 <%= author_details(author.openlibrary_id)[:death_date] %>
               </p>
-            <% end %>
-
-            <% if author_details(author.openlibrary_id)[:photos].present? %>
-              <div class="author-photos mt-3">
-                <h5>Photos</h5>
-                <div class="row row-cols-2 row-cols-md-3 g-2">
-                  <% author_details(author.openlibrary_id)[:photos].each do |photo_id| %>
-                    <div class="col">
-                      <%= image_tag "https://covers.openlibrary.org/a/id/#{photo_id}-M.jpg",
-                                   class: 'img-thumbnail',
-                                   alt: "Photo of #{author.name}" %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
             <% end %>
           </div>
         </div>
       </div>
     </div>
   <% else %>
-    <div class="card-body">
-      <p class="text-muted">No author information available</p>
+    <div class="no-info">
+      <p>No author information available</p>
     </div>
   <% end %>
 </div>

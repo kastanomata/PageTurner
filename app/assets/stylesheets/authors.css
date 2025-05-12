@@ -1,0 +1,88 @@
+/* Author Card Styles */
+.book-info-container {
+  display:flex;
+  flex-direction: row;
+}
+
+.author-details {
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.author-content {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.image-container {
+  flex: 0 0 150px;
+}
+
+.author-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.bio-container {
+  flex: 1;
+}
+
+.author-name {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.author-bio {
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  line-clamp: 5;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  position: relative;
+}
+
+.read-more {
+  color: #0066cc;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+.meta-text {
+  margin: 0.25rem 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.no-info {
+  padding: 1.5rem;
+  text-align: center;
+  color: #999;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .author-content {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .image-container {
+    margin: 0 auto;
+  }
+}

@@ -38,7 +38,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Divide special bookshelves from user-created
 - [x] Add "New post" button/form
 - [x] Add club infocard to the right
-- [ ] Don't show duplicate when club + follow
+- [x] Don't show duplicate when club + follow
 
 ### Search
 - [ ] Styling
@@ -51,7 +51,6 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Add "new post" functionality (postcard) on profile
 - [x] Add a way to request becoming a author
 - [ ] Add favorite book
-- [ ] Add block user functionality
 
 ### Books
 - [x] Add buttons on book show page to quickly add the book to read or liked bookshelf

@@ -13,26 +13,14 @@
   <%= book_image @book, size: "poster"%>
   <p>ISBN: <%= @book.isbn %></p>
 
-  <div class="popular-tags">
-    <h3>Popular Tags:</h3>
-      <% if @popular_tags.any? %>
-        <div class="tag-list">
-          <% @popular_tags.each do |tag| %>
-            <span class="tag badge bg-secondary">
-              <%= link_to tag.name, tag_path(tag), class: "text-white text-decoration-none" %>
-            </span>
-          <% end %>
-        </div>
-      <% else %>
-        <p class="text-muted">No popular tags available</p>
-      <% end %>
-  </div>
-
   <%= add_book_to_bookshelf_buttons @book %>
   <%= set_book_as_reading @book %>
 </div>
 
-<%= render 'authors/author_card', author: @book.author %>
+<div class="book-info-container">
+  <%= render 'authors/author_card', author: @book.author %>
+  <%= render_popular_tags(@book.tags) %>
+</div>
 
 <div>
   <%= link_to "Back to books", books_path %>
