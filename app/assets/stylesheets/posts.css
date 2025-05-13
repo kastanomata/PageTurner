@@ -44,6 +44,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+
 }
 
 .post-header img {
@@ -65,6 +66,7 @@
 
 .post-content p {
   margin: 0;
+  font-size: 2rem;
 }
 
 .post-footer {
@@ -172,7 +174,6 @@
 .post-show-container {
   flex: 2;
   background-color: white;
-  padding: 20px;
   box-sizing: border-box;
   /*display: grid;
   grid-template-columns: 65% 25%;
@@ -190,4 +191,18 @@
   padding: 20px;
   box-sizing: border-box;
   gap: 20px; /* spazio tra i due div */
+}
+
+.post-header-container{
+  text-align: center;
+}
+
+.display-like{
+  align-items: end;
+}
+
+.post-actions{
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
 }
