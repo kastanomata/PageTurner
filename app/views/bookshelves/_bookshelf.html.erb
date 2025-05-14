@@ -1,7 +1,38 @@
+<style>
+  .bookshelf-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem; 
+  }
+
+  .bookshelf-title {
+    font-size: 1.8rem;
+    margin:0;
+  }
+  .bookshelf-creator {
+    font-size: 1.5rem;
+    margin:0;
+  }
+
+  /* Optional: Responsive adjustment */
+  @media (max-width: 600px) {
+    .bookshelf-header {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+  }
+
+</style>
+
 <div id="<%= dom_id bookshelf %>">
   <div class="bookshelf">
-    <h2> <%= link_to bookshelf.name, bookshelf_path(bookshelf), class: "btn--link" %> </h2>
-    <p>Created by: <%= link_to bookshelf.creator.nickname, user_path(bookshelf.creator), class: "btn--link" %></p>
+    <div class="bookshelf-header">
+      <h2 class="bookshelf-title"><%= link_to bookshelf.name, bookshelf_path(bookshelf), class: "btn--link" %></h2>
+      <p class="bookshelf-creator">Created by: <%= link_to bookshelf.creator.nickname, user_path(bookshelf.creator), class: "btn--link" %></p>
+    </div>
     
     <div class="bookshelf-books-container">
       <% bookshelf.bookshelf_contains.includes(:book).each do |contain| %>
@@ -11,11 +42,6 @@
         <%= render 'books/book_card', 
           book: book,
           current_user: bookshelf.creator,
-          bookshelf_actions: current_user_owns?(bookshelf) ? 
-            button_to('Remove from Bookshelf', bookshelf_contain_path(contain), 
-                    method: :delete, 
-                    class: 'btn btn--delete', 
-                    style: 'padding: 5px 10px') : nil,
           show_hover_info: true,
           created_at: contain.created_at.strftime('%d %B %Y') %>
       <% end %>

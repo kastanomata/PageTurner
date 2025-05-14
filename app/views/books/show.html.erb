@@ -1,9 +1,11 @@
 <style>
   .show-book-container {
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 40% 58%;
+    gap: 2%;
+    max-width: 95%%;
+    margin: 0 auto;
+    padding: 20px;
   }
 
   .posts-about-book {
@@ -44,19 +46,13 @@
       </h1>
     <div class="visual-info-container">
       <%= book_image @book, size: "poster"%>
-      <%= display_tags @book.tags %>
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <%= display_tags @book.tags %>
+        <%= add_book_to_bookshelf_buttons @book %>
+        <%= set_book_as_reading @book %>
+      </div>
     </div>
     <p>ISBN: <%= @book.isbn %></p>
-  </div>
-
-    <%= add_book_to_bookshelf_buttons @book %>
-    <%= set_book_as_reading @book %>
-
-    <div class="book-info-container">
-      <%= render 'authors/author_card', author: @book.author %>
-      
-    </div>
-
     <div class="button_container">
       <% if Current.user&.admin? %>
         <div style="display: flex; gap: 10px;">
@@ -64,18 +60,23 @@
           <%= button_to "Destroy this book", @book, method: :delete, class: "button" %>
         </div>
       <% end %>
+    </div>
+  </div>
 
-    <% posts = posts_for_books_with_same_isbn(@book) %>
 
     <div class="posts-about-book">
+      <% posts = posts_for_books_with_same_isbn(@book) %>
       <% if posts.any? %>
         <h2>Community Posts About This Book</h2>
           <% posts.each do |post| %>
-            <%= render 'posts/post_card', post: post %>
+            <%= render 'posts/post_card', post: post, no_cover: true %>
           <% end %>
       <% else %>
         <p class="text-muted">No posts about this book yet. Be the first to share your thoughts!</p>
       <% end %>
     </div>
-  </div>
+
+    <div class="book-info-container">
+      <%= render 'authors/author_card', author: @book.author %>
+    </div>
 </div>

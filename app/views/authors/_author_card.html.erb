@@ -21,7 +21,7 @@
                             bio 
                           end %>
             <div class="author-bio">
-              <%= truncate(bio_text, length: 300) %>
+              <%= truncate(bio_text, length: 150) %>
               <%= link_to "read more on OpenLibrary", "https://openlibrary.org/authors/#{author.openlibrary_id}", 
                   class: "btn btn--link",
                   target: "_blank",
