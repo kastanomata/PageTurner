@@ -19,7 +19,7 @@ class BookApiService
 
   def self.fetch_book_details(isbn)
     begin
-      # https://openlibsrary.org/api/books?bibkeys=ISBN:9780547928227&format=json&jscmd=data
+      # https://openlibrary.org/api/books?bibkeys=ISBN:9780547928227&format=json&jscmd=data
       url = URI("#{BASE_URL}?bibkeys=ISBN:#{isbn}&format=json&jscmd=data")
       response = Net::HTTP.get(url)
       return {} if response.empty?

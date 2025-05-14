@@ -41,6 +41,15 @@ module PostsHelper
     end
   end
 
+  def posts_for_books_with_same_isbn(book)
+    return Post.none unless book.isbn.present?
+
+    # Find posts that reference any books with the same ISBN
+    Post.joins("INNER JOIN books ON posts.book_id = books.id")
+        .where(books: { isbn: book.isbn })
+        .order(created_at: :desc)
+  end
+
   private
 
   def post_owner?(post)

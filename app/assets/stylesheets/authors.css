@@ -2,6 +2,7 @@
 .book-info-container {
   display:flex;
   flex-direction: row;
+  gap: 2rem;
 }
 
 .author-details {

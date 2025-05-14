@@ -1,8 +1,16 @@
-.popular-tags {
+.tags {
   margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.popular-tags h3 {
+.tags h3 {
   font-size: 1.1rem;
   margin-bottom: 0.75rem;
   color: #333;

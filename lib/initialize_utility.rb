@@ -33,14 +33,12 @@ module InitializeUtility
   end
 
   def initialize_book(isbn)
-    # FIXME cleanup
     book_details = BookApiService.fetch_book_details(isbn)
     book_details[:isbn] = isbn
     return warning("Book not found: #{isbn}") unless book_details
-    # puts "#{book_details.inspect}"
+
     # Handle author
     author_details = BookApiService.fetch_author_details(book_details[:author_openlibrary_id])
-    # puts "#{author_details.inspect}"
     author = initialize_author(author_details)
     book_details[:author] = author
 
@@ -52,14 +50,8 @@ module InitializeUtility
     book = Book.create_or_find_by!(book_details.except(:author_openlibrary_id, :tags))
 
     # Handle tags if present
-    if book_details[:tags].present?
-      book_details[:tags].each do |tag_name|
-        tag = Tag.find_or_create_by!(name: tag_name.downcase.strip)
-        Tagging.find_or_create_by!(book: book, tag: tag)
-      end
-    end
+    handle_tags(book, book_details[:tags]) if book_details[:tags].present?
 
-    # puts "#{book.inspect}"
     book
   rescue => e
     warn "Failed to seed book #{isbn}: #{e.message}"
@@ -95,5 +87,54 @@ module InitializeUtility
 
     # Club initialization
     Club.find_each { |bookclub| initialize_bookclub(bookclub) }
+  end
+
+  private
+
+  def handle_tags(book, tags_to_add)
+    return unless tags_to_add.present?
+
+    # Normalize and filter tags
+    normalized_tags = tags_to_add.map { |t| t.downcase.strip }.uniq
+
+    # Apply allowed tags filter if file exists
+    if File.exist?("config/allowed_tags.txt")
+      allowed_tags = File.readlines("config/allowed_tags.txt").map(&:strip).map(&:downcase)
+      normalized_tags.select! { |t| allowed_tags.include?(t) }
+    end
+
+    return if normalized_tags.empty?
+
+    # Find existing tags in one query
+    existing_tags = Tag.where(name: normalized_tags).index_by(&:name)
+
+    # Determine which tags need to be created
+    tags_to_create = normalized_tags.reject { |t| existing_tags.key?(t) }
+
+    # Bulk create missing tags (1 transaction)
+    new_tags = []
+    if tags_to_create.any?
+      new_tags = Tag.insert_all(
+        tags_to_create.map { |name| { name: name, created_at: Time.now, updated_at: Time.now } },
+        returning: %w[id name]
+      )
+      existing_tags.merge!(new_tags.index_by { |t| t["name"] })
+    end
+
+    # Find all tag IDs for this book
+    all_tag_ids = normalized_tags.map { |t| existing_tags[t]["id"] || existing_tags[t].id }
+
+    # Find existing taggings to avoid duplicates
+    existing_taggings = Tagging.where(book: book, tag_id: all_tag_ids).pluck(:tag_id).to_set
+
+    # Prepare taggings to create (excluding existing ones)
+    taggings_to_create = all_tag_ids.reject { |tag_id| existing_taggings.include?(tag_id) }
+                                  .map { |tag_id| { book_id: book.id, tag_id: tag_id, created_at: Time.now } }
+
+    # Bulk create taggings (1 transaction)
+    Tagging.insert_all(taggings_to_create) if taggings_to_create.any?
+
+    # Return the complete set of tags for this book
+    normalized_tags
   end
 end

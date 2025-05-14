@@ -12,9 +12,16 @@
         <div class="card-body">
           <h2 class="author-name"><%= author.name %></h2>
           
-          <% if author_details(author.openlibrary_id)[:bio].present? %>
+          <% bio = author_details(author.openlibrary_id)[:bio] %>
+          <% if bio.present? %>
+            <% bio_text = if bio.is_a?(Hash) 
+                            # Find the longest bio in the hash (if values are strings)
+                            bio.max_by { |_, value| value.to_s.length }&.last 
+                          else 
+                            bio 
+                          end %>
             <div class="author-bio">
-              <%= truncate(author_details(author.openlibrary_id)[:bio], length: 300) %>
+              <%= truncate(bio_text, length: 300) %>
               <span class="read-more">...read more</span>
             </div>
           <% end %>

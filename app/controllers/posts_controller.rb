@@ -31,7 +31,10 @@ class PostsController < ApplicationController
     begin
       isbn = params[:post][:isbn]
       puts "#{isbn}"
-      @book = InitializeUtility.initialize_book(isbn)
+      @book = Book.find_by(isbn: isbn)
+      if @book.nil?
+        @book = InitializeUtility.initialize_book(isbn)
+      end
       @post.book = @book
 
       if @post.save

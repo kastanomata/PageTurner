@@ -1,10 +1,23 @@
-<!-- 
-  This is the show page for a single book
-  It displays the book's title, ISBN, and cover image 
-  if those information are available, otherwise it makes a 
-  request to the openlibrary API to get the book's information
-  and saves it in the database
--->
+<style>
+  .posts-about-book {
+    margin: 2rem 0;
+  }
+
+  .posts-about-book h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+</style>
 
 <div class="book-card">
   <h1>
@@ -17,20 +30,29 @@
   <%= set_book_as_reading @book %>
 </div>
 
-<div class="book-info-container">
-  <%= render 'authors/author_card', author: @book.author %>
-  <%= render_popular_tags(@book.tags) %>
-</div>
+  <div class="book-info-container">
+    <%= render 'authors/author_card', author: @book.author %>
+    <%= display_tags @book.tags %>
+  </div>
 
-<div>
-  <%= link_to "Back to books", books_path %>
-</div>
+  <div class="button_container">
+    <% if Current.user&.admin? %>
+      <div style="display: flex; gap: 10px;">
+        <%= link_to "Edit this book", edit_book_path(@book), class: "button" %>
+        <%= button_to "Destroy this book", @book, method: :delete, class: "button" %>
+      </div>
+    <% end %>
 
-<div class="button_container">
-  <% if Current.user&.admin? %>
-    <div style="display: flex; gap: 10px;">
-      <%= link_to "Edit this book", edit_book_path(@book), class: "button" %>
-      <%= button_to "Destroy this book", @book, method: :delete, class: "button" %>
-    </div>
-  <% end %>
+  <% posts = posts_for_books_with_same_isbn(@book) %>
+
+  <div class="posts-about-book">
+    <% if posts.any? %>
+      <h3>Community Posts About This Book</h3>
+        <% posts.each do |post| %>
+          <%= render 'posts/post_card', post: post %>
+        <% end %>
+    <% else %>
+      <p class="text-muted">No posts about this book yet. Be the first to share your thoughts!</p>
+    <% end %>
+  </div>
 </div>
