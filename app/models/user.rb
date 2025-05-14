@@ -51,10 +51,10 @@ class User < ApplicationRecord
   optional: true
 
   BACKGROUND_THEMES = {
-    "classic" => "Classic Bookshelf",
-    "fantasy" => "Fantasy Library",
-    "sci-fi" => "Sci-Fi Spaceship",
-    "mystery" => "Mystery Room",
+    "classic" => "Classic",
+    "fantasy" => "Fantasy",
+    "sci-fi" => "Sci-Fi",
+    "mystery" => "Mystery",
     "default" => "Default Theme"
   }.freeze
 

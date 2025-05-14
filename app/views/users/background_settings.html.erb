@@ -5,19 +5,17 @@
                url: update_background_user_path(@user),
                data: { action: "submit->background#update" } do |f| %>
     <div class="theme-grid">
-      <% User::BACKGROUND_THEMES.each do |key, config| %>
+      <% User::BACKGROUND_THEMES.each do |key, name| %>
         <label class="theme-option" data-theme="<%= key %>">
           <%= f.radio_button :background_theme, key, 
                 class: "theme-radio",
                 data: { action: "click->background#preview" } %>
           
-          <div class="theme-preview <%= 'default-theme' if key == 'default' %>">
-            <% if key != 'default' %>
-              <div class="theme-image" 
-                   style="background-image: url('<%= asset_path("#{key}.jpg") %>')"></div>
-            <% end %>
-            <span class="theme-label"><%= key %></span>
+          
+          <div class="theme-preview <%= 'default-theme' if key == 'default' %>" 
+            style="<%= key == 'default' ? 'background-color: #ffffff;' : "background-image: url('#{asset_path("#{key}.jpg")}');" %>">
           </div>
+          <span class="theme-label"><%= name %></span>
         </label>
       <% end %>
     </div>
