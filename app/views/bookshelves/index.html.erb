@@ -1,15 +1,12 @@
 
-
 <% content_for :title, "Bookshelves" %>
 
-<h1>Bookshelves</h1>
+<h1 style="text-align: center"> Bookshelves</h1>
 
 <div id="bookshelves">
   <% @bookshelves.each do |bookshelf| %>
     <% if not bookshelf.special %> 
-          <%= render bookshelf %>
+      <%= render bookshelf %>
     <% end %>      
   <% end %>
 </div>
-
-<%= link_to "New bookshelf", new_bookshelf_path %>

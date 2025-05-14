@@ -9,6 +9,7 @@
   cursor: pointer;
   text-align: center;
   border: none;
+  font-family: "Sagona", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* Button variants */
@@ -57,6 +58,11 @@
 .btn--sm {
   padding: 8px 16px;
   font-size: 1rem;
+}
+
+.btn--md {
+  padding: 10px 22px;
+  font-size: 1.1rem;
 }
 
 .btn--lg {

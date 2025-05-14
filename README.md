@@ -27,6 +27,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Style report buttons
 - [x] Fix delete sessions!
 - [x] Seed more reviews for YA Fantasy club
+- [ ] Seed author account for the tolkien foundation
 - [ ] font ideas: Sagona/Bookman
 - [ ] Add tab icon in browser
 - [ ] Add "404 - Not Found"
@@ -89,8 +90,8 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Add "Report Club" functionality support
 - [x] Add "Report Club" Button
 - [x] Add "New post" button/form
-- [ ] Create Club (problema con il campo creator del form)
 - [x] Add support for events
+- [ ] Create Club (problema con il campo creator del form)
 - [ ] Add events
 - [ ] Add support for group reading
 - [ ] Add calendar (?)

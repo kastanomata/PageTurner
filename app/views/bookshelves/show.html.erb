@@ -29,8 +29,8 @@
 
   <% if current_user_owns?(@bookshelf) %>
     <div class='bookshelf-actions-container'>
-      <%= link_to "Edit this bookshelf", edit_bookshelf_path(@bookshelf), class: 'btn btn--secondary btn--sm' %> 
-      <%= button_to 'Delete this Bookshelf', bookshelf_path(name: @bookshelf.name, creator: @bookshelf.creator), method: :delete, class: 'btn btn--negative btn--sm', style: 'padding: 5px 10px' %>
+      <%= link_to "Edit this bookshelf", edit_bookshelf_path(@bookshelf), class: 'btn btn--secondary btn--md' %> 
+      <%= button_to 'Delete this Bookshelf', bookshelf_path(name: @bookshelf.name, creator: @bookshelf.creator), method: :delete, class: 'btn btn--negative btn--md'%>
     </div>
   <% end %>
   

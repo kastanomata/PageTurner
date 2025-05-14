@@ -1,13 +1,10 @@
 .tags {
+  flex-grow: 5%;
   margin: 1.5rem 0;
   padding: 1rem;
-  border: 1px solid #eaeaea;
-  border-radius: 8px;
   overflow: hidden;
   max-width: 800px;
   margin: 0 auto 2rem;
-  background: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .tags h3 {
@@ -17,8 +14,8 @@
 }
 
 .tag-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
   gap: 0.5rem;
 }
 

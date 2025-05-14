@@ -1,4 +1,11 @@
 <style>
+  .show-book-container {
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .posts-about-book {
     margin: 2rem 0;
   }
@@ -17,42 +24,58 @@
     gap: 1.5rem;
     margin-top: 1rem;
   }
+
+  .visual-info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    max-width: 100%;
+    margin: 50px auto;
+    padding: 10px;
+  }
+
 </style>
 
-<div class="book-card">
-  <h1>
-    <%= @book.title %>
-  </h1>
-  <%= book_image @book, size: "poster"%>
-  <p>ISBN: <%= @book.isbn %></p>
-
-  <%= add_book_to_bookshelf_buttons @book %>
-  <%= set_book_as_reading @book %>
-</div>
-
-  <div class="book-info-container">
-    <%= render 'authors/author_card', author: @book.author %>
-    <%= display_tags @book.tags %>
+<div class="show-book-container">
+  <div class="book-card">
+      <h1>
+        <%= @book.title %>
+      </h1>
+    <div class="visual-info-container">
+      <%= book_image @book, size: "poster"%>
+      <%= display_tags @book.tags %>
+    </div>
+    <p>ISBN: <%= @book.isbn %></p>
   </div>
 
-  <div class="button_container">
-    <% if Current.user&.admin? %>
-      <div style="display: flex; gap: 10px;">
-        <%= link_to "Edit this book", edit_book_path(@book), class: "button" %>
-        <%= button_to "Destroy this book", @book, method: :delete, class: "button" %>
-      </div>
-    <% end %>
+    <%= add_book_to_bookshelf_buttons @book %>
+    <%= set_book_as_reading @book %>
 
-  <% posts = posts_for_books_with_same_isbn(@book) %>
+    <div class="book-info-container">
+      <%= render 'authors/author_card', author: @book.author %>
+      
+    </div>
 
-  <div class="posts-about-book">
-    <% if posts.any? %>
-      <h3>Community Posts About This Book</h3>
-        <% posts.each do |post| %>
-          <%= render 'posts/post_card', post: post %>
-        <% end %>
-    <% else %>
-      <p class="text-muted">No posts about this book yet. Be the first to share your thoughts!</p>
-    <% end %>
+    <div class="button_container">
+      <% if Current.user&.admin? %>
+        <div style="display: flex; gap: 10px;">
+          <%= link_to "Edit this book", edit_book_path(@book), class: "button" %>
+          <%= button_to "Destroy this book", @book, method: :delete, class: "button" %>
+        </div>
+      <% end %>
+
+    <% posts = posts_for_books_with_same_isbn(@book) %>
+
+    <div class="posts-about-book">
+      <% if posts.any? %>
+        <h2>Community Posts About This Book</h2>
+          <% posts.each do |post| %>
+            <%= render 'posts/post_card', post: post %>
+          <% end %>
+      <% else %>
+        <p class="text-muted">No posts about this book yet. Be the first to share your thoughts!</p>
+      <% end %>
+    </div>
   </div>
 </div>
