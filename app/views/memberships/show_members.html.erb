@@ -12,10 +12,25 @@
   <div class="col-md-8">
     <h3><%= @title %></h3>
     <% if @members.any? %>
-      <ul class="users follow">
-        <%= render @members %>
-      </ul>
-      <% will_paginate %>
+      <% @members.each do |member| %>
+      <div class="user-card">
+        <div class="user-info">
+          <%= link_to member.nickname, user_path(member) %>
+        </div>
+        <% if member != @club.curator %>
+          <% if Current.user == @club.curator %>
+            <div class="user-actions">
+              <%= button_to "Delete Membership", 
+                delete_membership_club_path(id: @club.id, member_id: member.id), 
+                method: :delete, 
+                class: "btn btn--negative btn--sm",
+                form: { data: { turbo_confirm: "Are you sure?" } } %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <% end %>
+      <%= will_paginate @members %>
     <% end %>
   </div>
 </div>

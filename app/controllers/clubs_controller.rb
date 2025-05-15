@@ -74,7 +74,7 @@ class ClubsController < ApplicationController
     end
   end
 
-  def delete_post
+  def remove_post
     @club = Club.find(params[:id])
     if Current.user == @club.curator
       @post = @club.posts.find_by(id: params[:post_id])
@@ -86,6 +86,25 @@ class ClubsController < ApplicationController
       end
     else
       redirect_to @club, alert: "You are not authorized to perform this action."
+    end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to clubs_path, alert: "Club not found."
+  end
+
+  def delete_membership
+    @club = Club.find(params[:id])
+    if Current.user != @club.curator
+      redirect_to @club, alert: "You are not authorized to perform this action."
+      return
+    end
+
+    @member = @club.members.find(params[:member_id])
+    @membership = Membership.find_by(follower_id: @member.id)
+    if @membership
+      @membership.delete
+      redirect_to @club, notice: "Membership successfully deleted from the club."
+    else
+      redirect_to @club, alert: "Membership not found."
     end
   rescue ActiveRecord::RecordNotFound
     redirect_to clubs_path, alert: "Club not found."

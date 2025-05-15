@@ -32,11 +32,11 @@
   </div>
   <div>
     <% if Current.user == @post.club.curator %>
-            <%= button_to "Remove from Club", 
-                delete_post_club_path(id: @post.club.id, post_id: @post.id), 
-                method: :delete, 
-                class: "btn btn--negative btn--sm",
-                form: { data: { turbo_confirm: "Are you sure?" } } %>
-        <% end %>
+      <%= button_to "Remove from Club", 
+          remove_post_club_path(id: @post.club.id, post_id: @post.id), 
+          method: :delete, 
+          class: "btn btn--negative btn--sm",
+          form: { data: { turbo_confirm: "Are you sure?" } } %>
+    <% end %>
   </div>
 </div>
