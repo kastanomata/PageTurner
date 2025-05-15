@@ -74,6 +74,23 @@ class ClubsController < ApplicationController
     end
   end
 
+  def delete_post
+    @club = Club.find(params[:id])
+    if Current.user == @club.curator
+      @post = @club.posts.find_by(id: params[:post_id])
+      if @post
+        @post.update(club: nil)
+        redirect_to @club, notice: "Post successfully removed from the club."
+      else
+        redirect_to @club, alert: "Post not found."
+      end
+    else
+      redirect_to @club, alert: "You are not authorized to perform this action."
+    end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to clubs_path, alert: "Club not found."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_club

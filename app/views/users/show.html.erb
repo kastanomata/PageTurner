@@ -1,16 +1,18 @@
 <div>
-  <div  style="<%= 'background-color: #ffffff;' if (Current.user&.background_theme || 'default') == 'default' %>
-            <%= "background-image: url('#{asset_path("#{Current.user&.background_theme}.jpg")}');" unless (Current.user&.background_theme || 'default') == 'default' %>
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            position: relative;
-            min-height: 25vh;
-            display: flex;
-            gap: 2rem;
-            padding: 2rem;">
-  </div>
+  <% unless (@user&.background_theme || 'default') == 'default' %>
+    <div  style="<%= 'background-color: #ffffff;' if (@user&.background_theme || 'default') == 'default' %>
+              <%= "background-image: url('#{asset_path("#{@user&.background_theme}.jpg")}');" unless (@user&.background_theme || 'default') == 'default' %>
+              background-size: cover;
+              background-position: center;
+              background-attachment: fixed;
+              background-repeat: no-repeat;
+              position: relative;
+              min-height: 25vh;
+              display: flex;
+              gap: 2rem;
+              padding: 2rem;">
+    </div>
+  <% end %>
   <div class="split-container">
     <div class="left-column">
       <div class="user-info">
@@ -36,10 +38,12 @@
       <%= currently_reading @user %>  
     </div>
     <div class="curator-info">
-      <% if @user.curator_icon %>
-        <%= image_tag @user.curator_icon.icon, class: 'curator-icon' %>
-      <% else %>
-        <div class="default-icon">👤</div>
+      <% if @user.is_curator == true%>
+        <% if @user.curator_icon %>
+          <%= image_tag @user.curator_icon.icon, class: 'curator-icon' %>
+        <% else %>
+          <div class="default-icon">👤</div>
+        <% end %>
       <% end %>
     </div>
   </div>

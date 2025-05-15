@@ -75,6 +75,7 @@ Rails.application.routes.draw do
     resources :reading_goals, only: [ :new, :create, :show ]
     member do
       get :members
+      delete :delete_post
     end
     resources :polls, only: [ :new, :create, :destroy ]
   end

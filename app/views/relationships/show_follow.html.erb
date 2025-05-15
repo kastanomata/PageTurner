@@ -15,11 +15,11 @@
       <% @users.each do |user| %>
       <div class="user-card">
         <div class="user-info">
-          <%= user.nickname %> | <strong><%= user.email_address %></strong>
+          <%= link_to user.nickname, user_path(user) %>
         </div>
 
         <div class="user-actions">
-          <%= render_user_relationships_widget user %>
+          <%= render("relationships/follow_form", user: user) %>
         </div>
       </div>
       <% end %>
