@@ -36,48 +36,75 @@ module InitializeUtility
     book_details = BookApiService.fetch_book_details(isbn)
     book_details[:isbn] = isbn
     return warning("Book not found: #{isbn}") unless book_details
+    puts "Author OpenLibrary ID: #{book_details[:author_openlibrary_id].inspect}"
+    puts "Initialize author result: #{initialize_author(book_details[:author_openlibrary_id]).inspect}"
 
-    # Handle author
-    author_details = BookApiService.fetch_author_details(book_details[:author_openlibrary_id])
-    author = initialize_author(author_details)
+    author = if book_details[:author_openlibrary_id].present?
+              Author.find_by(openlibrary_id: book_details[:author_openlibrary_id]) ||
+              initialize_author(book_details[:author_openlibrary_id])
+    end
+
+    unless author
+      return warn "Could not find or create author for book #{isbn}"
+    end
+
     book_details[:author] = author
-
-    # Set timestamps
     book_details[:created_at] = Time.now
     book_details[:updated_at] = Time.now
 
-    # Create book
-    book = Book.create_or_find_by!(book_details.except(:author_openlibrary_id, :tags))
+    # Create book with author association
+    book = Book.create_or_find_by!(isbn: isbn) do |b|
+      b.assign_attributes(book_details.except(:author_openlibrary_id, :tags))
+    end
 
-    # Handle tags if present
     handle_tags(book, book_details[:tags]) if book_details[:tags].present?
-
     book
   rescue => e
     warn "Failed to seed book #{isbn}: #{e.message}"
     nil
   end
 
-  def initialize_author(author_details)
-    return nil unless author_details[:openlibrary_id].present?
+  def initialize_author(author_openlibrary_id)
+    return nil unless author_openlibrary_id.present?
+
+    existing_author = Author.find_by(openlibrary_id: author_openlibrary_id)
+    return existing_author if existing_author
+
+    author_details = BookApiService.fetch_author_details(author_openlibrary_id)
+    unless author_details
+      return nil
+    end
 
     begin
-      new_author = Author.find_or_create_by!(openlibrary_id: author_details[:openlibrary_id]) do |author|
-        puts "Creating new author #{author_details[:name]}"
-        author.name = author_details[:name] || "Unknown Author"
-        author.bio = author_details[:bio] if author_details.key?(:bio)
-        author.born_on = author_details[:birth_date] if author_details.key?(:birth_date)
-        author.died_on = author_details[:death_date] if author_details.key?(:death_date)
-        author.remote_avatar_url = author_details[:portrait] if author_details[:portrait].present?
-      end
+      attributes = {
+        openlibrary_id: author_openlibrary_id,
+        name: author_details[:name] || "Unknown Author"
+      }
+
+      attributes[:bio] = author_details[:bio].is_a?(Hash) ?
+                        author_details[:bio].values.max_by(&:length) :
+                        author_details[:bio] if author_details[:bio]
+
+      attributes[:photo] = author_details[:photos]&.first if author_details[:photos]
+      attributes[:born_on] = author_details[:birth_date] if author_details[:birth_date]
+      attributes[:died_on] = author_details[:death_date] if author_details[:death_date]
+
+      author = Author.create!(attributes)
+      author
     rescue ActiveRecord::RecordInvalid => e
-      Rails.logger.error "Author seeding failed: #{e.record.errors.full_messages.join(', ')}"
-      nil
-    rescue StandardError => e
-      Rails.logger.error "Unexpected error seeding author: #{e.message}"
+      begin
+        Author.create!(
+          openlibrary_id: author_openlibrary_id,
+          name: author_details[:name] || "Unknown Author"
+        )
+      rescue => e
+        Rails.logger.error "Fallback author creation failed: #{e.message}"
+        nil
+      end
+    rescue => e
+      Rails.logger.error "Author creation error: #{e.message}"
       nil
     end
-    new_author
   end
 
 

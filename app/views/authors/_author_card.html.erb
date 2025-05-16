@@ -1,55 +1,31 @@
 <div class="author-details card">
-  <% if author_details(author.openlibrary_id).present? %>
-    <div class="author-content">
-      <% if author_details(author.openlibrary_id)[:photos].present? %>
-      <div class="image-container">
-        <%= image_tag "https://covers.openlibrary.org/a/id/#{author_details(author.openlibrary_id)[:photos][0]}-M.jpg",
+  <div class="author-content">
+    <div class="image-container">
+      <% unless author.photo.blank? %>
+        <%= image_tag "https://covers.openlibrary.org/a/id/#{author.photo}-M.jpg",
                       class: 'author-image',
                       alt: "Photo of #{author.name}" %>
-      </div>
+      <% else %>
+        <%= image_tag "authorportrait_not_found.png",
+                      class: 'author-image',
+                      alt: "No photo available for #{author.name}" %>
       <% end %>
-      <div class="bio-container">
-        <div class="card-body">
-          <h2 class="author-name"><%= author.name %></h2>
-          
-          <% bio = author_details(author.openlibrary_id)[:bio] %>
-          <% if bio.present? %>
-            <% bio_text = if bio.is_a?(Hash) 
-                            # Find the longest bio in the hash (if values are strings)
-                            bio.max_by { |_, value| value.to_s.length }&.last 
-                          else 
-                            bio 
-                          end %>
-            <div class="author-bio">
-              <%= truncate(bio_text, length: 150) %>
-              <%= link_to "read more on OpenLibrary", "https://openlibrary.org/authors/#{author.openlibrary_id}", 
-                  class: "btn btn--link",
-                  target: "_blank",
-                  rel: "noopener noreferrer" %>
-            </div>
-          <% end %>
-
-          <div class="author-meta">
-            <% if author_details(author.openlibrary_id)[:birth_date].present? %>
-              <p class="meta-text">
-                <strong>Born:</strong> 
-                <%= author_details(author.openlibrary_id)[:birth_date] %>
-              </p>
-            <% end %>
-
-            <% if author_details(author.openlibrary_id)[:death_date].present? %>
-              <p class="meta-text">
-                <strong>Died:</strong> 
-                <%= author_details(author.openlibrary_id)[:death_date] %>
-              </p>
-            <% end %>
+    </div>
+    <div class="bio-container">
+      <div class="card-body">
+        <h2 class="author-name">
+          <%= link_to author.name, author_path(author), class: 'btn btn--link' %>
+        </h2>
+        <% unless author.bio.blank? %>
+          <div class="author-bio">
+            <%= truncate(author.bio, length: 150) %>
+            <%= link_to "read more on OpenLibrary", "https://openlibrary.org/authors/#{author.openlibrary_id}", 
+                class: "btn btn--link",
+                target: "_blank",
+                rel: "noopener noreferrer" %>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
-  <% else %>
-    <div class="no-info">
-      <p>No author information available</p>
-    </div>
-  <% end %>
+  </div>
 </div>
