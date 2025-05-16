@@ -4,8 +4,10 @@
     flex-direction: column;
     align-items: center;
     align-self: center;
-    width: 750px;
-    height: 500px;
+    width: 100%; 
+    min-width: 700px;
+    max-width: 750px; 
+    aspect-ratio: 3/2; 
     background-color: white;
     border-radius: 16px;
     margin-bottom: 2rem;

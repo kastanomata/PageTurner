@@ -2,13 +2,16 @@
   bookshelf_class = local_assigns[:class_name] || 'bookshelf'
  %>
 <div class="<%= bookshelf_class %>">
-  <h3><%= link_to bookshelf.name, bookshelf, class: "btn--link" %></h3>
+  <h3><%= link_to bookshelf.name, bookshelf, class: "btn btn--link" %></h3>
+  <% if local_assigns[:show_bookclub_info] %>
+    <% unless bookshelf.club.blank? %>
+      <span class="bookshelf-info"> Club: <%= link_to bookshelf.club.name, club_path(bookshelf.club), class: "btn btn--link" %> </span> 
+      <span class="bookshelf-info"> by <%= link_to bookshelf.creator, user_path( bookshelf.creator), class: "btn btn--link" %> </span>
+    <% else %>
+      <span class="bookshelf-info"> By <%= link_to bookshelf.creator.nickname, user_path( bookshelf.creator), class: "btn btn--link" %> </span>
+    <% end %>
+  <% end %>
   <%= display_bookshelf_thumbnails bookshelf %>
   
-  <% if local_assigns[:show_bookclub_info] && bookshelf.bookclub %>
-    <p class="bookclub-info">
-      <% club = Club.find(bookshelf.bookclub)%>
-      Club: <%= link_to club.name, club_path(club) %>
-    </p>
-  <% end %>
+
 </div>

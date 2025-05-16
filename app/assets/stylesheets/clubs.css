@@ -1,33 +1,8 @@
-.club-header {
-    /* FIXME */
-}
-
-.club-info {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px 0;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.club-body {
-    display:flex;
-    flex-direction: column;
-}
-
-.club-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.club-posts {
-    display: flex;
-    flex-direction: column;
-}
-
 /* _club_card.html.erb */
+.clubs-cards-container {
+    margin-right: 10px;
+    width: 100%
+}
 
 .club-card {
     border: 1px solid #ccc;
@@ -35,5 +10,46 @@
     padding: 16px;
     margin: 16px 0;
     background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px #1f2937;
 }
+
+.club-card h2 {
+    margin: 0 10px;
+}
+
+.club-card .club-stats {
+    color: #666;
+    font-size: 1rem;
+}
+
+.club-card .club-header {
+    text-align: right;
+}
+
+.club-card .club-info {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px #1f2937;
+}
+
+.club-card .club-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.club-body {
+    display:flex;
+    flex-direction: column;
+}
+
+.club-posts {
+    display: flex;
+    flex-direction: column;
+}
+
+
+

@@ -8,8 +8,6 @@ PageTurner è un progetto che permette a topi di biblioteca da tutto il mondo di
 Pensiamo sarebbe meglio trovare localmente un club del libro, magari presso una biblioteca pubblica vicino a te, e ti spingiamo a farlo e a sostenere le iniziative dei centri culturali a te vicini! Purtroppo per tanti motivi ciò può non essere possibile, oppure semplicemente i libri proposti possono essere molto lontani dalla tua sensibilità. Questo non deve essere motivo per un lettore di allontanarsi dalla gioia che deriva dal parlare del nuovo libro di una collana o dell’ultimo capitolo letto. PageTurner rappresenta la tua possibilità di prendere parte a un club del libro che si riunisce ogni settimana all’altro capo del mondo senza spendere nulla per l’aeroplano. 
 Insieme al tuo gruppo puoi decidere i libri da esplorare e comunicare obiettivi di lettura per ritrovarvi intorno al fuoco e raccontare cosa vi ha comunicato ciò che avete letto. Tieni traccia del tuo passato da lettore, realizza cataloghi di libri e condividi selezioni con i tuoi amici. Mantieni un occhio sulle tue letture preferite, osserva le tue caratteristiche da lettore e scegli cosa leggere indipendentemente da quello che gli editori vorrebbero che tu leggessi. La lettura non deve essere un passatempo solitario, e per poter trovare felicità nel discutere un libro non serve essere critici letterari.
 Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizione un archivio importante su tutte le pubblicazioni, autori e edizioni. I nostri database si interfacciano con OpenLibrary per trovare informazioni sui libri letti e realizzare tabelle, grafici e statistiche disponibili all’utente sulle sue abitudini di lettura.
-
-
 ---
 
 ## Table of Contents
@@ -34,27 +32,27 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
    cd PageTurner
    ```
 
-2. **Install dependencies**:
+2. **Install Gems (go to *Gemfile* for a list)**:
    ```bash
    bundle install
    ```
 
 3. **Set up the database**:
    ```bash
-   bin/rails db:create
-   bin/rails db:migrate
-   bin/rails db:seed  # seed data is included 
+   rails db:create
+   rails db:migrate
+   rails db:seed  # seed data is included 
    ```
 ---
 
 ## Configuration
 **Environment Variables**
 
-You should save your own provider information in config/credentials.yml.enc by creating your own master.key file and by using the command
+You should save your own OAuth provider information in config/credentials.yml.enc by creating your own *config/master.key* file and by using the command
 ```bash
 $ EDITOR=vim rails credentials:edit
 ```
-Add these lines to your credentials.yml.enc and it should easily work
+Add these lines to your credentials.yml.enc and it should work: 
 ```
 oauth:
   provider:
@@ -70,9 +68,9 @@ oauth:
 ## Running the App
 - **Start the server**:
   ```bash
-  bin/rails server
+   $ bin/rails server
   ```
-  Visit `http://localhost:3000`.
+  Visit `http://localhost:3000` for the homepage.
 ---
 
 ## License

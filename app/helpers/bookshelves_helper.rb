@@ -14,24 +14,33 @@ module BookshelvesHelper
   end
 
   def render_user_bookshelves(user)
-    bookshelves = user.bookshelves
-    user_bookshelves = bookshelves.select { |b| b.special? && b.bookclub.nil? }
-    club_bookshelves = bookshelves.select { |b| b.special? && b.bookclub.present? }
-    other_bookshelves = bookshelves - user_bookshelves - club_bookshelves
+    # Preload bookshelf_contains to avoid N+1 queries
+    bookshelves = user.bookshelves.includes(:bookshelf_contains)
 
-    content_parts = [ content_tag(:h2, "Your Bookshelves") ]
+    # Filter bookshelves with at least one book
+    user_bookshelves = bookshelves.select { |b| b.special? && b.bookclub.nil? && b.bookshelf_contains.any? }
+    club_bookshelves = bookshelves.select { |b| b.special? && b.bookclub.present? && b.bookshelf_contains.any? }
+    other_bookshelves = bookshelves.reject { |b| b.special? || b.bookclub.present? }
+                                  .select { |b| b.bookshelf_contains.any? }
 
-    # User's special bookshelves
+    content_parts = []
+
+    # Only show "Your Bookshelves" header if there are user bookshelves
+    if user_bookshelves.any? || other_bookshelves.any?
+      content_parts << content_tag(:h2, "Your Bookshelves")
+    end
+
+    # User's special bookshelves with books
     content_parts += user_bookshelves.map do |bookshelf|
       render_bookshelf_card(bookshelf, user)
     end
 
-    # Other bookshelves
+    # Other bookshelves with books
     content_parts += other_bookshelves.map do |bookshelf|
       render_bookshelf_card(bookshelf, user)
     end
 
-    # Club bookshelves section
+    # Club bookshelves section (only if there are club bookshelves with books)
     if club_bookshelves.any?
       club_content = [
         content_tag(:h2, "Club Bookshelves"),
@@ -40,8 +49,15 @@ module BookshelvesHelper
       content_parts += club_content
     end
 
-    content_tag :div, class: "bookshelves-container" do
-      safe_join(content_parts)
+    # Only render container if there are any bookshelves to show
+    if content_parts.any?
+      content_tag :div, class: "bookshelf-cards-container" do
+        safe_join(content_parts)
+      end
+    else
+      content_tag :div, class: "no-bookshelves-message" do
+        "You haven't added any books to your bookshelves yet."
+      end
     end
   end
 
@@ -66,7 +82,7 @@ module BookshelvesHelper
     render partial: "bookshelves/bookshelf_card",
            locals: {
              bookshelf: bookshelf,
-             class_name: bookshelf.is_user_bound?(user) ? "special-bookshelf bookshelf" : "bookshelf",
+             class_name: bookshelf.is_user_bound?(user) ? "special-bookshelf-card bookshelf-card" : "bookshelf-card",
              show_bookclub_info: bookshelf.bookclub.present?
            }
   end

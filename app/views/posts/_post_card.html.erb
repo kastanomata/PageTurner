@@ -1,16 +1,14 @@
 <div class="post-card">
     <div class="post-header post-header--postcard">
         <h2> <%= link_to post.title, post_path(post), class: "btn btn--link post-title"%> </h2>
-        <% if post.club %>
-            <p> Posted by <%= link_to post.author.nickname, user_path(post.author), class: "btn btn--link" %> in the <%= link_to post.club.name, club_path(post.club), class: "btn btn--link" %> club. </p>
-        <% else %>
-            <p> Posted by <%= link_to post.author.nickname, user_path(post.author), class: "btn btn--link" %> </p>
-        <% end %>
+        <%= post_card_header(post) %>
     </div>
     <div class="post-content" style="display: flex; gap: 1rem;">
         <% unless local_assigns[:no_cover] %>
             <div class="cover">
+                <%= link_to book_path(post.book), title: post.book.title, data: { toggle: "tooltip" } do %>
                 <%= book_image post.book %>
+                <% end %>
             </div>
         <% end %>
         <div class="post-text">

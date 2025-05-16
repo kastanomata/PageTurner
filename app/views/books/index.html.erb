@@ -1,6 +1,16 @@
 <% content_for :title, "Books" %>
-
-<h1 style="text-align: center">Books</h1>
+<style>
+  h1 {
+    background-color: #ffffff;
+    font-size: 4rem;
+    margin-left: 40rem;
+    margin-right: 40rem;
+    color: #1f2937;
+    border-radius: 4px;
+    text-align: center;
+  }
+</style>
+<h1> Books</h1>
 
 <div class="books-container">
   <% @books.each do |book| %>

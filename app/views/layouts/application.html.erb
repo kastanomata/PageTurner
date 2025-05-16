@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<style>
+body.book-index {
+  background-image: url(<%= asset_path('bookshelf_background.jpg') %>);
+  background-repeat: repeat-y;  /* This makes it repeat vertically */
+  background-size: 100% auto;   /* This makes the image fill the width while maintaining aspect ratio */
+  background-attachment: fixed; /* Optional: makes the background fixed while scrolling */
+  min-height: 100vh;
+}
+
+</style>
 <html>
   <head>
     <title><%= content_for(:title) || "Page Turner" %></title>
@@ -22,11 +32,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  
-  <body>
   <!--DO NOT REMOVE: This avoids janky behaviour of browser when stylesheets are not loaded-->
   <script>0</script>
   <!--DO NOT REMOVE-->
+  
+  <body class="<%= 'book-index' if current_page?(books_path) %>">
   <% unless controller.controller_name == 'errors' %>
     <%= render "layouts/navbar" %>
   <% end %>

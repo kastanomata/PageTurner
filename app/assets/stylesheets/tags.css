@@ -8,25 +8,27 @@
 }
 
 .tags h3 {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   margin-bottom: 0.75rem;
   color: #333;
 }
 
-.tag-list {
+.tags-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 0.5rem;
+  grid-template-columns: repeat(2, minmax(100px, 1fr));
+  gap: 10px;
+  align-items: center;
 }
 
 .tag {
   display: inline-block;
   padding: 0.35rem 0.75rem;
-  border-radius: 16px;
-  background-color: #e0e0e0;
-  color: #333;
-  font-size: 0.85rem;
-  transition: all 0.2s ease;
+  color: #1f2937;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  transform-origin: center;
+  margin: 0 2px;
+  vertical-align: middle; 
 }
 
 .tag a {
@@ -35,8 +37,10 @@
 }
 
 .tag:hover {
-  background-color: #d0d0d0;
-  transform: translateY(-1px);
+  border-radius: 8px;
+  transform: scale(1.1);
+  background-color: #63A1C2;
+  z-index: 1;
 }
 
 .text-muted {

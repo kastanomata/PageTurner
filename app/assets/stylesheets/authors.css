@@ -12,19 +12,6 @@
   color: #333;
 }
 
-.author-meta {
-  color: #666;
-  font-size: 0.95rem;
-}
-
-.author-link {
-  color: #0066cc;;
-  text-decoration: none;
-}
-
-.author-link:hover {
-  text-decoration: underline;
-}
 
 /* Author Card Specific Styles */
 .author--card {
@@ -67,16 +54,6 @@
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-.author--card .author-read-more {
-  color: #0066cc;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.author--card .author-read-more:hover {
-  text-decoration: underline;
 }
 
 /* Author Page Specific Styles */

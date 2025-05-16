@@ -1,4 +1,3 @@
-
 .post {
   display: flex;
   align-items: flex-start;
@@ -24,8 +23,6 @@
   background-color: #fff;
   border-radius: 5px;
   padding: 20px;
-  margin-bottom: 20px;
-  margin-right: 20px;
   box-shadow: 2px 2px 12px #1f2937;
   transition: all 0.2s ease;
 }
@@ -58,7 +55,7 @@
 }
 
 .post-content img {
-  width: 100%; 
+  width: 100px; 
   height: auto; 
   object-fit: contain; 
   max-height: 200px;
@@ -66,16 +63,19 @@
 }
 
 .post-stats {
-    display: flex;
-    gap: 1rem;
-    padding: 0.5rem 1rem;
-    border-top: 1px solid #eaeaea;
-    margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end; 
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-top: 2px solid #1f2937;
+  border-bottom: 2px solid #1f2937;
+  border-radius: 12px;
+  margin-left: auto; 
 }
-
+  
 .post-stat {
-    color: #666;
-    font-size: 0.9rem;
+  color: #666;
+  font-size: 1.2rem;
 }
 
 .post-stat:hover {
@@ -209,5 +209,39 @@
 }
 
 .post-text {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+}
+
+/* Tooltip styling */
+.cover a[title] {
+  position: relative;
+  display: inline-block;
+}
+
+.cover a[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 100;
+  margin-bottom: 5px;
+}
+
+.cover a[title]:hover::before {
+  content: "";
+  position: absolute;
+  bottom: calc(100% - 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+  z-index: 100;
 }

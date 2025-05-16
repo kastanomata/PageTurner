@@ -1,5 +1,6 @@
 class Bookshelf < ApplicationRecord
   belongs_to :creator, class_name: "User"
+  belongs_to :club, optional: true
   has_many :bookshelf_contains, dependent: :destroy
   has_many :books, through: :bookshelf_contains
   accepts_nested_attributes_for :books # , through: :bookshelf_contains

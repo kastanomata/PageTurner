@@ -14,13 +14,13 @@
     <div class="author-bio-container">
       <div class="author-card-body">
         <h2 class="author-name">
-          <%= link_to author.name, author_path(author), class: 'author-link' %>
+          <%= link_to author.name, author_path(author), class: 'btn btn--link' %>
         </h2>
         <% unless author.bio.blank? %>
           <div class="author-bio">
             <%= truncate(author.bio, length: 150) %>
             <%= link_to "read more on OpenLibrary", "https://openlibrary.org/authors/#{author.openlibrary_id}", 
-                class: "author-link author-read-more",
+                class: "btn btn--link",
                 target: "_blank",
                 rel: "noopener noreferrer" %>
           </div>

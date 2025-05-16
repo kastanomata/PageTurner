@@ -8,7 +8,7 @@ module ClubsHelper
     # Curator club section
     if your_club.present?
       content << content_tag(:h3, "Your Club", class: "section-heading")
-      content << content_tag(:div, class: "club-list") do
+      content << content_tag(:div, class: "club-cards-container") do
         render partial: "clubs/club_card",
                locals: {
                  club: your_club,

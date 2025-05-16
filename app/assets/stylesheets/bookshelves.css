@@ -1,3 +1,43 @@
+/* bookshelf cards */
+
+.bookshelf-cards-container {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 1rem;
+  list-style-type: none;
+  margin-left: 0.3rem;
+  padding: 0rem 0.7rem;
+}
+
+.bookshelf-card {
+  width:90%;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px #1f2937;
+}
+
+.bookshelf-card.special-bookshelf-card {
+  border: 3px solid #1f2937;
+}
+
+
+.bookshelf-card h3 {
+  /* margin-top: -0.3rem;
+  margin-bottom: -0.1rem; */
+}
+
+.bookshelf-card .bookshelf-info {
+  /* margin: 2px; */
+}
+
+/* bookshelves */
+
+.bookshelves-container {
+  margin-left: 0.3rem;
+  padding: 0.1rem 0.5rem;
+}
+
 .bookshelf {
   border: 1px solid #ddd;
   padding: 10px;
@@ -10,13 +50,6 @@
   background-color: whitesmoke;
 }
 
-.bookshelves-container {
-  padding: 10px;
-  border: #ddd 1px solid;
-  border-radius: 8px;
-  background-color: #549F93;
-}
-
 .bookshelf.special-bookshelf {
   background-color: whitesmoke;
   border: 2px solid rgb(2, 2, 47);
@@ -24,13 +57,6 @@
   margin-bottom: 15px;
   margin-right: 10px;
   margin-left: 10px;
-}
-
-.bookshelves-container {
-  margin: 1rem 1rem;
-  border: #ddd 1px solid;
-  border-radius: 8px;
-  background-color: #ebebeb;
 }
 
 .bookshelf-books-container {
