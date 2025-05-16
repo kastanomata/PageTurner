@@ -32,4 +32,12 @@ class Bookshelf < ApplicationRecord
     # Check if the bookshelf is bound to the user
     self.name == "#{user.nickname}'s Read Books" || self.name == "#{user.nickname}'s Liked Books"
   end
+
+def top_tags(limit = 5)
+  Tag.joins(taggings: :book)
+     .where(books: { id: bookshelf_contains.select(:book_id) })
+     .group("tags.id")
+     .order("COUNT(taggings.id) DESC")
+     .limit(limit)
+end
 end

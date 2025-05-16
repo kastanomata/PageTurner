@@ -1,39 +1,29 @@
-<style>
-  .bookshelf-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem; 
-  }
-
-  .bookshelf-title {
-    font-size: 1.8rem;
-    margin:0;
-  }
-  .bookshelf-creator {
-    font-size: 1.5rem;
-    margin:0;
-  }
-
-  /* Optional: Responsive adjustment */
-  @media (max-width: 600px) {
-    .bookshelf-header {
-      flex-direction: column;
-      gap: 0.5rem;
-      align-items: flex-start;
-    }
-  }
-
-</style>
-
 <div id="<%= dom_id bookshelf %>">
+<% if local_assigns[:index] %>
+  <div class="bookshelf-index">
+<% else %>
   <div class="bookshelf">
-    <div class="bookshelf-header">
-      <h2 class="bookshelf-title"><%= link_to bookshelf.name, bookshelf_path(bookshelf), class: "btn--link" %></h2>
-      <p class="bookshelf-creator">Created by: <%= link_to bookshelf.creator.nickname, user_path(bookshelf.creator), class: "btn--link" %></p>
+<% end %>
+    <div class="bookshelf-content">
+      <div class="bookshelf-header">
+        <h2 class="bookshelf-title"><%= link_to bookshelf.name, bookshelf_path(bookshelf), class: "btn btn--link" %></h2>
+        <p class="bookshelf-creator">Created by: <%= link_to bookshelf.creator.nickname, user_path(bookshelf.creator), class: "btn btn--link" %></p>
+      </div>
+    <% if local_assigns[:index] %>
+      <div class="bookshelf-tags">
+        <% if bookshelf.top_tags.any? %>
+          <div class="tag-list">
+            <% bookshelf.top_tags.each do |tag| %>
+              <span class="tag"><%= tag.name %></span>
+            <% end %>
+          </div>
+        <% else %>
+          <p class="no-tags">No tags yet</p>
+        <% end %>
+      </div>
+    <% end %>
     </div>
-    
+
     <div class="bookshelf-books-container">
       <% bookshelf.bookshelf_contains.includes(:book).each do |contain| %>
         <% book = contain.book %>
@@ -46,5 +36,12 @@
           created_at: contain.created_at.strftime('%d %B %Y') %>
       <% end %>
     </div>
+
+    <% if current_user_owns?(@bookshelf) %>
+      <div class='bookshelf-actions-container'>
+        <%= link_to "Edit this bookshelf", edit_bookshelf_path(@bookshelf), class: 'btn btn--secondary btn--md' %> 
+        <%= button_to 'Delete this Bookshelf', bookshelf_path(name: @bookshelf.name, creator: @bookshelf.creator), method: :delete, class: 'btn btn--negative btn--md'%>
+      </div>
+    <% end %>
   </div>
 </div>
