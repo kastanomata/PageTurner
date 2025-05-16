@@ -1,11 +1,33 @@
-/* Author Card Styles */
-.book-info-container {
-  display:flex;
-  flex-direction: row;
-  gap: 2rem;
+/* Base Author Styles (shared between card and page) */
+.author {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.author-details {
+.author-image {
+  border-radius: 4px;
+}
+
+.author-name {
+  color: #333;
+}
+
+.author-meta {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.author-link {
+  color: #0066cc;;
+  text-decoration: none;
+}
+
+.author-link:hover {
+  text-decoration: underline;
+}
+
+/* Author Card Specific Styles */
+.author--card {
   border: 1px solid #eaeaea;
   border-radius: 8px;
   overflow: hidden;
@@ -15,34 +37,28 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.author-content {
+.author--card .author-content {
   display: flex;
   gap: 1.5rem;
   padding: 1.5rem;
 }
 
-.image-container {
+.author--card .author-image-container {
   flex: 0 0 150px;
 }
 
-.author-image {
+.author--card .author-image {
   width: 150px;
   height: 150px;
   object-fit: cover;
-  border-radius: 4px;
 }
 
-.bio-container {
-  flex: 1;
-}
-
-.author-name {
+.author--card .author-name {
   margin: 0 0 0.75rem 0;
   font-size: 1.5rem;
-  color: #333;
 }
 
-.author-bio {
+.author--card .author-bio {
   line-height: 1.5;
   color: #555;
   margin-bottom: 1rem;
@@ -51,41 +67,103 @@
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  position: relative;
 }
 
-.read-more {
+.author--card .author-read-more {
   color: #0066cc;
   cursor: pointer;
   font-weight: 500;
 }
 
-.read-more:hover {
+.author--card .author-read-more:hover {
   text-decoration: underline;
 }
 
-.meta-text {
-  margin: 0.25rem 0;
-  color: #666;
-  font-size: 0.95rem;
+/* Author Page Specific Styles */
+.author--page {
+  padding: 1rem;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 2px 2px 12px #1f2937;
 }
 
-.no-info {
-  padding: 1.5rem;
-  text-align: center;
-  color: #999;
+.author--page .author-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr; 
+  grid-template-rows: auto auto; 
+  gap: 30px;
+}
+
+.author--page .author-image-container {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  width: 100%; 
+  max-width: 300px;
+}
+
+.author--page .author-bio-container {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.author--page .author-sections-container {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.author--page .author-image {
+  width: 100%; 
+  height: auto; 
+  object-fit: cover; 
+  border-radius: 4px;
+  aspect-ratio: 1/1; 
+  padding: 1rem;
+}
+
+.author--page .author-name {
+  margin-bottom: 20px;
+}
+
+.author--page .author-full-name,
+.author--page .author-lifespan {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.author-names-inline {
+  display: inline;
+  margin-left: 0.25rem;
+}
+
+.author-names-ellipsis {
+  color: #666;
+  margin-left: 0.25rem;
+}
+
+.author--page .author-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 5px;
+}
+
+.author--page .author-list-item {
+  margin-bottom: 5px;
+}
+
+.author--page .author-section {
+  margin-top: 20px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
-  .author-content {
+  .author--card .author-content {
     flex-direction: column;
     padding: 1rem;
   }
   
-  .image-container {
+  .author--card .author-image-container {
     margin: 0 auto;
   }
 }
-
-/* Author show styles */

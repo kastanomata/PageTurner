@@ -15,6 +15,9 @@ Rails.application.configure do
   # Enable server timing.
   config.server_timing = true
 
+
+
+
   # Enable/disable Action Controller caching. By default Action Controller caching is disabled.
   # Run rails dev:cache to toggle Action Controller caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?
@@ -26,7 +29,7 @@ Rails.application.configure do
   end
 
   # Change to :null_store to avoid any caching.
-  config.cache_store = :memory_store
+  config.cache_store = :null_store
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
@@ -75,4 +78,5 @@ Rails.application.configure do
   config.assets.debug = true      # Prevents concatenation (serves individual files)
   config.assets.cache = false     # Disables asset cache
   config.cache_classes = false    # Ensures classes reload
+  config.action_view.cache_template_loading = false
 end

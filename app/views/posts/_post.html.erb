@@ -31,7 +31,7 @@
     <%= render_report_button @post %>
   </div>
   <div>
-    <% if Current.user == @post.club.curator %>
+    <% if @post.club.present? and Current.user == @post.club.curator %>
       <%= button_to "Remove from Club", 
           remove_post_club_path(id: @post.club.id, post_id: @post.id), 
           method: :delete, 

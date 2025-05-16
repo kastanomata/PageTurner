@@ -13,8 +13,16 @@
                 <%= book_image post.book %>
             </div>
         <% end %>
-    <div class="post-text">
-        <p><%= post.text %></p>
+        <div class="post-text">
+            <p><%= post.text %></p>
+        </div>
     </div>
+    <div class="post-stats">
+        <span class="post-stat">
+            <%= pluralize(post.comments.count, 'comment') %>
+        </span>
+        <span class="post-stat">
+            <%= pluralize(post.likes.count, 'like') %>
+        </span>
     </div>
 </div>

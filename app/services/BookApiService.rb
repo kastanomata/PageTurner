@@ -57,15 +57,29 @@ class BookApiService
       author_data = JSON.parse(response)
       if deep == 0
         {
-        openlibrary_id: openlibrary_id,
-        name: author_data["name"]
+          openlibrary_id: openlibrary_id,
+          name: author_data["name"]
         }
       elsif deep == 1
         {
-        openlibrary_id: openlibrary_id,
-        name: author_data["name"],
-        bio: author_data["bio"] || "No biography available",
-        photos: author_data["photos"] || []
+          openlibrary_id: openlibrary_id,
+          name: author_data["name"],
+          bio: author_data["bio"] || "No biography available",
+          photos: author_data["photos"] || []
+        }
+      elsif deep == 2
+        {
+          openlibrary_id: openlibrary_id,
+          name: author_data["name"],
+          personal_name: author_data["personal_name"],
+          fuller_name: author_data["fuller_name"],
+          alternate_names: author_data["alternate_names"] || [],
+          bio: author_data["bio"] || "No biography available",
+          birth_date: author_data["birth_date"],
+          death_date: author_data["death_date"],
+          photos: author_data["photos"] || [],
+          links: author_data["links"] || [],
+          remote_ids: author_data["remote_ids"] || {}
         }
       end
     rescue JSON::ParserError, URI::InvalidURIError, Net::HTTPError => e

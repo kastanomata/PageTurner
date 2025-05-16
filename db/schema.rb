@@ -263,8 +263,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_080619) do
     t.boolean "admin"
     t.boolean "is_curator"
     t.integer "reading_id"
-    t.integer "curator_icon_id"
     t.string "author_request"
+    t.integer "curator_icon_id"
     t.string "background_theme", default: "default"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
     t.index ["reading_id"], name: "index_users_on_reading_id"

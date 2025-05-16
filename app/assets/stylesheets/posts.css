@@ -65,6 +65,24 @@
   flex-shrink: 0;
 }
 
+.post-stats {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    border-top: 1px solid #eaeaea;
+    margin-top: 1rem;
+}
+
+.post-stat {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.post-stat:hover {
+    color: #333;
+    cursor: pointer;
+}
+
 .post-footer {
   display: flex;
   justify-content: space-between;
