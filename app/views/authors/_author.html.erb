@@ -1,6 +1,32 @@
-<div id="<%= dom_id author %>">
-<h2>
-    <%= author.name %>
-</h2>
-    
+<div id="<%= dom_id @author %>">
+<div class="author-details card">
+  <div class="author-content">
+    <div class="image-container">
+      <% unless @author.photo.blank? %>
+        <%= image_tag "https://covers.openlibrary.org/a/id/#{@author.photo}-M.jpg",
+                      class: 'author-image',
+                      alt: "Photo of #{@author.name}" %>
+      <% else %>
+        <%= image_tag "authorportrait_not_found.png",
+                      class: 'author-image',
+                      alt: "No photo available for #{@author.name}" %>
+      <% end %>
+    </div>
+    <div class="bio-container">
+      <div class="card-body">
+        <h2 class="author-name">
+          <%= link_to author.name, author_path(@author), class: 'btn btn--link' %>
+        </h2>
+        <% unless @author.bio.blank? %>
+          <div class="author-bio">
+            <%= truncate(@author.bio, length: 150) %>
+            <%= link_to "read more on OpenLibrary", "https://openlibrary.org/authors/#{@author.openlibrary_id}", 
+                class: "btn btn--link",
+                target: "_blank",
+                rel: "noopener noreferrer" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

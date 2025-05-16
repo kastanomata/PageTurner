@@ -19,7 +19,7 @@ class BookApiService
 
   def self.fetch_book_details(isbn)
     begin
-      # https://openlibsrary.org/api/books?bibkeys=ISBN:9780547928227&format=json&jscmd=data
+      # https://openlibrary.org/api/books?bibkeys=ISBN:9780547928227&format=json&jscmd=data
       url = URI("#{BASE_URL}?bibkeys=ISBN:#{isbn}&format=json&jscmd=data")
       response = Net::HTTP.get(url)
       return {} if response.empty?
@@ -48,7 +48,7 @@ class BookApiService
     end
   end
 
-  def self.fetch_author_details(openlibrary_id, deep = 0)
+  def self.fetch_author_details(openlibrary_id, deep = 1)
     begin
       url = URI("https://openlibrary.org/authors/#{openlibrary_id}.json")
       response = Net::HTTP.get(url)
@@ -65,11 +65,7 @@ class BookApiService
         openlibrary_id: openlibrary_id,
         name: author_data["name"],
         bio: author_data["bio"] || "No biography available",
-        birth_date: author_data["birth_date"],
-        death_date: author_data["death_date"],
-        photos: author_data["photos"] || [],
-        thumbnail: author_photo_url(author_data["photos"], :small),
-        portrait: author_photo_url(author_data["photos"], :medium)
+        photos: author_data["photos"] || []
         }
       end
     rescue JSON::ParserError, URI::InvalidURIError, Net::HTTPError => e

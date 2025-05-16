@@ -36,10 +36,10 @@
     "birthday": "2002-02-16"
     },
     {
-    "email_address": "mariarosa@example.com",
+    "email_address": "damianospadaccini@example.com",
     "password": "password",
-    "nickname": "Rosy",
-    "description": "Hi, I'm Maria. I love reading classic literature that stirs the soul.",
+    "nickname": "spada",
+    "description": "Hi, I'm Damiano. I love reading classic literature that stirs the soul.",
     "birthday": "2001-05-14"
     },
     {
@@ -57,10 +57,10 @@
     "birthday": "2003-03-30"
     },
     {
-    "email_address": "lucabianchi@example.com",
+    "email_address": "claudiamezi@example.com",
     "password": "password",
-    "nickname": "LucaB",
-    "description": "Hi, I'm Luca. I like Harry Potter and dislike Twilight. That stuff is for kids!",
+    "nickname": "clavdia",
+    "description": "Hi, I'm Claudia. I like Harry Potter and dislike Twilight. That stuff is for kids!",
     "birthday": "1998-07-15"
     }
 ]

@@ -17,6 +17,12 @@
 
 }
 
+.home-posts-list {
+  list-style-type:none;
+  padding: 0; 
+  margin: 0;
+}
+
 .section .right-section {
   background-color: #ebebeb;
   padding: 10px;

@@ -25,11 +25,12 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ## Work in Progress
 - [x] Fix navbar "logout" button not displaying correctly
 - [x] Style report buttons
-- [ ] Fix delete sessions!gi
+- [x] Fix delete sessions!
+- [x] Seed more reviews for YA Fantasy club
+- [ ] Seed author account for the tolkien foundation
 - [ ] font ideas: Sagona/Bookman
 - [ ] Add tab icon in browser
 - [ ] Add "404 - Not Found"
-- [ ] Seed more reviews for YA Fantasy club
 - [ ] Fix font in text fields
  
 ### Homepage 
@@ -38,8 +39,7 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Divide special bookshelves from user-created
 - [x] Add "New post" button/form
 - [x] Add club infocard to the right
-- [ ] Not show posts from yourself
-- [ ] Don't show duplicate when club + follow
+- [x] Don't show duplicate when club + follow
 
 ### Search
 - [ ] Styling
@@ -51,15 +51,13 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [x] Fix curator's club bookshelves showing up on profile
 - [x] Add "new post" functionality (postcard) on profile
 - [x] Add a way to request becoming a author
-- [ ] Add favorite book
-- [ ] Add block user functionality
 
 ### Books
 - [x] Add buttons on book show page to quickly add the book to read or liked bookshelf
 - [x] Fix books show (only admin should be able to edit Books)
-- [ ] Add books input from user
-- [ ] Fix author card on book
-- [ ] Add post about book display
+- [x] Add books input from user
+- [x] Fix author card on book
+- [x] Add post about book display
 
 ### Bookshelves
 - [x] Bookshelf creation #styling
@@ -86,14 +84,14 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 ### Posts
 - [x] Add interaction (comments, likes) support
 - [x] Create Posts (params[:isbn] è nil)
-- [ ] Style comments, likes and action buttons
+- [x] Style comments, likes and action buttons
 
 ### Bookclubs
 - [x] Add "Report Club" functionality support
 - [x] Add "Report Club" Button
 - [x] Add "New post" button/form
+- [x] Add support for events
 - [ ] Create Club (problema con il campo creator del form)
-- [ ] Add support for "Community posts" from curator
 - [ ] Add events
 - [ ] Add support for group reading
 - [ ] Add calendar (?)

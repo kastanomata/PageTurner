@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   # Allow modern browsers (this is unrelated to authentication)
   allow_browser versions: :modern
   before_action :check_nickname
+  skip_before_action :verify_authenticity_token
 
   private
 

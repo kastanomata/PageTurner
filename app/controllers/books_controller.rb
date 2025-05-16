@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   allow_unauthenticated_access only: %i[ index show ]
   before_action :set_book, only: %i[ show edit update destroy ]
   require_admin_access only: %i[ new create edit update destroy ]
+  skip_before_action :check_ban, only: [ :search, :fetch ]
 
   # GET /books or /books.json
   def index
@@ -39,6 +40,41 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
+  end
+
+  def search
+    query = params[:query]
+    @books = Book.where("isbn LIKE ?", "%#{query}%").limit(5)
+    render json: @books
+  end
+
+  def fetch
+    isbn = params[:isbn].gsub(/\D/, "") # Remove non-digit characters
+    book = Book.find_by(isbn: isbn)
+
+    if book
+      render json: book
+    else
+      # Only query OpenLibrary if not found in DB
+      response = HTTParty.get("https://openlibrary.org/api/books?bibkeys=ISBN:#{isbn}&format=json&jscmd=data")
+
+      if response.success?
+        book_data = response.parsed_response["ISBN:#{isbn}"]
+        if book_data
+          render json: {
+            title: book_data["title"],
+            isbn: isbn,
+            cover_url: book_data.dig("cover", "medium") ||
+                      "https://covers.openlibrary.org/b/isbn/#{isbn}-M.jpg",
+            author: book_data.dig("authors", 0, "name")
+          }
+        else
+          head :not_found
+        end
+      else
+        head :not_found
+      end
+    end
   end
 
   # POST /books or /books.json

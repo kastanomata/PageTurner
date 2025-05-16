@@ -1,1 +1,175 @@
+<script>
+  // Text overflow detection
+  document.querySelectorAll('.book-title').forEach(el => {
+    el.dataset.animate = el.scrollWidth > el.clientWidth;
+  });
 
+  function checkTextOverflow() {
+    document.querySelectorAll('.book-title').forEach(el => {
+      el.classList.toggle('can-scroll', el.scrollWidth > el.clientWidth);
+    });
+  }
+
+  // Hover info positioning
+  // Enhanced hover info positioning
+  function positionHoverInfo() {
+    document.querySelectorAll('.book-card').forEach(card => {
+      const hoverInfo = card.querySelector('.book-hover-info');
+      if (!hoverInfo) return;
+      
+      const cardRect = card.getBoundingClientRect();
+      const containerRect = card.closest('.books-container')?.getBoundingClientRect() || {
+        left: 0,
+        right: window.innerWidth
+      };
+      const viewportWidth = window.innerWidth;
+      const hoverWidth = 300; // Match your CSS width
+      const hoverMargin = 10; // Match your gap
+      
+      // Reset positions first
+      hoverInfo.style.left = '';
+      hoverInfo.style.right = '';
+      
+      // Check right-side placement
+      const rightPlacement = cardRect.right + hoverWidth + hoverMargin;
+      const rightOverflowsViewport = rightPlacement > viewportWidth;
+      const rightOverflowsContainer = rightPlacement > containerRect.right;
+      
+      // Check left-side placement
+      const leftPlacement = cardRect.left - hoverWidth - hoverMargin;
+      const leftOverflowsViewport = leftPlacement < 0;
+      const leftOverflowsContainer = leftPlacement < containerRect.left;
+      
+      // Decision logic
+      if (!rightOverflowsViewport && !rightOverflowsContainer) {
+        // Default right placement
+        hoverInfo.style.left = 'calc(100% + 10px)';
+        hoverInfo.style.right = 'auto';
+      } else if (!leftOverflowsViewport && !leftOverflowsContainer) {
+        // Left placement
+        hoverInfo.style.left = 'auto';
+        hoverInfo.style.right = 'calc(100% + 10px)';
+      } else {
+        // Fallback - position inside container
+        hoverInfo.style.left = 'auto';
+        hoverInfo.style.right = '0';
+        hoverInfo.style.width = 'calc(100% - 20px)';
+        hoverInfo.style.top = '100%';
+      }
+    });
+  }
+
+  // Run on load and resize
+  window.addEventListener('load', () => {
+    checkTextOverflow();
+    positionHoverInfo();
+  });
+  
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      checkTextOverflow();
+      positionHoverInfo();
+    }, 250);
+  });
+  
+  let resizeTimer;
+</script>
+
+<style>
+  .book-hover-info {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 300px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: opacity 0.2s ease; 
+    z-index: 1000;
+  }
+
+  /* Default right positioning */
+  .book-hover-info {
+    left: calc(100% + 10px);
+    right: auto;
+  }
+
+  /* Left positioning when needed */
+  .book-hover-info.left-positioned {
+    left: auto;
+    right: calc(100% + 10px);
+  }
+
+  .book-hover-info.fallback-position {
+    left: 10px !important;
+    right: 10px !important;
+    top: 100% !important;
+    width: calc(100% - 20px) !important;
+  }
+
+  .book-card:hover .book-hover-info {
+    display: block;
+  }
+
+  .book-hover-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    color: #333;
+  }
+
+  .book-author {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0 0 10px 0;
+  }
+
+  .book-description {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #444;
+    margin: 0 0 10px 0;
+  }
+
+  .book-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: #666;
+  }
+</style>
+
+<div class="book-card book-card--index">
+  <%= link_to book_path(book) do %>
+    <%= book_image book %>
+  <% end %>
+  <%= local_assigns[:status_indicators] || book_status_indicators(local_assigns[:current_user], book) %>
+  
+  <% if local_assigns[:show_title] %>
+    <div class="btn btn--link book-title" data-truncated="false">
+      <span><%= book.title.split.map(&:capitalize).join(' ') %></span>
+    </div>
+  <% end %>
+
+  <% if local_assigns[:bookshelf_actions] %>
+    <div class="bookshelf-actions" style="display: flex; gap: 10px;">
+      <%= bookshelf_actions %>
+    </div>
+  <% end %>
+
+  <% if local_assigns[:show_hover_info] %>
+    <div class="book-hover-info">
+      <h3><%= book.title %></h3>
+      <p class="book-author"><strong>by</strong> <%= book.author.name %></p>
+      <div class="bookshelf-meta">
+        <% if local_assigns[:created_at] %>
+          <span class="bookshelf-added-on"> <strong>added on</strong> <%= created_at %> </span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= yield if block_given? %>
+</div>
