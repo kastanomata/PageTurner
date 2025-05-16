@@ -1,4 +1,18 @@
 <div>
+  <% unless (@user&.background_theme || 'default') == 'default' %>
+    <div  style="<%= 'background-color: #ffffff;' if (@user&.background_theme || 'default') == 'default' %>
+              <%= "background-image: url('#{asset_path("#{@user&.background_theme}.jpg")}');" unless (@user&.background_theme || 'default') == 'default' %>
+              background-size: cover;
+              background-position: center;
+              background-attachment: fixed;
+              background-repeat: no-repeat;
+              position: relative;
+              min-height: 25vh;
+              display: flex;
+              gap: 2rem;
+              padding: 2rem;">
+    </div>
+  <% end %>
   <div class="split-container">
     <div class="left-column">
       <div class="user-info">
@@ -9,7 +23,6 @@
             <%= button_to "Rimuovi Foto", remove_avatar_user_path(@user), method: :delete, data: { confirm: "Sei sicuro di voler rimuovere la foto?" } %>
           </div>
         <% end %>
-        <%= link_to 'Change Backgrounds', background_settings_user_path(@user), class: 'nav-link' %>
         <section class="stats">
               <%= render_user_relationships_widget @user%>
         </section>
@@ -25,16 +38,17 @@
       <%= currently_reading @user %>  
     </div>
     <div class="curator-info">
-      <% if @user.curator_icon %>
-        <%= image_tag @user.curator_icon.icon, class: 'curator-icon' %>
-      <% else %>
-        <div class="default-icon">👤</div>
+      <% if @user.is_curator == true%>
+        <% if @user.curator_icon %>
+          <%= image_tag @user.curator_icon.icon, class: 'curator-icon' %>
+        <% else %>
+          <div class="default-icon">👤</div>
+        <% end %>
       <% end %>
     </div>
   </div>
 
 <h3>Suggested Books</h3>
-  <!-- FIXME fix user suggested book not working -->
   <% @user.suggested_books.each do |book| %>
     <%= render 'books/cover', book: book %>
   <% end %>

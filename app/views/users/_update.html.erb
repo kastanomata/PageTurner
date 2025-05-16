@@ -44,6 +44,10 @@
   </div>
 <% end %>
 
+  <div>
+    <%= link_to 'Change Backgrounds', background_settings_user_path(@user), class: 'nav-link' %>
+  </div>
+  
   <div class="form-group">
     <%= form.label :avatar, "Profile Photo", class: "form-label" %>
     <%= form.file_field :avatar, 

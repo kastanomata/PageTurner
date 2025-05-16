@@ -13,9 +13,8 @@
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="icon" href="/PageTurner.jpg" type="image/jpg">
+    <link rel="apple-touch-icon" href="/PageTurner.jpg">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
@@ -24,12 +23,7 @@
   </head>
 
   
-  <body style="<%= 'background-color: #ffffff; background-image: none;' if (Current.user&.background_theme || 'default') == 'default' %>;
-            <%= "background-image: url('#{asset_path("#{Current.user&.background_theme}.jpg")}');" unless (Current.user&.background_theme || 'default') == 'default' %>;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;">
+  <body>
   <!--DO NOT REMOVE: This avoids janky behaviour of browser when stylesheets are not loaded-->
   <script>0</script>
   <!--DO NOT REMOVE-->
