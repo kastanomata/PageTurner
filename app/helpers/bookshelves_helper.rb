@@ -14,16 +14,11 @@ module BookshelvesHelper
   end
 
   def display_bookshelf_posts(bookshelf)
-    # Get all book IDs in this bookshelf
     book_ids = bookshelf.books.pluck(:id)
 
-    # Find posts where:
-    # 1. The author is the bookshelf creator
-    # 2. The post is about a book in this bookshelf
     posts = Post.where(author_id: bookshelf.creator_id, book_id: book_ids)
               .order(created_at: :desc)
 
-    # Render the posts or return empty message
     if posts.any?
       render partial: "posts/post_card", collection: posts, as: :post
     else

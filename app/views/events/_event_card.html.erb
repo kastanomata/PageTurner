@@ -1,0 +1,36 @@
+<div class="event-card">
+  <div class="event-header">
+    <h2><%= link_to event.title, event_path(event), class: "btn btn--link event-title" %></h2>
+    <div class="event-organizer">
+      Organized by: <%= event.organizer.nickname %>
+    </div>
+  </div>
+
+  <div class="event-content" style="display: flex; gap: 1rem;">
+    <% if event.book %>
+      <div class="cover">
+        <%= link_to book_path(event.book), title: event.book.title, data: { toggle: "tooltip" } do %>
+          <%= book_image event.book %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="event-time">
+      <i class="far fa-calendar-alt"></i>
+      <%= event.start_time.strftime("%B %d, %Y at %I:%M %p") %>
+      <% if event.end_time %>
+        - <%= event.end_time.strftime("%B %d, %Y at %I:%M %p") %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="event-stats">
+    <span class="event-stat">
+      <i class="far fa-clock"></i> <%= distance_of_time_in_words(Time.current, event.start_time) %> left
+    </span>
+    <% if event.book %>
+      <span class="event-stat">
+        <i class="fas fa-book"></i> <%= link_to event.book.title, book_path(event.book) %>
+      </span>
+    <% end %>
+  </div>
+</div>

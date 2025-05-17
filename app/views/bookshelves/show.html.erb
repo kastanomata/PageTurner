@@ -1,8 +1,6 @@
-<% content_for :title, "#{}" %>
+<% content_for :title, "#{@bookshelf.name}" %>
 <style>
-
-
-  
+  /* TODO move this to bookshelves.css */
   .bookshelf-header {
     grid-row: 1;
     grid-column: 1;
@@ -22,6 +20,9 @@
     background: white;
     border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5rem;
   }
 
   /* Timeline (full column 2) */

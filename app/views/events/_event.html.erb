@@ -1,2 +1,48 @@
 <div id="<%= dom_id event %>">
+  <div class="event-card">
+    <div class="event-header">
+      <h3><%= event.title %></h3>
+      <p> Event Organizer: <%= link_to "#{event.organizer.nickname}", user_path(event.organizer), class: "btn btn--link" %>
+    </div>
+
+    <div class="event-details">
+      
+      <p class="event-time">
+        <%= event.start_time.strftime("%B %d, %Y at %I:%M %p") %>
+        <% if event.end_time %>
+          - <%= event.end_time.strftime("%B %d, %Y at %I:%M %p") %>
+        <% end %>
+      </p>
+
+      <% if event.description.present? %>
+        <div class="event-description">
+          <%= simple_format(event.description) %>
+        </div>
+      <% end %>
+
+      <% if event.book %>
+        <div class="event-book">
+          <h4>Featured Book:</h4>
+          <div class="book-info">
+            <% if event.book.thumbnail.present? %>
+              <%= image_tag(event.book.thumbnail, alt: event.book.title, class: "book-thumbnail") %>
+            <% end %>
+            <div class="book-details">
+              <h5><%= event.book.title %></h5>
+              <% if event.book.author %>
+                <p>by <%= event.book.author.name %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <% if Current.user && Current.user == event.organizer %>
+      <div class="event-actions">
+        <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-secondary' %>
+        <%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      </div>
+    <% end %>
+  </div>
 </div>

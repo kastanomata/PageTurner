@@ -1,7 +1,7 @@
 /* Bookshelf show */ 
 .bookshelf-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-template-columns: 2fr 1fr; /* Two equal columns */
   grid-template-rows: auto 1fr;   /* Two rows - first row auto height, second row takes remaining space */
   gap: 1rem;
   height: 100vh; /* Or whatever height you need */

@@ -2,6 +2,7 @@ module BooksHelper
   def add_book_to_bookshelf_buttons(book)
     read_button = read_bookshelf_button(book)
     liked_button = liked_bookshelf_button(book)
+    # TODO add "add to other bookshelf" button
     return unless read_button || liked_button
 
     content_tag :div, class: "book-actions" do
