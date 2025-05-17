@@ -1,5 +1,18 @@
+<div class="post-header-container">
+  <h1><%= @post.title %></h1>
+    
+  <p>Posted by: <%= link_to @post.author.nickname, user_path(@post.author) %></p>
+    <!--# TODO add support for absent post author-->
+    <%# if @post.author %> 
+    <%# else %>
+    <!--      <p>Posted by: <em>[User not found]</em></p>-->
+    <%# end %>
+</div>
+
 <div class="a">
   <div class="post-show-container">
+   
+
     <div class="postcard-container">
       <%= render @post %>
 

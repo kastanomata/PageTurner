@@ -47,7 +47,7 @@
       <% end %>
     </div>
   </div>
-
+<div class="suggested-row"> 
 <h3>Suggested Books</h3>
   <% @user.suggested_books.each do |book| %>
     <%= render 'books/cover', book: book %>

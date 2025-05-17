@@ -54,6 +54,7 @@
 
 .post-content p {
   margin: 0;
+  font-size: 2rem;
 }
 
 .post-content img {
@@ -190,7 +191,6 @@
 .post-show-container {
   flex: 2;
   background-color: white;
-  padding: 20px;
   box-sizing: border-box;
   /*display: grid;
   grid-template-columns: 65% 25%;
