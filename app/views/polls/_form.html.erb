@@ -21,7 +21,9 @@
     <%= f.datetime_local_field :expires_at, required: true %>
   </div>
 
-  <%= f.submit "Create Poll", class: "btn btn-primary mt-3" %>
+  <div style="margin-top: 5px;">
+    <%= f.submit "Create Poll", class: "btn btn--primary mt-3" %>
+  </div>
 <% end %>
 
 <script>
@@ -34,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const template = `
       <div class="poll-option-field mb-3">
         <label>Select Book</label>
-        <select class="form-select" 
+        <select class="poll-form-select" 
                 name="poll[poll_options_attributes][${index}][book_id]"
                 id="poll_poll_options_attributes_${index}_book_id">
           <%= options_from_collection_for_select(Book.all, :id, :title) %>
