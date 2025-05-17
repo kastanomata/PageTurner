@@ -136,17 +136,18 @@
     <div class="club-interactive-section">
     <div class="club-content">
       <% if @club.members.include?(Current.user) %>
-      <% if @club.reading_goals.any? %>
-        <h3>Current Reading Goals</h3>
-        <% @club.reading_goals.each do |goal| %>
-        <div class="reading-goal">
-          <h4><%= goal.book.title %></h4>
-          <p>Reading period: <%= goal.start_date %> to <%= goal.end_date %></p>
-        </div>
-      <% end %>
-    <% else %>
-      <p>No reading goals set yet.</p>
-    <% end %>
+        <% if @club.reading_goals.any? %>
+          <h3>Current Reading Goals</h3>
+          <% @club.reading_goals.each do |goal| %>
+            <div class="reading-goal">
+              <h4><%= goal.book.title %></h4>
+              <p>Reading period: <%= goal.start_date %> to <%= goal.end_date %></p>
+            </div>
+          <% end %>
+        <% else %>
+        <p>No reading goals set yet.</p>
+        <% end %>
+      <%end%>
 
     <% if Current.user == @club.curator %>
       <%= link_to 'Add New Reading Goal', new_club_reading_goal_path(@club) %>
