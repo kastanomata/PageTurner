@@ -1,6 +1,7 @@
 <style>
   .container-edit {
     display: flex;
+    margin: 0rem 2rem;
     flex-direction: row;
     gap: 2rem;
   }
@@ -11,7 +12,6 @@
 </style>
 
 <% content_for :title, "Editing user" %>
-<h1 class="title">Editing user</h1>
 <div class="container-edit">
   <div class="edit-section" style="flex:2;">
     <%= render "update", user: @user %>

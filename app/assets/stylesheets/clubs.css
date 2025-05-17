@@ -1,32 +1,16 @@
-.club-show-container{
-    display: grid; 
-    grid-template-columns: 1fr 2fr 1fr;  /* Centro più largo */
-    height: 100vh;
-    gap: 10px;
-    padding: 10px;
-    box-sizing: border-box;
+/* _club_card.html.erb */
+.clubs-cards-container {
+    margin-right: 10px;
+    width: 100%
 }
 
-.club-header {
-    grid-column: 1;
-    grid-row: 1;
-    background-color: #ffe0e0;
-}
-
-.club-bookshelf{
-    grid-column: 1;
-    grid-row: 2;
-    background-color: aliceblue;
-}
-
-
-.club-info {
+.club-card {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 16px;
     margin: 16px 0;
     background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px #1f2937;
 }
 
 .club-interactive-section{
@@ -55,18 +39,15 @@
     gap: 1rem; */
 }
 
+.club-body {
+    display:flex;
+    flex-direction: column;
+}
+
 .club-posts {
     /* display: flex;
     flex-direction: column; */
 }
 
-/* _club_card.html.erb */
 
-.club-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px 0;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+

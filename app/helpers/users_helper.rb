@@ -79,7 +79,7 @@ module UsersHelper
             content_tag(:small, "This links your account to your author profile on OpenLibrary.", class: "form-text text-muted")
         end +
         content_tag(:div, class: "form-actions") do
-          form.submit("Save Author ID", class: "btn btn--primary")
+          form.submit("Save Author ID", class: "btn btn--secondary btn--md")
         end
       end
     end

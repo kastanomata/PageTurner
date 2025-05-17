@@ -1,6 +1,78 @@
-<div id="<%= dom_id author %>">
-<h2>
-    <%= author.name %>
-</h2>
-    
+<div id="<%= dom_id @author %>">
+  <% details = author_details(@author.openlibrary_id) %>
+  <div class="author author--page">
+    <div class="author-content">
+      <div class="author-bio-container">
+        <%= author_heading_with_metadata(@author, details) %>
+        
+        <% if details[:birth_date].present? || details[:death_date].present? %>
+          <p class="author-lifespan">
+            <strong>Lifespan:</strong> 
+            <%= details[:birth_date] %> - <%= details[:death_date] %>
+          </p>
+        <% end %>
+
+        <% unless @author.bio.blank? %>
+          <div class="author-section author-bio">
+            <h3>Biography</h3>
+            <%= truncate(@author.bio, length: 500) %>
+          </div>
+          <%= link_to "read more on OpenLibrary", "https://openlibrary.org/authors/#{@author.openlibrary_id}", 
+              class: "author-link author-read-more",
+              target: "_blank",
+              rel: "noopener noreferrer" %>
+        <% end %>
+      </div>
+
+      <div class="author-image-container">
+        <% unless @author.photo.blank? %>
+          <%= image_tag "https://covers.openlibrary.org/a/id/#{@author.photo}-M.jpg",
+                        class: 'author-image',
+                        alt: "Photo of #{@author.name}" %>
+        <% else %>
+          <%= image_tag "authorportrait_not_found.png",
+                        class: 'author-image',
+                        alt: "No photo available for #{@author.name}" %>
+        <% end %>
+      </div>
+
+      <div class="author-sections-container">
+      <% if details[:links].present? && details[:links].any? %>
+          <div class="author-section author-links">
+            <h3>External Links</h3>
+            <ul class="author-list">
+              <% details[:links].each do |link| %>
+                <li class="author-list-item">
+                  <%= link_to link["title"], link["url"], class: "author-link", target: "_blank", rel: "noopener noreferrer" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        
+        <% if details[:remote_ids].present? && details[:remote_ids].any? %>
+          <div class="author-section author-ids">
+            <h3>External Identifiers</h3>
+            <ul class="author-list">
+              <% details[:remote_ids].each do |source, id| %>
+                <li class="author-list-item">
+                  <strong><%= source.humanize %>:</strong> 
+                  <% case source %>
+                  <% when "wikidata" %>
+                    <%= link_to id, "https://www.wikidata.org/wiki/#{id}", class: "author-link", target: "_blank" %>
+                  <% when "viaf" %>
+                    <%= link_to id, "https://viaf.org/viaf/#{id}", class: "author-link", target: "_blank" %>
+                  <% when "isni" %>
+                    <%= link_to id, "https://isni.org/isni/#{id}", class: "author-link", target: "_blank" %>
+                  <% else %>
+                    <%= id %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

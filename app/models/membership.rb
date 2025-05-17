@@ -4,7 +4,7 @@ class Membership < ApplicationRecord
   validates :follower_id, presence: true
   validates :club_id, presence: true
 
-  before_destroy :prevent_creator_membership_deletion
+  before_destroy :prevent_curator_membership_deletion
 
   private
 

@@ -1,17 +1,25 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static values = { theme: String }
+  static values = { 
+    theme: String,
+    assetVersion: String
+  }
 
   connect() {
     this.updateBackground()
   }
 
   updateBackground() {
-    document.body.style.backgroundImage = `url(${this.assetPath(this.themeValue)})`
+    if (this.themeValue && this.themeValue !== 'default') {
+      const backgroundElement = document.querySelector('.split-container') || document.body
+      backgroundElement.style.backgroundImage = `url(${this.assetPath()})`
+      backgroundElement.style.backgroundSize = 'cover'
+      backgroundElement.style.backgroundPosition = 'center'
+    }
   }
 
-  assetPath(filename) {
-    return `/assets/${filename}-<%= Rails.application.config.assets.version %>.jpg`
+  assetPath() {
+    return this.element.dataset[`${this.themeValue}AssetUrl`]
   }
 }

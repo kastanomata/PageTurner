@@ -3,7 +3,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    border-top: 1px solid #ddd;
+    height: 60px;
     background-color: #1f2937; /* dark gray */
     z-index: 9999;
   }
@@ -51,7 +51,10 @@
 }
 
 .footer-message {
-    font-size: 0.9rem;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    font-family: 'Times New Roman', Times, serif;
     color: #ffffff;
 }
 .footer-register-link {

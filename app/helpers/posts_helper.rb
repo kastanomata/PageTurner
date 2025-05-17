@@ -1,4 +1,30 @@
 module PostsHelper
+  def post_card_header(post)
+    content_tag(:p) do
+      # Base content with author link
+      header_content = link_to(post.author.nickname, user_path(post.author), class: "btn btn--link")
+
+      # Add club link if present
+      if post.club
+        header_content += " in the ".html_safe +
+                          link_to(post.club.name, club_path(post.club), class: "btn btn--link") +
+                          " club".html_safe
+      end
+
+      # Add creation date
+      header_content += " on ".html_safe +
+                        content_tag(:strong, post.created_at.strftime("%B %d, %Y"))
+
+      # Add update date if different
+      if post.updated_at != post.created_at
+        header_content += " ".html_safe +
+                          content_tag(:em, " (last updated on #{post.updated_at.strftime("%B %d, %Y")})")
+      end
+
+      header_content
+    end
+  end
+
   def render_user_posts(user)
     content = []
 
@@ -39,6 +65,15 @@ module PostsHelper
         destroy_post_button(post)
       ])
     end
+  end
+
+  def posts_for_books_with_same_isbn(book)
+    return Post.none unless book.isbn.present?
+
+    # Find posts that reference any books with the same ISBN
+    Post.joins("INNER JOIN books ON posts.book_id = books.id")
+        .where(books: { isbn: book.isbn })
+        .order(created_at: :desc)
   end
 
   private

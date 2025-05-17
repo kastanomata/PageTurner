@@ -3,11 +3,12 @@ module ClubsHelper
     return unless user
 
     content = []
+    your_club = user.curator_club
 
     # Curator club section
-    if (your_club = user.curator_club).present?
+    if your_club.present?
       content << content_tag(:h3, "Your Club", class: "section-heading")
-      content << content_tag(:div, class: "club-list") do
+      content << content_tag(:div, class: "club-cards-container") do
         render partial: "clubs/club_card",
                locals: {
                  club: your_club,
@@ -17,8 +18,11 @@ module ClubsHelper
       end
     end
 
-    # Memberships section
-    memberships = user.active_memberships.includes(club: :curator)
+    # Memberships section (excluding user's own club)
+    memberships = user.active_memberships
+                     .includes(club: :curator)
+                     .where.not(club: your_club) # Exclude user's own club
+
     if memberships.any?
       content << content_tag(:h3, "Your Memberships", class: "section-heading")
       content << content_tag(:div, class: "club-list") do

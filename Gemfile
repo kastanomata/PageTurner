@@ -71,3 +71,5 @@ gem "omniauth-google-oauth2", "~> 1.2"
 gem "omniauth-github", "~> 2.0.0"
 
 gem "will_paginate", "~> 4.0"
+
+gem "httparty"

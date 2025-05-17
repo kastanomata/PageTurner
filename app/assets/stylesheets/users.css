@@ -78,15 +78,6 @@
 
 }
 
-.user-card:hover {
-  background-color: #f8f9fa;
-}
-
-.user-actions {
-  display: flex;
-  gap: 8px;
-}
-
 .default-icon {
   width: 50px;
   height: 50px;
@@ -98,33 +89,68 @@
   font-size: 24px;
 }
 
-.suggested-row{
-  width: fit-content;
-  max-width: 100%;  /* evita overflow */
-  margin: auto;
-  margin-top: 10px;
+/* Background */
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.theme-option {
+  position: relative;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.theme-option:hover {
+  transform: translateY(-5px);
+}
+
+.theme-radio {
+  position: absolute;
+  opacity: 0;
+}
+
+.theme-preview {
+  height: 160px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  position: relative;
+}
+
+.theme-image {
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.9;
+}
+
+.theme-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.8rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
   text-align: center;
-  border-radius: 8px;
-  background-color: #ddd;
-  padding: 20px;
-
+  font-size: 0.95rem;
 }
 
-.carosello{
-  display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding: 10px 0;
-  border-radius: 8px;
+.default-theme {
+  background: #ffffff;
+  border-color: #007bff;
 }
 
-.suggested-book{
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  width: 140px;  
-  height: 180px;
-  border-radius: 8px;
-  object-fit: cover;
+.default-theme .theme-label {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+
+.theme-radio:checked + .theme-preview {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.2);
 }

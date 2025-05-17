@@ -1,3 +1,210 @@
+/* Bookshelf show */ 
+.bookshelf-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-template-rows: auto 1fr;   /* Two rows - first row auto height, second row takes remaining space */
+  gap: 1rem;
+  height: 100vh; /* Or whatever height you need */
+}
+
+/* Optional: Add responsive behavior */
+@media (max-width: 768px) {
+  .bookshelf-container {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
+}
+
+.bookshelf {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+}
+
+.bookshelf .bookshelf-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem; 
+}
+
+.bookshelf .bookshelf-title {
+  font-size: 1.8rem;
+  margin:0;
+}
+
+.bookshelf .bookshelf-creator {
+  font-size: 1.5rem;
+  margin:0;
+}
+
+.bookshelf .bookshelf-books-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Creates 4 equal-width columns */
+  gap: 20px; /* Space between grid items */
+  width: 100%;
+}
+
+/* Optional responsive adjustments */
+@media (max-width: 1200px) {
+  .bookshelf .bookshelf-books-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .bookshelf .bookshelf-books-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .bookshelf .bookshelf-books-container {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
+}
+
+/* Bookshelf index layout */
+.bookshelf-index-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.bookshelf-index {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  max-width:80%;
+  width: 80%;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+
+.bookshelf-index .bookshelf-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  max-width: 200px;
+}
+
+.bookshelf-index .bookshelf-header {
+  margin-bottom: 0.5rem;
+}
+
+.bookshelf-index .bookshelf-books-container {
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+
+.bookshelf-index .bookshelf-title {
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+  color: #1f2937;
+}
+
+.bookshelf-index .bookshelf-creator {
+  font-size: 1rem;
+  margin: 0;
+  color: #6b7280;
+}
+
+.bookshelf-index img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.bookshelf-index .book-card {
+  width: 100%;
+  aspect-ratio: 2/3;
+  max-height: 200px;
+  max-width: 120px;
+  overflow: hidden; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8f8f8; 
+  border-radius: 4px;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bookshelf-index {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .bookshelf-index .bookshelf-info {
+    min-width: 100%;
+  }
+  
+  .bookshelf-index .bookshelf-books-container {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .bookshelf-index .bookshelf-books-container {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+  }
+}
+
+/* Bookshelf cards */
+.bookshelf-cards-container {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 1rem;
+  list-style-type: none;
+  margin-left: 0.3rem;
+  padding: 0rem 0.7rem;
+}
+
+.bookshelf-card {
+  width:90%;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px #1f2937;
+}
+
+.bookshelf-card.special-bookshelf-card {
+  border: 3px solid #1f2937;
+}
+
+
+.bookshelf-card h3 {
+  /* margin-top: -0.3rem;
+  margin-bottom: -0.1rem; */
+}
+
+.bookshelf-card .bookshelf-info {
+  /* margin: 2px; */
+}
+
+/* bookshelves */
+
+.bookshelves-container {
+  margin-left: 0.3rem;
+  padding: 0.1rem 0.5rem;
+}
+
 .bookshelf {
   border: 1px solid #ddd;
   padding: 10px;
@@ -10,13 +217,6 @@
   background-color: whitesmoke;
 }
 
-.bookshelves-container {
-  padding: 10px;
-  border: #ddd 1px solid;
-  border-radius: 8px;
-  background-color: #549F93;
-}
-
 .bookshelf.special-bookshelf {
   background-color: whitesmoke;
   border: 2px solid rgb(2, 2, 47);
@@ -26,42 +226,33 @@
   margin-left: 10px;
 }
 
-.bookshelves-container {
-  padding: 10px;
-  border: #ddd 1px solid;
-  border-radius: 8px;
-  background-color: #ebebeb;
-}
-
 .bookshelf-books-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-auto-flow: column; 
+  grid-auto-columns: 180px; 
   gap: 10px;
   overflow-x: auto;
-  padding: 10px 0;
+  padding: 10px 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #ddd #f5f5f5; 
 }
 
+/* Optional: Custom scrollbar for WebKit browsers */
+.bookshelf-books-container::-webkit-scrollbar {
+  height: 8px;
+}
+.bookshelf-books-container::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 4px;
+}
+.bookshelf-books-container::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
 .bookshelf h2 {
   margin-top: 0;
 }
 
-.bookshelf-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.bookshelf-footer a {
-  text-decoration: none;
-  color: #007bff;
-}
-
-.bookshelf-footer a:hover {
-  text-decoration: underline;
-}
-
-/* BOOKSHELF CARD THUMBNAILS */
+/* Bookshelf thumbnails */
 
 .bookshelf-thumbnails-container {
   position: relative;

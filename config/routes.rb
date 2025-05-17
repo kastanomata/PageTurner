@@ -8,6 +8,12 @@ Rails.application.routes.draw do
       patch :deny
     end
   end
+  resources :books, only: [] do
+    collection do
+      get :search 
+      get :fetch
+    end
+  end
   get "search", to: "search#index", as: "search"
 
   resources :clubs
@@ -75,6 +81,8 @@ Rails.application.routes.draw do
     resources :reading_goals, only: [ :new, :create, :show ]
     member do
       get :members
+      delete :remove_post
+      delete :delete_membership
     end
     resources :polls, only: [ :new, :create, :destroy ]
   end

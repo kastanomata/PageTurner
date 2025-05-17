@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_09_065422) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_16_080619) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -45,6 +45,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_09_065422) do
     t.string "openlibrary_id"
     t.string "account_id"
     t.string "name"
+    t.text "bio"
+    t.string "photo"
   end
 
   create_table "bans", force: :cascade do |t|

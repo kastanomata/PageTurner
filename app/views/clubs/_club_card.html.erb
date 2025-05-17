@@ -1,8 +1,8 @@
 <div class="club-card">
-    <div class="club-header" style="text-align:right; padding-right: 1rem;">
+    <div class="club-header">
         <h2><%= link_to club.name, club_path(club), class: "btn btn--link" %></h2>
     </div>
-    <div class="club-content" style="display: flex; gap: 1rem;">
+    <div class="club-content">
         <div class="club-details">
             <% if club.description.present? %>
                 <p class="description"><%= truncate(club.description, length: 150) %></p>
@@ -10,12 +10,8 @@
             
             <div class="club-meta">
                 <% if club.curator %>
-                    <p>Curated by <%= link_to club.curator.nickname, user_path(club.curator) %></p>
+                    <p>Curated by <%= link_to club.curator.nickname, user_path(club.curator), class: "btn btn--link" %> | <span class="club-stats"><%= pluralize(club.members_count, 'member') %></span> </p>
                 <% end %>
-                
-                <p>
-                    <%= pluralize(club.members_count, 'member') %> 
-                </p>
             </div>
         </div>
     </div>

@@ -1,15 +1,12 @@
-
-
 <% content_for :title, "Authors" %>
 
-<h1>Authors</h1>
+<h1 style="text-align:center">Authors</h1>
 
 <div id="authors">
   <% @authors.each do |author| %>
-    <%= render author %>
-    <p>
-      <%= link_to "Show this author", author %>
-    </p>
+    <div class="authors-container">
+      <%= render partial: 'authors/author_card', locals: { author: author } %>
+    </div>
   <% end %>
 </div>
 

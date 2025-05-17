@@ -6,28 +6,34 @@
 }
 
 .section {
-    background-color: #ebebeb;
+    /* background-color: #ebebeb; */
     margin-top: 20px;
 }
 
 .section .left-section { 
 }
 
-.section .center-section {
+.section.center-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;     
+}
 
+.homepage-content {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 1.5rem;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
 .section .right-section {
-  background-color: #ebebeb;
   padding: 10px;
   margin-top: 20px;
   margin-right: 10px;
-}
-
-
-.clubs-container {
-    margin-right: 10px;
-    width:100%
 }
 
 /* CSS accesso non autenticato */

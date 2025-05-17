@@ -1,4 +1,3 @@
-
 .post {
   display: flex;
   align-items: flex-start;
@@ -6,7 +5,7 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -24,11 +23,11 @@
   background-color: #fff;
   border-radius: 5px;
   padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 12px #1f2937;
+  transition: all 0.2s ease;
 }
 .post-card:hover {
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 18px #1f2937;
 }
 
 .post-thumbnail {
@@ -43,20 +42,7 @@
 .post-header {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
-
-}
-
-.post-header img {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-}
-
-.post-header .username {
-  font-weight: bold;
-  font-size: 1.2em;
+  margin: -1rem 0;
 }
 
 .post-content {
@@ -67,6 +53,35 @@
 .post-content p {
   margin: 0;
   font-size: 2rem;
+}
+
+.post-content img {
+  width: 100px; 
+  height: auto; 
+  object-fit: contain; 
+  max-height: 200px;
+  flex-shrink: 0;
+}
+
+.post-stats {
+  display: flex;
+  justify-content: flex-end; 
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-top: 2px solid #1f2937;
+  border-bottom: 2px solid #1f2937;
+  border-radius: 12px;
+  margin-left: auto; 
+}
+  
+.post-stat {
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.post-stat:hover {
+    color: #333;
+    cursor: pointer;
 }
 
 .post-footer {
@@ -193,16 +208,40 @@
   gap: 20px; /* spazio tra i due div */
 }
 
-.post-header-container{
-  text-align: center;
+.post-text {
+  font-size: 1.3rem;
 }
 
-.display-like{
-  align-items: end;
+/* Tooltip styling */
+.cover a[title] {
+  position: relative;
+  display: inline-block;
 }
 
-.post-actions{
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
+.cover a[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 100;
+  margin-bottom: 5px;
+}
+
+.cover a[title]:hover::before {
+  content: "";
+  position: absolute;
+  bottom: calc(100% - 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+  z-index: 100;
 }
