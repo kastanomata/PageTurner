@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   validates :title, presence: true, length: { maximum: 100 }
   validates :description, length: { maximum: 1000 }, allow_blank: true
   validates :start_time, presence: true
-  validates :organizer_type, presence: true, inclusion: { in: %w[club author] }
+  validates :organizer_type, presence: true, inclusion: { in: %w[Club Author] }
   validates :organizer_id, presence: true
 
   validate :end_time_after_start_time
@@ -34,8 +34,9 @@ class Event < ApplicationRecord
       org = Club.find_by(id: organizer_id)&.curator
     when "author"
       org = User.find_by(author_id: organizer_id)
+    else
+      org = nil
     end
-    puts "The organizer is #{org.nickname}"
     org
   end
 

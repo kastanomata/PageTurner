@@ -85,33 +85,30 @@ module SeedingUtility
 
     events.each do |event_attributes|
       # Find or initialize the organizer (user)
-      if event_attributes[:organizer_type] == "club"
+      if event_attributes[:organizer_type] == "Club"
         curator_id = User.find_by!(email_address: event_attributes[:organizer_email]).id
-        organizer_id = Club.find_by!(curator_id: curator_id).id
-      elsif event_attributes[:organizer_type] == "author"
+        organizer = Club.find_by!(curator_id: curator_id)
+      elsif event_attributes[:organizer_type] == "Author"
         author_id = User.find_by!(email_address: event_attributes[:organizer_email]).id
-        organizer_id = Author.find_by!(account_id: author_id).id
+        organizer = Author.find_by!(account_id: author_id)
       end
+      unless organizer_id
+        puts "Skipping event '#{event_attributes[:title]}' - Club with curator.email_address #{event_attributes[:organizer_email]} not found"
+      end
+      puts "#{organizer} - #{event_attributes[:organizer_type]} with curator.email_address #{event_attributes[:organizer_email]} found"
 
       # Initialize the event with direct attributes
       event = Event.new(
         title: event_attributes[:title],
-        description: event_attributes[:text],
+        description: event_attributes[:description],
         start_time: Time.current + 1.week, # Default to one week from now
         end_time: Time.current + 1.week + 2.hours, # Default to 2 hour duration
-        organizer_type: event_attributes[:organizer_type],
-        organizer_id: organizer_id
+        organizer: organizer
       )
 
       # Associate book if ISBN is provided
       if event_attributes[:book_isbn].present?
         event.book = Book.find_by(isbn: event_attributes[:book_isbn])
-      end
-
-      # Associate club if curator is provided
-      if event_attributes[:club_curator].present?
-        club_curator = User.find_by(email_address: event_attributes[:club_curator])
-        event.club_id = Club.find_by(curator: club_curator).id if club_curator
       end
 
       event.save!

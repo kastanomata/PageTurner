@@ -60,7 +60,8 @@
         </div>
       <% end %>
 
-      <% upcoming_event = club.events.first %>
+      <% upcoming_event = club.events %>
+      <%= upcoming_event.count %>
       <% unless upcoming_event.blank? %>
         <div class="upcoming-event" style="flex: 1;">
           <p> Event: <%= upcoming_event.title %> </p>
