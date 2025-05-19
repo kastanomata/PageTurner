@@ -89,6 +89,37 @@
   font-size: 24px;
 }
 
+.suggested-row{
+  width: fit-content;
+  max-width: 100%;  /* evita overflow */
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #ddd;
+  padding: 5px;
+}
+
+.carosello{
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  border-radius: 8px;
+}
+
+.suggested-book{
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: 140px;  
+  height: 180px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+
 /* Background */
 .theme-grid {
   display: grid;

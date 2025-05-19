@@ -47,11 +47,14 @@
       <% end %>
     </div>
   </div>
-<div class="suggested-row"> 
-<h3>Suggested Books</h3>
-  <% @user.suggested_books.each do |book| %>
-    <%= render 'books/cover', book: book %>
-  <% end %>
+  <div class="suggested-row"> 
+  <h3>Suggested Books</h3>
+    <div style="display: flex; gap:5px;">
+      <% @user.suggested_books.each do |book| %>
+        <%= render 'books/cover', book: book %>
+      <% end %>
+    </div>
+  </div>
 
   <div class="user-content">
     <div class="bookshelves bookshelves--user">
