@@ -29,6 +29,16 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_path(Post.last)
   end
 
+  test "should create post new book" do
+    post session_path, params: { email_address: @user.email_address, password: "password" }
+    assert_equal @user.id, session[:user_id]
+    assert_difference("Post.count") do
+      post posts_path, params: { post: { isbn: "9788879835886", text: "Che mina", title: "Daje Roma" } }
+    end
+
+    assert_redirected_to post_path(Post.last)
+  end
+
   test "should show post" do
     get post_path(@post)
     assert_response :success
