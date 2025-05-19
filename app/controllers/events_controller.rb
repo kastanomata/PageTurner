@@ -63,6 +63,31 @@ class EventsController < ApplicationController
     end
   end
 
+  def register
+    @event = Event.find(params[:id])
+    Current.user.attend(@event)
+    redirect_to @event, notice: "You have successfully registered for this event."
+  end
+
+  def cancel_registration
+    @event = Event.find(params[:id])
+    Current.user.cancel_attendance(@event)
+    redirect_to @event, notice: "Your registration has been cancelled."
+  end
+
+  # For organizers to mark attendance
+  def mark_attendance
+    @event = Event.find(params[:id])
+    @user = User.find(params[:user_id])
+
+    if @event.organizer == Current.user || Current.user.admin?
+      @user.mark_attended(@event)
+      redirect_to event_participants_path(@event), notice: "Attendance marked for #{@user.nickname}"
+    else
+      redirect_to @event, alert: "You don't have permission to do that."
+    end
+  end
+
   private
   def determine_organizer
     if Current.user.both_curator_and_author?

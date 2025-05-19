@@ -1,0 +1,57 @@
+<% provide(:title, "Event Participants") %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="event_info">
+      <h1><%= @event.title %></h1>
+      <span><%= link_to "view the event", @event %></span>
+      <div class="event-meta">
+        <p><%= @event.start_time.strftime("%B %d, %Y at %I:%M %p") %></p>
+        <p><%= @event.organizer_object.name %></p>
+        <p><%= pluralize(@event.participant_count, 'participant') %></p>
+      </div>
+    </section>
+    <section class="stats">
+      <div class="stat">
+        <strong>Registered:</strong> <%= @event.participations.registered.count %>
+      </div>
+      <div class="stat">
+        <strong>Attended:</strong> <%= @event.participations.attended.count %>
+      </div>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h3>Participants</h3>
+    <% if @participations.any? %>
+      <% @participations.each do |participation| %>
+        <div class="user-card">
+          <div class="user-info">
+            <%= link_to participation.user.nickname, user_path(participation.user) %>
+            <span class="badge <%= participation.status %>">
+              <%= participation.status.capitalize %>
+            </span>
+            <% if participation.attended_at %>
+              <small>Attended: <%= participation.attended_at.strftime("%b %d") %></small>
+            <% end %>
+          </div>
+          <% if @event.organizer == Current.user || Current.user.admin? %>
+            <div class="user-actions">
+              <% if participation.registered? %>
+                <%= button_to "Mark Attended", 
+                      mark_attendance_event_path(@event, user_id: participation.user.id), 
+                      method: :post, 
+                      class: "btn btn--positive btn--sm" %>
+              <% end %>
+              <%= button_to "Remove", 
+                    participation_path(participation), 
+                    method: :delete, 
+                    class: "btn btn--negative btn--sm",
+                    form: { data: { turbo_confirm: "Are you sure?" } } %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No participants yet.</p>
+    <% end %>
+  </div>
+</div>

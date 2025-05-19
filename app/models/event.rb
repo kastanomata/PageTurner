@@ -12,6 +12,9 @@ class Event < ApplicationRecord
   validate :organizer_exists
   validate :only_one_upcoming_event_per_organizer
 
+  has_many :participations, dependent: :destroy
+  has_many :participants, through: :participations, source: :user
+
   before_destroy :nullify_book_references, if: :book_id?
 
   scope :upcoming, -> { where("start_time > ?", Time.current).order(:start_time) }
@@ -28,6 +31,9 @@ class Event < ApplicationRecord
       none
     end
   }
+
+  scope :attended_by, ->(user) { joins(:participations).where(participations: { user_id: user.id, status: "attended" }) }
+  scope :registered_by, ->(user) { joins(:participations).where(participations: { user_id: user.id, status: "registered" }) }
 
   def organizer_object
     case organizer_type
@@ -50,6 +56,14 @@ class Event < ApplicationRecord
       org = nil
     end
     org
+  end
+
+  def participant_count
+    participations.where(status: [ "registered", "attended" ]).count
+  end
+
+  def attended_count
+    participations.where(status: "attended").count
   end
 
   private

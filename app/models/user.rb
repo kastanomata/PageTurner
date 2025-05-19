@@ -20,6 +20,9 @@ class User < ApplicationRecord
   has_many :active_memberships, class_name:  "Membership", foreign_key: "follower_id", dependent: :destroy
   has_many :partecipates, through: :active_memberships, source: :club
 
+  has_many :participations, dependent: :destroy
+  has_many :events, through: :participations
+
   has_many :posts, foreign_key: "author_id", dependent: :destroy
   has_many :likes, dependent: :destroy
 
@@ -126,6 +129,22 @@ class User < ApplicationRecord
 
   def curator_club
     Club.find_by(curator_id: id)
+  end
+
+  def attending?(event)
+    participations.where(event: event, status: [ "registered", "attended" ]).exists?
+  end
+
+  def attend(event)
+    participations.create(event: event, registered_at: Time.current)
+  end
+
+  def cancel_attendance(event)
+    participations.find_by(event: event)&.update(status: "cancelled")
+  end
+
+  def mark_attended(event)
+    participations.find_by(event: event)&.update(status: "attended", attended_at: Time.current)
   end
 
   ## USER'S SPECIAL BOOKSHELVES ##

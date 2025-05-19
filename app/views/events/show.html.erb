@@ -22,6 +22,18 @@
   <% end %>
 </div>
 
+<% if Current.user %>
+  <% if Current.user.attending?(@event) %>
+    <%= button_to "Cancel Registration", cancel_registration_event_path(@event), method: :post, class: "btn btn-danger" %>
+  <% else %>
+    <%= button_to "Register for Event", register_event_path(@event), method: :post, class: "btn btn-primary" %>
+  <% end %>
+<% else %>
+  <%= link_to "Sign in to register", new_session_path, class: "btn btn-primary" %>
+<% end %>
+
+<p><%= @event.participant_count %> attendees</p>
+
 <div class="event-actions-container">
   <% if Current&.user == @event.organizer %>
   <div class="event-action">
