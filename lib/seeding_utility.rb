@@ -92,7 +92,7 @@ module SeedingUtility
         author_id = User.find_by!(email_address: event_attributes[:organizer_email]).id
         organizer = Author.find_by!(account_id: author_id)
       end
-      unless organizer_id
+      unless organizer
         puts "Skipping event '#{event_attributes[:title]}' - Club with curator.email_address #{event_attributes[:organizer_email]} not found"
       end
       puts "#{organizer} - #{event_attributes[:organizer_type]} with curator.email_address #{event_attributes[:organizer_email]} found"
