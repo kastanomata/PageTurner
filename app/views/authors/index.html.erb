@@ -2,12 +2,23 @@
 
 <h1 style="text-align:center">Authors</h1>
 
-<div id="authors">
+<div id="authors" class="authors-grid">
   <% @authors.each do |author| %>
-    <div class="authors-container">
-      <%= render partial: 'authors/author_card', locals: { author: author } %>
+    <div class="authors-grid-item">
+      <div class="author-card-column">
+        <%= render partial: 'authors/author_card', locals: { author: author } %>
+      </div>
+      
+      <div class="event-card-column">
+        <% upcoming_event = author.events.upcoming.first %>
+        <% if upcoming_event %>
+          <%= render partial: 'events/event_card', locals: { event: upcoming_event } %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
 
-<%= link_to "New author", new_author_path %>
+<div class="new-author-link">
+  <%= link_to "New author", new_author_path, class: "btn btn-primary" %>
+</div>

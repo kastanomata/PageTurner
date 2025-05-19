@@ -15,9 +15,6 @@
           - <%= event.end_time.strftime("%B %d, %Y at %I:%M %p") %>
         <% end %>
       </div>
-      <div class="event-description"> 
-        <%= event.description unless event.description.blank? %>
-      </div>
       <div class="event-stats">
         <span class="event-stat">
           <i class="far fa-clock"></i> <%= distance_of_time_in_words(Time.current, event.start_time) %> left

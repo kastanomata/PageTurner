@@ -1,4 +1,11 @@
 <style>
+.event-show-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  margin: 1rem;
+  gap: 1rem;
+}
+
 .event-actions-container {
   display: flex;
   flex-direction: row;
@@ -6,8 +13,14 @@
   margin: 1rem;
 }
 </style>
-
-<%= render @event %>
+<div class="event-show-container">
+  <%= render @event %>
+  <% if @event.organizer_object.is_a?(Club) %>
+    <%= render 'clubs/club_card', club: @event.organizer_object %>
+  <% elsif @event.organizer_object.is_a?(Author) %>
+  <%= render 'authors/author_card', author: @event.organizer_object %>
+  <% end %>
+</div>
 
 <div class="event-actions-container">
   <% if Current&.user == @event.organizer %>

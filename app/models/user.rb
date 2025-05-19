@@ -20,12 +20,13 @@ class User < ApplicationRecord
   has_many :active_memberships, class_name:  "Membership", foreign_key: "follower_id", dependent: :destroy
   has_many :partecipates, through: :active_memberships, source: :club
 
-  has_many :posts, foreign_key: "author_id", dependent: :destroy # TODO add changing the post author on user deletion
+  has_many :posts, foreign_key: "author_id", dependent: :destroy
   has_many :likes, dependent: :destroy
 
   has_many :bookshelves, dependent: :destroy, foreign_key: "creator_id", inverse_of: :creator
   has_many :bookshelf_contains, through: :bookshelves, dependent: :destroy
   has_one :club, foreign_key: "curator_id", dependent: :destroy
+  has_one :author_account, class_name: "Author", foreign_key: "account_id", dependent: :nullify
 
   has_many :votes, dependent: :destroy
 
@@ -107,6 +108,21 @@ class User < ApplicationRecord
   def is_member?(club)
     partecipates.include?(club)
   end
+
+  def is_author?
+    author_account.present?
+  end
+
+  def is_curator?
+    club.present?
+  end
+
+  def both_curator_and_author?
+    is_curator? && is_author?
+  end
+
+  alias_method :author_organizer, :author_account
+  alias_method :club_organizer, :club
 
   def curator_club
     Club.find_by(curator_id: id)
