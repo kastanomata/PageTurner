@@ -4,7 +4,7 @@ class ClubsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @club = clubs(:one)
     @other_club = clubs(:two)
-    @user = users(:one)
+    @user = users(:three)
   end
 
   test "should get index" do
@@ -23,7 +23,7 @@ class ClubsControllerTest < ActionDispatch::IntegrationTest
     post session_path, params: { email_address: @user.email_address, password: "password" }
     assert_equal @user.id, session[:user_id]
     assert_difference("Club.count") do
-      post clubs_path, params: { club: { name: @club.name, description: @club.description, curator_id: @club.curator } }
+      post clubs_path, params: { club: { name: "club_test", description: "club_description_test", curator_id: @user.id } }
     end
 
     assert_redirected_to club_path(Club.last)
