@@ -30,9 +30,9 @@ class Event < ApplicationRecord
 
   def organizer
     case organizer_type
-    when "club"
+    when "Club"
       org = Club.find_by(id: organizer_id)&.curator
-    when "author"
+    when "Author"
       org = User.find_by(author_id: organizer_id)
     else
       org = nil

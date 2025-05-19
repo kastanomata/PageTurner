@@ -60,12 +60,9 @@
         </div>
       <% end %>
 
-      <% upcoming_event = club.events %>
-      <%= upcoming_event.count %>
+      <% upcoming_event = club.next_event %>
       <% unless upcoming_event.blank? %>
-        <div class="upcoming-event" style="flex: 1;">
-          <p> Event: <%= upcoming_event.title %> </p>
-          <h3>Upcoming Event</h3>
+        <div class="upcoming-event">
           <%= render partial: 'events/event_card', locals: { event: upcoming_event } %>
         </div>
       <% else %>
