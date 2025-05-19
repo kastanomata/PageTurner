@@ -3,7 +3,7 @@ require "test_helper"
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @post = posts(:one)
-    @other_post = posts(:two)
+    @club = clubs(:one)
     @user = users(:one)
     @user3 = users(:three)
   end
@@ -68,6 +68,18 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to post_path(@post)
+  end
+
+  test "remove post from club" do
+    post session_path, params: { email_address: @user.email_address, password: "password" }
+    assert_equal @user.id, session[:user_id]
+    assert_no_difference("Post.count") do
+      delete remove_post_club_path(@post.club_id), params: { post_id: @post.id }
+    end
+
+    @post.reload
+    assert_nil @post.club_id, "Post should no longer be associated with a club"
+    assert_redirected_to club_path(@club)
   end
 
   test "should show post" do
