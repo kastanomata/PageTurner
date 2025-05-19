@@ -48,6 +48,17 @@ class PostsTest < ApplicationSystemTestCase
     assert_selector ".post-actions p", text: "2 Likes"
   end
 
+  test "Unlike Post" do
+    login_as(@user)
+    visit post_path(@post)
+    assert_selector ".post-actions p", text: "1 Like"
+
+    unlike_button = find("form.button_to button", text: "Unlike")
+    execute_script("arguments[0].click()", unlike_button)
+
+    assert_selector ".post-actions p", text: "0 Likes"
+  end
+
   test "should remove Post from Club" do
     login_as(@user)
     visit post_path(@post)
