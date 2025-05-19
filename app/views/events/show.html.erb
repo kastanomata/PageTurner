@@ -1,10 +1,23 @@
-<p style="color: green"><%= notice %></p>
+<style>
+.event-actions-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin: 1rem;
+}
+</style>
 
 <%= render @event %>
 
-<div>
-  <%= link_to "Edit this event", edit_event_path(@event) %> |
-  <%= link_to "Back to events", events_path %>
-
-  <%= button_to "Destroy this event", @event, method: :delete %>
+<div class="event-actions-container">
+  <% if Current&.user == @event.organizer %>
+  <div class="event-action">
+    <%= link_to "Edit this event", edit_event_path(@event), class: "btn btn--secondary btn--md" %> 
+  </div>
+  <% end %>
+  <% if Current&.user == @event.organizer or Current.user&.admin? %>
+  <div class="event-action">
+    <%= button_to "Destroy this event", @event, method: :delete, class: "btn btn--negative btn--md" %>
+  </div>
+  <% end %>
 </div>

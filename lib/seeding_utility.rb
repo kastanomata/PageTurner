@@ -13,12 +13,21 @@ module SeedingUtility
     []
   end
 
-  # Seed data for users
   def seed_users
     users = load_json_file(Rails.root.join("db", "seeds", "users.json"))
+
     users.each do |user_attributes|
+      author_id = user_attributes.delete(:openlibrary_id)
+
       user_attributes[:admin] ||= false
-      User.create!(user_attributes)
+      user = User.create!(user_attributes)
+
+      if author_id.present?
+        puts "Initializing author..."
+        author = initialize_author(author_id)
+        author.update!(account_id: user.id) if author
+        puts "Account #{user.nickname} for author #{author.name} correctly inizialized." if author
+      end
     end
   end
 
@@ -95,7 +104,6 @@ module SeedingUtility
       unless organizer
         puts "Skipping event '#{event_attributes[:title]}' - Club with curator.email_address #{event_attributes[:organizer_email]} not found"
       end
-      puts "#{organizer} - #{event_attributes[:organizer_type]} with curator.email_address #{event_attributes[:organizer_email]} found"
 
       # Initialize the event with direct attributes
       event = Event.new(

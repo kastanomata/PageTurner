@@ -62,5 +62,13 @@
     "nickname": "clavdia",
     "description": "Hi, I'm Claudia. I like Harry Potter and dislike Twilight. That stuff is for kids!",
     "birthday": "1998-07-15"
+    },
+    {
+    "email_address":"tolkienfoundation@example.com",
+    "password": "password",
+    "nickname": "theRealJRR",
+    "description": "This is the account of the Tolkien Foundation",
+    "birthday": "1998-07-15",
+    "openlibrary_id": "OL26320A"
     }
 ]

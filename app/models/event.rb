@@ -33,7 +33,7 @@ class Event < ApplicationRecord
     when "Club"
       org = Club.find_by(id: organizer_id)&.curator
     when "Author"
-      org = User.find_by(author_id: organizer_id)
+      org = Author.find_by(id: organizer_id)&.account
     else
       org = nil
     end

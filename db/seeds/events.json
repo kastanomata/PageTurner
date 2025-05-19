@@ -7,6 +7,13 @@
     "organizer_email": "antonioturco@example.com"
   },
   {
+    "title": "Lorem ipsum",
+    "description": "Lorem ipsum",
+    "book_isbn": "9780618346264",
+    "organizer_type": "Author",
+    "organizer_email": "tolkienfoundation@example.com"
+  },
+  {
     "title": "A Song of Ice and Fire Discussion",
     "description": "Monthly book discussion for our current read - A Dance with Dragons",
     "book_isbn": "9780553801477",
