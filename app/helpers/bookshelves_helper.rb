@@ -13,35 +13,16 @@ module BookshelvesHelper
     end
   end
 
-  def render_user_bookshelves(user)
-    bookshelves = user.bookshelves
-    user_bookshelves = bookshelves.select { |b| b.special? && b.bookclub.nil? }
-    club_bookshelves = bookshelves.select { |b| b.special? && b.bookclub.present? }
-    other_bookshelves = bookshelves - user_bookshelves - club_bookshelves
+  def display_bookshelf_posts(bookshelf)
+    book_ids = bookshelf.books.pluck(:id)
 
-    content_parts = [ content_tag(:h2, "Your Bookshelves") ]
+    posts = Post.where(author_id: bookshelf.creator_id, book_id: book_ids)
+              .order(created_at: :desc)
 
-    # User's special bookshelves
-    content_parts += user_bookshelves.map do |bookshelf|
-      render_bookshelf_card(bookshelf, user)
-    end
-
-    # Other bookshelves
-    content_parts += other_bookshelves.map do |bookshelf|
-      render_bookshelf_card(bookshelf, user)
-    end
-
-    # Club bookshelves section
-    if club_bookshelves.any?
-      club_content = [
-        content_tag(:h2, "Club Bookshelves"),
-        *club_bookshelves.map { |bookshelf| render_bookshelf_card(bookshelf, user) }
-      ]
-      content_parts += club_content
-    end
-
-    content_tag :div, class: "bookshelves-container" do
-      safe_join(content_parts)
+    if posts.any?
+      render partial: "posts/post_card", collection: posts, as: :post
+    else
+      content_tag(:p, "No posts yet about books in this shelf", class: "no-posts")
     end
   end
 
@@ -66,7 +47,7 @@ module BookshelvesHelper
     render partial: "bookshelves/bookshelf_card",
            locals: {
              bookshelf: bookshelf,
-             class_name: bookshelf.is_user_bound?(user) ? "special-bookshelf bookshelf" : "bookshelf",
+             class_name: bookshelf.is_user_bound?(user) ? "special-bookshelf-card bookshelf-card" : "bookshelf-card",
              show_bookclub_info: bookshelf.bookclub.present?
            }
   end

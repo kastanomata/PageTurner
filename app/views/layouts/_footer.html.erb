@@ -1,12 +1,10 @@
 <footer class="footer">
     <div class="footer-content">
         <div class="footer-action">
-            <% if authenticated? %>
-                <%= link_to new_post_path, class: "new-post-btn" do %>
-                    <span class="footer-button-container plus-icon">+</span>
-                <% end %>
-            <% else %>
+            <% unless authenticated? %>
                 <p class="footer-message">Want to join the club? <%= link_to "Register your account now!", new_user_path, class: "footer-register-link" %></p>
+            <% else %>
+                <p class="footer-message"> A project by Alfredo Segala, Alessandro Temperini e Antonio Turco </p>
             <% end %>
         </div>
         <div class="footer-links">

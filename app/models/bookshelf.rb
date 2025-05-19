@@ -1,5 +1,6 @@
 class Bookshelf < ApplicationRecord
   belongs_to :creator, class_name: "User"
+  belongs_to :club, optional: true
   has_many :bookshelf_contains, dependent: :destroy
   has_many :books, through: :bookshelf_contains
   accepts_nested_attributes_for :books # , through: :bookshelf_contains
@@ -31,4 +32,12 @@ class Bookshelf < ApplicationRecord
     # Check if the bookshelf is bound to the user
     self.name == "#{user.nickname}'s Read Books" || self.name == "#{user.nickname}'s Liked Books"
   end
+
+def top_tags(limit = 5)
+  Tag.joins(taggings: :book)
+     .where(books: { id: bookshelf_contains.select(:book_id) })
+     .group("tags.id")
+     .order("COUNT(taggings.id) DESC")
+     .limit(limit)
+end
 end

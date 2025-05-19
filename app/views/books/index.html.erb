@@ -1,16 +1,32 @@
-
-
 <% content_for :title, "Books" %>
+<style>
+  body.books-index {
+    background-image: url(<%= asset_path('books_background.jpg') %>);
+    background-repeat: repeat;  
+    min-height: 100vh;
+  }
 
-<h1>Books</h1>
+  h1 {
+    background-color: #ffffff;
+    font-size: 4rem;
+    margin-left: 35rem;
+    margin-right: 35rem;
+    color: #1f2937;
+    border-radius: 4px;
+    text-align: center;
+  }
+</style>
+<h1> Books</h1>
 
 <div class="books-container">
   <% @books.each do |book| %>
-    <div class="book-card">
-      <%= book_image book %>
-      <h3><%= book.title %></h3>
+    <%= render 'books/book_card',
+      book: book,
+      show_title: true, 
+      show_hover_info: false do %>
+      
       <p>ISBN: <%= book.isbn %></p>
-      <%= link_to "View Details", book_path(book), class: "btn btn--primary" %>
-    </div>
+      <%= link_to "View Details", book_path(book), class: "btn btn--secondary" %>
+    <% end %>
   <% end %>
 </div>

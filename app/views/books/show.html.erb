@@ -1,48 +1,85 @@
-<!-- 
-  This is the show page for a single book
-  It displays the book's title, ISBN, and cover image 
-  if those information are available, otherwise it makes a 
-  request to the openlibrary API to get the book's information
-  and saves it in the database
--->
+<style>
+  /* TODO move this to books.css */
+  .show-book-container {
+    display: grid;
+    grid-template-columns: 40% 58%;
+    gap: 2%;
+    max-width: 95%%;
+    margin: 0 auto;
+    padding: 20px;
+  }
 
-<div class="book-card">
-  <h1>
-    <%= @book.title %>
-  </h1>
-  <%= book_image @book, size: "poster"%>
-  <p>ISBN: <%= @book.isbn %></p>
+  .posts-about-book {
+    margin: 2rem 0;
+  }
 
-  <div class="popular-tags">
-    <h3>Popular Tags:</h3>
-      <% if @popular_tags.any? %>
-        <div class="tag-list">
-          <% @popular_tags.each do |tag| %>
-            <span class="tag badge bg-secondary">
-              <%= link_to tag.name, tag_path(tag), class: "text-white text-decoration-none" %>
-            </span>
-          <% end %>
+  .posts-about-book h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .visual-info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    max-width: 100%;
+    margin: 50px auto;
+    padding: 10px;
+  }
+
+</style>
+
+<% content_for :title, @book.title %>
+
+<div class="show-book-container">
+  <div class="book-card">
+      <h1>
+        <%= @book.title %>
+      </h1>
+    <div class="visual-info-container">
+      <%= book_image @book, size: "poster"%>
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <%= display_tags @book.tags %>
+        <%= add_book_to_bookshelf_buttons @book %>
+        <%= set_book_as_reading @book %>
+      </div>
+    </div>
+    <p>ISBN: <%= @book.isbn %></p>
+    <div class="button_container">
+      <% if Current.user&.admin? %>
+        <div style="display: flex; gap: 10px;">
+          <%= link_to "Edit this book", edit_book_path(@book), class: "button" %>
+          <%= button_to "Destroy this book", @book, method: :delete, class: "button" %>
         </div>
-      <% else %>
-        <p class="text-muted">No popular tags available</p>
       <% end %>
+    </div>
   </div>
 
-  <%= add_book_to_bookshelf_buttons @book %>
-  <%= set_book_as_reading @book %>
-</div>
 
-<%= render 'authors/author_card', author: @book.author %>
-
-<div>
-  <%= link_to "Back to books", books_path %>
-</div>
-
-<div class="button_container">
-  <% if Current.user&.admin? %>
-    <div style="display: flex; gap: 10px;">
-      <%= link_to "Edit this book", edit_book_path(@book), class: "button" %>
-      <%= button_to "Destroy this book", @book, method: :delete, class: "button" %>
+    <div class="posts-about-book">
+      <% posts = posts_for_books_with_same_isbn(@book) %>
+      <% if posts.any? %>
+        <h2>Community Posts About This Book</h2>
+          <% posts.each do |post| %>
+            <%= render 'posts/post_card', post: post, no_cover: true %>
+          <% end %>
+      <% else %>
+        <p class="text-muted">No posts about this book yet. Be the first to share your thoughts!</p>
+      <% end %>
     </div>
-  <% end %>
+
+    <div class="book-info-container">
+      <%= render 'authors/author_card', author: @book.author %>
+    </div>
 </div>

@@ -19,7 +19,7 @@ class BookApiService
 
   def self.fetch_book_details(isbn)
     begin
-      # https://openlibsrary.org/api/books?bibkeys=ISBN:9780547928227&format=json&jscmd=data
+      # https://openlibrary.org/api/books?bibkeys=ISBN:9780547928227&format=json&jscmd=data
       url = URI("#{BASE_URL}?bibkeys=ISBN:#{isbn}&format=json&jscmd=data")
       response = Net::HTTP.get(url)
       return {} if response.empty?
@@ -48,7 +48,7 @@ class BookApiService
     end
   end
 
-  def self.fetch_author_details(openlibrary_id, deep = 0)
+  def self.fetch_author_details(openlibrary_id, deep = 1)
     begin
       url = URI("https://openlibrary.org/authors/#{openlibrary_id}.json")
       response = Net::HTTP.get(url)
@@ -57,19 +57,29 @@ class BookApiService
       author_data = JSON.parse(response)
       if deep == 0
         {
-        openlibrary_id: openlibrary_id,
-        name: author_data["name"]
+          openlibrary_id: openlibrary_id,
+          name: author_data["name"]
         }
       elsif deep == 1
         {
-        openlibrary_id: openlibrary_id,
-        name: author_data["name"],
-        bio: author_data["bio"] || "No biography available",
-        birth_date: author_data["birth_date"],
-        death_date: author_data["death_date"],
-        photos: author_data["photos"] || [],
-        thumbnail: author_photo_url(author_data["photos"], :small),
-        portrait: author_photo_url(author_data["photos"], :medium)
+          openlibrary_id: openlibrary_id,
+          name: author_data["name"],
+          bio: author_data["bio"] || "No biography available",
+          photos: author_data["photos"] || []
+        }
+      elsif deep == 2
+        {
+          openlibrary_id: openlibrary_id,
+          name: author_data["name"],
+          personal_name: author_data["personal_name"],
+          fuller_name: author_data["fuller_name"],
+          alternate_names: author_data["alternate_names"] || [],
+          bio: author_data["bio"] || "No biography available",
+          birth_date: author_data["birth_date"],
+          death_date: author_data["death_date"],
+          photos: author_data["photos"] || [],
+          links: author_data["links"] || [],
+          remote_ids: author_data["remote_ids"] || {}
         }
       end
     rescue JSON::ParserError, URI::InvalidURIError, Net::HTTPError => e

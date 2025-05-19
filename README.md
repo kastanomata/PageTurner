@@ -8,8 +8,6 @@ PageTurner è un progetto che permette a topi di biblioteca da tutto il mondo di
 Pensiamo sarebbe meglio trovare localmente un club del libro, magari presso una biblioteca pubblica vicino a te, e ti spingiamo a farlo e a sostenere le iniziative dei centri culturali a te vicini! Purtroppo per tanti motivi ciò può non essere possibile, oppure semplicemente i libri proposti possono essere molto lontani dalla tua sensibilità. Questo non deve essere motivo per un lettore di allontanarsi dalla gioia che deriva dal parlare del nuovo libro di una collana o dell’ultimo capitolo letto. PageTurner rappresenta la tua possibilità di prendere parte a un club del libro che si riunisce ogni settimana all’altro capo del mondo senza spendere nulla per l’aeroplano. 
 Insieme al tuo gruppo puoi decidere i libri da esplorare e comunicare obiettivi di lettura per ritrovarvi intorno al fuoco e raccontare cosa vi ha comunicato ciò che avete letto. Tieni traccia del tuo passato da lettore, realizza cataloghi di libri e condividi selezioni con i tuoi amici. Mantieni un occhio sulle tue letture preferite, osserva le tue caratteristiche da lettore e scegli cosa leggere indipendentemente da quello che gli editori vorrebbero che tu leggessi. La lettura non deve essere un passatempo solitario, e per poter trovare felicità nel discutere un libro non serve essere critici letterari.
 Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizione un archivio importante su tutte le pubblicazioni, autori e edizioni. I nostri database si interfacciano con OpenLibrary per trovare informazioni sui libri letti e realizzare tabelle, grafici e statistiche disponibili all’utente sulle sue abitudini di lettura.
-
-
 ---
 
 ## Table of Contents
@@ -19,102 +17,6 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
 - [Configuration](#configuration)
 - [Running the App](#running-the-app)
 - [License](#license)
-
----
-
-## Work in Progress
-- [x] Fix navbar "logout" button not displaying correctly
-- [x] Style report buttons
-- [x] Fix delete sessions!
-- [ ] font ideas: Sagona/Bookman
-- [ ] Add tab icon in browser
-- [ ] Add "404 - Not Found"
-- [ ] Seed more reviews for YA Fantasy club
-- [ ] Fix font in text fields
- 
-### Homepage 
-- [x] Add Guest User homepage 
-- [x] Order bookshelves
-- [x] Divide special bookshelves from user-created
-- [x] Add "New post" button/form
-- [x] Add club infocard to the right
-- [ ] Don't show duplicate when club + follow
-
-### Search
-- [ ] Styling
-
-### Users
-- [x] Remove "Create new bookshelf" and "Create new post" buttons from other user pages
-- [x] Fix user autofollow on user create
-- [x] Fix user description on user profile
-- [x] Fix curator's club bookshelves showing up on profile
-- [x] Add "new post" functionality (postcard) on profile
-- [x] Add a way to request becoming a author
-- [ ] Add favorite book
-- [ ] Add block user functionality
-
-### Books
-- [x] Add buttons on book show page to quickly add the book to read or liked bookshelf
-- [x] Fix books show (only admin should be able to edit Books)
-- [ ] Add books input from user
-- [ ] Fix author card on book
-- [ ] Add post about book display
-
-### Bookshelves
-- [x] Bookshelf creation #styling
-- [ ] Bookshelf deletion and update
-- [ ] Remove book from bookshelf
-- [ ] Special Bookshelves name should not be modifiable
-- [ ] Add "Add book to Bookshelf" functionality
-- [ ] Display Posts made about the books in the bookshelf show view
-- [ ] Fix Bookshelf update
-
-### Bookclubs 
-- [ ] Add destroy and edit buttons to club
-- [ ] Style creation form
-- [ ] Style index 
-- [ ] Style show page 
-- [ ] Add post support 
-
-#### Polls
-- [ ] Save result of poll somewhere 
-
-#### Reading Goals
-- [ ] Add button to delete reading goal
-
-### Posts
-- [x] Add interaction (comments, likes) support
-- [x] Create Posts (params[:isbn] è nil)
-- [ ] Style comments, likes and action buttons
-
-### Bookclubs
-- [x] Add "Report Club" functionality support
-- [x] Add "Report Club" Button
-- [x] Add "New post" button/form
-- [ ] Create Club (problema con il campo creator del form)
-- [ ] Add support for "Community posts" from curator
-- [ ] Add events
-- [ ] Add support for group reading
-- [ ] Add calendar (?)
-
-### Reports
-- [x] Generate reports (report_id nil e reported_type nil)
-- [x] Add button to access root/reports#index
-- [x] Delete report
-
-### Admin
-- [x] Should not be able edit post
-- [x] Add "Make User into Curator" support
-- [x] Add "Make User into Author" support
-
-### Routing
-- [ ] Add "Credits" redirect on footer
-
-### Testing
-
-### Errors
-- [x] Fix error navbar not showing correctly
-- [ ] Render correct errors based on context
 
 ---
 
@@ -130,27 +32,27 @@ Il servizio è gestito attraverso l’API di OpenLibrary, che mette a disposizio
    cd PageTurner
    ```
 
-2. **Install dependencies**:
+2. **Install Gems (go to *Gemfile* for a list)**:
    ```bash
    bundle install
    ```
 
 3. **Set up the database**:
    ```bash
-   bin/rails db:create
-   bin/rails db:migrate
-   bin/rails db:seed  # seed data is included 
+   rails db:create
+   rails db:migrate
+   rails db:seed  # seed data is included 
    ```
 ---
 
 ## Configuration
 **Environment Variables**
 
-You should save your own provider information in config/credentials.yml.enc by creating your own master.key file and by using the command
+You should save your own OAuth provider information in config/credentials.yml.enc by creating your own *config/master.key* file and by using the command
 ```bash
 $ EDITOR=vim rails credentials:edit
 ```
-Add these lines to your credentials.yml.enc and it should easily work
+Add these lines to your credentials.yml.enc and it should work: 
 ```
 oauth:
   provider:
@@ -166,9 +68,9 @@ oauth:
 ## Running the App
 - **Start the server**:
   ```bash
-  bin/rails server
+   $ bin/rails server
   ```
-  Visit `http://localhost:3000`.
+  Visit `http://localhost:3000` for the homepage.
 ---
 
 ## License

@@ -1,80 +1,47 @@
 <div id="<%= dom_id bookshelf %>">
+<% if local_assigns[:index] %>
+  <div class="bookshelf-index">
+<% else %>
   <div class="bookshelf">
-    <h2><%= bookshelf.name %></h2>
-    <p>Created by: <%= link_to bookshelf.creator.nickname, user_path(bookshelf.creator) %></p>
+<% end %>
+    <div class="bookshelf-content">
+      <div class="bookshelf-header">
+        <h2 class="bookshelf-title"><%= link_to bookshelf.name, bookshelf_path(bookshelf), class: "btn btn--link" %></h2>
+        <p class="bookshelf-creator">Created by: <%= link_to bookshelf.creator.nickname, user_path(bookshelf.creator), class: "btn btn--link" %></p>
+      </div>
+    <% if local_assigns[:index] %>
+      <div class="bookshelf-tags">
+        <% if bookshelf.top_tags.any? %>
+          <div class="tag-list">
+            <% bookshelf.top_tags.each do |tag| %>
+              <span class="tag"><%= tag.name %></span>
+            <% end %>
+          </div>
+        <% else %>
+          <p class="no-tags">No tags yet</p>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+
     <div class="bookshelf-books-container">
       <% bookshelf.bookshelf_contains.includes(:book).each do |contain| %>
         <% book = contain.book %>
         <% next unless book %>
-        <div class="book-card">    
-          <%= book_image book %>
-          <%= book_status_indicators(bookshelf.creator, book) %>
-          <div class="btn btn--link book-title">
-              <span><%= book.title %></span>
-          </div>
-          <div class="bookshelf-actions" style="display: flex; gap: 10px;">
-            <% if current_user_owns?(bookshelf) %>
-              <%= button_to 'Remove from Bookshelf', bookshelf_contain_path(contain), method: :delete, class: 'btn btn--delete', style: 'padding: 5px 10px' %>
-            <% end %>
-          </div>
-          <!-- Hover Info Card -->
-          <div class="book-hover-info">
-            <h3><%= book.title %></h3>
-            <p class="book-author"><strong>by</strong> <%= book.author.name %></p>
-            <div class="bookshelf-meta">
-              <span class="bookshelf-added-on">
-                <strong>added on</strong> <%= contain.created_at.strftime('%d %B %Y') %>
-              </span>
-            </div>
-          </div>
-        </div>
+        
+        <%= render 'books/book_card', 
+          book: book,
+          current_user: bookshelf.creator,
+          show_hover_info: true,
+          created_at: contain.created_at.strftime('%d %B %Y') %>
       <% end %>
     </div>
+
+    <% if current_user_owns?(@bookshelf) %>
+      <div class='bookshelf-actions-container'>
+        <%= link_to "Edit this bookshelf", edit_bookshelf_path(@bookshelf), class: 'btn btn--secondary btn--md' %> 
+        <%= button_to 'Delete this Bookshelf', bookshelf_path(name: @bookshelf.name, creator: @bookshelf.creator), method: :delete, class: 'btn btn--negative btn--md'%>
+      </div>
+    <% end %>
   </div>
 </div>
-
-<style>
-  .book-hover-info {
-    display: none;
-    position: absolute;
-    left: calc(100% + 10px);
-    top: 0;
-    width: 300px;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-
-  .book-card:hover .book-hover-info {
-    display: block;
-  }
-
-  .book-hover-info h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.1rem;
-    color: #333;
-  }
-
-  .book-author {
-    color: #666;
-    font-size: 0.9rem;
-    margin: 0 0 10px 0;
-  }
-
-  .book-description {
-    font-size: 0.85rem;
-    line-height: 1.4;
-    color: #444;
-    margin: 0 0 10px 0;
-  }
-
-  .book-meta {
-    display: flex;
-    gap: 10px;
-    font-size: 0.8rem;
-    color: #666;
-  }
-</style>

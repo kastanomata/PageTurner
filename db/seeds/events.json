@@ -1,10 +1,30 @@
-[
+  [
   {
-    "_number": 1,
-    "title": "The Big Tolkien Meetup",
-    "text": "Lorem ipsum",
+    "title": "The Big Tolkien LARP Meetup",
+    "description": "Elves, Dwarves, Men and Hobbits welcome. NO ORCS!",
     "book_isbn": null,
-    "organizer_type": "club",
+    "organizer_type": "Club",
     "organizer_email": "antonioturco@example.com"
+  },
+  {
+    "title": "A Song of Ice and Fire Discussion",
+    "description": "Monthly book discussion for our current read - A Dance with Dragons",
+    "book_isbn": "9780553801477",
+    "organizer_type": "Club",
+    "organizer_email": "giovanniblu@example.com"
+  },
+  {
+    "title": "Banned Books Reading Circle",
+    "description": "This month we'll be discussing '1984' by George Orwell",
+    "book_isbn": "9780451524935",
+    "organizer_type": "Club",
+    "organizer_email": "alessandrotemperini@example.com"
+  },
+  {
+    "title": "YA Fantasy Book Swap",
+    "description": "Bring your favorite YA fantasy books to swap with other members",
+    "book_isbn": null,
+    "organizer_type": "Club",
+    "organizer_email": "claudiamezi@example.com"
   }
 ]

@@ -1,39 +1,114 @@
-.club-header {
-    /* FIXME */
+.club-show-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* sinistra 25%, centro 50%, destra 25% */
+    gap: 20px; /* spazio tra le colonne */
+    height: 100vh; /* altezza intera finestra (opzionale) */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.club-info {
+/* _club_card.html.erb */
+.clubs-cards-container {
+    margin-right: 10px;
+    width: 100%
+}
+
+.club-card {
     border: 1px solid #ccc;
     border-radius: 8px;
+    flex: 1;
     padding: 16px;
+    max-width: 350px;
     margin: 16px 0;
     background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px #1f2937;
+}
+
+.club-polls{
+    grid-column: 1;
+    grid-row: 3;
+    /* background-color: #e0e0ff; */
+}
+
+.club-body {
+    grid-column: 2 / 3;
+    grid-row: 1 / 4;
+    /* display:flex;
+    flex-direction: column; */
 }
 
 .club-body {
     display:flex;
     flex-direction: column;
-}
-
-.club-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    /* gap: 10px; */
 }
 
 .club-posts {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
-/* _club_card.html.erb */
+.club-right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background-color: #fdfdfd;
+  }
 
-.club-card {
-    border: 1px solid #ccc;
+  .book-suggestions {
+    padding: 1rem;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 16px;
-    margin: 16px 0;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+  }
+  
+  .book-suggestions h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .book-suggestions ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .book-suggestions li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .book-suggestions form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .club-interactive-section {
+    padding: 1rem;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .club-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .reading-goal {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: #f5f5f5;
+    border-left: 4px solid #007acc;
+    border-radius: 4px;
+  }
+  
+  .reading-goal h4 {
+    margin: 0 0 0.4rem;
+    font-size: 1.1rem;
+  }

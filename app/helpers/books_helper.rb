@@ -2,6 +2,7 @@ module BooksHelper
   def add_book_to_bookshelf_buttons(book)
     read_button = read_bookshelf_button(book)
     liked_button = liked_bookshelf_button(book)
+    # TODO add "add to other bookshelf" button
     return unless read_button || liked_button
 
     content_tag :div, class: "book-actions" do
@@ -82,9 +83,9 @@ module BooksHelper
     return unless bookshelf
 
     if bookshelf.books.include?(book)
-      remove_button(bookshelf, book, "Read", "danger")
+      remove_button(bookshelf, book, "Read", "btn btn--remove btn--sm")
     else
-      add_button(bookshelf, book, "Read", "success")
+      add_button(bookshelf, book, "Read", "btn btn--secondary btn--sm")
     end
   end
 
@@ -93,9 +94,9 @@ module BooksHelper
     return unless bookshelf
 
     if bookshelf.books.include?(book)
-      remove_button(bookshelf, book, "Liked", "danger")
+      remove_button(bookshelf, book, "Liked", "btn btn--remove btn--sm")
     else
-      add_button(bookshelf, book, "Liked", "primary")
+      add_button(bookshelf, book, "Liked", "btn btn--secondary btn--sm")
     end
   end
 
@@ -103,7 +104,7 @@ module BooksHelper
     button_to "Add to #{type}",
               add_book_bookshelf_path(bookshelf, book_id: book.id),
               method: :post,
-              class: "btn btn-outline-#{style}",
+              class: style,
               data: { confirm: "Add '#{book.title}' to your #{type} books?" }
   end
 
@@ -111,7 +112,7 @@ module BooksHelper
     button_to "Remove from #{type}",
               remove_book_bookshelf_path(bookshelf, book_id: book.id),
               method: :delete,
-              class: "btn btn-#{style}",
+              class: style,
               data: { confirm: "Remove '#{book.title}' from your #{type} books?" }
   end
 end

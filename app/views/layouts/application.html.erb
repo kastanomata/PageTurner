@@ -22,11 +22,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  
-  <body>
   <!--DO NOT REMOVE: This avoids janky behaviour of browser when stylesheets are not loaded-->
   <script>0</script>
   <!--DO NOT REMOVE-->
+  
+  <body class="<%= 'books-index' if current_page?(books_path) %> <%= 'bookshelves-index' if current_page?(bookshelves_path) %> ">
   <% unless controller.controller_name == 'errors' %>
     <%= render "layouts/navbar" %>
   <% end %>

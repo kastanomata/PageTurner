@@ -1,15 +1,31 @@
 
-
 <% content_for :title, "Bookshelves" %>
+<style>
+  body.bookshelves-index {
+    background-image: url(<%= asset_path('bookshelves_background.jpg') %>);
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed; 
+    min-height: 100vh;
+    margin: 0; 
+  }
+  h1 {
+    background-color: #ffffff;
+    font-size: 4rem;
+    margin-left: 30rem;
+    margin-right: 30rem;
+    color: #1f2937;
+    border-radius: 4px;
+    text-align: center;
+  }
+</style>
+<h1> Bookshelves</h1>
 
-<h1>Bookshelves</h1>
-
-<div id="bookshelves">
+<div class="bookshelf-index-container">
   <% @bookshelves.each do |bookshelf| %>
-    <% if not bookshelf.special %> 
-          <%= render bookshelf %>
+    <% unless bookshelf.special? %>
+      <%= render bookshelf, index: true %>
     <% end %>      
   <% end %>
 </div>
-
-<%= link_to "New bookshelf", new_bookshelf_path %>

@@ -1,0 +1,78 @@
+/* Centrare il titolo orizzontalmente */
+.rg--form h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin: 0;
+}
+
+/* Stile generale per il modulo */
+.rg--form {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Stile per i campi di input */
+.rg--field {
+  margin-bottom: 1.5rem;
+}
+
+.rg--field label {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.rg--field input,
+.rg--field select {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.rg--field input:focus,
+.rg--field select:focus {
+  border-color: #5d9b9b;
+  outline: none;
+}
+
+/* Stile per il pulsante di submit */
+.rg--actions {
+  text-align: center;
+}
+
+.rg--actions input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rg--actions input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.rg--actions input[type="submit"]:active {
+  background-color: #388e3c;
+}
+
+/* Sezione per eventuali messaggi di errore */
+.rg--field .error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}

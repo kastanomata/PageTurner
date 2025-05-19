@@ -4,11 +4,14 @@
     flex-direction: column;
     align-items: center;
     align-self: center;
-    width: 750px;
-    height: 500px;
+    width: 100%; 
+    min-width: 700px;
+    max-width: 750px; 
+    aspect-ratio: 3/2; 
     background-color: white;
     border-radius: 16px;
     margin-bottom: 2rem;
+    box-shadow: 2px 2px 12px #1f2937;
   }
   
   /* Cartolina */
@@ -19,7 +22,7 @@
     height: 100%; 
     background-color: white;
     border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 12px #1f2937;
     overflow: hidden;
     transition: height 0.3s ease;
     align-items: stretch;
@@ -50,11 +53,21 @@
     flex-direction: column;
   }
   
-  .post-header {
+  .post-header.post-header--postcard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Use 'flex-start' instead of 'left' */
+    margin: 0;
+    padding: 0;
+    gap: 0.5rem; /* Add some space between elements */
+  }
+
+  .post-header--postcard h2 {
     font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: 10px;
-    text-align: center;
+    margin: 0 0;
+    margin-bottom: -1rem;
+    padding-bottom: 0;
   }
   
   .postcard-form-container {
