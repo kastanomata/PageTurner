@@ -1,4 +1,11 @@
 module ApplicationHelper
+  def body_class
+    classes = []
+    classes << "#{controller_name}-#{action_name}"  # e.g. "books-index"
+    # classes << "#{controller_name}-controller"      # e.g. "books-controller"
+    classes.join(" ")
+  end
+
   def user_navbar_content
     if authenticated?
       content_tag(:div, class: "navbar-dropdown") do

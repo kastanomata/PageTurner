@@ -1,17 +1,17 @@
+OWNER_ASSOCIATIONS = {
+  Post => :author,
+  Bookshelf => :creator,
+  Club => :curator,
+  Comment => :user,
+  User => :itself,
+  Membership => :follower,
+  Like => :user,
+  Relationship => :follower,
+  Poll => :curator,
+  Event => :organizer,
+  Participation => :user
+}.freeze
 module OwnershipUtility
-  OWNER_ASSOCIATIONS = {
-    Post => :author,
-    Bookshelf => :creator,
-    Club => :curator,
-    Comment => :user,
-    User => :itself,
-    Membership => :follower,
-    Like => :user,
-    Relationship => :follower,
-    Poll => :curator,
-    Event => :organizer
-  }.freeze
-
   def current_user_owns?(content)
     return false unless Current.user && content
 

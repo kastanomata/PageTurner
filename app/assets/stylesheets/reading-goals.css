@@ -76,3 +76,32 @@
   font-size: 0.9rem;
   margin-top: 0.5rem;
 }
+
+/* Reading Goal Card Styles */
+.current-goal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reading-goal-content {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.reading-book-cover {
+  width: 60px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.reading-goal-details {
+  flex: 1;
+}
+
+.reading-goal-details p {
+  margin: 0.3rem 0;
+}

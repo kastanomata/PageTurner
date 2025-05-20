@@ -5,6 +5,8 @@
       <p> Event Organizer: <%= link_to "#{event.organizer.nickname}", user_path(event.organizer), class: "btn btn--link" %>
     </div>
 
+    <%= render_event_participation_widget @event %>
+
     <div class="event-details">
       
       <p class="event-time">
