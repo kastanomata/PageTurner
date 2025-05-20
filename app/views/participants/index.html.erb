@@ -35,12 +35,6 @@
           </div>
           <% if @event.organizer == Current.user || Current.user.admin? %>
             <div class="user-actions">
-              <% if participation.registered? %>
-                <%= button_to "Mark Attended", 
-                      mark_attendance_event_path(@event, user_id: participation.user.id), 
-                      method: :post, 
-                      class: "btn btn--positive btn--sm" %>
-              <% end %>
               <%= button_to "Remove", 
                     participation_path(participation), 
                     method: :delete, 
