@@ -79,7 +79,10 @@
       <% if Current.user == @user %>
         <%= render "shared/postcard_form" %>
       <% end %>
-      <%= render_user_posts @user %>
+      <div>
+        <%= render_user_posts @user %>
+      </div>
+  
     </div>
 
   </div>
