@@ -83,7 +83,7 @@ module Authentication
       Current.session ||= find_session_by_cookie
       return false unless Current.session
 
-      Current.user = Current.session.user
+      # Current.user = Current.session.user
       return false unless Current.user
 
       if level == "admin"

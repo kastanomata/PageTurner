@@ -1,0 +1,20 @@
+<div class="current-goal <%= 'no-goal' unless current_reading_goal.present? %>">
+  <h3>Current Reading Goal</h3>
+  
+  <% if current_reading_goal.present? %>
+    <div class="reading-goal-content">
+      <% unless current_reading_goal.book.cover.blank? %>
+        <%= image_tag current_reading_goal.book.cover, class: "reading-book-cover" %>
+      <% else %>
+        <%= image_tag "bookart_not_found.jpg", class: "reading-book-cover" %>
+      <% end %>
+      
+      <div class="reading-goal-details">
+        <p><strong>Book:</strong> <%= current_reading_goal.book.title %></p>
+        <p><strong>from</strong> <%= current_reading_goal.start_date.to_date.to_s %> <strong>to</strong> <%= current_reading_goal.end_date.to_date.to_s %> </p>
+      </div>
+    </div>
+  <% else %>
+    <p><em>No current reading goal...</em></p>
+  <% end %>
+</div>

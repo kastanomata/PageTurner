@@ -1,114 +1,247 @@
-.club-show-container{
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr; /* sinistra 25%, centro 50%, destra 25% */
-    gap: 20px; /* spazio tra le colonne */
-    height: 100vh; /* altezza intera finestra (opzionale) */
-    padding: 20px;
-    box-sizing: border-box;
+/* clubs.css */
+
+/* Club Index Page Styles */
+.club-index-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2.5fr;
+  column-gap: 2rem;
+  margin: 0 2rem;
+  align-items: stretch; /* Make all items stretch to same height */
 }
 
-/* _club_card.html.erb */
+.club-index-element {
+  display: contents;
+}
+
+.club-card-container {
+  grid-column: 1;
+  display: flex; /* Enable flex for height control */
+}
+
+.reading-goal-container {
+  grid-column: 2;
+  display: flex; /* Enable flex for height control */
+}
+
+.event-container {
+  grid-column: 3;
+  display: flex; /* Enable flex for height control */
+}
+
+/* Set consistent height for all cards */
+.club-card,
+.upcoming-event .event-card,
+.current-goal,
+.current-goal.no-goal,
+.upcoming-event.no-event {
+  border: 2px solid #1f2937;
+  padding: 1rem;
+  margin: 16px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px #1f2937;
+  width: 100%;
+
+  border-radius: 8px;
+  min-height: 180px; /* Match club-card height */
+  box-sizing: border-box; /* Include padding in height calculation */
+}
+
+.upcoming-event {
+  height: 100%;  
+}
+
+.upcoming-event.no-event {
+  max-width: 60%;
+  max-height: 150px;  
+}
+
+/* Club Card specific styles */
+.club-card {
+  max-width: 350px; /* Keep original max-width */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Content alignment for all cards */
+.current-goal h3,
+.upcoming-event h3,
+.club-card h3 {
+  color: #1f2937;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .club-index-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .club-card-container,
+  .reading-goal-container,
+  .event-container {
+    grid-column: 1;
+  }
+
+  .club-card,
+  .upcoming-event .event-card,
+  .current-goal,
+  .current-goal.no-goal,
+  .upcoming-event.no-event {
+    min-height: auto; /* Allow natural height on mobile */
+    height: auto;
+  }
+  
+  .upcoming-event {
+    border-left: none;
+    border-top: 2px solid #1f2937;
+    padding-left: 0;
+    padding-top: 20px;
+  }
+}
+
+/* Club Show Page Styles */
+.club-show-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 .clubs-cards-container {
   margin-right: 10px;
-  width: 100%
+  width: 100%;
 }
 
 .club-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    flex: 1;
-    padding: 16px;
-    max-width: 350px;
-    margin: 16px 0;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px #1f2937;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  flex: 1;
+  padding: 16px;
+  max-width: 350px;
+  margin: 16px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px #1f2937;
 }
 
-.club-polls{
-    grid-column: 1;
-    grid-row: 3;
-    /* background-color: #e0e0ff; */
-}
-
-.club-body {
-    grid-column: 2 / 3;
-    grid-row: 1 / 4;
-    /* display:flex;
-    flex-direction: column; */
+.club-polls {
+  grid-column: 1;
+  grid-row: 3;
 }
 
 .club-body {
-    display:flex;
-    flex-direction: column;
-    /* gap: 10px; */
+  grid-column: 2 / 3;
+  grid-row: 1 / 4;
+  display: flex;
+  flex-direction: column;
 }
 
 .club-posts {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .club-right-col {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 1.5rem;
-    background-color: #fdfdfd;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: #fdfdfd;
+}
 
-  .book-suggestions {
-    padding: 1rem;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+.book-suggestions {
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.book-suggestions h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.book-suggestions ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.book-suggestions li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.book-suggestions form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.club-interactive-section {
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.club-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.reading-goal {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background-color: #f5f5f5;
+  border-left: 4px solid #007acc;
+  border-radius: 4px;
+}
+
+.reading-goal h4 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* Index Page Responsive */
+  .club-index-container {
+    grid-template-columns: 1fr;
   }
   
-  .book-suggestions h2 {
-    font-size: 1.4rem;
-    margin-bottom: 0.75rem;
+  .club-card-container,
+  .reading-goal-container,
+  .event-container {
+    grid-column: 1;
   }
   
-  .book-suggestions ul {
-    list-style: none;
+  .upcoming-event {
+    border-left: none;
+    border-top: 2px solid #1f2937;
     padding-left: 0;
-    margin-bottom: 1rem;
-  }
-  
-  .book-suggestions li {
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
-  }
-  
-  .book-suggestions form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    padding-top: 20px;
   }
 
-  .club-interactive-section {
-    padding: 1rem;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-  }
-  
-  .club-content h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.75rem;
+  /* Show Page Responsive */
+  .club-show-container {
+    grid-template-columns: 1fr;
+    height: auto;
   }
 
-  .reading-goal {
-    margin-bottom: 1rem;
-    padding: 0.75rem;
-    background-color: #f5f5f5;
-    border-left: 4px solid #007acc;
-    border-radius: 4px;
+  .club-body {
+    grid-column: 1;
+    grid-row: auto;
   }
-  
-  .reading-goal h4 {
-    margin: 0 0 0.4rem;
-    font-size: 1.1rem;
+
+  .club-polls {
+    grid-column: 1;
+    grid-row: auto;
   }
+}

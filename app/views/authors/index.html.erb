@@ -1,6 +1,26 @@
 <% content_for :title, "Authors" %>
+<style>
+  body.authors-index {
+    background-image: url(<%= asset_path('index_backgrounds/authors_background.jpg') %>);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; 
+    min-height: 100vh;
+  }
 
-<h1 style="text-align:center">Authors</h1>
+  h1 {
+    background-color: #ffffff;
+    font-size: 4rem;
+    margin-left: 35rem;
+    margin-right: 35rem;
+    color: #1f2937;
+    border-radius: 4px;
+    text-align: center;
+  }
+</style>
+
+<h1>Authors</h1>
 
 <div id="authors" class="authors-grid">
   <% @authors.each do |author| %>

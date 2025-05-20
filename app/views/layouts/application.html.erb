@@ -26,7 +26,7 @@
   <script>0</script>
   <!--DO NOT REMOVE-->
   
-  <body class="<%= 'books-index' if current_page?(books_path) %> <%= 'bookshelves-index' if current_page?(bookshelves_path) %> ">
+  <body class="<%= body_class %>">
   <% unless controller.controller_name == 'errors' %>
     <%= render "layouts/navbar" %>
   <% end %>

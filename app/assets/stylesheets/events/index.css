@@ -1,3 +1,4 @@
+/* Event Index Container */
 .event-cards-container {
   display: flex;
   flex-direction: column;
@@ -16,7 +17,6 @@
   transition: all 0.2s ease;
   max-width: 750px;
   margin: 2rem;
-
 }
 
 .event-cards-container .event-card {
@@ -117,7 +117,7 @@
   border-radius: 4px;
 }
 
-/* Tooltip (matches post styling) */
+/* Tooltip */
 .cover a[title] {
   position: relative;
   display: inline-block;

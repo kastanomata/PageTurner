@@ -1,4 +1,12 @@
 include InitializeUtility
+BACKGROUND_THEMES = {
+  "classic" => "Classic",
+  "fantasy" => "Fantasy",
+  "sci-fi" => "Sci-Fi",
+  "mystery" => "Mystery",
+  "default" => "Default Theme"
+}.freeze
+
 class User < ApplicationRecord
   belongs_to :curator_icon, optional: true
   has_one_attached :avatar
@@ -41,11 +49,12 @@ class User < ApplicationRecord
   has_many :moderated_bans, class_name: "Ban", foreign_key: "moderator_id"
 
   validates :email_address, presence: true,
-            format: { with: URI::MailTo::EMAIL_REGEXP },
-            uniqueness: { case_sensitive: false }
+  format: { with: URI::MailTo::EMAIL_REGEXP },
+  uniqueness: { case_sensitive: false }
   validates :password, on: [ :registration, :password_change ],
-            presence: true,
-            length: { minimum: 8, maximum: 72 }
+  presence: true,
+  length: { minimum: 8, maximum: 72 }
+  validates :background_theme, inclusion: { in: BACKGROUND_THEMES.keys }
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
@@ -54,15 +63,8 @@ class User < ApplicationRecord
   foreign_key: "book_id",
   optional: true
 
-  BACKGROUND_THEMES = {
-    "classic" => "Classic",
-    "fantasy" => "Fantasy",
-    "sci-fi" => "Sci-Fi",
-    "mystery" => "Mystery",
-    "default" => "Default Theme"
-  }.freeze
-
-  validates :background_theme, inclusion: { in: BACKGROUND_THEMES.keys }
+  alias_method :author_organizer, :author_account
+  alias_method :club_organizer, :club
 
   ## OAUTH ##
   def self.create_from_oauth(auth)
@@ -123,9 +125,6 @@ class User < ApplicationRecord
   def both_curator_and_author?
     is_curator? && is_author?
   end
-
-  alias_method :author_organizer, :author_account
-  alias_method :club_organizer, :club
 
   def curator_club
     Club.find_by(curator_id: id)

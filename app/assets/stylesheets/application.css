@@ -7,8 +7,8 @@ body {
   font-family: Garamond, serif;
   margin: 0;
   padding: 0;
-  padding-top: 80px; /* compensate for navbar */
-  padding-bottom: 60px; /* compensate for footer */
+  padding-top: 80px; 
+  padding-bottom: 60px; 
   background-color: #f4f4f9;
   height: 100%;
   overflow-y: auto; 
