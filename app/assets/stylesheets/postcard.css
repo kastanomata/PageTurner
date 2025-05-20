@@ -9,10 +9,9 @@
     max-width: 750px; 
     aspect-ratio: 3/2; 
     background-color: white;
-    border-radius: 16px;
+    gap: 10px;   
     margin-bottom: 2rem;
-    box-shadow: 2px 2px 12px #1f2937;
-  }
+}
   
   /* Cartolina */
   .postcard {
