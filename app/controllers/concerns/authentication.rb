@@ -83,7 +83,7 @@ module Authentication
       Current.session ||= find_session_by_cookie
       return false unless Current.session
 
-      Current.user = Current.session.user
+      # Current.user = Current.session.user
       return false unless Current.user
 
       if level == "admin"
@@ -114,7 +114,7 @@ module Authentication
     def start_new_session_for(user, source: nil)
       user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip, source:).tap do |session|
         Current.session = session
-        Current.user = user
+        # Current.user = user
         cookies.signed.permanent[:session_id] = { value: session.id, httponly: true, same_site: :lax }
       end
     end
@@ -122,7 +122,7 @@ module Authentication
     def terminate_session
       Session.delete(Current.session.id) if Current.session
       Current.session = nil
-      Current.user = nil
+      # Current.user = nil
       cookies.delete(:session_id)
     end
 end
