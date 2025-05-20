@@ -49,3 +49,69 @@
 .event-form .submit-btn:hover {
   background-color: #111827;
 }
+
+.organizer-type-select {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.radio-option input[type="radio"] {
+  margin: 0;
+}
+
+.form-check {
+  margin-bottom: 0.5rem;
+}
+
+.form-check-input {
+  margin-right: 0.5rem;
+}
+
+.form-check-label {
+  cursor: pointer;
+}
+
+.search-results {
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-top: 0.25rem;
+}
+
+.book-result {
+  padding: 0.5rem;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.book-result:hover {
+  background-color: #f8f9fa;
+}
+
+.error {
+  color: #dc3545;
+  padding: 0.5rem;
+}
+
+.success {
+  color: #28a745;
+  padding: 0.5rem;
+}
+
+.book-cover-preview {
+  max-width: 100px;
+  margin-bottom: 1rem;
+}

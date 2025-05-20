@@ -70,8 +70,7 @@ Rails.application.routes.draw do
   post "clubs/:club_id/polls/:id/vote", to: "votes#create", as: :vote_club_poll
 
   # Books
-  resources :books
-  resources :books, only: [] do
+  resources :books do
     collection do
       get :search
       get :fetch

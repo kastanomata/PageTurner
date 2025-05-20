@@ -58,7 +58,7 @@ class EventsController < ApplicationController
     @event.destroy!
 
     respond_to do |format|
-      format.html { redirect_to events_path, status: :see_other, notice: "Event was successfully destroyed." }
+      format.html { redirect_to root_path, status: :see_other, notice: "Event was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -93,7 +93,7 @@ class EventsController < ApplicationController
     if Current.user.both_curator_and_author?
       params[:organizer_type].constantize.find(params[:organizer_id])
     else
-      Current.user.club || Current.user.author
+      Current.user.club || Current.user.author_account
     end
   end
 
@@ -107,6 +107,7 @@ class EventsController < ApplicationController
     params.require(:event).permit(
       :title,
       :description,
+      :organizer_type,
       :start_time,
       :end_time,
       :book_id

@@ -15,8 +15,6 @@ class Event < ApplicationRecord
   has_many :participations, dependent: :destroy
   has_many :participants, through: :participations, source: :user
 
-  before_destroy :nullify_book_references, if: :book_id?
-
   scope :upcoming, -> { where("start_time > ?", Time.current).order(:start_time) }
   scope :past, -> { where("start_time <= ?", Time.current).order(start_time: :desc) }
   scope :for_club, ->(club) { where(organizer_type: "Club", organizer_id: club.id) }

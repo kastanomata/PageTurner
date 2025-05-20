@@ -1,70 +1,4 @@
-<style>
-  .organizer-type-select {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
 
-  .radio-option {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .radio-option input[type="radio"] {
-    margin: 0;
-  }
-
-  .form-check {
-    margin-bottom: 0.5rem;
-  }
-
-  .form-check-input {
-    margin-right: 0.5rem;
-  }
-
-  .form-check-label {
-    cursor: pointer;
-  }
-
-  .search-results {
-    position: absolute;
-    z-index: 1000;
-    width: 100%;
-    max-height: 300px;
-    overflow-y: auto;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-top: 0.25rem;
-  }
-
-  .book-result {
-    padding: 0.5rem;
-    cursor: pointer;
-    border-bottom: 1px solid #eee;
-  }
-
-  .book-result:hover {
-    background-color: #f8f9fa;
-  }
-
-  .error {
-    color: #dc3545;
-    padding: 0.5rem;
-  }
-
-  .success {
-    color: #28a745;
-    padding: 0.5rem;
-  }
-
-  .book-cover-preview {
-    max-width: 100px;
-    margin-bottom: 1rem;
-  }
-</style>
 
 <%= form_with(model: event) do |f| %>
   <div class="form-container">
@@ -118,14 +52,15 @@
 
     <div class="form-group">
       <%= f.label :book_id, "Associated Book" %>
-      <%= f.hidden_field :book_id %>
+      <%= f.hidden_field :book_id, id: "event_book_id" %> <%# Added explicit ID %>
       
       <div class="isbn-input-container">
         <input type="text" 
-               class="form-control isbn-input" 
-               placeholder="Search by ISBN..."
-               data-search-url="<%= search_books_path %>"
-               data-fetch-url="<%= fetch_books_path %>">
+              class="form-control isbn-input" 
+              placeholder="Search by ISBN..."
+              data-search-url="<%= search_books_path %>"
+              data-fetch-url="<%= fetch_books_path %>"
+              id="isbn-search-input"> <%# Added ID for easier selection %>
         <div class="search-results" id="isbn-search-results"></div>
       </div>
       
@@ -135,6 +70,7 @@
               class: "book-cover-preview",
               data: { fallback: image_path('bookart_not_found.png') } %>
         <div id="book-title-preview"></div>
+        <div id="book-author-preview"></div> <%# Added author preview %>
       </div>
     </div>
 
@@ -146,23 +82,13 @@
 <% end %>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const isbnInput = document.querySelector('.isbn-input');
-  const searchResults = document.getElementById('isbn-search-results');
-  const bookIdInput = document.getElementById('event_book_id');
-  const bookCoverPreview = document.getElementById('book-cover-preview');
-  const bookTitlePreview = document.getElementById('book-title-preview');
-  let controller;
-
-  function debounce(fn, delay) {
-    let timeout;
-    return (...args) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => fn.apply(this, args), delay);
-    };
-  }
-
   function updateBookDetails(book) {
+    // Clear previous values
+    bookIdInput.value = '';
+    bookTitlePreview.textContent = '';
+    document.getElementById('book-author-preview').textContent = '';
+    bookCoverPreview.src = '';
+
     if (book.id) {
       bookIdInput.value = book.id;
     }
@@ -171,8 +97,13 @@ document.addEventListener('DOMContentLoaded', function() {
       bookTitlePreview.textContent = book.title;
     }
     
+    if (book.author) {
+      document.getElementById('book-author-preview').textContent = `by ${book.author}`;
+    }
+    
     if (book.cover_url || book.isbn) {
-      bookCoverPreview.src = book.cover_url || `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`;
+      const coverUrl = book.cover_url || `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`;
+      bookCoverPreview.src = coverUrl;
       bookCoverPreview.onerror = () => {
         bookCoverPreview.src = bookCoverPreview.dataset.fallback;
       };
@@ -193,14 +124,15 @@ document.addEventListener('DOMContentLoaded', function() {
         title: bookData.title,
         isbn: isbn,
         cover_url: bookData.cover?.medium || `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`,
-        author: bookData.authors?.[0]?.name
+        author: bookData.authors?.[0]?.name || 'Unknown Author'
       };
     } catch (error) {
       console.error('Error fetching from OpenLibrary:', error);
-      throw error;
+      return null;
     }
   }
 
+  // Updated search handler
   const searchHandler = debounce(async (query) => {
     controller?.abort();
     controller = new AbortController();
@@ -209,23 +141,33 @@ document.addEventListener('DOMContentLoaded', function() {
       const response = await fetch(`${isbnInput.dataset.searchUrl}?query=${encodeURIComponent(query)}`, {
         signal: controller.signal
       });
+      
+      if (!response.ok) throw new Error('Search failed');
+      
       const books = await response.json();
       
       searchResults.innerHTML = books.map(book => `
         <div class="book-result" 
-             data-isbn="${book.isbn}"
-             data-title="${book.title}"
-             data-id="${book.id}">
-          ${book.title} (ISBN: ${book.isbn})
+            data-isbn="${book.isbn}"
+            data-title="${book.title}"
+            data-id="${book.id}"
+            data-cover="${book.cover_url}">
+          <img src="${book.cover_url || bookCoverPreview.dataset.fallback}" 
+              class="result-cover">
+          <div class="result-info">
+            <div class="result-title">${book.title}</div>
+            <div class="result-isbn">ISBN: ${book.isbn}</div>
+          </div>
         </div>
       `).join('');
     } catch (error) {
       if (error.name !== 'AbortError') {
-        searchResults.innerHTML = `<div class="error">Error searching books</div>`;
+        searchResults.innerHTML = `<div class="error">Error searching books: ${error.message}</div>`;
       }
     }
   }, 300);
 
+  // Updated fetch handler
   const fetchHandler = debounce(async (isbn) => {
     try {
       // First try local database
@@ -239,53 +181,35 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Fall back to OpenLibrary
       const bookData = await fetchFromOpenLibrary(isbn);
+      if (!bookData) {
+        searchResults.innerHTML = `<div class="error">Book not found in any sources</div>`;
+        return;
+      }
+      
       searchResults.innerHTML = `
         <div class="book-result">
-          <div>${bookData.title} by ${bookData.author}</div>
-          <button class="btn btn-secondary create-book-btn"
-                  data-isbn="${bookData.isbn}">
-            Add this book
-          </button>
+          <img src="${bookData.cover_url}" 
+              class="result-cover">
+          <div class="result-info">
+            <div class="result-title">${bookData.title}</div>
+            <div class="result-author">by ${bookData.author}</div>
+            <button class="btn btn-primary create-book-btn"
+                    data-isbn="${bookData.isbn}">
+              Add this book to database
+            </button>
+          </div>
         </div>
       `;
     } catch (error) {
-      searchResults.innerHTML = `<div class="error">Book not found</div>`;
+      searchResults.innerHTML = `<div class="error">Error fetching book details: ${error.message}</div>`;
     }
   }, 500);
 
-  isbnInput.addEventListener('input', (e) => {
-    const query = e.target.value.trim();
-    
-    if (query.length >= 5) {
-      searchHandler(query);
-    }
-    
-    if (query.length === 10 || query.length === 13) {
-      fetchHandler(query);
-    }
-  });
-
-  searchResults.addEventListener('click', (e) => {
-    if (e.target.classList.contains('create-book-btn')) {
-      const isbn = e.target.dataset.isbn;
-      createBook(isbn);
-      return;
-    }
-    
-    const item = e.target.closest('.book-result');
-    if (item) {
-      updateBookDetails({
-        id: item.dataset.id,
-        title: item.dataset.title,
-        isbn: item.dataset.isbn
-      });
-      searchResults.innerHTML = '';
-    }
-  });
-
+  // Updated createBook function
   async function createBook(isbn) {
     try {
       const bookData = await fetchFromOpenLibrary(isbn);
+      if (!bookData) throw new Error('Invalid book data');
       
       const response = await fetch('/books', {
         method: 'POST',
@@ -305,27 +229,17 @@ document.addEventListener('DOMContentLoaded', function() {
         })
       });
       
-      if (response.ok) {
-        const newBook = await response.json();
-        updateBookDetails(newBook);
-        searchResults.innerHTML = `<div class="success">Book added successfully!</div>`;
-      } else {
-        throw new Error('Failed to create book');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to create book');
       }
+      
+      const newBook = await response.json();
+      updateBookDetails(newBook);
+      isbnInput.value = newBook.isbn; // Update input with actual ISBN from database
+      searchResults.innerHTML = `<div class="success">Book added successfully!</div>`;
     } catch (error) {
       searchResults.innerHTML = `<div class="error">Error creating book: ${error.message}</div>`;
     }
   }
-
-  // Initialize with existing book data if editing
-  <% if event.book.present? %>
-    updateBookDetails({
-      id: '<%= event.book.id %>',
-      title: '<%= event.book.title %>',
-      isbn: '<%= event.book.isbn %>',
-      cover_url: '<%= event.book.cover.present? ? url_for(event.book.cover) : nil %>'
-    });
-    isbnInput.value = '<%= event.book.isbn %>';
-  <% end %>
-});
 </script>

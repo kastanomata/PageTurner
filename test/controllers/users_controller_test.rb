@@ -8,7 +8,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should not get index" do
     get users_path
-    assert_response :unauthorized
+    assert_redirected_to new_session_path
   end
 
   test "should get index" do

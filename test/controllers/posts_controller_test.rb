@@ -5,10 +5,23 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @post = posts(:one)
     @club = clubs(:one)
     @user = users(:one)
-    @user3 = users(:three)
+    @admin = users(:three)
   end
 
-  test "should get index" do
+  test "should not get index as Guest" do
+    get posts_path
+    assert_response :unauthorized
+  end
+  test "should not get index as User" do
+    post session_path, params: { email_address: @user.email_address, password: "password" }
+    assert_equal @user.id, session[:user_id]
+    get posts_path
+    assert_response :unauthorized
+  end
+
+  test "should get index as Admin" do
+    post session_path, params: { email_address: @admin.email_address, password: "password" }
+    assert_equal @admin.id, session[:user_id]
     get posts_path
     assert_response :success
   end
@@ -41,30 +54,30 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should report post" do
-    post session_path, params: { email_address: @user3.email_address, password: "password" }
-    assert_equal @user3.id, session[:user_id]
+    post session_path, params: { email_address: @admin.email_address, password: "password" }
+    assert_equal @admin.id, session[:user_id]
     assert_difference("Report.count") do
-      post reports_path, params: { report: { reporter_id: @user3.id, reported_id: @post.id, reported_type: "Post" } }
+      post reports_path, params: { report: { reporter_id: @admin.id, reported_id: @post.id, reported_type: "Post" } }
     end
 
     assert_response :success
   end
 
   test "like post" do
-    post session_path, params: { email_address: @user3.email_address, password: "password" }
-    assert_equal @user3.id, session[:user_id]
+    post session_path, params: { email_address: @admin.email_address, password: "password" }
+    assert_equal @admin.id, session[:user_id]
     assert_difference("Like.count") do
-      post post_likes_path(@post), params: { like: { user_id: @user3.id, post_id: @post.id } }
+      post post_likes_path(@post), params: { like: { user_id: @admin.id, post_id: @post.id } }
     end
 
     assert_redirected_to post_path(@post)
   end
 
   test "comment post" do
-    post session_path, params: { email_address: @user3.email_address, password: "password" }
-    assert_equal @user3.id, session[:user_id]
+    post session_path, params: { email_address: @admin.email_address, password: "password" }
+    assert_equal @admin.id, session[:user_id]
     assert_difference("Comment.count") do
-      post post_comments_path(@post), params: { comment: { author_id: @user3.id, post_id: @post.id, text: "Che mina" } }
+      post post_comments_path(@post), params: { comment: { author_id: @admin.id, post_id: @post.id, text: "Che mina" } }
     end
 
     assert_redirected_to post_path(@post)
