@@ -1,6 +1,6 @@
 class BookshelvesController < ApplicationController
   before_action :set_bookshelf, only: %i[ show edit update destroy ]
-  allow_unauthenticated_access only: %i[index show]
+  allow_unauthenticated_access only: %i[index]
 
   # GET /bookshelves or /bookshelves.json
   def index
