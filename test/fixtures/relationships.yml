@@ -3,7 +3,9 @@
 one:
   follower_id: 1
   followed_id: 2
+  id: 1
 
 two:
   follower_id: 2
   followed_id: 1
+  id: 2

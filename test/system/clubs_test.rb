@@ -28,32 +28,33 @@ class ClubsTest < ApplicationSystemTestCase
     assert_text "Club was successfully created."
   end
 
-  test "suggested books" do
+  test "create suggested books" do
     login_as(@user)
     visit club_path(@club)
 
     dropdown = find("#book_suggestion_book_id")
     within dropdown do
-      find("option", text: "Select a book", exact: true).click
+      find("option", text: "Select a book").click
     end
-    find("option", text: "The Fellowship of the Ring", exact: true).click
+    find("option", text: "The Fellowship of the Ring").click
 
     click_on "Suggest Book"
 
     assert_text "The Fellowship of the Ring"
   end
 
-  test "reading goal" do
+  test "create reading goal" do
     login_as(@user)
     visit club_path(@club)
 
-    click_on "Add New Reading Goal"
+    add_goal_link = find("a", text: "Add New Reading Goal")
+    execute_script("arguments[0].click()", add_goal_link)
 
     dropdown = find("#reading_goal_book_id")
     within dropdown do
-      find("option", text: "Please select", exact: true).click
+      find("option", text: "Please select").click
     end
-    find("option", text: "The Fellowship of the Ring", exact: true).click
+    find("option", text: "The Fellowship of the Ring").click
 
     execute_script <<-JS
       document.querySelector("[name='reading_goal[start_date]']").value = '2025-10-15';
@@ -66,6 +67,33 @@ class ClubsTest < ApplicationSystemTestCase
     execute_script("arguments[0].click()", create_goal_button)
 
     assert_text "Current Reading Goals"
+  end
+
+  test "create poll books" do
+    login_as(@user)
+    visit club_path(@club)
+
+    add_poll_link = find("a", text: "Commit a new Poll")
+    execute_script("arguments[0].click()", add_poll_link)
+
+    dropdown = find("#poll_poll_options_attributes_0_book_id")
+    within dropdown do
+      find("option", text: "Choose a book").click
+    end
+    find("option", text: "The Fellowship of the Ring").click
+
+    book_button = find("#add-book-option")
+    execute_script("arguments[0].click()", book_button)
+
+    execute_script <<-JS
+      document.querySelector("[name='poll[expires_at]']").value = '2025-10-15T15:15';
+      document.querySelector("[name='poll[expires_at]']").dispatchEvent(new Event('change'));
+    JS
+
+    poll_button = find("input[value='Create Poll']")
+    execute_script("arguments[0].click()", poll_button)
+
+    assert_text "Poll created successfully"
   end
 
   # test "should update Club" do

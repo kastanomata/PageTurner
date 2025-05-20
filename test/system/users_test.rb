@@ -24,7 +24,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in "Birthday", with: "22/10/2011"
     click_on "Save Changes"
 
-    assert_text "User was successfully updated"
+    assert_text "User was successfully updated."
   end
 
   test "should update User" do
