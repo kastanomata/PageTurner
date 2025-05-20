@@ -1,13 +1,12 @@
 include InitializeUtility
-BACKGROUND_THEMES = {
-  "classic" => "Classic",
-  "fantasy" => "Fantasy",
-  "sci-fi" => "Sci-Fi",
-  "mystery" => "Mystery",
-  "default" => "Default Theme"
-}.freeze
-
 class User < ApplicationRecord
+  BACKGROUND_THEMES = {
+    "classic" => "Classic",
+    "fantasy" => "Fantasy",
+    "sci-fi" => "Sci-Fi",
+    "mystery" => "Mystery",
+    "default" => "Default Theme"
+  }.freeze
   belongs_to :curator_icon, optional: true
   has_one_attached :avatar
   has_secure_password

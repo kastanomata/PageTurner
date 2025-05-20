@@ -1,8 +1,8 @@
-<% provide(:title, "Event Participants") %>
+<% provide(:title, "#{@event.title} • Participants") %>
 <div class="row">
   <aside class="col-md-4">
     <section class="event_info">
-      <h1><%= @event.title %></h1>
+      <h1>Participants for <%= @event.title %></h1>
       <span><%= link_to "view the event", @event %></span>
       <div class="event-meta">
         <p><%= @event.start_time.strftime("%B %d, %Y at %I:%M %p") %></p>
