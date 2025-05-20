@@ -9,6 +9,7 @@ module Authentication
     before_action :require_ownership, if: :ownership_required?
     helper_method :authenticated?
     helper_method :admin?
+    helper_method :current_user
   end
 
   class_methods do
@@ -18,10 +19,6 @@ module Authentication
 
     def require_admin_access(**options)
       before_action -> { require_authentication("admin") }, **options
-    end
-
-    def current_user
-      Current.user
     end
   end
 
@@ -34,8 +31,15 @@ module Authentication
       resume_session("admin")
     end
 
+    def current_user
+      Current.user
+    end
+
     def require_authentication(level = nil)
-      resume_session(level) || request_authentication(level)
+      return true if resume_session(level)
+
+      request_authentication(level)
+      false
     end
 
     def ownership_required?
@@ -54,37 +58,38 @@ module Authentication
     end
 
     def require_ownership
-      # param-based lookup
       resource ||= find_resource_by_params
-      puts resource, "--> Resource"
-
-      # Handle missing resource
       unless resource
         redirect_to root_path, alert: "Resource not found."
         return
       end
 
-      # Check ownership
-      can_access_resource = current_user_owns?(resource) || Current.user.admin?
-      # debug can_access_resource
-      unless can_access_resource
+      unless current_user_owns?(resource) || Current.user&.admin?
         redirect_to unauthorized_path
       end
     end
 
     def check_ban
       Current.session ||= find_session_by_cookie
-      ban = User.find_by(id: Current.session[:user_id])&.active_ban unless Current.session.nil?
+      return unless Current.session
+
+      ban = Current.session.user&.active_ban
       return unless ban
 
       redirect_to banned_user_path, alert: "Banned: #{ban.reason}. #{ban.expires_at ? "Expires: #{ban.expires_at}" : 'Permanent'}"
     end
 
     def resume_session(level = nil)
+      Current.session ||= find_session_by_cookie
+      return false unless Current.session
+
+      Current.user = Current.session.user
+      return false unless Current.user
+
       if level == "admin"
-        authenticated? and Current.session.user.admin?
+        Current.user.admin?
       else
-        Current.session ||= find_session_by_cookie
+        true
       end
     end
 
@@ -93,11 +98,12 @@ module Authentication
     end
 
     def request_authentication(level)
-      if level&.nil?
-        session[:return_to_after_authenticating] = request.url
-        redirect_to login_path
-      elsif level == "admin"
+      session[:return_to_after_authenticating] = request.url
+
+      if level == "admin"
         render template: "errors/unauthorized", status: :unauthorized
+      else
+        redirect_to login_path
       end
     end
 
@@ -108,13 +114,15 @@ module Authentication
     def start_new_session_for(user, source: nil)
       user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip, source:).tap do |session|
         Current.session = session
+        Current.user = user
         cookies.signed.permanent[:session_id] = { value: session.id, httponly: true, same_site: :lax }
       end
     end
 
     def terminate_session
-      Session.delete(Current.session.id)
+      Session.delete(Current.session.id) if Current.session
       Current.session = nil
+      Current.user = nil
       cookies.delete(:session_id)
     end
 end

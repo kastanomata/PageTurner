@@ -73,7 +73,9 @@
           <% end %>
         <% end %>
       </h2>
-      <%= render "shared/postcard_form" %>
+      <% if Current.user == @user %>
+        <%= render "shared/postcard_form" %>
+      <% end %>
       <%= render_user_posts @user %>
     </div>
 
