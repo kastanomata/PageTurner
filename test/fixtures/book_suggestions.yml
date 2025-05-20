@@ -1,11 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  club: one
-  book: one
-  user: one
+  club: 1
+  book: 1
+  user: 1
 
-two:
-  club: two
-  book: two
-  user: two

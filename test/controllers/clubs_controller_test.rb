@@ -5,6 +5,7 @@ class ClubsControllerTest < ActionDispatch::IntegrationTest
     @club = clubs(:one)
     @other_club = clubs(:two)
     @user = users(:one)
+    @user4 = users(:four)
   end
 
   test "should get index" do
@@ -20,10 +21,10 @@ class ClubsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create club" do
-    post session_path, params: { email_address: @user.email_address, password: "password" }
-    assert_equal @user.id, session[:user_id]
+    post session_path, params: { email_address: @user4.email_address, password: "password" }
+    assert_equal @user4.id, session[:user_id]
     assert_difference("Club.count") do
-      post clubs_path, params: { club: { name: @club.name, description: @club.description, curator_id: @club.curator } }
+      post clubs_path, params: { club: { name: "Martelli", description: "Martelliamo", curator_id: @user4.id } }
     end
 
     assert_redirected_to club_path(Club.last)
@@ -33,6 +34,16 @@ class ClubsControllerTest < ActionDispatch::IntegrationTest
     post session_path, params: { email_address: @user.email_address, password: "password" }
     assert_equal @user.id, session[:user_id]
     get club_path(@club)
+    assert_response :success
+  end
+
+  test "should report club" do
+    post session_path, params: { email_address: @user4.email_address, password: "password" }
+    assert_equal @user4.id, session[:user_id]
+    assert_difference("Report.count") do
+      post reports_path, params: { report: { reporter_id: @user4.id, reported_id: @club.id, reported_type: "Club" } }
+    end
+
     assert_response :success
   end
 
@@ -46,7 +57,7 @@ class ClubsControllerTest < ActionDispatch::IntegrationTest
   test "should update club" do
     post session_path, params: { email_address: @user.email_address, password: "password" }
     assert_equal @user.id, session[:user_id]
-    patch club_path(@club), params: { club: { name: "Letsgooo", description: "Namoooo", curator_id: @club.curator } }
+    patch club_path(@club), params: { club: { name: "Letsgooo", description: "Namoooo" } }
     assert_redirected_to club_path(@club)
   end
 

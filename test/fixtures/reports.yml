@@ -9,5 +9,5 @@ one:
 two:
   reporter_id: 2
   reported_id: 1
-  reported_type: Club
+  reported_type: "Club"
   id: 2

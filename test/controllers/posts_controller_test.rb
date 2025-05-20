@@ -3,8 +3,9 @@ require "test_helper"
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @post = posts(:one)
-    @other_post = posts(:two)
+    @club = clubs(:one)
     @user = users(:one)
+    @user3 = users(:three)
   end
 
   test "should get index" do
@@ -27,6 +28,58 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to post_path(Post.last)
+  end
+
+  test "should create post new book" do
+    post session_path, params: { email_address: @user.email_address, password: "password" }
+    assert_equal @user.id, session[:user_id]
+    assert_difference("Post.count") do
+      post posts_path, params: { post: { isbn: "9788879835886", text: "Che mina", title: "Daje Roma" } }
+    end
+
+    assert_redirected_to post_path(Post.last)
+  end
+
+  test "should report post" do
+    post session_path, params: { email_address: @user3.email_address, password: "password" }
+    assert_equal @user3.id, session[:user_id]
+    assert_difference("Report.count") do
+      post reports_path, params: { report: { reporter_id: @user3.id, reported_id: @post.id, reported_type: "Post" } }
+    end
+
+    assert_response :success
+  end
+
+  test "like post" do
+    post session_path, params: { email_address: @user3.email_address, password: "password" }
+    assert_equal @user3.id, session[:user_id]
+    assert_difference("Like.count") do
+      post post_likes_path(@post), params: { like: { user_id: @user3.id, post_id: @post.id } }
+    end
+
+    assert_redirected_to post_path(@post)
+  end
+
+  test "comment post" do
+    post session_path, params: { email_address: @user3.email_address, password: "password" }
+    assert_equal @user3.id, session[:user_id]
+    assert_difference("Comment.count") do
+      post post_comments_path(@post), params: { comment: { author_id: @user3.id, post_id: @post.id, text: "Che mina" } }
+    end
+
+    assert_redirected_to post_path(@post)
+  end
+
+  test "remove post from club" do
+    post session_path, params: { email_address: @user.email_address, password: "password" }
+    assert_equal @user.id, session[:user_id]
+    assert_no_difference("Post.count") do
+      delete remove_post_club_path(@post.club_id), params: { post_id: @post.id }
+    end
+
+    @post.reload
+    assert_nil @post.club_id, "Post should no longer be associated with a club"
+    assert_redirected_to club_path(@club)
   end
 
   test "should show post" do
