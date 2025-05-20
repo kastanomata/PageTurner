@@ -131,19 +131,16 @@ class User < ApplicationRecord
   end
 
   def attending?(event)
-    participations.where(event: event, status: [ "registered", "attended" ]).exists?
+    participations.where(event: event).exists?
   end
 
   def attend(event)
-    participations.create(event: event, registered_at: Time.current)
+    participations.create(event: event)
   end
 
   def cancel_attendance(event)
-    participations.find_by(event: event)&.update(status: "cancelled")
-  end
-
-  def mark_attended(event)
-    participations.find_by(event: event)&.update(status: "attended", attended_at: Time.current)
+    participation = participations.find_by(event: event)
+    participation&.destroy
   end
 
   ## USER'S SPECIAL BOOKSHELVES ##

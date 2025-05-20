@@ -32,9 +32,6 @@ class Event < ApplicationRecord
     end
   }
 
-  scope :attended_by, ->(user) { joins(:participations).where(participations: { user_id: user.id, status: "attended" }) }
-  scope :registered_by, ->(user) { joins(:participations).where(participations: { user_id: user.id, status: "registered" }) }
-
   def organizer_object
     case organizer_type
     when "Club"
@@ -56,10 +53,6 @@ class Event < ApplicationRecord
       org = nil
     end
     org
-  end
-
-  def participant_count
-    participations.where(status: [ "registered", "attended" ]).count
   end
 
   def attended_count

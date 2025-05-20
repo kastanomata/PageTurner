@@ -1,0 +1,9 @@
+<% unless event.organizer_id == Current.user&.id %>
+  <div style="align-items: center">
+    <% if Current.user&.attending?(event) %>
+      <%= render 'participations/leave', event: event %>
+    <% else %>
+      <%= render 'participations/participate', event: event %>
+    <% end %>
+  </div>
+<% end %>

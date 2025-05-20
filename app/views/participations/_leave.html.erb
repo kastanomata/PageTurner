@@ -1,0 +1,4 @@
+<%= form_for([event, Current.user.participations.find_by(event_id: event.id)], 
+             html: { method: :delete }, remote: true) do |f| %>
+  <%= f.submit "Leave Event", class: "btn btn--negative btn--sm" %>
+<% end %>

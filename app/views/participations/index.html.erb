@@ -1,0 +1,37 @@
+<% provide(:title, "Event Participants") %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="event_info">
+      <h1><%= @event.title %></h1>
+      <span><%= link_to "view the event", @event %></span>
+      <div class="event-meta">
+        <p><%= @event.start_time.strftime("%B %d, %Y at %I:%M %p") %></p>
+        <p><%= @event.organizer_object.name %></p>
+        <p><%= pluralize(@event.participations.count, 'participant') %></p>
+      </div>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h3>Participants</h3>
+    <% if @participations.any? %>
+      <% @participations.each do |participation| %>
+        <div class="user-card">
+          <div class="user-info">
+            <%= link_to participation.user.nickname, user_path(participation.user) %>
+          </div>
+          <% if @event.organizer == Current.user || Current.user.admin? %>
+            <div class="user-actions">
+              <%= button_to "Remove", 
+                    participation_path(participation), 
+                    method: :delete, 
+                    class: "btn btn--negative btn--sm",
+                    form: { data: { turbo_confirm: "Are you sure?" } } %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No participants yet.</p>
+    <% end %>
+  </div>
+</div>
