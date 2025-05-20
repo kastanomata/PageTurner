@@ -15,7 +15,13 @@
   box-shadow: 2px 2px 12px #1f2937;
   transition: all 0.2s ease;
   max-width: 750px;
-  margin-bottom: 20px;
+  margin: 2rem;
+
+}
+
+.event-cards-container .event-card {
+  margin: 0rem;
+  margin-bottom: 1rem;
 }
 
 .event-card:hover {

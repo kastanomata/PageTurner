@@ -1,10 +1,48 @@
-<p style="color: green"><%= notice %></p>
+<style>
+.event-show-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  margin: 1rem;
+  gap: 1rem;
+}
 
-<%= render @event %>
+.event-actions-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin: 1rem;
+}
+</style>
+<div class="event-show-container">
+  <%= render @event %>
+  <% if @event.organizer_object.is_a?(Club) %>
+    <%= render 'clubs/club_card', club: @event.organizer_object %>
+  <% elsif @event.organizer_object.is_a?(Author) %>
+  <%= render 'authors/author_card', author: @event.organizer_object %>
+  <% end %>
+</div>
 
-<div>
-  <%= link_to "Edit this event", edit_event_path(@event) %> |
-  <%= link_to "Back to events", events_path %>
+<% if Current.user %>
+  <% if Current.user.attending?(@event) %>
+    <%= button_to "Cancel Registration", cancel_registration_event_path(@event), method: :post, class: "btn btn-danger" %>
+  <% else %>
+    <%= button_to "Register for Event", register_event_path(@event), method: :post, class: "btn btn-primary" %>
+  <% end %>
+<% else %>
+  <%= link_to "Sign in to register", new_session_path, class: "btn btn-primary" %>
+<% end %>
 
-  <%= button_to "Destroy this event", @event, method: :delete %>
+<p><%= @event.participant_count %> attendees</p>
+
+<div class="event-actions-container">
+  <% if Current&.user == @event.organizer %>
+  <div class="event-action">
+    <%= link_to "Edit this event", edit_event_path(@event), class: "btn btn--secondary btn--md" %> 
+  </div>
+  <% end %>
+  <% if Current&.user == @event.organizer or Current.user&.admin? %>
+  <div class="event-action">
+    <%= button_to "Destroy this event", @event, method: :delete, class: "btn btn--negative btn--md" %>
+  </div>
+  <% end %>
 </div>

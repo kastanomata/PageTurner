@@ -38,11 +38,5 @@
       <% end %>
     </div>
 
-    <% if Current.user && Current.user == event.organizer %>
-      <div class="event-actions">
-        <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-secondary' %>
-        <%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-      </div>
-    <% end %>
   </div>
 </div>

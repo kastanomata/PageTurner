@@ -10,6 +10,10 @@ class Event < ApplicationRecord
 
   validate :end_time_after_start_time
   validate :organizer_exists
+  validate :only_one_upcoming_event_per_organizer
+
+  has_many :participations, dependent: :destroy
+  has_many :participants, through: :participations, source: :user
 
   before_destroy :nullify_book_references, if: :book_id?
 
@@ -28,16 +32,38 @@ class Event < ApplicationRecord
     end
   }
 
+  scope :attended_by, ->(user) { joins(:participations).where(participations: { user_id: user.id, status: "attended" }) }
+  scope :registered_by, ->(user) { joins(:participations).where(participations: { user_id: user.id, status: "registered" }) }
+
+  def organizer_object
+    case organizer_type
+    when "Club"
+      Club.find_by(id: organizer_id)
+    when "Author"
+      Author.find_by(id: organizer_id)
+    else
+      nil
+    end
+  end
+
   def organizer
     case organizer_type
     when "Club"
       org = Club.find_by(id: organizer_id)&.curator
     when "Author"
-      org = User.find_by(author_id: organizer_id)
+      org = Author.find_by(id: organizer_id)&.account
     else
       org = nil
     end
     org
+  end
+
+  def participant_count
+    participations.where(status: [ "registered", "attended" ]).count
+  end
+
+  def attended_count
+    participations.where(status: "attended").count
   end
 
   private
@@ -49,6 +75,19 @@ class Event < ApplicationRecord
       errors.add(:end_time, "must be after start time")
     end
   end
+
+  def only_one_upcoming_event_per_organizer
+    return unless organizer_id && organizer_type && start_time
+
+    existing_upcoming = Event.where(organizer_id: organizer_id, organizer_type: organizer_type)
+                            .where("start_time > ?", Time.current)
+                            .where.not(id: id) # Exclude current event when updating
+
+    if existing_upcoming.exists?
+      errors.add(:base, "Organizer can only have one upcoming event at a time")
+    end
+  end
+
 
   def organizer_exists
     case organizer_type

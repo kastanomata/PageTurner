@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   resources :events
+  resources :events do
+    member do
+      post :register
+      post :cancel_registration
+      post :mark_attendance
+    end
+    resources :participants, only: [ :index ]
+  end
   get "tags/show"
   resources :authors
   resources :author_requests, only: [ :index ] do
@@ -10,7 +18,7 @@ Rails.application.routes.draw do
   end
   resources :books, only: [] do
     collection do
-      get :search 
+      get :search
       get :fetch
     end
   end

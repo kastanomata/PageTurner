@@ -13,12 +13,21 @@ module SeedingUtility
     []
   end
 
-  # Seed data for users
   def seed_users
     users = load_json_file(Rails.root.join("db", "seeds", "users.json"))
+
     users.each do |user_attributes|
+      author_id = user_attributes.delete(:openlibrary_id)
+
       user_attributes[:admin] ||= false
-      User.create!(user_attributes)
+      user = User.create!(user_attributes)
+
+      if author_id.present?
+        puts "Initializing author..."
+        author = initialize_author(author_id)
+        author.update!(account_id: user.id) if author
+        puts "Account #{user.nickname} for author #{author.name} correctly inizialized." if author
+      end
     end
   end
 
@@ -54,16 +63,14 @@ module SeedingUtility
       bookshelf_attributes[:created_at] = Time.now
       bookshelf_attributes[:updated_at] = Time.now
       bookshelf_attributes[:creator_id] = User.find_by(nickname: bookshelf_attributes[:creator_nickname]).id
-      # # log_star "Bookshelf creator: #{bookshelf_attributes[:creator_nickname]}, ID: #{bookshelf_attributes[:creator_id]}"
+
       bookshelf = Bookshelf.create!(bookshelf_attributes.except(:books_list, :creator_nickname))
-      # # log_star "Bookshelf created: #{bookshelf.inspect}"
-      bookshelf_attributes[:books_list].each do |book|
-        book = Book.find_by(isbn: book[:isbn])
-        # # log_star "Book found: #{book.inspect}"
+      bookshelf_attributes[:books_list].each do |book_attributes|
+        book = Book.find_by(isbn: book_attributes[:isbn])
         if book
           bookshelf.add_book(book)
         else
-          # log_star("Book not found for Bookshelf: #{book[:isbn]}")
+          puts "Book not found for Bookshelf: #{book_attributes[:isbn]}"
         end
       end
     end
@@ -80,6 +87,7 @@ module SeedingUtility
     end
   end
 
+  # Seed data for events
   def seed_events
     events = load_json_file(Rails.root.join("db", "seeds", "events.json"))
 
@@ -95,7 +103,7 @@ module SeedingUtility
       unless organizer
         puts "Skipping event '#{event_attributes[:title]}' - Club with curator.email_address #{event_attributes[:organizer_email]} not found"
       end
-      puts "#{organizer} - #{event_attributes[:organizer_type]} with curator.email_address #{event_attributes[:organizer_email]} found"
+      puts "Seeded event '#{event_attributes[:title]}' - #{event_attributes[:organizer_type]} with email_address #{event_attributes[:organizer_email]}"
 
       # Initialize the event with direct attributes
       event = Event.new(

@@ -1,6 +1,6 @@
 include InitializeUtility
 class PostsController < ApplicationController
-  allow_unauthenticated_access only: %i[index show]
+  # allow_unauthenticated_access only: %i[index show]
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json

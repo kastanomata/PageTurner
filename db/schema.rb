@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_16_080619) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_19_200036) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -167,6 +167,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_080619) do
     t.index ["user_id"], name: "index_omni_auth_identities_on_user_id"
   end
 
+  create_table "participations", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "event_id", null: false
+    t.string "status", default: "registered"
+    t.datetime "registered_at", precision: nil
+    t.datetime "attended_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_participations_on_event_id"
+    t.index ["user_id", "event_id"], name: "index_participations_on_user_id_and_event_id", unique: true
+    t.index ["user_id"], name: "index_participations_on_user_id"
+  end
+
   create_table "poll_options", force: :cascade do |t|
     t.integer "poll_id", null: false
     t.integer "book_id", null: false
@@ -293,6 +306,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_080619) do
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "omni_auth_identities", "users"
+  add_foreign_key "participations", "events"
+  add_foreign_key "participations", "users"
   add_foreign_key "poll_options", "books"
   add_foreign_key "poll_options", "polls"
   add_foreign_key "polls", "clubs"
