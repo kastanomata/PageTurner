@@ -89,8 +89,21 @@
     isbnInput.addEventListener('input', (e) => {
       const query = e.target.value.trim();
       
-      if (query.length >= 5) searchHandler(query);
-      if (query.length === 13) fetchHandler(query);
+      // Clear results immediately if input is empty or below 5 characters
+      if (query === '' || query.length < 5) {
+        searchResults.innerHTML = '';
+        controller?.abort(); // Cancel any ongoing request
+      }
+      
+      // Only trigger search if query meets the length requirement
+      if (query.length >= 5) {
+        searchHandler(query);
+      }
+      
+      // Fetch book details if ISBN is 13 digits
+      if (query.length === 13) {
+        fetchHandler(query);
+      }
     });
 
     searchResults.addEventListener('click', (e) => {
