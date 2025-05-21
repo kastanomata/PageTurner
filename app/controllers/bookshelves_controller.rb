@@ -44,14 +44,33 @@ class BookshelvesController < ApplicationController
 
   # PATCH/PUT /bookshelves/1 or /bookshelves/1.json
   def update
+    if bookshelf_params[:book_isbns].present?
+      ActiveRecord::Base.transaction do
+        bookshelf_params[:book_isbns].each do |isbn|
+          book = Book.find_by(isbn: isbn)
+          if book
+            BookshelfContain.find_or_create_by(
+              bookshelf_id: @bookshelf.id,
+              book_id: book.id
+            )
+          end
+        end
+      end
+    end
+
     respond_to do |format|
-      if @bookshelf.update(bookshelf_params)
+      if @bookshelf.update(bookshelf_params.except(:book_isbns))
         format.html { redirect_to @bookshelf, notice: "Bookshelf was successfully updated." }
         format.json { render :show, status: :ok, location: @bookshelf }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @bookshelf.errors, status: :unprocessable_entity }
       end
+    end
+  rescue ActiveRecord::RecordInvalid => e
+    respond_to do |format|
+      format.html { redirect_to @bookshelf, alert: "Error adding books: #{e.message}" }
+      format.json { render json: { error: e.message }, status: :unprocessable_entity }
     end
   end
 
