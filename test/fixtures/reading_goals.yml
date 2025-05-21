@@ -1,15 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  club: one
-  book: one
-  start_date: 2025-05-04
-  end_date: 2025-05-04
-  status: 1
-
-two:
-  club: two
-  book: two
+  club: 1
+  book: 1
   start_date: 2025-05-04
   end_date: 2025-05-04
   status: 1

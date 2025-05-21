@@ -15,10 +15,10 @@ module ActiveSupport
 
     def login_as(user)
       visit login_path
-    fill_in "Enter your email address", with: user.email_address
-    fill_in "Enter your password", with: "password"
-    click_on "Sign in"
-    assert_current_path root_path
+      fill_in "Enter your email address", with: user.email_address
+      fill_in "Enter your password", with: "password"
+      click_on "Sign in"
+      assert_current_path root_path
     end
   end
 end

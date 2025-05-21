@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: "Che Post!"
+  title: "Post 1"
   text: "Che Mina!"
   author_id: 1
   book_id: 1
@@ -10,7 +10,7 @@ one:
   id: 1
 
 two:
-  title: "Che Post!"
+  title: "Post 2"
   text: "Che Mina!"
   author_id: 2
   book_id: 2

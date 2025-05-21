@@ -1,0 +1,4 @@
+<%= form_with(model: [event, Current.user.participations.build], 
+             url: event_participations_path(event), remote: true) do |form| %>
+  <%= form.submit "Join Event", class: "btn btn--affirmative btn--sm" %>
+<% end %>

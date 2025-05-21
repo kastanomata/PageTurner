@@ -1,4 +1,3 @@
-
 one:
   email_address: one@example.com
   password_digest: <%= BCrypt::Password.create("password") %>
@@ -28,3 +27,13 @@ three:
   admin: true
   is_curator: true
   id: 3
+
+four:
+  email_address: four@example.com
+  password_digest: <%= BCrypt::Password.create("password") %>
+  nickname: "Martello"
+  description: "So un Martello"
+  birthday: "10-02-2005"
+  admin: true
+  is_curator: false
+  id: 4

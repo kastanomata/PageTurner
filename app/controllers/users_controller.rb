@@ -35,7 +35,6 @@ class UsersController < ApplicationController
     @user.email_address = @user.email_address.strip.downcase
     if @user.admin.nil?
       @user.admin = false
-      puts @user.nickname, "is not an admin"
     end
 
     respond_to do |format|

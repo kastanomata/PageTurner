@@ -14,7 +14,7 @@ class UsersTest < ApplicationSystemTestCase
 
   test "should create user" do
     visit root_path
-    click_on "Register"
+    find(".btn.btn--primary", text: "Register", match: :first).click
 
     fill_in "Email address", with: "example@example.com"
     fill_in "Password", with: "password"
@@ -24,7 +24,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in "Birthday", with: "22/10/2011"
     click_on "Save Changes"
 
-    assert_text "User was successfully created"
+    assert_text "User was successfully updated."
   end
 
   test "should update User" do

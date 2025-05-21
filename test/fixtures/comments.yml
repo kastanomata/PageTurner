@@ -4,9 +4,11 @@ one:
   post_id: 1
   text: "Che spada"
   author_id: 1
+  id: 1
 
 
 two:
   post_id: 2
   text: "Che spada"
   author_id: 2
+  id: 2
