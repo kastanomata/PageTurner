@@ -18,8 +18,8 @@
 
       <% if Current.user&.admin? || @post.author == Current.user %>
         <div class="admin-action", style="margin-top: 20px;">
-          <% if @post.author == Current.session&.id %>
-            <%= button_to "Edit this post", edit_post_path(@post) %>
+          <% if @post.author == Current.user %>
+            <%= link_to "Edit Post", edit_post_path(@post), class: "btn btn--secondary btn--sm" %>
           <% end %>
           <%= button_to "Destroy this post", @post, method: :delete, class:"button" %>
         </div>

@@ -34,7 +34,7 @@
 
 /* Stile per i campi di input */
 .form-control {
-  width: 15%;
+  width: 95%;
   padding: 10px;
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -80,6 +80,15 @@
 .form-control[type="file"] {
   padding: 8px;
   background-color: #f8f9fa;
+}
+
+.form-icon {
+  width: 15%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 
