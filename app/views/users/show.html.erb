@@ -20,16 +20,19 @@
         <% if @user.avatar.attached? %>
           <div>
             <%= image_tag url_for(@user.avatar), alt: "Foto Profilo", class: "book-image book-image--cover" %>
-            <%= button_to "Rimuovi Foto", remove_avatar_user_path(@user), method: :delete, data: { confirm: "Sei sicuro di voler rimuovere la foto?" } %>
+            <%= button_to "Rimuovi Foto", remove_avatar_user_path(@user), method: :delete, class: "btn btn--delete btn--sm", data: { confirm: "Sei sicuro di voler rimuovere la foto?" } %>
           </div>
         <% end %>
         <section class="stats">
               <%= render_user_relationships_widget @user%>
         </section>
       </div>
-      <div class="btn--link">
+      <%= user_ban_status @user %>
+      <div style="display:flex; flex-direction:row; gap:5px; margin:5px;">
         <%= render_report_button @user %>
-        <%= user_ban_status @user %>
+        <% if @user.is_author? %>
+          <%= button_to "Create Event", new_event_path(user_id: @user), method: :get, class: "btn btn--primary btn--sm" %>
+        <% end %>
         <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn--secondary btn--sm" if current_user_owns? @user%>
       </div>
     </div>   

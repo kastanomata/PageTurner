@@ -7,9 +7,10 @@ class PostsTest < ApplicationSystemTestCase
     @user = users(:one)
   end
 
-  test "visiting the index" do
+  test "not visiting the index" do
+    login_as(@user)
     visit posts_path
-    assert_selector "h1", text: "Posts"
+    assert_text "We’re sorry, but you're not allowed to see this content"
   end
 
   test "should create post" do

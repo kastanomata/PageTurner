@@ -6,7 +6,7 @@
         <div class="poll-option-field mb-3">
           <%= po.label :book_id, "Select Book" %>
           <%= po.collection_select :book_id, Book.all, :id, :title, 
-              { include_blank: "Choose a book" }, class: 'form-select' %>
+              { include_blank: "Choose a book" }, class: 'poll-form-select' %>
         </div>
       <% end %>
     </div>
