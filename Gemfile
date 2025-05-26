@@ -62,6 +62,14 @@ group :test do
   gem "selenium-webdriver"
 end
 
+group :development do
+  # generate db scheme [https://voormedia.github.io/rails-erd/install.html]
+  gem "rails-erd"
+
+  # Need of Graphviz: run "sudo apt install graphviz"
+  gem "ruby-graphviz" # Required for advanced diagram formats (PDF, PNG, SVG)
+end
+
 gem "rails-controller-testing"
 
 # AUTHENTICATION
