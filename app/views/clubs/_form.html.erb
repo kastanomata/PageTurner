@@ -1,8 +1,9 @@
-<%= form_with(model: club) do |form| %>
+<%= form_with(model: club, class: "cl-editor-form") do |form| %>
   <% if club.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(club.errors.count, "error") %> prohibited this club from being saved:</h2>
-
+    <div class="cl-editor-validation">
+      <h2 class="cl-editor-validation-title">
+        <%= pluralize(club.errors.count, "error") %> prohibited this club from being saved:
+      </h2>
       <ul>
         <% club.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,15 +12,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+  <div class="cl-editor-group">
+    <%= form.label :name, class: "cl-editor-label" %>
+    <%= form.text_field :name, class: "cl-editor-input" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="cl-editor-group">
+  <%= form.label :description, class: "cl-editor-label" %>
+  <%= form.text_area :description, class: "cl-editor-input-textarea", rows: 4 %>
+</div>
+
+  <div class="cl-editor-actions">
+    <%= form.submit class: "cl-editor-submit" %>
   </div>
 <% end %>

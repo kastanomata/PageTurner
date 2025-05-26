@@ -245,3 +245,135 @@
     grid-row: auto;
   }
 }
+
+
+/* club edit */
+/* Layout */
+.cl-editor-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  font-family: system-ui, sans-serif;
+}
+
+/* Title */
+.cl-editor-title {
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+/* Form wrapper */
+.cl-editor-form-wrap {
+  width: 100%;
+  max-width: 500px;
+  margin: 1rem 0;
+}
+
+/* Form styling */
+.cl-editor-form {
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 9px 9px rgba(0, 0, 0, 0.2);
+}
+
+/* Validation messages */
+.cl-editor-validation {
+  color: #e53e3e;
+  background: #fed7d7;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+}
+
+.cl-editor-validation-title {
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Form groups */
+.cl-editor-group {
+  margin-bottom: 1.25rem;
+}
+
+.cl-editor-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.cl-editor-input {
+  width: 100%;
+  padding: 0.625rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.cl-editor-input:focus {
+  border-color: #4299e1;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+/* Actions */
+.cl-editor-actions {
+  margin-top: 1.5rem;
+}
+
+.cl-editor-submit {
+  background: #4299e1;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cl-editor-submit:hover {
+  background: #3182ce;
+}
+
+/* Links */
+.cl-editor-link-wrap {
+  margin-top: 1.5rem;
+}
+
+.cl-editor-link {
+  color: #4299e1;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.cl-editor-link:hover {
+  color: #3182ce;
+  text-decoration: underline;
+}
+
+/* Add this to your existing CSS */
+.cl-editor-input-textarea {
+  width: 100%;
+  min-height: 3.5rem; /* ~1 line */
+  max-height: 8.75rem; /* ~4 lines (3.5rem * 2.5 line-height) */
+  padding: 0.625rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: vertical;
+  overflow-y: auto;
+  transition: border-color 0.2s;
+}
+
+.cl-editor-input-textarea:focus {
+  border-color: #4299e1;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
