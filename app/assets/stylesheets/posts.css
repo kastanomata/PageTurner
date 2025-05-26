@@ -248,3 +248,131 @@
   border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
   z-index: 100;
 }
+
+/* post edit */
+/* Layout */
+.post-editor-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem;
+  font-family: system-ui, sans-serif;
+}
+
+/* Title */
+.post-editor-title {
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+/* Form wrapper */
+.post-editor-form-wrap {
+  width: 100%;
+  max-width: 500px;
+  margin: 1rem 0;
+}
+
+/* Form styling */
+.post-editor-form {
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 9px 9px rgba(0, 0, 0, 0.2);
+  font-size: 2.2rem;
+}
+
+/* Validation messages */
+.post-editor-validation {
+  color: #e53e3e;
+  background: #fed7d7;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+}
+
+.post-editor-validation-title {
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Form groups */
+.post-editor-group {
+  margin-bottom: 1.25rem;
+}
+
+.post-editor-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #5E69B0;
+  font-weight: 500;
+}
+
+.post-editor-input {
+  width: 100%;
+  padding: 0.625rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.post-editor-input:focus {
+  border-color: #5E69B0;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+/* Actions */
+.post-editor-actions {
+  margin-top: 1.5rem;
+}
+
+.post-editor-submit {
+  background: #5E69B0;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.post-editor-submit:hover {
+  background: #5E69B0;
+}
+
+/* Links */
+.post-editor-link {
+  color: #5E69B0;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.post-editor-link:hover {
+  color: #5E69B0;
+  text-decoration: underline;
+}
+
+/* Add this to your existing CSS */
+.post-editor-input-textarea {
+  width: 100%;
+  min-height: 3.5rem; /* ~1 line */
+  max-height: 8.75rem; /* ~4 lines (3.5rem * 2.5 line-height) */
+  padding: 0.625rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: vertical;
+  overflow-y: auto;
+  transition: border-color 0.2s;
+}
+
+.post-editor-input-textarea:focus {
+  border-color: #5E69B0;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}

@@ -253,7 +253,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 1.2rem;
   font-family: system-ui, sans-serif;
 }
 
@@ -276,7 +276,8 @@
   padding: 1.5rem;
   background: #ffffff;
   border-radius: 0.5rem;
-  box-shadow: 0 9px 9px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 9px 9px rgba(0, 0, 0, 0.2);
+  font-size: 2.2rem;
 }
 
 /* Validation messages */
@@ -316,7 +317,7 @@
 }
 
 .cl-editor-input:focus {
-  border-color: #4299e1;
+  border-color: #5E69B0;
   outline: none;
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
@@ -327,7 +328,7 @@
 }
 
 .cl-editor-submit {
-  background: #4299e1;
+  background: #5E69B0;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -338,22 +339,19 @@
 }
 
 .cl-editor-submit:hover {
-  background: #3182ce;
+  background: #5E69B0;
 }
 
 /* Links */
-.cl-editor-link-wrap {
-  margin-top: 1.5rem;
-}
 
 .cl-editor-link {
-  color: #4299e1;
+  color: #5E69B0;
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .cl-editor-link:hover {
-  color: #3182ce;
+  color: #5E69B0;
   text-decoration: underline;
 }
 
@@ -373,7 +371,7 @@
 }
 
 .cl-editor-input-textarea:focus {
-  border-color: #4299e1;
+  border-color: #5E69B0;
   outline: none;
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
