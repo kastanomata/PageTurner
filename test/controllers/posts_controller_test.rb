@@ -121,6 +121,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       delete post_path(@post)
     end
 
-    assert_redirected_to posts_path
+    assert_redirected_to root_path
   end
 end

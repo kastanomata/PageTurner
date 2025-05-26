@@ -6,14 +6,14 @@ class Club < ApplicationRecord
   has_many :bookshelves, foreign_key: "bookclub", dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :reading_goals, dependent: :destroy
-  has_many :books, through: :reading_goals
+  has_many :books, through: :reading_goals, dependent: :destroy
   has_many :book_suggestions, dependent: :destroy
-  has_many :suggested_books, through: :book_suggestions, source: :book
+  has_many :suggested_books, through: :book_suggestions, source: :book, dependent: :destroy
   has_many :polls, dependent: :destroy
   has_many :events, as: :organizer, dependent: :destroy
 
   has_many :passive_memberships, class_name: "Membership", foreign_key: "club_id", dependent: :destroy
-  has_many :members, through: :passive_memberships, source: :follower
+  has_many :members, through: :passive_memberships, source: :follower, dependent: :destroy
   has_many :reports, as: :reported, dependent: :destroy
 
   # Validations
@@ -24,7 +24,7 @@ class Club < ApplicationRecord
   # Callbacks
   after_create :add_creator_as_member
   after_create :create_default_bookshelf
-  before_destroy :check_for_upcoming_events, prepend: true
+  # before_destroy :check_for_upcoming_events, prepend: true
 
   # Scopes
   scope :with_upcoming_events, -> {
