@@ -10,7 +10,8 @@ module OwnershipUtility
     Relationship => :follower,
     Poll => :curator,
     Event => :organizer,
-    Participation => :user
+    Participation => :user,
+    CuratorIcon => :admin
   }.freeze
   def current_user_owns?(content)
     return false unless Current.user && content
