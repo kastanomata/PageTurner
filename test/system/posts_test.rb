@@ -26,17 +26,20 @@ class PostsTest < ApplicationSystemTestCase
     assert_text "Post created!"
   end
 
-  # test "should update Post" do
-  #   visit post_path(@post)
-  #   click_on "Edit this post", match: :first
+  test "should update Post" do
+    login_as(@user)
+    visit post_path(@post)
 
-  #   fill_in "Text", with: @post.text
-  #   fill_in "Title", with: @post.title
-  #   click_on "Update Post"
+    edit_link = find("a", text: "Edit Post")
+    execute_script("arguments[0].click()", edit_link)
+    execute_script("document.getElementById('post_title').value = 'Titolo 1'")
+    execute_script("document.getElementById('post_text').value = 'Daje'")
+    update_button = find("input[value='Update Post']")
+    execute_script("arguments[0].click()", update_button)
 
-  #   assert_text "Post was successfully updated"
-  #   click_on "Back"
-  # end
+    assert_text "Post was successfully updated"
+    assert_current_path post_path(@post)
+  end
 
   test "Like Post" do
     login_as(@user)

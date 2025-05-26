@@ -96,23 +96,17 @@ class ClubsTest < ApplicationSystemTestCase
     assert_text "Poll created successfully"
   end
 
-  # test "should update Club" do
-  #   login_as(@user)
-  #   visit club_path(@club)
-  #   click_on "Edit this club", match: :first
-  #   fill_in "Title", with: "Scudo"
-  #   click_on "Update Club"
-# 
-  #   assert_text "Club was successfully updated"
-  #   assert_current_path club_path(@club)
-  # end
+  test "should update Club" do
+    login_as(@user)
+    visit club_path(@club)
 
-  # test "should destroy Club" do
-  #   login_as(@user)
-  #   visit club_path(@club)
-  #   click_on "Destroy this club", match: :first
-# 
-  #   assert_text "Club was successfully destroyed"
-  #   assert_current_path clubs_path
-  # end
+    edit_link = find("a", text: "Edit Club")
+    execute_script("arguments[0].click()", edit_link)
+    fill_in "Name", with: "Scudo"
+    update_button = find("input[value='Update Club']")
+    execute_script("arguments[0].click()", update_button)
+
+    assert_text "Club was successfully updated."
+    assert_current_path club_path(@club)
+  end
 end
