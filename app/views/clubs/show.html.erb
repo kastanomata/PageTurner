@@ -9,7 +9,6 @@
           <% if Current.user == @club.curator %>
             <%= button_to "Create Event", new_event_path(club_id: @club), method: :get, class: "btn btn--secondary btn--sm" %>
             <%= link_to "Edit Club", edit_club_path(@club), class: "btn btn--secondary btn--sm" %>
-            <%= button_to "Destroy Club", @club, method: :delete, class: "button" %>
           <% end %>
           <%= render_report_button @club %>
         </div>

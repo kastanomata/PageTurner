@@ -16,14 +16,14 @@
     <div class="postcard-container">
       <%= render @post %>
 
-      <% if Current.user&.admin? || @post.author == Current.user %>
-        <div class="admin-action", style="margin-top: 20px;">
-          <% if @post.author == Current.user %>
-            <%= link_to "Edit Post", edit_post_path(@post), class: "btn btn--secondary btn--sm" %>
-          <% end %>
+      <div class="admin-action", style="margin-top: 20px;">
+        <% if Current.user&.admin? %>
           <%= button_to "Destroy this post", @post, method: :delete, class:"button" %>
-        </div>
-      <% end %>
+        <% end %>
+        <% if @post.author == Current.user %>
+          <%= link_to "Edit Post", edit_post_path(@post), class: "btn btn--secondary btn--sm" %>
+        <% end %>
+      </div>
     </div>
   </div>
 

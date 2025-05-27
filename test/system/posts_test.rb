@@ -75,6 +75,9 @@ class PostsTest < ApplicationSystemTestCase
   test "should destroy Post" do
     login_as(@user)
     visit post_path(@post)
+
+    edit_link = find("a", text: "Edit Post")
+    execute_script("arguments[0].click()", edit_link)
     destroy_button = find("form.button_to button", text: "Destroy this post")
     execute_script("arguments[0].click()", destroy_button)
 

@@ -102,7 +102,7 @@ class ClubsTest < ApplicationSystemTestCase
 
     edit_link = find("a", text: "Edit Club")
     execute_script("arguments[0].click()", edit_link)
-    fill_in "Name", with: "Scudo"
+    fill_in "Name", with: "Prova"
     update_button = find("input[value='Update Club']")
     execute_script("arguments[0].click()", update_button)
 

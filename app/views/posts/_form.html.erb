@@ -26,3 +26,7 @@
     <%= form.submit class: "btn btn--secondary btn--sm" %>
   </div>
 <% end %>
+
+<div class="admin-action", style="margin-top: 20px;">
+  <%= button_to "Destroy this post", @post, method: :delete, class:"button" %>
+</div>

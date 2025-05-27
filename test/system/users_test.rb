@@ -22,7 +22,8 @@ class UsersTest < ApplicationSystemTestCase
     fill_in "Nickname", with: "example"
     fill_in "Description", with: "Description"
     fill_in "Birthday", with: "22/10/2011"
-    click_on "Save Changes"
+    save_button = find("input[value='Save Changes']")
+    execute_script("arguments[0].click()", save_button)
 
     assert_text "User was successfully updated."
   end
