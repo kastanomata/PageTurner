@@ -24,7 +24,7 @@
 
   <div class="cl-editor-actions">
     <%= form.submit class: "btn btn--secondary btn--sm" %>
+    <%= button_to "Destroy Club", @club, method: :delete, class: "btn btn--negative btn--sm" %>
   </div>
 <% end %>
 
-<%= button_to "Destroy Club", @club, method: :delete, class: "button" %>
