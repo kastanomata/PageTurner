@@ -81,3 +81,5 @@ gem "omniauth-github", "~> 2.0.0"
 gem "will_paginate", "~> 4.0"
 
 gem "httparty"
+
+gem "localhost"
