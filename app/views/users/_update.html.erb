@@ -63,11 +63,13 @@
     <%= link_to 'Change Backgrounds', background_settings_user_path(@user), class: 'nav-link' %>
   </div>
   
-  <div class="form-group">
-    <%= form.label :avatar, "Profile Photo", class: "form-label" %>
-    <%= form.file_field :avatar, 
-          class: "form-control-file" %>
-  </div>
+  <% if not @user.avatar.attached? %>
+    <div class="form-group">
+      <%= form.label :avatar, "Profile Photo", class: "form-label" %>
+      <%= form.file_field :avatar, 
+            class: "form-control-file" %>
+    </div>
+  <% end %>
 
   <div class="form-group">
     <%= link_to "Change Password", 
@@ -79,5 +81,8 @@
     <%= form.submit "Save Changes", class: "btn btn--affirmative btn--md" %>
     <%= link_to "Discard Changes", user_path(@user), class:"btn btn--secondary btn--md"%>
 <% end %>
+    <% if @user.avatar.attached? %>
+      <%= button_to "Rimuovi Foto", remove_avatar_user_path(@user), method: :delete, class: "btn btn--delete btn--sm", data: { confirm: "Sei sicuro di voler rimuovere la foto?" } %>
+    <% end %>
     <%= button_to "Delete your account", user_path(user), method: :delete, class: "btn btn--negative btn--md"%>
   </div>

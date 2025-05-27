@@ -1,11 +1,9 @@
 <% content_for :title, "New club" %>
 
-<h1>New club</h1>
+<div class="cl-editor-container">
+  <h1>New club</h1>
 
-<%= render "form", club: @club %>
-
-<br>
-
-<div>
-  <%= link_to "Back to clubs", clubs_path %>
+  <div class="cl-editor-form-wrap">
+    <%= render "form", club: @club %>
+  </div>
 </div>

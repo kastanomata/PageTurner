@@ -20,7 +20,6 @@
         <% if @user.avatar.attached? %>
           <div>
             <%= image_tag url_for(@user.avatar), alt: "Foto Profilo", class: "book-image book-image--cover" %>
-            <%= button_to "Rimuovi Foto", remove_avatar_user_path(@user), method: :delete, class: "btn btn--delete btn--sm", data: { confirm: "Sei sicuro di voler rimuovere la foto?" } %>
           </div>
         <% end %>
         <section class="stats">

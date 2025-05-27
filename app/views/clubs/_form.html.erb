@@ -22,10 +22,13 @@
   <%= form.text_area :description, class: "cl-editor-input-textarea", rows: 4 %>
 </div>
 
-  <div class="cl-editor-actions">
-    <%= form.submit class: "btn btn--secondary btn--sm" %>
+  <div class="cl-editor-actions", style="justify-content: center; display: flex;">
+    <%= form.submit class: "btn btn--secondary btn--md" %>
 <% end %>
 
-    <%= button_to "Destroy Club", @club, method: :delete, class: "btn btn--negative btn--sm" %>
+    <% unless club.new_record? %>
+      <%= link_to "Discard Changes", club_path(club), class:"btn btn--secondary btn--md"%>
+      <%= button_to "Destroy Club", club, method: :delete, class: "btn btn--negative btn--md" %>
+    <% end %>
   </div>
 
