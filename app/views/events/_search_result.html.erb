@@ -1,0 +1,9 @@
+<div class="search-result-item">
+  <div class="search-result-title"><%= link_to event.title, event %></div>
+  <div class="search-result-meta">
+    <%= event.start_time.to_formatted_s(:short) %>
+    <% if event.book %>
+      | Book: <%= link_to event.book.title, event.book %>
+    <% end %>
+  </div>
+</div>

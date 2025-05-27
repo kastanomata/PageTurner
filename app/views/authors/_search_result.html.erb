@@ -1,0 +1,6 @@
+<div class="search-result-item">
+  <div class="search-result-title"><%= link_to author.name, author %></div>
+  <% if author.bio.present? %>
+    <div class="search-result-meta"><%= truncate(author.bio, length: 100) %></div>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<div class="search-result-item">
+  <div class="search-result-title"><%= link_to book.title, book %></div>
+  <div class="search-result-meta">
+    ISBN: <%= book.isbn %>
+    <% if book.author %>
+      | Author: <%= link_to book.author.name, book.author %>
+    <% end %>
+  </div>
+</div>

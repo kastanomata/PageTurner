@@ -1,0 +1,6 @@
+<div class="search-result-item">
+  <div class="search-result-title"><%= link_to club.name, club %></div>
+  <% if club.description.present? %>
+    <div class="search-result-meta"><%= truncate(club.description, length: 100) %></div>
+  <% end %>
+</div>

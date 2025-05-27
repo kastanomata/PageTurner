@@ -1,0 +1,6 @@
+<div class="search-result-item">
+  <div class="search-result-title"><%= link_to post.title, post %></div>
+  <div class="search-result-meta">
+    <%= truncate(post.text, length: 100) %>
+  </div>
+</div>
