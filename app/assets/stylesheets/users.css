@@ -90,35 +90,38 @@
   font-size: 24px;
 }
 
-.suggested-row{
-  width: fit-content;
-  max-width: 100%;  /* evita overflow */
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px; 
-  text-align: center;
-  border-radius: 8px;
-  background-color: #ddd;
-  padding: 5px;
+/* Suggested Books Section */
+.suggested-row {
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: inline-block; /* Makes width fit content */
+  max-width: 100%; /* Prevents overflow on small screens */
 }
 
-.carosello{
-  display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding: 10px 0;
-  border-radius: 8px;
+.suggested-row h3 {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  color: #2d3436;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid blue;
+  font-size: 1.4rem;
+  white-space: nowrap;
 }
 
-.suggested-book{
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  width: 140px;  
-  height: 180px;
-  border-radius: 8px;
-  object-fit: cover;
+/* Book Grid Container */
+.book-grid {
+  display: inline-flex; /* Makes container fit content width */
+  gap: 1.5rem;
+  flex-wrap: nowrap; /* Prevents wrapping to new line */
+  padding: 0.5rem 0;
+  overflow-x: auto; /* Adds horizontal scroll if needed */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #e63946 #f1f1f1; /* For Firefox */
+  padding-bottom: 10px; /* Space for scrollbar */
 }
 
 

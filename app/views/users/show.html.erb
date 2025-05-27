@@ -73,18 +73,17 @@
       </h2>
       <% if Current.user == @user %>
         <%= render "shared/postcard_form" %>
-      <% end %>
-
-      <div class="suggested-row"> 
-        <h3>Suggested Books</h3>
-          <div style="display: flex; gap:5px;">
+      
+        <div class="suggested-row">
+          <h3>Suggested Books</h3>
+          <div class="book-grid">
             <% @user.suggested_books.each do |book| %>
               <%= render 'books/cover', book: book %>
             <% end %>
           </div>
-      </div>
-
-      <div>
+        </div>
+      <% end %>
+      <div style="display:flex; flex-direction: column; gap: 8px;">
         <%= render_user_posts @user %>
       </div>
   
