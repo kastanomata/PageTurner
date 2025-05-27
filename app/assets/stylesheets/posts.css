@@ -44,7 +44,6 @@
 .post-header {
   display: flex;
   align-items: center;
-  margin: -1rem 0;
 }
 
 .post-content {
@@ -326,7 +325,9 @@
 
 /* Actions */
 .post-editor-actions {
+  display: flex;
   margin-top: 1.5rem;
+  gap: 10px;
 }
 
 .post-editor-submit {
@@ -375,4 +376,11 @@
   border-color: #5E69B0;
   outline: none;
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.post-new-container{
+  display: flex;
+  justify-content: center; /* horizontal */
+  align-items: center;     /* vertical */
+  height: 100vh;
 }

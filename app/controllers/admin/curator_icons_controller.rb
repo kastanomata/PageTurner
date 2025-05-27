@@ -4,6 +4,7 @@ class Admin::CuratorIconsController < ApplicationController
 
   def index
     @curator_icons = CuratorIcon.all
+    @curator_icon = CuratorIcon.new
   end
 
   def new

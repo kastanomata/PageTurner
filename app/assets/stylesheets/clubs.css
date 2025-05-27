@@ -298,6 +298,7 @@
 /* Form groups */
 .cl-editor-group {
   margin-bottom: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .cl-editor-label {
@@ -358,7 +359,6 @@
   text-decoration: underline;
 }
 
-/* Add this to your existing CSS */
 .cl-editor-input-textarea {
   width: 100%;
   min-height: 3.5rem; /* ~1 line */

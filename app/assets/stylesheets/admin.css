@@ -1,9 +1,3 @@
-.icon-preview {
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 4px;
-  }
-  
 .admin-header {
   display: flex;
   flex-direction: column;
@@ -11,13 +5,88 @@
   margin-bottom: 2rem;
 }
 
-.table {
-  display: table;
-  border-collapse: separate;
-  box-sizing: border-box;
-  text-indent: initial;
-  unicode-bidi: isolate;
-  border-spacing: 2px;
-  border-color: gray;
-  margin: 0 auto;
-}
+.curator-icons-table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+  }
+
+  .curator-icons-table thead th {
+    background: #f8f9fa;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .curator-icons-table tbody td {
+    padding: 1rem;
+    background: white;
+    vertical-align: middle;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  /* Column width control */
+  .curator-icons-table th:nth-child(1),
+  .curator-icons-table td:nth-child(1) {
+    width: 120px; /* Fixed width for preview column */
+    text-align: center;
+  }
+
+  .curator-icons-table th:nth-child(2),
+  .curator-icons-table td:nth-child(2) {
+    width: auto; /* Flexible width for name */
+    padding-left: 2rem;
+  }
+
+  .curator-icons-table th:nth-child(3),
+  .curator-icons-table td:nth-child(3) {
+    width: 150px; /* Fixed width for actions */
+    text-align: center;
+  }
+
+  .icon-preview {
+    max-width: 80px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .curator-icons-table {
+      border: 0;
+      max-width: 100%;
+    }
+
+    .curator-icons-table thead {
+      display: none;
+    }
+
+    .curator-icons-table tr {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .curator-icons-table td {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100% !important;
+      border: 0;
+      padding: 0.5rem 1rem;
+    }
+
+    .curator-icons-table td::before {
+      content: attr(data-label);
+      font-weight: 600;
+      margin-right: 1rem;
+    }
+  }
