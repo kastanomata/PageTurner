@@ -1,3 +1,5 @@
+<% content_for :title, @user.nickname %>
+
 <div>
   <% unless (@user&.background_theme || 'default') == 'default' %>
     <div  style="<%= 'background-color: #ffffff;' if (@user&.background_theme || 'default') == 'default' %>

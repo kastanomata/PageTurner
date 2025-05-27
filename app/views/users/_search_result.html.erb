@@ -1,0 +1,6 @@
+<div class="search-result-item">
+  <div class="search-result-title"><%= link_to user.nickname, user %></div>
+  <% if user.description.present? %>
+    <div class="search-result-meta"><%= truncate(user.description, length: 100) %></div>
+  <% end %>
+</div>

@@ -1,0 +1,22 @@
+  .site-search-results {
+    padding: 2rem 2rem;
+  }
+  .search-result-section {
+    margin-bottom: 30px;
+  }
+  .search-result-item {
+    padding: 10px;
+    margin: 5px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .search-result-item:hover {
+    background-color: #f9f9f9;
+  }
+  .search-result-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .search-result-meta {
+    font-size: 0.9em;
+    color: #666;
+  }

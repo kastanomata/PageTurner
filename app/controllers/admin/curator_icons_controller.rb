@@ -1,5 +1,5 @@
 class Admin::CuratorIconsController < ApplicationController
-  before_action :ensure_admin
+  require_admin_access
   before_action :set_curator_icon, only: [ :destroy ]
 
   def index
@@ -34,9 +34,5 @@ class Admin::CuratorIconsController < ApplicationController
 
   def curator_icon_params
     params.require(:curator_icon).permit(:name, :icon)
-  end
-
-  def ensure_admin
-    redirect_to root_path unless Current.user&.admin?
   end
 end
