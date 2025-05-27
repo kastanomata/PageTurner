@@ -1,30 +1,37 @@
 <div class="admin-header">
   <h1>Manage Curator Icons</h1>
-  <%= link_to 'New Icon', new_admin_curator_icon_path, class: 'btn btn--secondary btn--sm' %>
 </div>
 
-<table class="table">
+<div class="form-container-icon">
+  <%= render 'form' %>
+</div>
+
+<table class="curator-icons-table">
   <thead>
     <tr>
-      <th>Preview</th>
-      <th>Name</th>
-      <th>Actions</th>
+      <th class="text-center">Preview</th>
+      <th class="pl-3">Name</th>
+      <th class="text-center">Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @curator_icons.each do |icon| %>
       <tr>
-        <td>
+        <td data-label="Preview">
           <% if icon.icon.attached? %>
             <%= image_tag icon.icon, class: 'icon-preview' %>
+          <% else %>
+            <span class="text-muted">No image</span>
           <% end %>
         </td>
-        <td><%= icon.name %></td>
-        <td>
+        <td data-label="Name" class="align-middle pl-3">
+          <%= icon.name %>
+        </td>
+        <td data-label="Actions" class="text-center">
           <%= button_to 'Delete',
                       admin_curator_icon_path(icon),
                       method: :delete,
-                      class: 'btn btn-danger',
+                      class: 'btn btn--negative btn--sm',
                       data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
