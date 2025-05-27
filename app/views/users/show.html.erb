@@ -16,12 +16,12 @@
   <div class="split-container">
     <div class="left-column">
       <div class="user-info">
-        <h1><%= @user.nickname %></h1>
         <% if @user.avatar.attached? %>
           <div>
             <%= image_tag url_for(@user.avatar), alt: "Foto Profilo", class: "profile-avatar" %>
           </div>
         <% end %>
+        <h1><%= @user.nickname %></h1>
         <section class="stats">
               <%= render_user_relationships_widget @user%>
         </section>
