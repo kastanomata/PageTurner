@@ -207,7 +207,7 @@
 }
 
 .search-form:focus-within {
-  width: 500px; /* Expanded size on focus */
+  width: 350px; /* Expanded size on focus */
 }
 
 .search-input {
