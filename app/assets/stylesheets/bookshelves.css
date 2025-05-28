@@ -169,7 +169,7 @@
 /* Bookshelf cards */
 .bookshelf-cards-container {
   display: grid;
-  grid-template-columns: 1fr; 
+  grid-template-columns: 105%; 
   gap: 1rem;
   list-style-type: none;
   margin-left: 0.3rem;
