@@ -29,6 +29,11 @@ class PostsController < ApplicationController
     # Store the referring URL for error cases
     @referrer = request.referer
 
+    # Check if post is being created in the context of a club
+    if params[:club_id].present?
+      @post.club_id = params[:club_id]
+    end
+
     begin
       isbn = params[:post][:isbn]
       @book = Book.find_by(isbn: isbn)
@@ -79,6 +84,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :text, :isbn)
+      params.require(:post).permit(:title, :text, :isbn, :club_id)
     end
 end

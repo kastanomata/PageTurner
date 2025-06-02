@@ -28,10 +28,12 @@
 
     <div class="club-body">
       <div class="club-posts">
+        <% if @club.members.include?(Current.user) %>
           <%= render partial: "shared/postcard_form" %>
-          <% @club.posts.each do |post| %>
-            <%= render partial: "posts/post_card", locals: { post: post } %>
-          <% end %>
+        <% end %>
+        <% @club.posts.each do |post| %>
+          <%= render partial: "posts/post_card", locals: { post: post } %>
+        <% end %>
       </div>    
     </div>
   </div>
