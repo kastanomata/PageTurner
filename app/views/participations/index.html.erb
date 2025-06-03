@@ -19,7 +19,7 @@
           <div class="user-info">
             <%= link_to participation.user.nickname, user_path(participation.user) %>
           </div>
-          <% if @event.organizer == Current.user || Current.user.admin? %>
+          <% if participation.user != @event.organizer && ( @event.organizer == Current.user || Current.user.admin? )%>
             <div class="user-actions">
               <%= button_to "Remove", 
                     participation_path(participation), 

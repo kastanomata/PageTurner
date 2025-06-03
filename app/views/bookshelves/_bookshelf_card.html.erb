@@ -6,7 +6,7 @@
   <% if local_assigns[:show_bookclub_info] %>
     <% unless bookshelf.club.blank? %>
       <span class="bookshelf-info"> Club: <%= link_to bookshelf.club.name, club_path(bookshelf.club), class: "btn btn--link" %> </span> 
-      <span class="bookshelf-info"> by <%= link_to bookshelf.creator, user_path( bookshelf.creator), class: "btn btn--link" %> </span>
+      <!--<span class="bookshelf-info"> by <%#= link_to bookshelf.creator.nickname, user_path( bookshelf.creator), class: "btn btn--link" %> </span>-->
     <% else %>
       <span class="bookshelf-info"> By <%= link_to bookshelf.creator.nickname, user_path( bookshelf.creator), class: "btn btn--link" %> </span>
     <% end %>

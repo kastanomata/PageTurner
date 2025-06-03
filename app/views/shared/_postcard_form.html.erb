@@ -137,8 +137,8 @@
     </div>
   <% end %>
 
-  <% if defined?(@club) && @club.present? %>
-    <%= form.hidden_field :club_id, value: @club.id %>
+  <% if defined?(club) && club.present? %>
+    <%= form.hidden_field :club_id, value: club.id %>
   <% end %>
 
 <div class="postcard-container">

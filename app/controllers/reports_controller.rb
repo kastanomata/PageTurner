@@ -22,7 +22,16 @@ class ReportsController < ApplicationController
 
   # POST /reports or /reports.json
   def create
-    @report = Report.new(report_params)
+    existing_report = Report.find_by(
+      reporter_id: report_params[:reporter_id],
+      reported_id: report_params[:reported_id],
+      reported_type: report_params[:reported_type]
+    )
+    if existing_report
+      @report = existing_report
+    else
+      @report = Report.new(report_params)
+    end
     respond_to do |format|
       if @report.save
         # Turbo Stream response to update the button

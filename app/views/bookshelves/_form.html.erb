@@ -16,6 +16,14 @@
     <%= form.text_field :name, autocomplete: "off" %>
   </div>
 
+  <% if Current.user&.is_curator? %>
+    <div>
+      <%= form.label :link_to_club, "Link this bookshelf to the club?" %>
+      <%= form.radio_button :link_to_club, true %> Yes
+      <%= form.radio_button :link_to_club, false %> No
+    </div>
+  <% end %>
+
   <div class="form-container">
     <div id="isbn-fields-wrapper">
       <!-- I campi ISBN dinamici verranno inseriti qui -->

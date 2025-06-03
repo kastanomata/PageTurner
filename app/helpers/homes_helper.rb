@@ -11,34 +11,38 @@ module HomesHelper
     # Preload bookshelf_contains to avoid N+1 queries
     bookshelves = user.bookshelves.includes(:bookshelf_contains)
 
-    # Filter bookshelves with at least one book
-    user_bookshelves = bookshelves.select { |b| b.special? && b.bookclub.nil? && b.bookshelf_contains.any? }
-    club_bookshelves = bookshelves.select { |b| b.special? && b.bookclub.present? && b.bookshelf_contains.any? }
+    # Categorize bookshelves
+    user_bookshelves = bookshelves.select { |b| b.special? && b.bookclub.nil? }
+    club_bookshelves = bookshelves.select { |b| b.special? && b.bookclub.present? }
     other_bookshelves = bookshelves.reject { |b| b.special? || b.bookclub.present? }
-                                  .select { |b| b.bookshelf_contains.any? }
+
+    # Split each category into those with books and those without
+    user_with_books, user_empty = user_bookshelves.partition { |b| b.bookshelf_contains.any? }
+    club_with_books, club_empty = club_bookshelves.partition { |b| b.bookshelf_contains.any? }
+    other_with_books, other_empty = other_bookshelves.partition { |b| b.bookshelf_contains.any? }
 
     content_parts = []
 
     # Only show "Your Bookshelves" header if there are user bookshelves
-    if user_bookshelves.any? || other_bookshelves.any?
+    if user_with_books.any? || other_with_books.any? || user_empty.any? || other_empty.any?
       content_parts << content_tag(:h2, "Your Bookshelves")
     end
 
     # User's special bookshelves with books
-    content_parts += user_bookshelves.map do |bookshelf|
-      render_bookshelf_card(bookshelf, user)
-    end
-
+    content_parts += user_with_books.map { |bookshelf| render_bookshelf_card(bookshelf, user) }
     # Other bookshelves with books
-    content_parts += other_bookshelves.map do |bookshelf|
-      render_bookshelf_card(bookshelf, user)
-    end
+    content_parts += other_with_books.map { |bookshelf| render_bookshelf_card(bookshelf, user) }
+    # User's special bookshelves without books
+    content_parts += user_empty.map { |bookshelf| render_bookshelf_card(bookshelf, user) }
+    # Other bookshelves without books
+    content_parts += other_empty.map { |bookshelf| render_bookshelf_card(bookshelf, user) }
 
-    # Club bookshelves section (only if there are club bookshelves with books)
-    if club_bookshelves.any?
+    # Club bookshelves section (only if there are club bookshelves)
+    if club_with_books.any? || club_empty.any?
       club_content = [
         content_tag(:h2, "Club Bookshelves"),
-        *club_bookshelves.map { |bookshelf| render_bookshelf_card(bookshelf, user) }
+        *club_with_books.map { |bookshelf| render_bookshelf_card(bookshelf, user) },
+        *club_empty.map { |bookshelf| render_bookshelf_card(bookshelf, user) }
       ]
       content_parts += club_content
     end

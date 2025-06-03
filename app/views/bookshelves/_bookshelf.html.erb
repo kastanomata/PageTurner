@@ -8,6 +8,9 @@
       <div class="bookshelf-header">
         <h2 class="bookshelf-title"><%= link_to bookshelf.name, bookshelf_path(bookshelf), class: "btn btn--link" %></h2>
         <p class="bookshelf-creator">Created by: <%= link_to bookshelf.creator.nickname, user_path(bookshelf.creator), class: "btn btn--link" %></p>
+        <% if bookshelf.club != nil %>
+        <p class="bookshelf-club"> in club: <%= link_to bookshelf.club.name, club_path(bookshelf.club), class: "btn btn--link" %> </p>
+        <% end %>
       </div>
     <% if local_assigns[:index] %>
       <div class="bookshelf-tags">
@@ -25,15 +28,19 @@
     </div>
 
     <div class="bookshelf-books-container">
+      <% if bookshelf.books.any? %>
       <% bookshelf.bookshelf_contains.includes(:book).each do |contain| %>
         <% book = contain.book %>
         <% next unless book %>
         
         <%= render 'books/book_card', 
-          book: book,
-          current_user: bookshelf.creator,
-          show_hover_info: true,
-          created_at: contain.created_at.strftime('%d %B %Y') %>
+        book: book,
+        current_user: bookshelf.creator,
+        show_hover_info: true,
+        created_at: contain.created_at.strftime('%d %B %Y') %>
+      <% end %>
+      <% else %>
+      <p class="no-books">No books in this bookshelf yet.</p>
       <% end %>
     </div>
 

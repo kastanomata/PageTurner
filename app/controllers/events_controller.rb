@@ -24,6 +24,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.organizer = determine_organizer
+    @event.participations.build(user: @event.organizer)
 
     respond_to do |format|
       if @event.save

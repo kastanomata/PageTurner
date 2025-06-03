@@ -24,7 +24,7 @@
 
 <div class="bookshelf-index-container">
   <% @bookshelves.each do |bookshelf| %>
-    <% unless bookshelf.special? %>
+    <% unless bookshelf.special? or bookshelf.books.empty? %>
       <%= render bookshelf, index: true %>
     <% end %>      
   <% end %>

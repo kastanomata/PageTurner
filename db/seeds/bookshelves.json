@@ -25,10 +25,11 @@
         "name": "Modern Classics",
         "creator_nickname": "Fredo",
         "books_list": [
-            { "isbn": "9780743273565", "_codename": "The Great Gatsby" },
-            { "isbn": "9780141439570", "_codename": "The Picture of Dorian Gray" },
-            { "isbn": "9780316769488", "_codename": "The Catcher in the Rye" },
-            { "isbn": "9780142437247", "_codename": "Moby-Dick or, The Whale" }
+            { "isbn": "9798412567747", "_codename": "Northanger Abbey" },
+            { "isbn": "9780760701652", "_codename": "Emma" },
+            { "isbn": "9781503292734", "_codename": "Sense and Sensibility" },
+            { "isbn": "9780141439556", "_codename": "Wuthering Heights" },
+            { "isbn": "9780141439518", "_codename": "Pride and Prejudice" }
         ]
     }
 ]

@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  allow_unauthenticated_access only: %i[ index show ]
+  allow_unauthenticated_access only: %i[ index ]
   before_action :set_book, only: %i[ show edit update destroy ]
   require_admin_access only: %i[ new create edit update destroy ]
   skip_before_action :check_ban, only: [ :search, :fetch ]

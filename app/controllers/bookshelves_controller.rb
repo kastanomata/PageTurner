@@ -26,7 +26,16 @@ class BookshelvesController < ApplicationController
 
   # POST /bookshelves or /bookshelves.json
   def create
-    @bookshelf = Current.user.bookshelves.build(bookshelf_params.except(:book_isbns))
+    creation_params = bookshelf_params.except(:book_isbns, :link_to_club)
+    if bookshelf_params[:link_to_club] == "true"
+      puts "Permitted!"
+      creation_params[:bookclub] = Current.user&.club.id
+    else
+      puts "Boo!"
+      creation_params[:bookclub] = nil
+    end
+    puts bookshelf_params.except(:book_isbns, :link_to_club).inspect
+    @bookshelf = Current.user.bookshelves.build(creation_params)
 
     respond_to do |format|
       if @bookshelf.save
@@ -119,6 +128,6 @@ class BookshelvesController < ApplicationController
     end
 
     def bookshelf_params
-      params.require(:bookshelf).permit(:name, :book_id, book_isbns: [])
+      params.require(:bookshelf).permit(:name, :book_id, :link_to_club, book_isbns: [])
     end
 end
