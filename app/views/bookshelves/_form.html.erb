@@ -11,20 +11,20 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name, autocomplete: "off" %>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <%= form.label :name, style: "display: block; text-align: center;" %>
+    <%= form.text_field :name, autocomplete: "off", style: "margin-bottom: 1em;" %>
+
+    <% if Current.user&.is_curator? %>
+      <div style="margin-top: 1em; text-align: center;">
+        <%= form.label :link_to_club, "Link this bookshelf to the club?" %><br>
+        <%= form.radio_button :link_to_club, true %> Yes
+        <%= form.radio_button :link_to_club, false %> No
+      </div>
+    <% end %>
   </div>
 
-  <% if Current.user&.is_curator? %>
-    <div>
-      <%= form.label :link_to_club, "Link this bookshelf to the club?" %>
-      <%= form.radio_button :link_to_club, true %> Yes
-      <%= form.radio_button :link_to_club, false %> No
-    </div>
-  <% end %>
-
-  <div class="form-container">
+  <div class="form-container", style="width:40%;">
     <div id="isbn-fields-wrapper">
       <!-- I campi ISBN dinamici verranno inseriti qui -->
     </div>
