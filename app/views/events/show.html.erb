@@ -1,22 +1,29 @@
-<% content_for :title, "#{@event.title}" %>
-<div class="event-show-container">
-  <%= render @event %>
-  <% if @event.organizer_object.is_a?(Club) %>
-    <%= render 'clubs/club_card', club: @event.organizer_object %>
-  <% elsif @event.organizer_object.is_a?(Author) %>
-  <%= render 'authors/author_card', author: @event.organizer_object %>
-  <% end %>
-</div>
 
-<div class="event-actions-container">
-  <% if Current&.user == @event.organizer %>
-  <div class="event-action">
-    <%= link_to "Edit this event", edit_event_path(@event), class: "btn btn--secondary btn--md" %> 
+
+<% content_for :title, "#{@event.title}" %>
+
+<div class="event-page-container">
+  <div class="event-main-content">
+    <!-- Contenuto principale dell'evento -->
+    <div class="event-card">
+      <%= render @event %>
+    </div>
+
+    <!-- Sezione azioni (solo per owner/admin) -->
+    <% if Current&.user == @event.organizer || Current.user&.admin? %>
+      <div class="event-actions">
+        <%= link_to "Edit this event", edit_event_path(@event), class: "btn btn--secondary btn--md" if Current&.user == @event.organizer %>
+        <%= button_to "Destroy this event", @event, method: :delete, class: "btn btn--negative btn--md" %>
+      </div>
+    <% end %>
   </div>
-  <% end %>
-  <% if Current&.user == @event.organizer or Current.user&.admin? %>
-  <div class="event-action">
-    <%= button_to "Destroy this event", @event, method: :delete, class: "btn btn--negative btn--md" %>
-  </div>
-  <% end %>
+
+  <!-- Sidebar con info organizzatore -->
+  <aside class="event-sidebar">
+    <% if @event.organizer_object.is_a?(Club) %>
+      <%= render 'clubs/club_card', club: @event.organizer_object %>
+    <% elsif @event.organizer_object.is_a?(Author) %>
+      <%= render 'authors/author_card', author: @event.organizer_object %>
+    <% end %>
+  </aside>
 </div>
