@@ -10,8 +10,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should not get index as Guest" do
     get posts_path
-    assert_response :unauthorized
+    assert_redirected_to new_session_path
   end
+
   test "should not get index as User" do
     post session_path, params: { email_address: @user.email_address, password: "password" }
     assert_equal @user.id, session[:user_id]
@@ -96,6 +97,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show post" do
+    post session_path, params: { email_address: @user.email_address, password: "password" }
+    assert_equal @user.id, session[:user_id]
     get post_path(@post)
     assert_response :success
   end

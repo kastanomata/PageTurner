@@ -66,13 +66,7 @@
     </div>
 
     <div class="posts posts--user">
-      <h2>Posts
-        <% if Current.user&.id == @user.id%>
-          <%= link_to new_post_path, class: "new-post-btn" do %>
-           <span class="footer-button-container plus-icon">+</span>
-          <% end %>
-        <% end %>
-      </h2>
+      <h2>Posts</h2>
       <% if Current.user == @user %>
         <%= render "shared/postcard_form" %>
       
