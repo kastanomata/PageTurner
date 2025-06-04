@@ -184,6 +184,28 @@
   gap: 0.5rem;
 }
 
+.book-suggestions select,
+.book-suggestions input[type="submit"] {
+  font-size: 1rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: 1.2px solid #ccc;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.book-suggestions input[type="submit"] {
+  background: #f5f5f5;
+  font-weight: 600;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.book-suggestions input[type="submit"]:hover {
+  background: #e0e0e0;
+}
+
 .club-interactive-section {
   padding: 1rem;
   background-color: #ffffff;
@@ -377,4 +399,77 @@
   border-color: #5E69B0;
   outline: none;
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.suggested-book-card {
+  display: flex;
+  align-items: center;
+  background: #fdf8f3;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: none;
+  min-height: 90px;
+}
+
+.suggested-book-cover {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 1.2rem;
+  background: #eee;
+  flex-shrink: 0;
+}
+
+.suggested-book-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.suggested-book-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #2357d5;
+  text-decoration: none;
+  margin-bottom: 0.2rem;
+  display: inline-block;
+}
+
+.suggested-book-title:hover {
+  text-decoration: underline;
+}
+
+.suggested-book-nickname {
+  font-size: 1.1rem;
+  color: #222;
+  margin-top: 0.2rem;
+}
+
+.suggested-book-remove {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.suggested-remove-btn {
+  background: #8b2d2d;
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.suggested-remove-btn:hover {
+  background: #a94442;
+}
+
+.suggested-remove-btn svg {
+  display: block;
 }

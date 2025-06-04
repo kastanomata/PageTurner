@@ -63,7 +63,7 @@ Rails.application.routes.draw do
       delete :delete_membership
     end
     resources :book_suggestions, only: [ :create, :destroy ]
-    resources :reading_goals, only: [ :new, :create, :show ]
+    resources :reading_goals, only: [ :new, :create, :show, :destroy ]
     resources :polls, only: [ :new, :create, :destroy ]
   end
   resources :memberships, only: [ :create, :destroy ]

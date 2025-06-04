@@ -66,7 +66,7 @@ class ClubsTest < ApplicationSystemTestCase
     create_goal_button = find("input[value='Create Reading Goal']")
     execute_script("arguments[0].click()", create_goal_button)
 
-    assert_text "Current Reading Goals"
+    assert_text "Current Reading Goal"
   end
 
   test "create poll books" do

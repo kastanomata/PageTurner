@@ -41,20 +41,34 @@
   <% if @club.members.include?(Current.user) %>
     <div class="club-right-col">
       <div class="book-suggestions">
-        <h2>Suggested Books</h2>
+        <h2 style="font-size:2.5rem; font-weight:700; margin-bottom:1.5rem;">Suggested Books</h2>
 
         <% if @club.suggested_books.any? %>
-          <ul>
-            <% @club.book_suggestions.includes(:book, :user).each do |suggestion| %>
-              <li>
-                <%= link_to suggestion.book.title, suggestion.book %>
-                suggested by <%= suggestion.user.nickname %>
-                <% if Current.user == @club.curator %>
-                  <%= button_to 'Remove', club_book_suggestion_path(@club, suggestion), method: :delete %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
+          <% @club.book_suggestions.includes(:book, :user).each do |suggestion| %>
+            <div class="suggested-book-card">
+              <%# Copertina libro %>
+              <% if suggestion.book.isbn.present? %>
+                <img class="suggested-book-cover" src="https://covers.openlibrary.org/b/isbn/<%= suggestion.book.isbn %>-M.jpg"
+                     alt="Book cover"
+                     onerror="this.onerror=null;this.src='/assets/bookart_not_found.png';">
+              <% else %>
+                <img class="suggested-book-cover" src="/assets/bookart_not_found.png" alt="Book cover">
+              <% end %>
+              <div class="suggested-book-info">
+                <%= link_to suggestion.book.title, suggestion.book, class: "suggested-book-title" %>
+                <div class="suggested-book-nickname">
+                  suggested by <%= link_to suggestion.user.nickname, user_path(suggestion.user), style: "color: #2357d5; text-decoration: underline;" %>
+                </div>
+              </div>
+              <% if Current.user == @club.curator %>
+                <div class="suggested-book-remove">
+                  <%= button_to club_book_suggestion_path(@club, suggestion), method: :delete, class: "suggested-remove-btn", form: { data: { turbo_confirm: "Remove this suggestion?" } } do %>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M9 3v1H4v2h16V4h-5V3H9zm-5 5v13c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V8H4zm3 2h2v9H7v-9zm4 0h2v9h-2v-9z"/></svg>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
         <% else %>
           <p>No suggestions yet!</p>
         <% end %>
@@ -68,81 +82,92 @@
       <div class="club-interactive-section">
         <div class="club-content">
 
+            <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem;">Current Reading Goal</h3>
             <% if @club.reading_goals.any? %>
-              <h3>Current Reading Goals</h3>
-              <% @club.reading_goals.each do |goal| %>
-                <div class="reading-goal">
-                  <h4><%= goal.book.title %></h4>
-                  <p>Reading period: <%= goal.start_date %> to <%= goal.end_date %></p>
-                </div>
-              <% end %>
+              <div class="current-goal">
+                <% @club.reading_goals.each do |goal| %>
+                  <div class="reading-goal" style="background: #fdf8f3; border-radius: 8px; padding: 1.2rem 1.5rem;">
+                    <div class="reading-goal-content">
+                      <% if goal.book.isbn.present? %>
+                        <img class="reading-book-cover" src="https://covers.openlibrary.org/b/isbn/<%= goal.book.isbn %>-M.jpg" alt="Book cover"
+                          onerror="this.onerror=null;this.src='/assets/bookart_not_found.png';">
+                      <% else %>
+                        <img class="reading-book-cover" src="/assets/bookart_not_found.png" alt="Book cover">
+                      <% end %>
+                      <div class="reading-goal-details">
+                        <h4 style="display:inline; font-size:1.3rem; font-weight:600; margin:0 0.5rem 0 0;"><%= goal.book.title %></h4>
+                        <p style="margin:0.5rem 0 0 0; color:#444; font-size: 1rem;">
+                          <span>Reading period:</span><br>
+                          <%= goal.start_date.strftime("%-d %B %Y") %> – <%= goal.end_date.strftime("%-d %B %Y") %>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <% if Current.user == @club.curator %>
+                    <div style="text-align: center;">
+                      <%= button_to 'Remove', club_reading_goal_path(@club, goal), method: :delete, data: { turbo_confirm: "Are you sure you want to remove this reading goal?" }, class: "btn btn--negative btn--sm" %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
             <% else %>
             <p>No reading goals set yet.</p>
             <% end %>
 
 
-          <% if Current.user == @club.curator %>
+          <% if Current.user == @club.curator && @club.reading_goals.empty? %>
             <%= link_to 'Add New Reading Goal', new_club_reading_goal_path(@club) %>
           <% end %>
         </div>
       </div>
 
       <div class="club-polls">
-          <% if @club.curator == Current.user %>
-            <div class="mb-4">
+            <% if @club.curator == Current.user && @club.polls.empty? %>
+            <div>
               <%= link_to 'Commit a new Poll', new_club_poll_path(@club), 
-                  class: 'btn btn--link btn--lg' %>
+                class: 'btn btn--link btn--lg' %>
             </div>
-          <% end %>
+            <% end %>
 
             <% @club.polls.each do |poll| %>
-              <div class="poll-card card mb-4" 
-                data-controller="countdown" 
-                data-countdown-expires-at-value="<%= poll.expires_at.iso8601 %>">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <div class="poll-meta mt-3 text-muted small">
-                      Created <%= time_ago_in_words(poll.created_at) %> ago
-                      <% if poll.expires_at? %>
-                        Expires <%= poll.expires_at.strftime("%b %d, %Y %H:%M") %>
-                      <% end %>
-                    </div>
-                    <h3 class="card-title mb-0">Next Reading</h3>
-                    <div class="countdown-display">
-                      <span data-countdown-target="timer" class="text-danger fw-bold"></span>
-                      <i class="bi-clock-history"></i>
-                    </div>
-                  </div>
-
+              <div class="poll-card">
+                <div class="poll-meta mt-3 text-muted small">
+                  <% if poll.expires_at? %>
+                    Expires <%= poll.expires_at.strftime("%b %d, %Y %H:%M") %>
+                  <% end %>
+                </div>
+                <h3 class="card-title mb-0">Next Reading</h3>
                   <div class="poll-results mt-3">
                     <% poll.poll_options.includes(:book, :votes).each do |option| %>
-                      <div class="poll-option d-flex justify-content-between align-items-center mb-2 p-2 border rounded">
-                        <div>
-                          <strong><%= option.book.title %></strong>
-                          <span class="text-muted ms-2">
-                            <%= poll.active? ? "Active" : "Closed" %> •
-                            (<%= option.votes.count %> votes)
+                      <% percent = poll.poll_options.sum { |o| o.votes.count } > 0 ? ((option.votes.count.to_f / poll.poll_options.sum { |o| o.votes.count }) * 100).round : 0 %>
+                      <% voted = poll.active? && Current.user.votes.exists?(poll: poll, poll_option: option) %>
+                      <div class="poll-option-ui <%= 'poll-option-selected' if voted %> d-flex align-items-center mb-3">
+                        <div class="poll-option-content flex-grow-1">
+                          <div class="poll-option-title d-flex justify-content-between">
+                            <span><strong><%= option.book.title %></strong></span>
+                            <span class="poll-percent"> <%= percent %>%</span>
+                          </div>
+                          <div class="poll-bar-bg">
+                            <div class="poll-bar-fill" style="width: <%= percent %>%"></div>
+                          </div>
+                          <span class="text-muted small">
+                            <%= poll.active? ? "Active" : "Closed" %>
                           </span>
                         </div>
-
-                        <% if poll.active? %>
-                          <% if @club.is_member?(Current.user) %>
-                            <% if Current.user.votes.exists?(poll: poll) %>
-                              <span class="badge bg-success">Voted</span>
-                            <% else %>
-                              <%= button_to "Vote", 
-                                vote_club_poll_path(
-                                  club_id: @club.id,
-                                  id: poll.id,
-                                  poll_option_id: option.id
-                                ), 
-                                method: :post,
-                                class: 'btn btn-sm btn-primary',
-                                data: { countdown_target: "voteButton" } %>
-                            <% end %>
-                          <% end %>
-                        <% else %>
-                          <div class="text-danger small">Voting closed</div>
+                        <% if poll.active? && @club.is_member?(Current.user) && !Current.user.votes.exists?(poll: poll) %>
+                          <div class="poll-vote-btn">
+                            <%= button_to "Vote", 
+                              vote_club_poll_path(
+                                club_id: @club.id,
+                                id: poll.id,
+                                poll_option_id: option.id
+                              ), 
+                              method: :post,
+                              class: 'btn btn-sm btn-primary',
+                              data: { countdown_target: "voteButton" } %>
+                          </div>
+                        <% elsif voted %>
+                          <span class="badge bg-success ms-2">Voted</span>
                         <% end %>
                       </div>
                     <% end %>
@@ -152,12 +177,11 @@
                         <%= button_to "Delete Poll", 
                             club_poll_path(@club, poll), 
                             method: :delete, 
-                            class: 'btn btn-danger btn-sm',
+                            class: 'btn btn--negative btn--sm',
                             form: { data: { turbo_confirm: "Are you sure you want to delete this poll?" } } %>
                       </div>
                     <% end %>
                   </div>
-                </div>
               </div>
             <% end %>
       </div>

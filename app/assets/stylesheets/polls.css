@@ -1,32 +1,20 @@
 .poll-card {
-    border: 2px solid #e9ecef;
-    margin-bottom: 1.5rem;
-    transition: all 0.3s ease;
-    position: relative;
-  
-    .countdown-display {
-        [data-countdown-target="timer"] {
-          display: inline-block !important;
-          min-width: 240px;
-          font-family: 'Courier New', monospace;
-          font-size: 1.1rem;
-          font-weight: 700;
-          color: #dc3545;
-          
-          .time-segment {
-            display: inline-block;
-            min-width: 40px;
-            text-align: center;
-          }
-        }
-      
-        .bi-clock-history {
-          font-size: 1.2rem;
-          vertical-align: middle;
-          margin-left: 8px;
-        }
-    }
-  }
+    max-width: 380px;
+    width: 90%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.card-title{
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.poll-results{
+  margin: 20px 0 15px 0;
+}
 
   .poll-expired {
     [data-countdown-target="timer"] {
@@ -88,5 +76,74 @@
 
 .field {
   margin-top: 1.5rem;
+}
+
+.poll-option-ui {
+  display: flex;
+  align-items: center;
+  background: #f7f7f7;
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin-bottom: 12px;
+  border: 2px solid transparent;
+  transition: border 0.2s, background 0.2s;
+  position: relative;
+}
+
+.poll-option-selected {
+  border: 2px solid #1abc9c;
+  background: #eafff6;
+}
+
+.poll-radio {
+  margin-right: 18px;
+}
+
+.poll-radio input[type="radio"] {
+  accent-color: #1abc9c;
+  width: 22px;
+  height: 22px;
+}
+
+.poll-option-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.poll-percent {
+  font-weight: 600;
+  color: #333;
+  margin-left: 10px;
+}
+
+.poll-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  margin-top: 2px;
+  overflow: hidden;
+}
+
+.poll-bar-fill {
+  height: 100%;
+  background: #1abc9c;
+  border-radius: 4px;
+  transition: width 0.5s;
+}
+
+.poll-vote-btn {
+  margin-left: 18px;
+}
+
+.badge.bg-success {
+  background: #1abc9c !important;
+  color: #fff;
+  font-size: 0.9em;
+  margin-left: 10px;
 }
 

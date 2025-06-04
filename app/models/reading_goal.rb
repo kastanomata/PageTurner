@@ -2,6 +2,8 @@ class ReadingGoal < ApplicationRecord
   belongs_to :club
   belongs_to :book
 
+  delegate :curator, to: :club, prefix: true
+
   validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date
   validate :only_one_active_goal_per_club, if: :active?

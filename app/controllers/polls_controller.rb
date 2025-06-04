@@ -9,10 +9,15 @@ class PollsController < ApplicationController
   end
 
   def create
+    if @club.polls.exists?
+      redirect_to club_path(@club), alert: "There is already an active poll for this club"
+      return
+    end
+
     @poll = @club.polls.new(poll_params)
 
     if @poll.save
-      redirect_to club_path(@club), notice: "Poll created successfully"  # Changed from club_polls_path
+      redirect_to club_path(@club), notice: "Poll created successfully"
     else
       @books = Book.all
       render :new
