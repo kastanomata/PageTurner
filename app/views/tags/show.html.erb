@@ -1,9 +1,17 @@
-<h1>Books tagged with "<%= @tag.name %>"</h1>
+<div style="place-items:center;">
+  <h1>Books tagged with "<%= @tag.name %>"</h1>
+</div>
 
-<div class="row">
+
+<div class="books-container">
   <% @tag.books.each do |book| %>
-    <div class="col-md-4 mb-4">
-      <%= render 'books/thumbnail', book: book %>
-    </div>
+    <%= render 'books/book_card',
+      book: book,
+      show_title: true, 
+      show_hover_info: false do %>
+      
+      <p>ISBN: <%= book.isbn %></p>
+      <%= link_to "View Details", book_path(book), class: "btn btn--secondary" %>
+    <% end %>
   <% end %>
 </div>
