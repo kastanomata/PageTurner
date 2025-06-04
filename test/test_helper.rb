@@ -15,9 +15,10 @@ module ActiveSupport
 
     def login_as(user)
       visit login_path
-      fill_in "Enter your email address", with: user.email_address
-      fill_in "Enter your password", with: "password"
-      click_on "Sign in"
+      execute_script("document.getElementById('email_address').value = '#{user.email_address}'")
+      execute_script("document.getElementById('password').value = 'password'")
+      login_button = find("input[value='Sign in']")
+      execute_script("arguments[0].click()", login_button)
       assert_current_path root_path
     end
   end

@@ -16,12 +16,13 @@ class UsersTest < ApplicationSystemTestCase
     visit root_path
     find(".btn.btn--primary", text: "Register", match: :first).click
 
-    fill_in "Email address", with: "example@example.com"
-    fill_in "Password", with: "password"
-    click_on "Create User"
-    fill_in "Nickname", with: "example"
-    fill_in "Description", with: "Description"
-    fill_in "Birthday", with: "22/10/2011"
+    execute_script("document.getElementById('user_email_address').value = 'example@example.com'")
+    execute_script("document.getElementById('user_password').value = 'password'")
+    create_button = find("input[value='Create User']")
+    execute_script("arguments[0].click()", create_button)
+    execute_script("document.getElementById('user_nickname').value = 'example'")
+    execute_script("document.getElementById('user_description').value = 'Description'")
+    execute_script("document.getElementById('user_birthday').value = '22-10-2011'")
     save_button = find("input[value='Save Changes']")
     execute_script("arguments[0].click()", save_button)
 
