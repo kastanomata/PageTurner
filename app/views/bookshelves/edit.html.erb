@@ -1,12 +1,15 @@
 <% content_for :title, "Editing bookshelf" %>
+<div style="place-items: center;">
+  <h1>Editing bookshelf</h1>
+</div>
 
-<h1>Editing bookshelf</h1>
+<div class="container-mid">
+  <%= render "form", bookshelf: @bookshelf %>
 
-<%= render "form", bookshelf: @bookshelf %>
+  <br>
 
-<br>
-
-<div>
-  <%= link_to "Show this bookshelf", @bookshelf %> |
-  <%= link_to "Back to bookshelves", bookshelves_path %>
+  <div>
+    <%= link_to "Show this bookshelf", @bookshelf %> |
+    <%= link_to "Back to bookshelves", bookshelves_path %>
+  </div>
 </div>
