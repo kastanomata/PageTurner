@@ -32,9 +32,16 @@
       <% bookshelf.bookshelf_contains.includes(:book).each do |contain| %>
         <% book = contain.book %>
         <% next unless book %>
-        
+        <% 
+        if current_user_owns?(bookshelf)
+          bookshelf_actions = button_to "Remove", remove_book_bookshelf_path(bookshelf, book_id: book.id), method: :delete, class: 'btn btn--delete btn--sm'
+        else
+          bookshelf_actions = nil
+        end
+        %>
         <%= render 'books/book_card', 
         book: book,
+        bookshelf_actions: bookshelf_actions,
         current_user: bookshelf.creator,
         show_hover_info: true,
         created_at: contain.created_at.strftime('%d %B %Y') %>

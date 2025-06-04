@@ -69,7 +69,7 @@ module UsersHelper
   end
 
   def render_author_request_form(user)
-    content_tag(:div, class: "form-container") do
+    content_tag(:div, class: "form-container form-container--user-update") do
       form_with(model: user, url: update_author_request_user_path(user), method: :patch) do |form|
         content_tag(:h2, "Author Information", class: "title") +
         content_tag(:div, class: "form-group") do

@@ -1,0 +1,95 @@
+.author--page {
+  padding: 1rem;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 2px 2px 12px #1f2937;
+}
+
+.author--page .author-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr; 
+  grid-template-rows: auto auto; 
+  gap: 30px;
+}
+
+.author--page .author-books-container {
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.author--page .author-image-container {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  width: 100%; 
+  max-width: 300px;
+}
+
+.author--page .author-bio-container {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.author--page .author-sections-container {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.author--page .author-image {
+  width: 100%; 
+  height: auto; 
+  object-fit: cover; 
+  border-radius: 4px;
+  aspect-ratio: 1/1; 
+  padding: 1rem;
+}
+
+.author--page .author-name {
+  margin-bottom: 20px;
+}
+
+.author--page .author-full-name,
+.author--page .author-lifespan {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.author-names-inline {
+  display: inline;
+  margin-left: 0.25rem;
+}
+
+.author-names-ellipsis {
+  color: #666;
+  margin-left: 0.25rem;
+}
+
+.author--page .author-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 5px;
+}
+
+.author--page .author-list-item {
+  margin-bottom: 5px;
+}
+
+.author--page .author-section {
+  margin-top: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .author--card .author-content {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .author--card .author-image-container {
+    margin: 0 auto;
+  }
+}

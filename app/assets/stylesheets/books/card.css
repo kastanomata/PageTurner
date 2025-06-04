@@ -1,0 +1,62 @@
+.book-hover-info {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 300px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: opacity 0.2s ease; 
+  z-index: 1000;
+}
+
+/* Default right positioning */
+.book-hover-info {
+  left: calc(100% + 10px);
+  right: auto;
+}
+
+/* Left positioning when needed */
+.book-hover-info.left-positioned {
+  left: auto;
+  right: calc(100% + 10px);
+}
+
+.book-hover-info.fallback-position {
+  left: 10px !important;
+  right: 10px !important;
+  top: 100% !important;
+  width: calc(100% - 20px) !important;
+}
+
+.book-card:hover .book-hover-info {
+  display: block;
+}
+
+.book-hover-info h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.book-author {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0 0 10px 0;
+}
+
+.book-description {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #444;
+  margin: 0 0 10px 0;
+}
+
+.book-meta {
+  display: flex;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: #666;
+}

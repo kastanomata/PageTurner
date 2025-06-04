@@ -48,4 +48,8 @@ module AuthorsHelper
     # Combine all content blocks
     safe_join(content_blocks)
   end
+
+  def get_books_collection(author)
+    author.books if author.respond_to?(:books) && author.books.any?
+  end
 end

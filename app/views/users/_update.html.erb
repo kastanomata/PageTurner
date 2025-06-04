@@ -3,6 +3,10 @@
     width: 30%
   }
 
+  .form-container--user-update {
+    max-width: 90%;
+  }
+
   .form-group--description {
     width: 60%;
     font-family: Garamond, serif;
@@ -13,7 +17,7 @@
   }
 </style>
 
-<%= form_with(model: user, class: "form-container-update-user") do |form| %>
+<%= form_with(model: user, class: "form-container form-container--user-update ") do |form| %>
   <% if user.errors.any? %>
     <div class="form-errors">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>

@@ -1,12 +1,12 @@
 <nav class="navbar">
-  <div class="navbar-brand">
-    <%= link_to "PageTurner", root_path, class: "navbar-logo" %>
-  </div>
   <div class="navbar-link-container">
-    <%= link_to "Bookclubs", clubs_path, class: "navbar-link #{'active' if current_page?(clubs_path)}" %>
-    <%= link_to "Bookshelves", bookshelves_path, class: "navbar-link #{'active' if current_page?(bookshelves_path)}" %>
-    <%= link_to "Books", books_path, class: "navbar-link #{'active' if current_page?(books_path)}" %>
-    <%= link_to "Authors", authors_path, class: "navbar-link #{'active' if current_page?(authors_path)}" %>
+    <div class="navbar-brand">
+      <%= link_to "PageTurner", root_path, class: "navbar-logo" %>
+    </div>
+    <%= link_to "Bookclubs", clubs_path, class: "navbar-link always-show #{'active' if current_page?(clubs_path)}" %>
+    <%= link_to "Events", events_path, class: "navbar-link hide-xs #{'active' if current_page?(events_path)}" %>
+    <%= link_to "Books", books_path, class: "navbar-link hide-s #{'active' if current_page?(books_path)}" %>
+    <%= link_to "Authors", authors_path, class: "navbar-link hide-md #{'active' if current_page?(authors_path)}" %>
   </div>
 
   <div class="search-container">

@@ -24,6 +24,19 @@
         <% end %>
       </div>
 
+<!--      <div class="author-books-container">-->
+        <%# books = get_books_collection(author) %>
+        <%# if books.present? %>
+<!--          <div class="book-card-list">-->
+            <%# books.each do |book| %>
+              <%#= render partial: "books/book_card", locals: { book: book } %>
+            <%# end %>
+<!--          </div>-->
+        <%# else %>
+<!--          <p>No books found for this author.</p>-->
+        <%# end %>
+<!--      </div>-->
+
       <div class="author-image-container">
         <% unless @author.photo.blank? %>
           <%= image_tag "https://covers.openlibrary.org/a/id/#{@author.photo}-M.jpg",

@@ -1,0 +1,73 @@
+/* Bookshelf show */ 
+.bookshelf-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Two equal columns */
+  grid-template-rows: auto 1fr;   /* Two rows - first row auto height, second row takes remaining space */
+  gap: 1rem;
+  height: 100vh; /* Or whatever height you need */
+}
+
+/* Optional: Add responsive behavior */
+@media (max-width: 768px) {
+  .bookshelf-container {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
+}
+
+.bookshelf {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+}
+
+.bookshelf .bookshelf-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem; 
+}
+
+.bookshelf .bookshelf-title {
+  font-size: 1.8rem;
+  margin:0;
+}
+
+.bookshelf .bookshelf-creator {
+  font-size: 1.5rem;
+  margin:0;
+}
+
+.bookshelf .bookshelf-books-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Creates 4 equal-width columns */
+  gap: 20px; /* Space between grid items */
+  width: 100%;
+  max-width: 100%; /* Prevents horizontal overflow */
+  box-sizing: border-box; /* Ensures padding/border don't cause overflow */
+  overflow-x: unset;
+  grid-auto-flow: dense;
+  padding: 10px 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #ddd #f5f5f5; 
+}
+
+/* Optional responsive adjustments */
+@media (max-width: 1200px) {
+  .bookshelf .bookshelf-books-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .bookshelf .bookshelf-books-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .bookshelf .bookshelf-books-container {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
+}
