@@ -5,4 +5,6 @@ class BookSuggestion < ApplicationRecord
 
   validates :club_id, uniqueness: { scope: :book_id, message: "This book has already been suggested" }
   validates :user_id, presence: true
+
+  delegate :curator, to: :club, prefix: true
 end

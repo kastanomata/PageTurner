@@ -11,7 +11,8 @@ module OwnershipUtility
     Poll => :curator,
     Event => :organizer,
     Participation => :user,
-    CuratorIcon => :admin
+    CuratorIcon => :admin,
+    BookSuggestion => :club_curator
   }.freeze
   def current_user_owns?(content)
     return false unless Current.user && content

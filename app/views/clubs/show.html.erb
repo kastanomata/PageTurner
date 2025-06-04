@@ -49,7 +49,7 @@
               <li>
                 <%= link_to suggestion.book.title, suggestion.book %>
                 suggested by <%= suggestion.user.nickname %>
-                <% if Current.user == suggestion.user %>
+                <% if Current.user == @club.curator %>
                   <%= button_to 'Remove', club_book_suggestion_path(@club, suggestion), method: :delete %>
                 <% end %>
               </li>

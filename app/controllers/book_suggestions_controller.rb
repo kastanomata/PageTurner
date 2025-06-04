@@ -15,6 +15,12 @@ class BookSuggestionsController < ApplicationController
 
   def destroy
     @book_suggestion = @club.book_suggestions.find(params[:id])
+
+    unless Current.user == @book_suggestion.club_curator
+      redirect_to @club, alert: "Only the club curator can remove book suggestions."
+      return
+    end
+
     @book_suggestion.destroy
     redirect_to @club, notice: "Suggestion removed"
   end

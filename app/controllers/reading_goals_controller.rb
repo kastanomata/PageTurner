@@ -12,7 +12,14 @@ class ReadingGoalsController < ApplicationController
 
   def create
     @reading_goal = @club.reading_goals.new(reading_goal_params)
-    if @reading_goal.save
+
+    if @reading_goal.start_date < Date.today || @reading_goal.end_date < Date.today
+      flash.now[:alert] = "Start date and end date must be today or later."
+      render :new
+    elsif @reading_goal.start_date > @reading_goal.end_date
+      flash.now[:alert] = "Start date cannot be after the end date."
+      render :new
+    elsif @reading_goal.save
       redirect_to @club, notice: "Reading goal was successfully created."
     else
       render :new
