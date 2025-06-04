@@ -1,9 +1,9 @@
 /* Event Index Container */
 .event-cards-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  align-items: center;
+  display: grid;
+  gap: 20px;
+  margin: 0 2rem;
+  grid-template-columns: repeat(3, minmax(180px, 1fr)); 
 }
 
 /* Base Event Card Styles */
@@ -16,6 +16,8 @@
   box-shadow: 2px 2px 12px #1f2937;
   transition: all 0.2s ease;
   max-width: 750px;
+  min-width: 150; 
+  width: auto;
   margin: 2rem;
 }
 

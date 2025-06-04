@@ -1,6 +1,28 @@
 <% content_for :title, "Events" %>
+<style>
+  body.events-index {
+    background-image: url(<%= asset_path('index_backgrounds/events_background2.jpg') %>);
+    background-repeat: no-repeat;
+    background-size: cover; /* Scala l'immagine per coprire tutto il body */
+    background-position: center center; /* Centra l'immagine */
+    background-attachment: fixed; /* Opzionale: fissa l'immagine durante lo scroll */
+    min-height: 100vh;
+  }
+
+  h1 {
+    background-color: #ffffff;
+    font-size: 4rem;
+    margin-left: 35rem;
+    margin-right: 35rem;
+    color: #1f2937;
+    border-radius: 4px;
+    text-align: center;
+  }
+</style>
 
 <h1>Events</h1>
+
+
 
 <div class="event-cards-container" id="events">
   <% @events.each do |event| %>
