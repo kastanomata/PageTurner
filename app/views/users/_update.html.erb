@@ -13,7 +13,7 @@
   }
 </style>
 
-<%= form_with(model: user, class: "form-container") do |form| %>
+<%= form_with(model: user, class: "form-container-update-user") do |form| %>
   <% if user.errors.any? %>
     <div class="form-errors">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
