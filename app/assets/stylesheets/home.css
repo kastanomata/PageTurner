@@ -119,3 +119,19 @@
     background-color: #cfcfcf;
     text-decoration: underline;
   }
+
+  .container-mid {
+  width: 80%; /* Larghezza del container (regolabile) */
+  max-width: 750px; /* Larghezza massima (regolabile) */
+  min-height: 50vh; /* Altezza minima relativa alla viewport */
+  height: auto; /* Si adatta al contenuto */
+  margin: 0 auto; /* Centrato orizzontalmente */
+  margin-top: 20px;
+  padding: 20px; /* Spaziatura interna */
+  box-sizing: border-box; /* Include padding nel calcolo dimensioni */
+  
+  /* Stile aggiuntivo (opzionale) */
+  background-color: #ffffff; /* Colore di sfondo */
+  border-radius: 8px; /* Bordi arrotondati */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombreggiatura */
+  }
